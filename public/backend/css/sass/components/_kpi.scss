@@ -1,0 +1,183 @@
+// ============================================
+// KPI / Dashboard Stats
+// ============================================
+
+.tv-dash {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+
+  h4,
+  h5 {
+    color: var(--tv-text-primary) !important;
+  }
+}
+
+.tv-date-chip {
+  background: var(--tv-kpi-bg);
+  @include backdrop-blur(10px);
+  border: 1px solid var(--tv-kpi-border);
+  @include pill;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: $weight-semibold;
+  color: var(--tv-text-secondary);
+  box-shadow: 0 4px 14px var(--tv-kpi-shadow);
+}
+
+.tv-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.tv-kpi {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  padding: 1.25rem 1.35rem;
+  color: var(--tv-text-on-brand);
+  background: var(--grad);
+  box-shadow: 0 12px 30px var(--tv-kpi-card-shadow);
+  min-height: 150px;
+
+  &__value, &__label{
+    color: var(--tv-text);
+  }
+}
+
+.tv-kpi-glow {
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--tv-sidebar-active-soft-bg);
+}
+
+.tv-kpi-ico {
+  width: 46px;
+  height: 46px;
+  border-radius: $radius-sm;
+  @include grid-center;
+  font-size: 1.25rem;
+  background: var(--tv-divider-on-brand);
+  backdrop-filter: blur(4px);
+}
+
+.tv-kpi-val {
+  font-size: $fs-3xl;
+  font-weight: $weight-extrabold;
+  margin-top: 0.85rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.tv-kpi-label {
+  font-weight: $weight-semibold;
+  opacity: 0.95;
+}
+
+.tv-kpi-sub {
+  font-size: 0.76rem;
+  opacity: 0.8;
+}
+
+.tv-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: $weight-bold;
+  padding: 0.25rem 0.55rem;
+  @include pill;
+  background: var(--tv-divider-on-brand);
+
+  &.down {
+    background: var(--tv-trend-down-bg);
+  }
+}
+
+.tv-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--tv-text-muted);
+
+  .dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 0.35rem;
+  }
+}
+
+.tv-link {
+  font-size: 0.85rem;
+  font-weight: $weight-semibold;
+  color: var(--tv-brand-indigo);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--tv-brand-indigo-strong);
+  }
+}
+
+.tv-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--tv-surface-glass);
+  @include backdrop-blur(14px, 160%);
+  border: 1px solid var(--tv-kpi-border);
+  border-radius: $radius-3xl;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 10px 28px var(--tv-kpi-shadow-strong);
+}
+
+.tv-mini-ico {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+  @include grid-center;
+  font-size: 1.2rem;
+}
+
+.tv-mini-val {
+  font-size: $fs-xl;
+  font-weight: $weight-extrabold;
+  color: var(--tv-text-primary);
+  line-height: 1.1;
+}
+
+.tv-mini-label {
+  font-size: 0.8rem;
+  color: var(--tv-text-muted);
+}
+
+.tv-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  @include grid-center;
+  font-size: 0.78rem;
+  font-weight: $weight-bold;
+  color: var(--tv-text-on-brand);
+  @include gradient(135deg, var(--tv-brand-indigo), var(--tv-brand-purple));
+}
+
+.tv-progress {
+  height: 8px;
+  @include pill;
+  background: var(--tv-progress-bg);
+  overflow: hidden;
+}
+
+.tv-progress-bar {
+  height: 100%;
+  @include pill;
+  @include gradient(90deg, var(--tv-brand-indigo), var(--tv-brand-cyan));
+}

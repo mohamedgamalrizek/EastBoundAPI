@@ -1,0 +1,33 @@
+// ============================================
+// Content Area
+// ============================================
+
+.content-body {
+  background: radial-gradient(820px 460px at 8% -8%, var(--tv-content-glow-primary), var(--tv-transparent) 60%),
+              radial-gradient(760px 480px at 102% 2%, var(--tv-content-glow-accent), var(--tv-transparent) 55%),
+              radial-gradient(680px 560px at 50% 118%, var(--tv-content-glow-blue), var(--tv-transparent) 60%),
+              var(--tv-content-bg) !important;
+  background-attachment: fixed;
+}
+
+.dashboard-content,
+.content-body > .container-fluid {
+  padding-top: 18px;
+}
+
+.content-body .container-fluid {
+	padding: 24px;
+}
+
+// .page-titles,
+.breadcrumb {
+  background: var(--tv-transparent) !important;
+}
+
+// .j-text-body {
+//     padding: 24px;
+// }
+
+.j-eml-list {
+    padding: 24px;
+}

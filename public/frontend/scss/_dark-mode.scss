@@ -1,0 +1,77 @@
+// ============================================================
+//  Dark mode
+//  Components consume semantic variables; switching themes only
+//  overrides token values here.
+// ============================================================
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --tv-primary: #{$dark-primary};
+  --tv-primary-dark: #{$dark-primary-dark};
+  --tv-secondary: #{$dark-primary-soft};
+  --tv-accent: #{$dark-accent};
+  --tv-success: #{$dark-success};
+  --tv-danger: #{$dark-danger};
+  --tv-warning: #{$dark-warning};
+  --tv-info: #{$dark-info};
+  --tv-text-dark: #{$dark-text};
+  --tv-text-light: #{$dark-text-muted};
+  --tv-placeholder: #{$dark-placeholder};
+  --tv-bg: #{$dark-bg};
+  --tv-surface: #{$dark-surface};
+  --tv-surface-2: #{$dark-surface-2};
+  --tv-section-bg: #{$dark-section-bg};
+  --tv-border: #{$dark-border};
+  --tv-primary-50: #{$dark-primary-50};
+  --tv-primary-100: #{$dark-primary-100};
+  --tv-primary-200: #{$dark-primary-200};
+  --tv-primary-soft: #{$dark-primary-soft};
+  --tv-on-brand: #{$dark-on-brand};
+  --tv-on-accent: #{$dark-on-accent};
+  --tv-contrast-surface: #{$dark-contrast-surface};
+  --tv-contrast-text: #{$dark-contrast-text};
+  --tv-inverse: #{$dark-inverse};
+  --tv-deep: #{$dark-deep};
+  --tv-overlay: #{$dark-overlay};
+  --tv-whatsapp: #{$dark-whatsapp};
+  --tv-transparent: #{$dark-transparent};
+  --tv-badge-success: #{$dark-badge-success};
+  --tv-badge-danger: #{$dark-badge-danger};
+  --tv-badge-warning: #{$dark-badge-warning};
+  --tv-badge-accent: #{$dark-badge-accent};
+  --tv-selection-bg: #{$dark-selection-bg};
+  --tv-selection-text: #{$dark-selection-text};
+  --tv-shadow-sm: #{$dark-shadow-sm};
+  --tv-shadow: #{$dark-shadow};
+  --tv-shadow-md: #{$dark-shadow-md};
+  --tv-shadow-lg: #{$dark-shadow-lg};
+  --tv-shadow-brand: #{$dark-shadow-brand};
+  --tv-shadow-brand-hover: #{$dark-shadow-brand-hover};
+  --tv-shadow-whatsapp: #{$dark-shadow-whatsapp};
+  --tv-shadow-focus: #{$dark-shadow-focus};
+  --tv-shadow-focus-button: #{$dark-shadow-focus-button};
+  --tv-shadow-ring: #{$dark-shadow-ring};
+
+  --tv-gradient-brand: linear-gradient(135deg, var(--tv-primary), var(--tv-primary-dark));
+  --tv-gradient-brand-reverse: linear-gradient(150deg, var(--tv-primary-dark), var(--tv-primary));
+  --tv-gradient-accent: linear-gradient(135deg, var(--tv-accent), var(--tv-primary));
+  --tv-gradient-page: linear-gradient(120deg, #{$dark-primary-dark}, #{$dark-primary});
+  --tv-gradient-deep: linear-gradient(135deg, #{$dark-deep}, #{$dark-primary});
+  --tv-gradient-text: linear-gradient(100deg, #{$dark-primary-dark}, #{$dark-accent});
+  --tv-gradient-media: linear-gradient(to top, color-mix(in srgb, #{$dark-overlay} 86%, var(--tv-transparent)), var(--tv-transparent) 55%);
+  --tv-gradient-hero-fade: linear-gradient(to top, var(--tv-bg), var(--tv-transparent));
+  --tv-gradient-hero-overlay: linear-gradient(120deg, color-mix(in srgb, #{$dark-deep} 88%, var(--tv-transparent)), color-mix(in srgb, #{$dark-primary} 44%, var(--tv-transparent)));
+}
+
+// Non-color theme behavior.
+html[data-theme='dark'] .brand-img--light { display: none; }
+html[data-theme='dark'] .brand-img--dark { display: block; }
+
+.brand-img--dark { display: none; }
+
+.theme-toggle .fa-sun { color: $warning; }
+
+@media print {
+  .theme-toggle { display: none !important; }
+}

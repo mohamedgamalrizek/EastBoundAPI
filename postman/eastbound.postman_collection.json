@@ -1,0 +1,4163 @@
+{
+  "info": {
+    "name": "eastbound",
+    "description": "EastBound / FLOW API Postman collection generated from Laravel routes/api.php. Set base_url and token before testing protected routes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "let json = {};",
+          "try { json = pm.response.json(); } catch (e) {}",
+          "const token = json.token || json.access_token || json.data?.token || json.data?.access_token;",
+          "if (token) pm.collectionVariables.set(token, token);"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "api_base",
+      "value": "{{base_url}}/api/v1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "id",
+      "value": "1"
+    },
+    {
+      "key": "job_id",
+      "value": "1"
+    },
+    {
+      "key": "app_key",
+      "value": "3c655841ae6a9ba033df0e724f3a272e53e829e3"
+    }
+  ],
+  "item": [
+    {
+      "name": "Public - Auth",
+      "item": [
+        {
+          "name": "POST Auth / Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/register",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ahmed Customer\",\n  \"phone\": \"01711000111\",\n  \"dial_code\": \"+880\",\n  \"email\": \"customer@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\",\n  \"gender\": \"male\",\n  \"date_of_birth\": \"1995-01-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/login",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"customer@example.com\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Otp / Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/otp/request",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "otp",
+                "request"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Otp / Verify",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/otp/verify",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "otp",
+                "verify"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@example.com\",\n  \"otp\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/reset-password",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "reset-password"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"customer@example.com\",\n  \"otp\": \"123456\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Social / Google",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/social/google",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "social",
+                "google"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"google_id_token\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Social / Facebook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/social/facebook",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "social",
+                "facebook"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"facebook_access_token\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Auth / Social / Providers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/social/providers",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "social",
+                "providers"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public - Content & CMS",
+      "item": [
+        {
+          "name": "GET Home",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/home",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "home"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Settings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/settings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "settings"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET App Languages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/app-languages",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "app-languages"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET App Language / Terms",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/app-language/terms",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "app-language",
+                "terms"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Faqs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/faqs?category=General",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "faqs"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "General"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/testimonials",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "testimonials"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Content Blocks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/content-blocks?section=home_services",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "content-blocks"
+              ],
+              "query": [
+                {
+                  "key": "section",
+                  "value": "home_services"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Contact Info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/contact-info",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "contact-info"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "POST Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/contact",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "contact"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ahmed Hassan\",\n  \"email\": \"ahmed@example.com\",\n  \"phone\": \"+201000000000\",\n  \"subject\": \"Visa services\",\n  \"message\": \"I need help with a tourist visa.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Enquiry Types",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/enquiry-types",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "enquiry-types"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "POST Enquiries",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/enquiries",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "enquiries"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"flight\",\n  \"name\": \"Ahmed Hassan\",\n  \"phone\": \"+201000000000\",\n  \"email\": \"ahmed@example.com\",\n  \"from\": \"CAI\",\n  \"to\": \"DXB\",\n  \"departure_date\": \"2026-11-15\",\n  \"travelers\": 2,\n  \"details\": \"Prefer morning flight.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Become An Agent",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/become-an-agent",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "become-an-agent"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Partner Agency\",\n  \"phone\": \"+201000000001\",\n  \"email\": \"partner@example.com\",\n  \"notes\": \"Interested in B2B access.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public - Catalogue",
+      "item": [
+        {
+          "name": "GET Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/categories",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "categories"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Tours",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/tours",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "tours"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Tours / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/tours/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "tours",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Hotels",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotels?city=Dhaka&stars=5&search=hotel",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotels"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "Dhaka"
+                },
+                {
+                  "key": "stars",
+                  "value": "5"
+                },
+                {
+                  "key": "search",
+                  "value": "hotel"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Hotels / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotels/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotels",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Hajj / Packages",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hajj/packages",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hajj",
+                "packages"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Hajj / Packages / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hajj/packages/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hajj",
+                "packages",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Visa Services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa-services?q=UAE&type=Tourist",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa-services"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "UAE"
+                },
+                {
+                  "key": "type",
+                  "value": "Tourist"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Visa / Track",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa/track?ref=VISA-00001",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa",
+                "track"
+              ],
+              "query": [
+                {
+                  "key": "ref",
+                  "value": "VISA-00001"
+                }
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Transport / Types",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/types",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "types"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Transport / Vehicle Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/vehicle-categories",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "vehicle-categories"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Transport Services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport-services",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport-services"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Flight Routes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/flight-routes",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "flight-routes"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Live Flights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/live-flights",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "live-flights"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "GET Packages / {id} / Reviews",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/packages/{{id}}/reviews",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "packages",
+                "{{id}}",
+                "reviews"
+              ],
+              "query": []
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Account",
+      "item": [
+        {
+          "name": "GET Auth / Me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/me",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Auth / Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/auth/logout",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/dashboard",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "dashboard"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/profile",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "profile"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "PUT Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/profile",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "profile"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ahmed Hassan\",\n  \"email\": \"ahmed@example.com\",\n  \"phone\": \"+201000000000\",\n  \"gender\": \"male\",\n  \"date_of_birth\": \"1995-01-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Profile / Avatar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/profile/avatar",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "profile",
+                "avatar"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"<file>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Profile / Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/profile/password",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "profile",
+                "password"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_password\": \"password\",\n  \"password\": \"new-password\",\n  \"password_confirmation\": \"new-password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Preferences",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/preferences",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "preferences"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "PUT Preferences",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/preferences",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "preferences"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"en\",\n  \"currency\": \"USD\",\n  \"notifications\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Wallet",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/wallet",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "wallet"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Loyalty",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/loyalty",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "loyalty"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Notifications",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/notifications",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "notifications"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Notifications / {id} / Read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/notifications/{{id}}/read",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "notifications",
+                "{{id}}",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Notifications / Read All",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/notifications/read-all",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "notifications",
+                "read-all"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Device Tokens",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/device-tokens",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "device-tokens"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"fcm_device_token\",\n  \"platform\": \"ios\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "DELETE Device Tokens",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/device-tokens",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "device-tokens"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"fcm_device_token\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Tours & Bookings",
+      "item": [
+        {
+          "name": "GET Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings?status=pending",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"package_id\": 1,\n  \"travel_date\": \"2026-12-10\",\n  \"travelers\": 2,\n  \"notes\": \"Window seats if possible.\",\n  \"customer_name\": \"Ahmed Hassan\",\n  \"customer_phone\": \"+201000000000\",\n  \"customer_email\": \"ahmed@example.com\",\n  \"needs_visa\": false,\n  \"coupon_code\": \"\",\n  \"points_redeemed\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Bookings / Quote",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/quote",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "quote"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"package_id\": 1,\n  \"travelers\": 2,\n  \"coupon_code\": \"\",\n  \"points_redeemed\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Bookings / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Bookings / {id} / Pay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/{{id}}/pay",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "{{id}}",
+                "pay"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"card\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Bookings / {id} / Cancel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/{{id}}/cancel",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "{{id}}",
+                "cancel"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Bookings / {id} / Guide Rating",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/{{id}}/guide-rating",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "{{id}}",
+                "guide-rating"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"comment\": \"Great guide.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Bookings / {id} / Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/bookings/{{id}}/review",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "bookings",
+                "{{id}}",
+                "review"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"comment\": \"Excellent trip.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Reviews",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/reviews",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "reviews"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Hotels",
+      "item": [
+        {
+          "name": "GET Hotel Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotel-bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotel-bookings"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Hotel Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotel-bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotel-bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hotel_id\": 1,\n  \"hotel_room_id\": 1,\n  \"check_in\": \"2026-12-10\",\n  \"check_out\": \"2026-12-12\",\n  \"guest_name\": \"Ahmed Hassan\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Hotel Bookings / {id} / Pay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotel-bookings/{{id}}/pay",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotel-bookings",
+                "{{id}}",
+                "pay"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"card\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Hotel Bookings / {id} / Voucher",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hotel-bookings/{{id}}/voucher",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hotel-bookings",
+                "{{id}}",
+                "voucher"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Flights",
+      "item": [
+        {
+          "name": "GET Flights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/flights",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "flights"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Flights",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/flights",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "flights"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"route\": \"CAI-DXB\",\n  \"flight_date\": \"2026-12-10\",\n  \"passenger_name\": \"Ahmed Hassan\",\n  \"airline\": \"Emirates\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Flights / {id} / Eticket",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/flights/{{id}}/eticket",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "flights",
+                "{{id}}",
+                "eticket"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Transport",
+      "item": [
+        {
+          "name": "GET Transport",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Transport",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"Car\",\n  \"route\": \"Cairo Airport to Nasr City\",\n  \"travel_date\": \"2026-12-10\",\n  \"vehicle\": \"Sedan\",\n  \"customer_name\": \"Ahmed Hassan\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Transport / Drivers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/drivers",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "drivers"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Transport / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Transport / {id} / Pay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/{{id}}/pay",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "{{id}}",
+                "pay"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"card\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Transport / {id} / Cancel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/transport/{{id}}/cancel",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "transport",
+                "{{id}}",
+                "cancel"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Visa & Hajj",
+      "item": [
+        {
+          "name": "GET Visa",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Visa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"UAE\",\n  \"visa_type\": \"Tourist\",\n  \"applicant_name\": \"Ahmed Hassan\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Visa / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Visa / Documents / {id} / Download",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/visa/documents/{{id}}/download",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "visa",
+                "documents",
+                "{{id}}",
+                "download"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Hajj / Registrations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hajj/registrations",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hajj",
+                "registrations"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Hajj / Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/hajj/register",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "hajj",
+                "register"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"package_id\": 1,\n  \"name\": \"Ahmed Hassan\",\n  \"phone\": \"+201000000000\",\n  \"email\": \"ahmed@example.com\",\n  \"passport_no\": \"A1234567\",\n  \"preferred_date\": \"2027-05-01\",\n  \"notes\": \"First time pilgrim.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Travelers & Documents",
+      "item": [
+        {
+          "name": "GET Travelers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/travelers",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "travelers"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Travelers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/travelers",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "travelers"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ahmed Hassan\",\n  \"passport_no\": \"A1234567\",\n  \"nationality\": \"Egyptian\",\n  \"date_of_birth\": \"1995-01-01\",\n  \"gender\": \"male\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT Travelers / {id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/travelers/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "travelers",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ahmed Hassan\",\n  \"passport_no\": \"A1234567\",\n  \"nationality\": \"Egyptian\",\n  \"date_of_birth\": \"1995-01-01\",\n  \"gender\": \"male\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "DELETE Travelers / {id}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/travelers/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "travelers",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Passports",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/passports",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "passports"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Passports",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/passports",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "passports"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"passport_no\": \"A1234567\",\n  \"issue_date\": \"2024-01-01\",\n  \"expiry_date\": \"2034-01-01\",\n  \"nationality\": \"Egyptian\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PUT Passports / {id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/passports/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "passports",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"passport_no\": \"A1234567\",\n  \"issue_date\": \"2024-01-01\",\n  \"expiry_date\": \"2034-01-01\",\n  \"nationality\": \"Egyptian\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "DELETE Passports / {id}",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/passports/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "passports",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Documents",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/documents",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "documents"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer - Billing & Support",
+      "item": [
+        {
+          "name": "GET Invoices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/invoices",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Invoices / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/invoices/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "invoices",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Invoices / {id} / Pdf",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/invoices/{{id}}/pdf",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "invoices",
+                "{{id}}",
+                "pdf"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Receipts / {id} / Pdf",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/receipts/{{id}}/pdf",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "receipts",
+                "{{id}}",
+                "pdf"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "GET Payments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/payments",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Support / Tickets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/support/tickets",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "support",
+                "tickets"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Support / Tickets",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/support/tickets",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "support",
+                "tickets"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Need help\",\n  \"message\": \"Please contact me about my booking.\",\n  \"priority\": \"medium\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Trip Plans",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/trip-plans",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "trip-plans"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Trip Plans",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/trip-plans",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "trip-plans"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": \"Dubai\",\n  \"start_date\": \"2026-12-10\",\n  \"days\": 5,\n  \"budget\": \"medium\",\n  \"travelers\": 2,\n  \"interests\": [\n    \"shopping\",\n    \"family\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Agent",
+      "item": [
+        {
+          "name": "GET Agent / Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/dashboard",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "dashboard"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Wallet",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/wallet",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "wallet"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Agent / Wallet / Withdraw",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/wallet/withdraw",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "wallet",
+                "withdraw"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 100,\n  \"method\": \"bank\",\n  \"notes\": \"Monthly withdrawal.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Commissions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/commissions",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "commissions"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Bookings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "bookings"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Agent / Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_name\": \"Client Name\",\n  \"customer_phone\": \"+201000000002\",\n  \"package_id\": 1,\n  \"travel_date\": \"2026-12-10\",\n  \"travelers\": 2,\n  \"notes\": \"Agent booking.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Bookings / {id}",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/bookings/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "bookings",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "PUT Agent / Bookings / {id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/bookings/{{id}}",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "bookings",
+                "{{id}}"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"travel_date\": \"2026-12-12\",\n  \"travelers\": 2,\n  \"notes\": \"Updated by agent.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Agent / Bookings / {id} / Cancel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/bookings/{{id}}/cancel",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "bookings",
+                "{{id}}",
+                "cancel"
+              ],
+              "query": []
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Agent / Hotel Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/hotel-bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "hotel-bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hotel_id\": 1,\n  \"hotel_room_id\": 1,\n  \"guest_name\": \"Client Name\",\n  \"check_in\": \"2026-12-10\",\n  \"check_out\": \"2026-12-12\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Agent / Transport Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/transport-bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "transport-bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"Car\",\n  \"route\": \"Airport to hotel\",\n  \"travel_date\": \"2026-12-10\",\n  \"vehicle\": \"Sedan\",\n  \"customer_name\": \"Client Name\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "POST Agent / Flight Bookings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/flight-bookings",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "flight-bookings"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"route\": \"CAI-DXB\",\n  \"flight_date\": \"2026-12-10\",\n  \"passenger_name\": \"Client Name\",\n  \"airline\": \"Emirates\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/customers",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "customers"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Invoices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/invoices",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "invoices"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Transactions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/transactions",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "transactions"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Reports",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/reports",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "reports"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "GET Agent / Support",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/agent/support",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "agent",
+                "support"
+              ],
+              "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Guide",
+      "item": [
+        {
+          "name": "GET Guide / Assignments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/guide/assignments",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "guide",
+                "assignments"
+              ],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "POST Guide / Assignments / {id} / Start",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/guide/assignments/{{id}}/start",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "guide",
+                "assignments",
+                "{{id}}",
+                "start"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Started.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        },
+        {
+          "name": "POST Guide / Assignments / {id} / Complete",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{api_base}}/guide/assignments/{{id}}/complete",
+              "host": [
+                "{{api_base}}"
+              ],
+              "path": [
+                "guide",
+                "assignments",
+                "{{id}}",
+                "complete"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Completed.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Replace {id} with the real record id before sending."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Laravel Default",
+      "item": [
+        {
+          "name": "GET Current Sanctum User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-App-Key",
+                "value": "{{app_key}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/user",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

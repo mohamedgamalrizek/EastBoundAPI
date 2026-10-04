@@ -1,0 +1,214 @@
+// ============================================================
+//  Base / Reset / Globals
+// ============================================================
+
+:root {
+  --tv-primary: #{$light-primary};
+  --tv-primary-dark: #{$light-primary-dark};
+  --tv-secondary: #{$light-secondary};
+  --tv-accent: #{$light-accent};
+  --tv-success: #{$light-success};
+  --tv-danger: #{$light-danger};
+  --tv-warning: #{$light-warning};
+  --tv-info: #{$light-info};
+  --tv-text-dark: #{$light-text};
+  --tv-text-light: #{$light-text-muted};
+  --tv-placeholder: #{$light-placeholder};
+  --tv-bg: #{$light-bg};
+  --tv-surface: #{$light-surface};
+  --tv-surface-2: #{$light-surface-2};
+  --tv-section-bg: #{$light-section-bg};
+  --tv-border: #{$light-border};
+  --tv-primary-50: #{$light-primary-50};
+  --tv-primary-100: #{$light-primary-100};
+  --tv-primary-200: #{$light-primary-200};
+  --tv-primary-soft: #{$light-primary-soft};
+  --tv-on-brand: #{$light-on-brand};
+  --tv-on-accent: #{$light-on-accent};
+  --tv-contrast-surface: #{$light-contrast-surface};
+  --tv-contrast-text: #{$light-contrast-text};
+  --tv-inverse: #{$light-inverse};
+  --tv-deep: #{$light-deep};
+  --tv-overlay: #{$light-overlay};
+  --tv-whatsapp: #{$light-whatsapp};
+  --tv-transparent: #{$light-transparent};
+  --tv-badge-success: #{$light-badge-success};
+  --tv-badge-danger: #{$light-badge-danger};
+  --tv-badge-warning: #{$light-badge-warning};
+  --tv-badge-accent: #{$light-badge-accent};
+  --tv-selection-bg: #{$light-selection-bg};
+  --tv-selection-text: #{$light-selection-text};
+  --tv-shadow-sm: #{$light-shadow-sm};
+  --tv-shadow: #{$light-shadow};
+  --tv-shadow-md: #{$light-shadow-md};
+  --tv-shadow-lg: #{$light-shadow-lg};
+  --tv-shadow-brand: #{$light-shadow-brand};
+  --tv-shadow-brand-hover: #{$light-shadow-brand-hover};
+  --tv-shadow-whatsapp: #{$light-shadow-whatsapp};
+  --tv-shadow-focus: #{$light-shadow-focus};
+  --tv-shadow-focus-button: #{$light-shadow-focus-button};
+  --tv-shadow-ring: #{$light-shadow-ring};
+  --tv-gradient-brand: linear-gradient(135deg, var(--tv-primary), var(--tv-primary-dark));
+  --tv-gradient-brand-reverse: linear-gradient(150deg, var(--tv-primary-dark), var(--tv-primary));
+  --tv-gradient-accent: linear-gradient(135deg, var(--tv-accent), var(--tv-primary));
+  --tv-gradient-page: linear-gradient(120deg, var(--tv-primary-dark), var(--tv-primary));
+  --tv-gradient-deep: linear-gradient(135deg, var(--tv-deep), var(--tv-primary-dark));
+  --tv-gradient-text: linear-gradient(100deg, var(--tv-primary-dark), var(--tv-accent));
+  --tv-gradient-media: linear-gradient(to top, color-mix(in srgb, var(--tv-overlay) 80%, var(--tv-transparent)), var(--tv-transparent) 55%);
+  --tv-gradient-hero-fade: linear-gradient(to top, var(--tv-bg), var(--tv-transparent));
+  --tv-gradient-hero-overlay: linear-gradient(120deg, color-mix(in srgb, var(--tv-deep) 82%, var(--tv-transparent)), color-mix(in srgb, var(--tv-primary-dark) 55%, var(--tv-transparent)));
+  --tv-radius:       #{$radius};
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  font-size: $fs-base;
+  line-height: $lh-base;
+  color: $text-dark;
+  background: $bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $primary-dark;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover { color: $primary; }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+// ---------- Layout helpers ----------
+.container {
+  max-width: $container-max;
+  min-width: 0;
+}
+
+main,
+section,
+.row > * {
+  min-width: 0;
+}
+
+.section {
+  &--tint { background: $section-bg; }
+  &--brand {
+    background: $gradient-brand;
+    color: $on-brand;
+  }
+}
+
+// ---------- Section heading ----------
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 2.75rem;
+  text-align: center;
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-family: $font-head;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: $primary-dark;
+    background: $secondary;
+    padding: .4rem .9rem;
+    border-radius: $radius-pill;
+    margin-bottom: 1rem;
+  }
+
+  h2 { margin-bottom: .65rem; }
+  p  { color: $text-light; margin-bottom: 0; }
+
+  &.text-start { margin-left: 0; text-align: left; }
+}
+
+// ---------- Utilities ----------
+.text-muted-2 { color: $text-light !important; }
+.bg-tint      { background: $section-bg !important; }
+.fw-700       { font-weight: 700 !important; }
+.fw-800       { font-weight: 800 !important; }
+.fs-13        { font-size: .8125rem !important; }
+.fs-14        { font-size: .875rem !important; }
+.rounded-tv   { border-radius: $radius !important; }
+.shadow-tv    { box-shadow: $shadow !important; }
+.link-primary-dark  { color: $primary-dark; }
+.text-success-tv    { color: $success !important; }
+.tracking-wide      { letter-spacing: .06em; }
+.sticky-header-offset { position: sticky; top: 96px; }
+.tracking-container { max-width: 820px; }
+.faq-container      { max-width: 860px; }
+.price-size-sm      { font-size: 1.05rem !important; }
+.price-size-md      { font-size: 1.1rem !important; }
+.price-size-lg      { font-size: 1.9rem !important; }
+.empty-state-icon   { font-size: 2.5rem; }
+.empty-state-icon-sm { font-size: 2.2rem; }
+
+.divider { height: 1px; background: $border; border: 0; }
+
+::selection { background: $selection-bg; color: $selection-text; }
+
+// ---------- Scroll-to-top ----------
+.scroll-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: $on-brand;
+  background: $primary-dark;
+  box-shadow: $shadow-brand;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: $transition;
+  z-index: 1040;
+
+  &.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  &:hover { background: $primary; color: $on-brand; }
+}
+
+// ---------- WhatsApp float ----------
+.wa-float {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: $on-brand;
+  background: $whatsapp;
+  font-size: 1.5rem;
+  box-shadow: $shadow-whatsapp;
+  z-index: 1040;
+  transition: $transition;
+
+  &:hover { color: $on-brand; transform: scale(1.06); }
+}

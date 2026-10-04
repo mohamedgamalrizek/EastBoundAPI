@@ -1,0 +1,33 @@
+// ============================================
+// Breadcrumb & Page Header
+// ============================================
+
+.page-header {
+  margin-bottom: 14px;
+}
+
+.page-header.tv-header-actions {
+  @include flex-gap(10px);
+  flex-wrap: wrap;
+
+  .page-breadcrumb {
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+}
+
+.breadcrumb {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.breadcrumb-item .breadcrumb-link {
+  color: var(--tv-muted);
+
+  &.active {
+    color: var(--tv-primary-dark);
+    font-weight: $weight-semibold;
+  }
+}

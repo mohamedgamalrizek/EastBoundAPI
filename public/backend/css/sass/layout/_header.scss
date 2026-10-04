@@ -1,0 +1,36 @@
+// ============================================
+// Header
+// ============================================
+
+.header {
+  background: var(--tv-header-bg) !important;
+  @include backdrop-blur(14px, 150%);
+  border-bottom: 1px solid var(--tv-header-border) !important;
+  box-shadow: 0 4px 20px var(--tv-shadow-header-color) !important;
+}
+
+.header .navbar {
+  background: var(--tv-transparent) !important;
+}
+
+.tv-backend .header .header-profile .nav-np h6 {
+  font-weight: $weight-medium;
+}
+
+// --- Brand Logo ---
+@media screen and (max-width: 991px) {
+  .nav-header .brand-logo {
+    display: none;
+  }
+
+  .nav-header .logo-icon {
+    display: flex;
+  }
+}
+
+.nav-bell {
+	line-height: 1;
+	display: flex;
+  align-items: center;
+  justify-content: center ;
+}

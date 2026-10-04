@@ -1,0 +1,14 @@
+// ============================================
+// Modal
+// ============================================
+
+// Keep the modal and its overlay above the fixed backend shell.
+.tv-backend {
+  .modal-backdrop {
+    z-index: $z-modal-backdrop !important;
+  }
+
+  .modal {
+    z-index: $z-modal;
+  }
+}

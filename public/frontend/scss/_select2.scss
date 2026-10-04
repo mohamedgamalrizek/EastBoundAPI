@@ -1,0 +1,82 @@
+// ============================================================
+//  Select2 (searchable selects) — theme override
+//  The Bootstrap 5 theme only approximates vanilla Bootstrap, not this
+//  site's own customized .form-control / .form-select (border, radius,
+//  height, colors) — so the generated markup gets styled to match those
+//  directly instead. $ tokens are theme-aware CSS vars, so dark mode
+//  needs no separate handling here.
+// ============================================================
+
+.select2-container--bootstrap-5 {
+  width: 100% !important;
+
+  .select2-selection {
+    min-height: 48px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid $border !important;
+    border-radius: $radius-sm !important;
+    background-color: $surface-2 !important;
+    box-shadow: none !important;
+    transition: $transition;
+  }
+
+  .select2-selection__rendered {
+    padding: 0 .9rem !important;
+    font-size: .95rem;
+    color: $text-dark;
+    line-height: 1.4;
+  }
+
+  .select2-selection__placeholder { color: $placeholder; }
+
+  .select2-selection__arrow {
+    height: 100% !important;
+    right: .6rem !important;
+  }
+
+  &.select2-container--focus,
+  &.select2-container--open {
+    .select2-selection {
+      border-color: $primary !important;
+      box-shadow: $shadow-focus !important;
+    }
+  }
+}
+
+// Fields inside the hero/search widgets are fixed-height to line up with
+// the date/button controls beside them.
+.search-row .select2-container,
+.enquiry-card .select2-container { height: 48px; }
+
+// The dropdown panel is the only bordered surface once open — the search
+// box inside it used to carry its own full border too, which read as a
+// second stacked input rather than part of the same control.
+.select2-dropdown {
+  border: 1.5px solid $border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.select2-search--dropdown {
+  padding: .5rem;
+  border-bottom: 1px solid $border;
+
+  .select2-search__field {
+    border: none !important;
+    border-radius: $radius-sm;
+    padding: .5rem .6rem;
+    font-size: .9rem;
+    background-color: $surface-2;
+    color: $text-dark;
+    outline: none;
+
+    &:focus { outline: none; box-shadow: none; }
+  }
+}
+
+.select2-results__option--highlighted[aria-selected] {
+  background-color: $primary !important;
+}

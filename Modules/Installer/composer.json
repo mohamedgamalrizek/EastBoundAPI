@@ -1,0 +1,8 @@
+{
+  "name": "flow/installer",
+  "autoload": {
+    "psr-4": {
+      "Modules\\Installer\\": "app/"
+    }
+  }
+}

@@ -1,0 +1,259 @@
+// ============================================================
+//  Cards & Badges & Components
+// ============================================================
+
+.card {
+  min-width: 0;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  background: $surface;
+  box-shadow: $shadow-sm;
+  transition: $transition;
+  overflow: hidden;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: $shadow-lg;
+  border-color: $primary-200;
+}
+
+// ---------- Badge ----------
+.badge-tv {
+  --badge-tone: #{$primary};
+
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: $font-head;
+  font-weight: 600;
+  font-size: .72rem;
+  line-height: 1.2;
+  letter-spacing: .03em;
+  padding: .35rem .7rem;
+  border-radius: $radius-pill;
+  background: color-mix(in srgb, var(--badge-tone) 15%, $transparent);
+  color: var(--badge-tone) ;
+  // -webkit-backdrop-filter: blur(4px);
+  // backdrop-filter: blur(4px);
+  max-width: 100%;
+  vertical-align: middle;
+
+  &.is-success { --badge-tone: #{$badge-success}; }
+  &.is-danger  { --badge-tone: #{$badge-danger}; }
+  &.is-warning { --badge-tone: #{$badge-warning}; }
+  &.is-accent  { --badge-tone: #{$badge-accent}; }
+}
+
+// ---------- Package card ----------
+.package-card {
+  min-width: 0;
+
+  .pc-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s $ease; }
+  }
+  &:hover .pc-media img { transform: scale(1.07); }
+
+  .pc-badge {
+    position: absolute;
+    top: .85rem;
+    left: .85rem;
+    display: block;
+    width: max-content;
+    max-width: calc(100% - 5rem);
+    background: color-mix(in srgb, var(--badge-tone) 14%, $surface);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: $shadow-sm;
+    z-index: 1;
+  }
+  .pc-fav {
+    position: absolute;
+    top: .7rem;
+    right: .7rem;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, $surface-2 90%, $transparent);
+    color: $text-light;
+    backdrop-filter: blur(4px);
+    border: 0;
+    transition: $transition;
+    &:hover { color: $danger; }
+    &.is-active {
+      color: $danger;
+      background: color-mix(in srgb, $danger 14%, $surface);
+    }
+    &:disabled { opacity: .65; pointer-events: none; }
+  }
+  .pc-body { padding: 1.25rem; }
+  .pc-meta { display: flex; gap: 1rem; color: $text-light; font-size: .82rem; margin-bottom: .5rem; }
+  .pc-title {
+    overflow-wrap: anywhere;
+    font-size: 1.12rem;
+    margin-bottom: .5rem;
+  }
+  .pc-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid $border;
+    padding-top: .9rem;
+    margin-top: .9rem;
+  }
+  .pc-price { font-family: $font-head; font-weight: 800; color: $primary-dark; font-size: 1.25rem;
+    small { font-weight: 500; color: $text-light; font-size: .72rem; }
+  }
+}
+
+// ---------- Destination card ----------
+.destination-card {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  display: block;
+
+  img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s $ease; }
+  &:hover img { transform: scale(1.08); }
+
+  &::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: $gradient-media;
+  }
+  .dc-body {
+    position: absolute;
+    left: 1rem; right: 1rem; bottom: 1rem;
+    color: $on-brand;
+    z-index: 2;
+  }
+  .dc-title { color: $on-brand; font-size: 1.1rem; margin: 0; }
+  .dc-meta  { font-size: .8rem; opacity: .85; }
+}
+
+// ---------- Service card ----------
+.service-card {
+  padding: 1.75rem;
+  border-radius: $radius-lg;
+  background: $surface;
+  border: 1px solid $border;
+  height: 100%;
+  transition: $transition;
+
+  .sc-icon {
+    width: 58px; height: 58px;
+    display: grid; place-items: center;
+    border-radius: $radius;
+    font-size: 1.5rem;
+    color: $primary-dark;
+    background: $secondary;
+    margin-bottom: 1.1rem;
+    transition: $transition;
+  }
+  h4 { font-size: 1.15rem; margin-bottom: .5rem; }
+  p  { color: $text-light; margin-bottom: 0; font-size: .92rem; }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-lg;
+    border-color: $transparent;
+    .sc-icon { background: $gradient-brand; color: $on-brand; }
+  }
+}
+
+// ---------- Feature (why choose) ----------
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  .fi-icon {
+    flex: 0 0 auto;
+    width: 48px; height: 48px;
+    display: grid; place-items: center;
+    border-radius: $radius;
+    background: $secondary;
+    color: $primary-dark;
+    font-size: 1.2rem;
+  }
+  h5 { margin-bottom: .25rem; }
+  p  { color: $text-light; font-size: .9rem; margin: 0; }
+}
+
+// ---------- Stat / counter ----------
+.stat {
+  text-align: center;
+  .stat-num {
+    font-family: $font-head;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 2.85rem);
+    line-height: 1;
+    color: $primary-dark;
+  }
+  .stat-label { color: $text-light; font-size: .9rem; margin-top: .4rem; }
+}
+
+// ---------- Review card ----------
+.review-card {
+  padding: 1.75rem;
+  border-radius: $radius-lg;
+  background: $surface;
+  border: 1px solid $border;
+  height: 100%;
+
+  .rc-stars { color: $warning; margin-bottom: .75rem; }
+  .rc-text  { color: $text-dark; font-size: .98rem; }
+  .rc-user  { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
+  .rc-avatar{ width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+  .rc-name  { font-weight: 700; font-size: .92rem; margin: 0; }
+  .rc-role  { color: $text-light; font-size: .8rem; }
+}
+
+// ---------- Blog card ----------
+.blog-card {
+  .bc-media { aspect-ratio: 16 / 10; overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s $ease; }
+  }
+  &:hover .bc-media img { transform: scale(1.06); }
+  .bc-body { padding: 1.25rem; }
+  .bc-meta { font-size: .78rem; color: $text-light; margin-bottom: .5rem; }
+  .bc-title { overflow-wrap: anywhere; font-size: 1.08rem; margin-bottom: .5rem;
+    a { color: $text-dark; &:hover { color: $primary-dark; } }
+  }
+}
+
+// ---------- Partner logo ----------
+.partner-logo {
+  display: grid; place-items: center;
+  padding: 1rem 1.25rem;
+  filter: grayscale(1);
+  opacity: .65;
+  transition: $transition;
+  font-family: $font-head;
+  font-weight: 700;
+  color: $text-light;
+  font-size: 1.1rem;
+  &:hover { filter: grayscale(0); opacity: 1; color: $primary-dark; }
+}
+
+// ---------- Breadcrumb hero ----------
+.page-hero {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: $gradient-page;
+  color: $on-brand;
+  text-align: center;
+  overflow: hidden;
+
+  h1 { color: $on-brand; }
+  .breadcrumb { justify-content: center; margin: .75rem 0 0; }
+  .breadcrumb-item, .breadcrumb-item a { color: color-mix(in srgb, $on-brand 85%, $transparent); }
+  .breadcrumb-item.active { color: $on-brand; }
+  .breadcrumb-item + .breadcrumb-item::before { color: color-mix(in srgb, $on-brand 60%, $transparent); }
+}

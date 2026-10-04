@@ -1,0 +1,53 @@
+// ============================================
+// Badges & Bullet Badges
+// ============================================
+
+.badge-primary,
+.bullet-badge-primary {
+  background: var(--tv-primary-dark) !important;
+}
+
+.badge-success,
+.bullet-badge-success {
+  background: var(--tv-success) !important;
+}
+
+.badge-danger,
+.bullet-badge-danger {
+  background: var(--tv-danger) !important;
+}
+
+.badge {
+  @include pill;
+  font-family: $font-heading;
+}
+
+[class*='bullet-badge'] {
+  display: inline-block !important;
+  color: var(--tv-text-on-brand) !important;
+  padding: 0.34rem 0.8rem !important;
+  @include pill;
+  font-size: 0.7rem !important;
+  font-weight: $weight-bold !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-family: $font-heading !important;
+
+  &::before {
+    display: none !important;
+  }
+}
+
+.bullet-badge-warning {
+  background: var(--tv-warning) !important;
+}
+
+.bullet-badge-info {
+  background: var(--tv-primary) !important;
+}
+
+.bullet-badge-secondary,
+.bullet-badge-default {
+  background: var(--tv-muted) !important;
+}

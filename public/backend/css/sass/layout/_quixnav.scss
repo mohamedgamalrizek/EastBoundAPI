@@ -1,0 +1,302 @@
+// ============================================
+// QuixNav Sidebar (legacy navigation)
+// ============================================
+
+.quixnav,
+.quixnav .quixnav-scroll {
+  background: linear-gradient(180deg, var(--tv-sidebar-gradient-start) 0%, var(--tv-sidebar-gradient-middle) 48%, var(--tv-sidebar-gradient-end) 100%) !important;
+  border-right: none !important;
+  @include hide-scrollbar;
+}
+
+.nav-header,
+.quixnav .nav-header {
+  background: var(--tv-control-bg-strong) !important;
+  border-bottom: none !important;
+}
+
+.nav-header {
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-height: 46px;
+      width: auto;
+    }
+  }
+
+  .logo-icon {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    line-height: 0;
+
+    img {
+      display: block;
+      flex: 0 0 40px;
+      width: 40px !important;
+      height: 40px !important;
+      max-width: 40px;
+      margin: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+.menu-toggle .nav-header .brand-logo,
+[data-sidebar-style='mini'] .nav-header .brand-logo,
+[data-sidebar-style='compact'] .nav-header .brand-logo {
+  display: none;
+}
+
+.menu-toggle .nav-header .logo-icon,
+[data-sidebar-style='mini'] .nav-header .logo-icon,
+[data-sidebar-style='compact'] .nav-header .logo-icon {
+  display: flex;
+}
+
+// --- Metismenu ---
+.quixnav .metismenu {
+  > li > a,
+  a {
+    font-family: $font-heading !important;
+    font-weight: $weight-semibold !important;
+    color: var(--tv-sidebar-text) !important;
+    border-radius: $radius-lg;
+    margin: 2px 12px;
+    transition: all $transition-slow;
+  }
+
+  > li > a i,
+  a i {
+    color: var(--tv-sidebar-text-muted) !important;
+    transition: all $transition-slow;
+  }
+
+  > li > a:hover,
+  a:hover {
+    background: var(--tv-sidebar-hover-bg) !important;
+    color: var(--tv-text-on-brand) !important;
+
+    i {
+      color: var(--tv-text-on-brand) !important;
+    }
+  }
+
+  // mm-active (selected) items
+  > li.mm-active > a:not(.has-arrow),
+  > li > a.mm-active:not(.has-arrow) {
+    background: var(--tv-sidebar-active-bg) !important;
+    color: var(--tv-sidebar-gradient-start) !important;
+    box-shadow: 0 10px 24px var(--tv-shadow-sidebar-color) !important;
+
+    i {
+      color: var(--tv-sidebar-gradient-start) !important;
+    }
+  }
+
+  > li.mm-active > a.has-arrow,
+  > li > a.has-arrow.mm-active {
+    background: var(--tv-sidebar-active-soft-bg) !important;
+    color: var(--tv-text-on-brand) !important;
+
+    i {
+      color: var(--tv-text-on-brand) !important;
+    }
+  }
+
+  // Menu backgrounds
+  ul,
+  li,
+  li ul,
+  li ul ul,
+  .mm-collapse,
+  .mm-collapse.mm-show,
+  &.mm-show .mm-active,
+  > li.mm-active ul,
+  > li.mm-active ul li,
+  > li.mm-active ul li a {
+    background: var(--tv-transparent) !important;
+  }
+
+  ul {
+    border-left: 2px solid var(--tv-divider-on-brand) !important;
+  }
+
+  ul a,
+  > li.mm-active ul li a {
+    color: var(--tv-sidebar-text) !important;
+  }
+
+  ul a:hover,
+  ul a.mm-active,
+  ul a.active,
+  > li.mm-active ul li a:hover,
+  > li.mm-active ul li a.mm-active {
+    background: var(--tv-sidebar-hover-bg) !important;
+    color: var(--tv-text-on-brand) !important;
+  }
+}
+
+// --- Metismenu item styling ---
+.quixnav .metismenu {
+  > li > a {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px !important;
+    font-size: $fs-md;
+    position: relative;
+
+    > i {
+      width: 22px;
+      min-width: 22px;
+      text-align: center;
+      font-size: 1.12rem !important;
+      line-height: 1;
+    }
+
+    .nav-text {
+      flex: 1;
+    }
+
+    &.has-arrow::after {
+      right: 16px;
+      border-color: currentColor;
+      opacity: 0.6;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    margin: 2px 12px 6px;
+    border-left: 2px solid var(--tv-border);
+  }
+
+  ul a {
+    padding: 8px 14px 8px 28px !important;
+    border-radius: $radius-md;
+    margin: 1px 6px;
+  }
+
+  > li {
+    margin-bottom: 1px;
+  }
+}
+
+.quixnav-scroll {
+  padding-top: 6px;
+}
+
+// --- Nav Section ---
+.quixnav .metismenu li.tv-nav-section {
+  background: var(--tv-transparent) !important;
+  padding: 18px 24px 6px;
+  pointer-events: none;
+
+  span {
+    font-family: $font-heading;
+    font-size: $fs-xs;
+    font-weight: $weight-bold;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--tv-sidebar-text-soft) !important;
+  }
+
+  &:first-child {
+    padding-top: 10px;
+  }
+}
+
+.menu-toggle .quixnav .metismenu li.tv-nav-section span,
+[data-sidebar-style='mini'] .quixnav .metismenu li.tv-nav-section span,
+[data-sidebar-style='compact'] .quixnav .metismenu li.tv-nav-section span {
+  display: none;
+}
+
+.menu-toggle .quixnav .metismenu li.tv-nav-section,
+[data-sidebar-style='mini'] .quixnav .metismenu li.tv-nav-section,
+[data-sidebar-style='compact'] .quixnav .metismenu li.tv-nav-section {
+  padding: 6px 16px;
+  margin: 6px 14px 0;
+  border-top: 1px solid var(--tv-divider-on-brand) !important;
+}
+
+// --- Quixnav Menu Item Colors ---
+.quixnav .metismenu a i,
+.quixnav .metismenu > li > a i {
+  color: var(--tv-icon-color) !important;
+  font-size: 1.05rem;
+}
+
+.quixnav .metismenu > li.mm-active > a.has-arrow i {
+  color: var(--tv-primary-dark) !important;
+}
+
+.quixnav.deznav-mini .metismenu a i,
+[data-sidebar-style='mini'] .quixnav .metismenu a i {
+  color: var(--tv-icon-color) !important;
+}
+
+// --- j-custom-style ---
+.quixnav.j-custom-style .metismenu {
+  li a,
+  li a .nav-text {
+    color: var(--tv-text-on-brand) !important;
+  }
+
+  li a i {
+    color: var(--tv-text-on-brand) !important;
+    opacity: 0.95;
+  }
+
+  > li.mm-active > a:not(.has-arrow),
+  > li.mm-active > a:not(.has-arrow) i,
+  > li.mm-active > a:not(.has-arrow) .nav-text,
+  > li > a.mm-active:not(.has-arrow),
+  > li > a.mm-active:not(.has-arrow) i,
+  > li > a.mm-active:not(.has-arrow) .nav-text {
+    color: var(--tv-sidebar-gradient-start) !important;
+    opacity: 1;
+  }
+
+  li.tv-nav-section span {
+    color: var(--tv-sidebar-text-muted) !important;
+  }
+
+  li a.has-arrow::after {
+    border-color: var(--tv-text-on-brand) !important;
+    opacity: 0.9;
+  }
+}
+
+.quixnav .metismenu {
+  ul a::before,
+  li::marker {
+    content: none !important;
+  }
+
+  ul,
+  ul li {
+    list-style: none !important;
+  }
+}
+
+// --- Print ---
+@media print {
+  .tv-sidebar,
+  .tv-sidebar-backdrop,
+  .nav-header,
+  .header {
+    display: none !important;
+  }
+
+  .tv-backend .content-body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

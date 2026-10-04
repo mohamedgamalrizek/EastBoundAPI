@@ -1,0 +1,35 @@
+// ============================================================
+//  _package — page styles (extended in later modules)
+// ============================================================
+
+.package-cover {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.package-card-featured { border-color: $primary; }
+
+.visa-flag {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.booking-service-list {
+  .mega-link {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .7rem .8rem;
+    border-radius: $radius-sm;
+    color: $text-dark;
+    font-size: .9rem;
+    font-weight: 500;
+
+    &:hover,
+    &.active-book {
+      background: $secondary;
+      color: $primary-dark;
+    }
+  }
+}

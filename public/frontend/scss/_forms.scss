@@ -1,0 +1,103 @@
+// ============================================================
+//  Forms & Inputs
+// ============================================================
+
+.form-label {
+  font-weight: 600;
+  font-size: .875rem;
+  color: $text-dark;
+  margin-bottom: .4rem;
+}
+
+.form-control,
+.form-select {
+  min-width: 0;
+  max-width: 100%;
+  border: 1.5px solid $border;
+  border-radius: $radius-sm;
+  padding: .7rem .9rem;
+  font-size: .95rem;
+  color: $text-dark;
+  background-color: $surface-2;
+  transition: $transition;
+
+  &::placeholder { color: $placeholder; }
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: $shadow-focus;
+  }
+}
+
+.form-control-lg,
+.form-select-lg { padding: .85rem 1rem; font-size: 1rem; }
+
+textarea.form-control { min-height: 130px; resize: vertical; }
+
+// Input with leading icon
+.input-icon {
+  position: relative;
+
+  > i {
+    position: absolute;
+    top: 50%;
+    left: .95rem;
+    transform: translateY(-50%);
+    color: $text-light;
+    pointer-events: none;
+  }
+
+  .form-control,
+  .form-select { padding-left: 2.5rem; }
+}
+
+// Field group used in booking widgets
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+
+  .field-label {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: $text-light;
+    text-align: left;
+  }
+}
+
+.form-check-input:checked {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.form-check-input:focus {
+  border-color: $primary;
+  box-shadow: $shadow-focus;
+}
+
+// Newsletter inline form
+.newsletter-form {
+  width: 100%;
+  display: flex;
+  gap: .5rem;
+  background: $surface-2;
+  padding: .4rem;
+  border-radius: $radius-pill;
+  box-shadow: $shadow;
+  max-width: 460px;
+
+  .form-control {
+    min-width: 0;
+    flex: 1 1 0;
+    border: 0;
+    background: $transparent;
+    &:focus { box-shadow: none; }
+  }
+}
+
+// Validation
+.invalid-feedback { font-size: .8rem; }
+.is-invalid { border-color: $danger !important; }

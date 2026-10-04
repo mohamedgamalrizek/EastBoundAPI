@@ -1,0 +1,42 @@
+// ============================================
+// Typography
+// ============================================
+
+// Fonts are self-hosted in public/fonts/ and loaded via <link> in the layout (no external requests).
+body,
+.content-body,
+#main-wrapper {
+  font-family: $font-body !important;
+  color: var(--tv-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.card-title,
+.nav-text,
+.brand-title {
+  font-family: $font-body !important;
+  color: var(--tv-text);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--tv-primary-dark);
+
+  &:hover {
+    color: var(--tv-primary);
+  }
+}
+
+.text-primary {
+  color: var(--tv-primary-dark) !important;
+}
+
+.text-muted {
+  color: var(--tv-muted) !important;
+}
+
+::selection {
+  background: var(--tv-focus-ring);
+  color: var(--tv-primary-strong);
+}

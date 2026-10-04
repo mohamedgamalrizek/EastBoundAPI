@@ -1,0 +1,139 @@
+// ============================================================
+//  Buttons
+// ============================================================
+
+.btn {
+  --bs-btn-focus-box-shadow: #{$shadow-focus-button};
+  max-width: 100%;
+  font-family: $font-head;
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  padding: .72rem 1.4rem;
+  border-radius: $radius-pill;
+  border: 1.5px solid $transparent;
+  transition: $transition;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  line-height: 1.2;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.btn-lg {
+  padding: .9rem 1.8rem;
+  font-size: 1.02rem;
+}
+
+.btn-sm {
+  padding: .5rem 1rem;
+  font-size: .85rem;
+}
+
+// Primary / brand
+.btn-brand {
+  color: $on-brand;
+  background: $gradient-brand;
+  box-shadow: $shadow-brand;
+
+  &:hover {
+    color: $on-brand;
+    box-shadow: $shadow-brand-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-accent {
+  color: $on-accent;
+  background: $gradient-accent;
+
+  &:hover {
+    color: $on-accent;
+    transform: translateY(-2px);
+  }
+}
+
+// Outline
+.btn-outline-brand {
+  color: $primary-dark;
+  border-color: $primary;
+  background: $surface-2;
+
+  &:hover {
+    color: $on-brand;
+    background: $primary-dark;
+    border-color: $primary-dark;
+  }
+}
+
+// Soft / ghost
+.btn-soft {
+  color: $primary-dark;
+  background: $secondary;
+  border-color: $transparent;
+
+  &:hover {
+    background: $primary-100;
+    color: $primary-dark;
+  }
+}
+
+.btn-ghost {
+  color: $text-dark;
+  background: $transparent;
+  border-color: $transparent;
+
+  &:hover {
+    color: $primary-dark;
+    background: $primary-50;
+  }
+}
+
+.btn-white {
+  color: $contrast-text;
+  background: $contrast-surface;
+
+  &:hover {
+    color: $contrast-text;
+    background: $secondary;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-success {
+  background: $success;
+  border-color: $success;
+  color: $on-brand;
+
+  &:hover {
+    color: $on-brand;
+    filter: brightness(.95);
+  }
+}
+
+.btn-danger {
+  background: $danger;
+  border-color: $danger;
+  color: $on-brand;
+
+  &:hover {
+    color: $on-brand;
+    filter: brightness(.95);
+  }
+}
+
+// Icon button
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-block {
+  width: 100%;
+}

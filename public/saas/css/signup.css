@@ -1,0 +1,16 @@
+body { background: #f3f6fb; color: #1f2937; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.brand { font-weight: 800; color: #2563eb; letter-spacing: -.5px; }
+.signup-card { max-width: 920px; margin: 40px auto; }
+.plan-card { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 12px; padding: 18px; height: 100%; transition: .15s; }
+.plan-card:hover { border-color: #93c5fd; }
+input[type=radio]:checked + .plan-card { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+.plan-price { font-size: 1.6rem; font-weight: 800; color: #2563eb; }
+.plan-radio { position: absolute; opacity: 0; }
+.feat { font-size: .85rem; color: #4b5563; }
+.btn-blue { background: #2563eb; border: none; color: #fff; font-weight: 600; }
+.btn-blue:hover { background: #1d4ed8; color:#fff; }
+.sub-suffix { background:#eef2ff; border:1px solid #c7d2fe; border-left:0; border-radius:0 .25rem .25rem 0; padding:.375rem .75rem; color:#4338ca; }
+.brand-dot{color:#0ea5e9}
+.plan-label{position:relative}
+.fs-sm{font-size:.8rem}
+.fs-82{font-size:.82rem}

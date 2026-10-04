@@ -1,0 +1,89 @@
+// ============================================
+// Per-column list filters (built by
+// buildColumnFilters in flow-inline.js on
+// every .dt-table)
+// ============================================
+
+// Toggle sits inside the DataTables search area
+.dataTables_filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tv-filter-toggle .tv-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--tv-primary-dark);
+  color: var(--tv-text-on-brand, #fff);
+  font-size: 0.7rem;
+  font-weight: $weight-bold;
+  line-height: 1;
+}
+
+.tv-filter-toggle.is-active .tv-filter-count {
+  background: var(--tv-text-on-brand, #fff);
+  color: var(--tv-primary-dark);
+}
+
+// The JS-built dropdown panel. Card chrome (background, border, radius)
+// comes from the shared card rules — .tv-filter-card is part of that
+// group and the theme forces its own padding to 0, so the inner
+// .tv-card-body provides the spacing like every other card.
+.tv-filter-panel {
+  margin: 4px 0 18px;
+
+  .tv-card-body {
+    padding: 16px 18px;
+  }
+}
+
+.tv-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px 14px;
+  align-items: end;
+}
+
+.tv-filter-field .label-style-1 {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.tv-filter-field select.form-control,
+.tv-filter-field input.form-control {
+  width: 100%;
+  height: 42px;
+}
+
+.tv-filter-actions {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+}
+
+.tv-filter-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px dashed var(--tv-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tv-danger);
+  font-size: 0.8rem;
+  font-weight: $weight-semibold;
+  line-height: 1;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    border-color: var(--tv-danger);
+    background: color-mix(in srgb, var(--tv-danger) 8%, transparent);
+  }
+}

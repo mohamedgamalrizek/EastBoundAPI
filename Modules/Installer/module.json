@@ -1,0 +1,9 @@
+{
+  "name": "Installer",
+  "alias": "installer",
+  "description": "Safe first-run installer for FLOW.",
+  "keywords": [],
+  "priority": 100,
+  "providers": ["Modules\\Installer\\Providers\\InstallerServiceProvider"],
+  "files": []
+}

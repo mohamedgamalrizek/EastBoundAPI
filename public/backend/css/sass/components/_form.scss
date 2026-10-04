@@ -1,0 +1,96 @@
+// ============================================
+// Form Controls
+// ============================================
+
+.form-control,
+.form-select,
+.custom-select,
+select.form-control {
+  border: 1.5px solid var(--tv-border) !important;
+  border-radius: $radius-sm !important;
+  color: var(--tv-text);
+  background: var(--tv-control-bg) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--tv-primary) !important;
+  box-shadow: 0 0 0 0.2rem var(--tv-focus-ring) !important;
+}
+
+.input-style-1,
+.textarea-style-1,
+select.input-style-1,
+textarea.form-control,
+.j-search-form .j-form-control {
+  border-radius: $radius-sm !important;
+}
+
+.input-group-text {
+  border-radius: $radius-sm;
+}
+
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-search--dropdown .select2-search__field,
+.ot_fileUploader {
+  border-radius: $radius-sm !important;
+}
+
+// --- Unified Control Geometry ---
+.tv-backend {
+  .form-control:not(textarea):not([multiple]),
+  .form-select:not([multiple]),
+  .custom-select:not([multiple]),
+  .input-style-1:not(textarea):not([multiple]) {
+    height: $control-height !important;
+    border-radius: $radius-sm !important;
+  }
+
+  textarea,
+  select[multiple],
+  .form-control[multiple],
+  .form-select[multiple],
+  .custom-select[multiple],
+  .input-style-1[multiple] {
+    height: auto !important;
+    min-height: $control-height;
+    border-radius: $radius-sm !important;
+  }
+
+  .select2-container--default .select2-selection--single {
+    height: $control-height !important;
+    min-height: $control-height;
+    border-radius: $radius-sm !important;
+  }
+
+  // .select2-container--default .select2-selection--single .select2-selection__rendered {
+  //   line-height: calc(#{$control-height} - 2px);
+  // }
+
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+  }
+
+  .select2-container--default .select2-selection--multiple {
+    height: auto !important;
+    min-height: $control-height;
+    border-radius: $radius-sm !important;
+  }
+}
+
+// --- Search ---
+.j-search .j-form-control,
+.j-search input {
+  background: var(--tv-bg) !important;
+  border: 1.5px solid var(--tv-border) !important;
+  @include pill;
+  color: var(--tv-text);
+  height: 40px;
+
+  &:focus {
+    border-color: var(--tv-primary) !important;
+  }
+}

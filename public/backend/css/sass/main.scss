@@ -1,0 +1,53 @@
+// ============================================
+// FLOW Admin — Main SCSS Entry
+// ============================================
+
+// 1. Abstracts
+@import 'abstract/variables';
+@import 'abstract/mixins';
+
+// 2. Runtime theme
+@import 'themes/dark-mode';
+
+// 3. Base
+@import 'base/root';
+@import 'base/typography';
+@import 'base/reset';
+
+// 4. Layout
+@import 'layout/sidebar';
+@import 'layout/header';
+@import 'layout/content';
+@import 'layout/quixnav';
+
+// 5. Components
+@import 'components/card';
+@import 'components/buttons';
+@import 'components/table';
+@import 'components/pagination';
+@import 'components/form';
+@import 'components/badge';
+@import 'components/dropdown';
+@import 'components/modal';
+@import 'components/filter';
+@import 'components/list-filters';
+@import 'components/kpi';
+@import 'components/analytics';
+@import 'components/breadcrumb';
+@import 'components/content-body-scoped';
+@import 'components/profile';
+
+// 6. Theme
+@import 'themes/default';
+
+// 7. Utilities
+@import 'utilities/helpers';
+
+// 8. Final color-only backend content overrides
+@import 'components/backend-content';
+
+// 9. Responsive
+@import 'layout/responsive';
+
+// 10. RTL overrides must stay last; LTR remains the default
+@import 'layout/rtl';

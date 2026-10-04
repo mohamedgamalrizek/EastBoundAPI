@@ -1,0 +1,59 @@
+// ============================================
+// Content-Body Scoped Overrides (refined)
+// ============================================
+
+.tv-backend .content-body {
+  .card,
+  .tv-card,
+  .tv-analytics,
+  .tv-filter-card,
+  .dataTables_wrapper > .card {
+    padding: 0 !important;
+    background: var(--tv-surface) !important;
+    border: 1px solid var(--tv-border) !important;
+    border-radius: var(--tv-card-radius) !important;
+    box-shadow: var(--tv-soft-shadow) !important;
+    overflow: hidden;
+  }
+
+  .card-header,
+  .tv-card-head {
+    @include flex-between;
+    gap: 0.875rem;
+    min-height: 72px;
+    padding: var(--tv-card-space-y) var(--tv-card-space-x) !important;
+    background: var(--tv-surface) !important;
+    border-bottom: 1px solid var(--tv-border) !important;
+  }
+
+  .card-body,
+  .tv-card-body {
+    padding: var(--tv-card-space-y) var(--tv-card-space-x);
+  }
+
+  .card-title,
+  .title-site,
+  .tv-card-head h4,
+  .tv-card-head h5,
+  .card-header h4,
+  .card-header h5 {
+    margin-bottom: 0;
+    color: var(--tv-heading) !important;
+    font-size: $fs-lg;
+    font-weight: $weight-bold;
+  }
+}
+
+.page-header {
+    margin-bottom: 0;
+    .page-breadcrumb {
+      margin-bottom: 0;
+    }
+  }
+
+@media(min-width: 767px){
+  .page-header{
+    margin-bottom: 1.5rem;
+  }
+}
+

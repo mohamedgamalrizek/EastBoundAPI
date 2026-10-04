@@ -1,0 +1,225 @@
+.tv-text-xs {
+    font-size: .82rem;
+}
+
+.tv-text-sm {
+    font-size: .85rem;
+}
+
+.tv-text-2xs {
+    font-size: .8rem;
+}
+
+.tv-fw-600 {
+    font-weight: 600;
+}
+
+.tv-fw-700 {
+    font-weight: 700;
+}
+
+.tv-action-gap {
+    gap: .4rem;
+}
+
+.tv-action-gap-md {
+    gap: .5rem;
+}
+
+.tv-choice-gap {
+    gap: 8px;
+}
+
+.tv-clickable {
+    cursor: pointer;
+}
+
+.tv-click-choice {
+    gap: 8px;
+    cursor: pointer;
+}
+
+.tv-icon-btn-36 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.tv-circle-icon-38 {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.tv-icon-tile-42 {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+
+.tv-dot-revenue {
+    background: #6366f1;
+}
+
+.tv-dot-bookings {
+    background: #06b6d4;
+}
+
+.tv-payment-redirect {
+    padding-top: 18vh;
+    font-family: system-ui, sans-serif;
+    background: #f3f6fb;
+}
+
+.tv-object-cover {
+    object-fit: cover;
+}
+
+.tv-img-56 {
+    width: 56px;
+    height: 56px;
+}
+
+.tv-placeholder-56 {
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    background: #f3f4f6;
+}
+
+.tv-img-48x40 {
+    width: 48px;
+    height: 40px;
+}
+
+.tv-img-48 {
+    width: 48px;
+    height: 48px;
+}
+
+.tv-img-44 {
+    width: 44px;
+    height: 44px;
+}
+
+.tv-img-96 {
+    width: 96px;
+    height: 96px;
+}
+
+.tv-img-90x64 {
+    width: 90px;
+    height: 64px;
+}
+
+.tv-img-80-round {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.tv-img-radius-6 {
+    border-radius: 6px;
+}
+
+.tv-img-radius-8 {
+    border-radius: 8px;
+}
+
+.tv-progress-slim {
+    height: 8px;
+}
+
+.tv-pre-wrap {
+    white-space: pre-wrap;
+}
+
+.tv-color-danger {
+    color: #ff0000;
+}
+
+.tv-min-w-260 {
+    min-width: 260px;
+}
+
+.tv-min-w-320 {
+    min-width: 320px;
+}
+
+.tv-w-40p {
+    width: 40%;
+}
+
+.tv-w-180 {
+    width: 180px;
+}
+
+.tv-max-w-90 {
+    max-width: 90px;
+}
+
+.tv-max-w-110 {
+    max-width: 110px;
+}
+
+.tv-max-w-120 {
+    max-width: 120px;
+}
+
+.tv-max-w-130 {
+    max-width: 130px;
+}
+
+.tv-max-w-150 {
+    max-width: 150px;
+}
+
+.tv-pre-line {
+    white-space: pre-line;
+}
+
+.tv-surface-soft {
+    background: #f7f7fb;
+}
+
+.tv-avatar-48 {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+}
+
+.tv-avatar-96 {
+    width: 96px;
+    height: 96px;
+    font-size: 2.25rem;
+}
+
+.tv-badge-corner {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 10px;
+}
+
+/* Table action buttons: force the bundled FA6 trash glyph.  The old `fa`
+   alias is still used throughout legacy Blade tables and could render empty
+   when the v4 shim lost the font-family cascade. */
+.btn-outline-danger .fa-trash,
+.btn-outline-danger .fa-trash::before {
+    color: #dc3545 !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-style: normal;
+    font-weight: 900 !important;
+    opacity: 1 !important;
+}
+
+.btn-outline-danger .fa-trash::before {
+    content: "\f2ed" !important;
+}

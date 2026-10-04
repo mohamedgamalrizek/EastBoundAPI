@@ -1,0 +1,18 @@
+{
+    "sms_setting": "SMS Setting",
+    "mim_sms_setting": "MiM SMS Setting",
+    "username": "Username",
+    "enter_username": "Enter Username",
+    "api_key": "API Key",
+    "enter_api_key": "Enter API Key",
+    "sender_id": "Sender ID",
+    "enter_sender_id": "Enter Sender ID",
+    "send_test_sms": "Send Test SMS",
+    "current_balance": "Current Balance",
+    "gateway_disabled_hint": "Turn the gateway on and save your credentials to send SMS.",
+    "phone": "Phone",
+    "enter_phone": "Enter Phone Number",
+    "send": "Send",
+    "test_message": "Test SMS from :app. Your SMS gateway is working.",
+    "otp_message": "Your :app verification code is :otp. It expires in 5 minutes."
+}

@@ -1,0 +1,86 @@
+// ============================================
+// Dropdown Menu
+// ============================================
+
+.dropdown-menu {
+  border-radius: $radius-md !important;
+  box-shadow: 0 4px 20px var(--tv-shadow-dropdown-color) !important;
+  border: 1px solid var(--tv-border) !important;
+  padding: 8px !important;
+  min-width: 160px;
+  background: var(--tv-surface-raised) !important;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  color: var(--tv-text) !important;
+  border-radius: $radius-sm;
+  margin-bottom: 0 !important;
+  transition: background $transition-base;
+  line-height: 1.5;
+  font-weight: $weight-regular;
+
+  &:hover,
+  &:focus {
+    background: var(--tv-secondary) !important;
+    color: var(--tv-primary-dark) !important;
+  }
+
+  i {
+    text-align: center;
+    margin-right: 8px;
+    color: var(--tv-muted);
+  }
+
+  &:hover i {
+    color: var(--tv-primary-dark);
+  }
+}
+
+.dropdown-divider {
+  border-color: var(--tv-border) !important;
+}
+
+.dropdown-header {
+  color: var(--tv-muted) !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 12px !important;
+}
+
+// Notification menu follows the default dropdown content treatment.
+.notification_dropdown .dropdown-menu-right {
+  padding: 8px !important;
+  border-color: var(--tv-border) !important;
+
+  > ul {
+    margin-bottom: 0;
+  }
+
+  .dropdown-item {
+    padding: 10px 12px !important;
+    border-color: var(--tv-border) !important;
+    color: var(--tv-text) !important;
+  }
+
+  .media-body a,
+  .media-body p,
+  .notify-time,
+  .all-notification {
+    color: var(--tv-text) !important;
+  }
+
+  .all-notification {
+    display: block;
+    padding: 10px 12px !important;
+    border-radius: $radius-sm;
+
+    &:hover,
+    &:focus {
+      background: var(--tv-secondary) !important;
+      color: var(--tv-primary-dark) !important;
+    }
+  }
+}

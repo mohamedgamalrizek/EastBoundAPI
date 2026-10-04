@@ -1,0 +1,328 @@
+/* Legacy application components, audited against backend templates.
+[Table of contents]
+
+1. Variable css
+2. Mixins Css
+3. Typography css
+4. Faq css
+5. Theme Default css
+6. Grids css
+7. BG css
+8. Margin Padding Css
+9. BTN Css
+10. Hero css
+11. Footer css
+12. Scroll top css
+13. Navbar css
+14. Breadcrumb css
+15. RTL css
+16. Vidz css
+17. Blog Single css
+18. Sidebar css
+19. Pagination css
+20. Gallery css
+21. Topbar css
+22. Heading css
+23. Contact css
+24. Text Color css
+25. Header Hero Top css
+26. About css
+27. Service CSS
+28. Counter Css
+29. Why css
+30. Work css
+31. Container css
+32. Price css
+33. Team css
+34. Review css
+35. Blog css
+36. Register css
+37. Step css
+38. Sub css
+39. Project Single css
+40. Service Single css
+41. Feature css
+42. Benefit css
+43. Promo css
+44. Requ css
+45. CTA css
+46. Marquee css
+47. Team Single css
+48. Partner css
+49. Skill Progress
+50. Best css
+51. Sidenav css
+52. Border Animation css
+53. Timeline css
+-------------------------------------------------------------------*/
+/*Start Theme Basic*/
+/*-------------------------------------------------------
+01. Variable css #593bdb
+---------------------------------------------------------*/
+@use "../abstracts/variables" as *;
+
+:root {
+    --clr-heading: #{$clr-heading};
+    --clr-body: #{$clr-body};
+    --clr-body-2: #{$clr-body-2};
+    --clr-bg: #{$clr-bg};
+    --clr-bg-2: #{$clr-bg-2};
+    --clr-primary: #{$clr-primary};
+    --clr-primary-2: #{$clr-primary-2};
+    --clr-white: #{$clr-white};
+    --clr-black: #{$clr-black};
+    --clr-border: #{$clr-border};
+    --clr-red: #{$clr-red};
+    --clr-ylw: #{$clr-ylw};
+    --clr-green: #{$clr-green};
+    --clr-green-2: #{$clr-green-2};
+    --font-1: "Josefin Sans", sans-serif;
+    --font-2: "Josefin Sans", sans-serif;
+    --clr-rgb: #{$clr-rgb};
+    --clr-gradient: linear-gradient(
+        90deg,
+        var(--clr-def) 0%,
+        var(--clr-def-2) 35%,
+        var(--clr-def-3) 100%
+    );
+}
+
+[data-typography="poppins"] {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto,
+.col-xxl-1,
+.col-xxl-2,
+.col-xxl-3,
+.col-xxl-4,
+.col-xxl-5,
+.col-xxl-6,
+.col-xxl-7,
+.col-xxl-8,
+.col-xxl-9,
+.col-xxl-10,
+.col-xxl-11,
+.col-xxl-12,
+.col-xxl,
+.col-xxl-auto {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.content-body .container-fluid {
+    padding: 20px;
+}
+
+.content-body .container {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.content-body {
+    padding-bottom: 0;
+}
+
+.card {
+    background: var(--clr-white);
+    box-shadow: 0px 20px 50px 0px var(--theme-color-3eb3d433);
+    padding: 35px 20px 30px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    padding: 0;
+}
+
+.card-header:first-child {
+    border-radius: 0;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.page-titles {
+    background: var(--clr-white);
+    box-shadow: 0px 20px 50px 0px var(--theme-color-3eb3d433);
+    padding: 35px 20px 30px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/*-------------------------------------------------------
+02. Mixins Css #070E27 #5416CF #0B0F28;
+---------------------------------------------------------*/
+/*-------------------------------------------------------
+05. Theme Default css
+---------------------------------------------------------*/
+.column-2 {
+    column-count: 2;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.element-center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.element-bottom {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.round-move {
+    animation: round-move 5s linear infinite;
+}
+
+@keyframes round-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.up-move {
+    animation: up-move 5s ease-in-out infinite;
+}
+
+@keyframes up-move {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+.small-big {
+    animation: small-big 5s ease-in-out infinite;
+}
+
+@keyframes small-big {
+    0% {
+        transform: scale(0.5);
+    }
+    51% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+}
+.to-left {
+    animation: to-left 5s linear infinite alternate;
+}
+
+@-webkit-keyframes to-left {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-30px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+.car-run {
+    animation: run 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes run {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

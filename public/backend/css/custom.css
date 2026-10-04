@@ -1,0 +1,871 @@
+.nav-header {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    justify-content: flex-start;
+}
+.nav-header .brand-logo {
+    padding-left: inherit;
+    /* padding-inline-start: 1.25rem; */
+}
+.nav-header .logo-icon {
+    display: none;
+    transition: all 0.5s ease;
+    padding-inline-start: 13px;
+}
+.nav-header .logo-icon img {
+    height: 40px;
+    width: 40px;
+    align-items: center;
+}
+.menu-toggle .nav-header .logo-icon {
+    display: flex;
+}
+
+/* ---- Collapsed sidebar: hide full logo, show favicon centered ---- */
+.menu-toggle .nav-header {
+    justify-content: center;
+}
+.menu-toggle .nav-header .brand-logo {
+    display: none;
+}
+.menu-toggle .nav-header .logo-icon {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 0;
+}
+.menu-toggle .nav-header .logo-icon img {
+    margin: 0 auto;
+}
+
+/* ---- Collapsed sidebar: center every menu icon (revert to left on hover) ---- */
+.menu-toggle .quixnav .metismenu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.menu-toggle .quixnav .metismenu > li > a > i {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.menu-toggle .quixnav .metismenu > li:hover > a {
+    justify-content: flex-start;
+}
+
+.nav-control {
+    position: static;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    transform: none;
+    margin-inline-start: 85px;
+    transition: 0.3s;
+}
+.hamburger {
+    top: 0;
+}
+.hamburger.is-active {
+    position: static;
+}
+.menu-toggle .nav-control {
+    margin-inline-start: 28px;
+}
+
+[dir="rtl"] .menu-toggle .content-body {
+    margin-right: 3.75rem;
+}
+[data-sidebar-style="compact"] .nav-header .brand-logo,
+[data-sidebar-style="mini"] .nav-header .brand-logo {
+    display: none;
+}
+[data-sidebar-style="compact"] .nav-header .logo-icon,
+[data-sidebar-style="mini"] .nav-header .logo-icon {
+    display: flex;
+}
+
+/* [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .metismenu li a {
+  padding: inherit;
+  padding-block: 0.8125rem;
+  padding-inline: 0.9375rem;
+} */
+
+[data-sidebar-style="full"][data-layout="vertical"]
+    .menu-toggle
+    .quixnav
+    .metismenu
+    > li:hover
+    > a
+    .nav-text {
+    padding-left: inherit;
+    padding-inline-start: 10px;
+}
+[data-sidebar-style="full"][data-layout="vertical"]
+    .menu-toggle
+    .quixnav
+    .metismenu
+    li
+    > ul
+    li:hover
+    ul {
+    left: inherit;
+    inset-inline-start: 11.8125rem;
+}
+
+[dir="rtl"] .quixnav .metismenu .has-arrow:after {
+    right: inherit;
+    transform: rotate(-45deg);
+}
+[dir="rtl"] .quixnav .metismenu > li a > i {
+    transform: translate(3px, 0px);
+}
+.j-to-do img {
+    padding-bottom: 5px;
+}
+@media screen and (max-width: 991px) {
+    .nav-header .logo-icon {
+        padding-inline-start: 10px;
+    }
+    .nav-header .brand-logo {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    [data-header-position="fixed"] .content-body {
+        padding-top: 0;
+    }
+}
+[dir="rtl"] .nav-control {
+    display: block;
+}
+[dir="rtl"] .nav-control {
+    display: flex;
+}
+[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .header {
+    padding-left: inherit;
+    padding-inline-start: 3.75rem;
+}
+@media screen and (max-width: 767px) {
+    .header .j-to-do {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    .quixnav {
+        left: inherit;
+        inset-inline-start: 0;
+    }
+}
+@media screen and (max-width: 575px) {
+    .header .j-search {
+        display: none;
+    }
+    .header .j-search-form {
+        width: auto;
+    }
+    .header .j-to-do {
+        display: none;
+    }
+}
+@media screen and (max-width: 360px) {
+    .header .nav-lang {
+        display: none;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .nav-control {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    .menu-toggle .nav-header {
+        justify-content: center;
+    }
+    .nav-header .logo-icon {
+        padding-inline-start: 8px;
+    }
+}
+
+.menu-toggle .quixnav.j-custom-style .metismenu > li > a.has-arrow > i {
+    padding: 0;
+}
+
+/* Start pagination  */
+.pagination {
+    display: flex !important;
+    margin-top: 0rem !important;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.pagination .page-item .page-link {
+    padding: 10px 15px 10px 15px;
+    margin: 0 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    transition: all 0.5s ease;
+}
+
+.card-body p.text-muted {
+    margin-bottom: 0rem !important;
+}
+
+/* End pagination  */
+
+/* Profile Image on profile page  */
+
+.profile-img {
+    height: 80px;
+    width: 80px;
+}
+
+.quixnav .metismenu {
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+}
+
+.menu-toggle .quixnav .metismenu {
+    width: 100% !important;
+    overflow: visible;
+}
+
+.half-expand .quixnav {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    z-index: 2000;
+    overflow: hide;
+    height: calc(100vh - 100px);
+    transform: translateX(-50%);
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid var(--clr-border) !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+.select2-container {
+    width: inherit !important;
+    /* height: 44px; */
+    /* border: 1px solid var(--clr-border); */
+    border-radius: var(--tv-control-radius, 6px) !important;
+    color: var(--clr-body-2);
+    font-size: 14px;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    /* line-height: 44px; */
+    padding: 0.5rem 0.75rem;
+    color: var(--tv-control) !important;
+    font-family: inherit;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+	font-weight: 400 !important;
+	font-size: 16px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	line-height: 24px !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    height: 42px !important;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+}
+
+.select2-dropdown {
+    border: 1px solid var(--clr-border) !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+    border: 1px solid var(--clr-border) !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+/* multiple  */
+.select2-container--default.select2-container--focus
+    .select2-selection--multiple {
+    /* border: 1px solid var(--clr-border) !important; */
+    border-radius: var(--tv-control-radius, 6px) !important;
+    overflow-y: scroll;
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 0 !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+    cursor: text;
+    height: 42px !important;
+    overflow-y: scroll;
+}
+
+.select2-container .selection {
+    height: 42px !important;
+    overflow-y: scroll;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    border: 1px solid var(--clr-border) !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+    color: var(--clr-white) !important;
+    background-color: var(--clr-primary-2) !important;
+    margin-top: 6px !important;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove {
+    color: var(--clr-white) !important;
+    font-size: xx-large;
+    font-weight: 400 !important;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+    padding: 0.2rem 0.75rem !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+.select2-container .select2-selection--single {
+    /* height: 100% !important; */
+    height: inherit !important;
+    border-radius: var(--tv-control-radius, 6px) !important;
+}
+
+/* end select 2 */
+
+/* input file */
+
+.ot_fileUploader {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--clr-border);
+    border-radius: 4px !important;
+}
+
+.ot_fileUploader .input-style-1 {
+    border: 0 !important;
+}
+
+.ot_fileUploader button {
+    background: transparent;
+    border: 0;
+}
+
+.ot_fileUploader button label {
+    margin: 0;
+    cursor: pointer;
+    border: 3px solid #fff !important;
+}
+
+.ot_fileUploader .ot-btn-primary {
+    padding: 10px 20px;
+}
+.ot_fileUploader img {
+    max-height: 45px;
+}
+
+.left-side {
+    flex-direction: row-reverse;
+}
+.status-text {
+    position: fixed;
+    margin-left: 270px;
+}
+
+/* input file */
+
+/* scroll bar color  */
+ul#menu.metismenu {
+    scrollbar-color: var(--scroll-color-one) var(--scroll-color-two);
+    scrollbar-width: thin;
+    scrollbar-width: 5px;
+}
+
+img.object-fit-cover {
+    object-fit: cover;
+}
+
+img.h-50px {
+    height: 50px;
+}
+
+img.w-50px {
+    width: 50px;
+}
+
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+.gap-3 {
+    gap: 0.3rem;
+}
+
+.bg-light-blue {
+    background-color: lightblue;
+}
+
+.h-15 {
+    height: 15px;
+}
+
+.lh-1-5 {
+    line-height: 1.5;
+}
+
+.italic-font {
+    font-style: italic;
+}
+.bold-font {
+    font-weight: bold;
+}
+.text-align-center {
+    text-align: center;
+}
+.text-align-left {
+    text-align: left;
+}
+.text-align-right {
+    text-align: right;
+}
+.w-100p {
+    width: 100%;
+}
+
+/*
+ * CRUD action menus inside responsive tables should overlay the card on
+ * desktop. Otherwise Bootstrap's overflow container grows scrollbars when
+ * the final-row dropdown opens.
+ */
+@media (min-width: 768px) {
+    .visa-crud-table-wrap {
+        overflow: visible;
+    }
+}
+
+.visa-crud-table-wrap .dropdown-menu {
+    z-index: 1060;
+}
+
+/* summernote */
+.note-toolbar {
+    background-color: inherit !important;
+}
+
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
+    background-color: inherit !important;
+}
+
+.note-editor.note-airframe,
+.note-editor.note-frame {
+    border: 1px solid #e5eaef !important;
+}
+
+.note-editor .note-toolbar,
+.note-popover .popover-content {
+    /* padding: 1px !important; */
+}
+/* summernote */
+
+/* ==============================================================
+   Unified Dropdown / Select Styles – responsive & consistent
+   ============================================================== */
+
+/* Form values – use the active backend theme color */
+.tv-backend .form-control,
+.tv-backend .input-style-1,
+.tv-backend textarea,
+.tv-backend .textarea-style-1 {
+    color: var(--tv-control) !important;
+}
+
+/* Select2 – match input-style-1 height precisely */
+.select2-container--default .select2-selection--single {
+    height: 44px !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown results panel – consistent radius & shadow */
+.select2-dropdown {
+    border-radius: var(--tv-control-radius, 6px) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Options inside the dropdown */
+.select2-results__option {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* Mobile – full-width selects */
+@media screen and (max-width: 575px) {
+    .select2-container {
+        width: 100% !important;
+    }
+
+    select.form-control,
+    select.form-select,
+    .form-control select {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   Date pickers (flatpickr)
+   ------------------------------------------------------------
+   Admin date fields used the browser's native picker, which
+   ignored the form styling and showed the OS calendar glyph.
+   flow-inline.js now upgrades every date input to flatpickr;
+   these rules give it the same look as the other controls plus a
+   consistent calendar icon.
+   ============================================================ */
+.tv-datepicker,
+input.flatpickr-input:not([type="hidden"]) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b7a90' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4.5' width='18' height='16' rx='2.5'/%3E%3Cpath d='M8 2.5v4M16 2.5v4M3 9.5h18'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 42px !important;
+    cursor: pointer;
+}
+
+/* Native control's own icon — hidden for the few inputs flatpickr skips. */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.flatpickr-calendar {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 12px 32px rgba(30, 41, 59, 0.12);
+    font-family: inherit;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.flatpickr-day.today {
+    border-color: #60a5fa;
+}
+
+.flatpickr-day:hover {
+    background: #eff6ff;
+    border-color: #eff6ff;
+}
+
+.flatpickr-months .flatpickr-month,
+.flatpickr-weekdays,
+span.flatpickr-weekday {
+    background: transparent;
+    color: #475569;
+}
+
+/* ============================================================
+   List analytics — KPI tiles + charts
+   ------------------------------------------------------------
+   The tiles rendered washed out because a later dashboard rule
+   (`.tv-kpi { background: var(--grad); color: <light> }`) bled
+   onto this component, where --grad is never set: transparent
+   background, near-invisible text, 150px of dead height.
+   These rules are scoped under .tv-analytics so they win, and
+   give the tiles a proper stat-tile treatment.
+   ============================================================ */
+.tv-analytics .tv-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.tv-analytics .tv-kpi {
+    position: relative;
+    min-height: 0;
+    padding: 16px 18px 16px 20px;
+    border-radius: 14px;
+    /* !important is required here, not preference: the bleeding rule sets
+       background and border with !important, so specificity alone loses. */
+    border: 1px solid #e8edf4 !important;
+    background: #fff !important;
+    box-shadow: none;
+    color: #16233a;
+    overflow: hidden;
+    transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+
+.tv-analytics .tv-kpi:hover {
+    transform: translateY(-2px);
+    border-color: #d8e3f2;
+    box-shadow: 0 10px 24px rgba(30, 41, 59, .08);
+}
+
+/* Accent rail ties each tile to its series colour (validated palette). */
+.tv-analytics .tv-kpi::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 12px; bottom: 12px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: #2a78d6;
+}
+.tv-analytics .tv-kpi:nth-child(2)::before { background: #eb6834; }
+.tv-analytics .tv-kpi:nth-child(3)::before { background: #1baf7a; }
+.tv-analytics .tv-kpi:nth-child(4)::before { background: #eda100; }
+
+.tv-analytics .tv-kpi__value {
+    font-family: "Sora", "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    color: #16233a;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.tv-analytics .tv-kpi__label {
+    margin-top: 2px;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #78879c;
+}
+
+.tv-analytics .tv-analytics__title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #16233a;
+    margin: 0;
+}
+
+/* Charts sat in a tall box with the plot floating in the middle. */
+.tv-analytics .tv-chart {
+    min-height: 0;
+}
+
+@media (max-width: 575.98px) {
+    .tv-analytics .tv-kpi-grid { grid-template-columns: 1fr; }
+    .tv-analytics .tv-kpi__value { font-size: 1.4rem; }
+}
+
+.tv-analytics .tv-chart-caption {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #78879c;
+    margin-bottom: 2px;
+}
+
+/* General settings page (backend/settings/general_settings/index.blade.php) */
+.settings-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+}
+.settings-index a {
+    display: block;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #334155;
+    background: #f8fafc;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+}
+.settings-index a:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+.settings-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 24px;
+    margin-top: 24px;
+    scroll-margin-top: 90px;
+}
+.settings-section:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+}
+.settings-section__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+.settings-section__head h5 {
+    margin: 0 0 4px;
+    font-weight: 800;
+    color: #0f172a;
+}
+.settings-section__head p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+.settings-section__tag {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+.settings-form-row textarea.input-style-1 {
+    min-height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.obj-fit-contain {
+    object-fit: contain;
+}
+
+/* "How it works" collapsible helper (x-how-it-works component).
+   Used on both frontend and backend pages; frontend gets this same block
+   via frontend/scss/_how-it-works.scss — kept in sync manually since the
+   two panels don't share a stylesheet. */
+.hiw { display: contents; }
+
+.hiw-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-inline-start: auto;
+    padding: 7px 14px;
+    border: 1px solid var(--tv-border, #e2e8f0);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--tv-muted, #64748b);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.hiw-toggle:hover,
+.hiw-toggle.open {
+    color: var(--tv-primary-dark, #1d4ed8);
+    border-color: var(--tv-primary-dark, #1d4ed8);
+    background: rgba(var(--bs-primary-rgb, 29, 78, 216), .06);
+}
+.hiw-toggle:focus { outline: none; }
+.hiw-toggle .hiw-chevron { transition: transform .25s ease; }
+.hiw-toggle.open .hiw-chevron { transform: rotate(180deg); }
+
+.hiw-panel {
+    flex-basis: 100%;
+    min-width: 100%;
+    order: 99;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .3s ease;
+}
+.hiw-panel.open { grid-template-rows: 1fr; }
+.hiw-panel-clip { min-height: 0; overflow: hidden; }
+
+.hiw-panel-inner {
+    margin-top: 14px;
+    padding: 18px 20px;
+    border: 1px solid var(--tv-border, #dbeafe);
+    border-inline-start: 3px solid var(--tv-primary-dark, #1d4ed8);
+    border-radius: 10px;
+    background: rgba(var(--bs-primary-rgb, 29, 78, 216), .04);
+}
+.hiw-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tv-primary-dark, #1d4ed8);
+}
+.hiw-intro {
+    margin: 0 0 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--tv-text, #334155);
+}
+.hiw-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: hiw-step;
+}
+.hiw-steps li {
+    counter-increment: hiw-step;
+    position: relative;
+    padding-inline-start: 34px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--tv-text, #334155);
+}
+.hiw-steps li:last-child { margin-bottom: 0; }
+.hiw-steps li::before {
+    content: counter(hiw-step);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 1px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--tv-primary-dark, #1d4ed8);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+.hiw-tips {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--tv-border, #dbeafe);
+}
+.hiw-tips p {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--tv-muted, #64748b);
+}
+.hiw-tips p:last-child { margin-bottom: 0; }
+.hiw-tips .fa-lightbulb-o { color: var(--tv-warning, #f59e0b); }
+
+/* Let the panel wrap to its own full-width row inside whatever flex
+   header the helper is placed in (inert on non-flex parents) */
+*:has(> .hiw) { flex-wrap: wrap; }

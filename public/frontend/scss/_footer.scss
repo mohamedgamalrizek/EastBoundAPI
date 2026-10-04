@@ -1,0 +1,77 @@
+// ============================================================
+//  Footer
+// ============================================================
+
+.site-footer {
+  background: $inverse;
+  color: color-mix(in srgb, $on-brand 72%, $transparent);
+  padding-top: 4.5rem;
+
+  a { color: color-mix(in srgb, $on-brand 72%, $transparent); &:hover { color: $on-brand; } }
+
+  .footer-brand {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: $font-head; font-weight: 800; font-size: 1.45rem; color: $on-brand;
+    margin-bottom: 1rem;
+    .footer-brand-img { height: 40px; width: auto; }
+    .brand-logo {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 12px; color: $on-brand;
+      background: $gradient-brand;
+      transform: rotate(-8deg);
+    }
+  }
+
+  .f-about { font-size: .92rem; line-height: 1.7; max-width: 320px; }
+
+  .f-title {
+    font-family: $font-head;
+    color: $on-brand;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .f-links {
+    list-style: none; padding: 0; margin: 0;
+    li { margin-bottom: .65rem; }
+    a { font-size: .92rem; display: inline-flex; align-items: center; gap: .5rem;
+        &:hover { padding-left: .25rem; } }
+  }
+
+  .f-contact-item {
+    display: flex; gap: .75rem; margin-bottom: 1rem; font-size: .9rem;
+    i { color: $primary; margin-top: .2rem; }
+  }
+
+  .f-social {
+    display: flex; gap: .6rem; margin-top: 1.25rem;
+    a {
+      width: 40px; height: 40px; display: grid; place-items: center;
+      border-radius: 50%; background: color-mix(in srgb, $on-brand 8%, $transparent); color: $on-brand;
+      transition: $transition;
+      &:hover { background: $primary; transform: translateY(-3px); }
+    }
+  }
+
+  .f-apps a {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .55rem 1rem; border: 1px solid color-mix(in srgb, $on-brand 18%, $transparent);
+    border-radius: $radius-sm; color: $on-brand; font-size: .8rem;
+    i { font-size: 1.4rem; }
+    &:hover { border-color: $primary; }
+  }
+
+  .footer-bottom {
+    margin-top: 3.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid color-mix(in srgb, $on-brand 10%, $transparent);
+    font-size: .85rem;
+
+    .fb-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .fb-links a { margin-left: 1.25rem; }
+  }
+}

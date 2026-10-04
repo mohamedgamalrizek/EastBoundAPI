@@ -1,0 +1,42 @@
+// ============================================================
+//  Typography
+// ============================================================
+
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3 {
+  font-family: $font-head;
+  font-weight: 700;
+  line-height: 1.18;
+  color: $text-dark;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+}
+
+h1, .h1 { font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 800; }
+h2, .h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+h3, .h3 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); }
+h4, .h4 { font-size: 1.3rem; }
+h5, .h5 { font-size: 1.1rem; }
+h6, .h6 { font-size: .95rem; }
+
+p { margin-top: 0; }
+
+.lead { font-size: 1.15rem; color: $text-light; line-height: 1.7; }
+
+.text-gradient {
+  background: $gradient-text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: $transparent;
+}
+
+.eyebrow-text {
+  font-family: $font-head;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .8rem;
+  font-weight: 600;
+  color: $primary-dark;
+}
+
+.fw-display { font-family: $font-head; }

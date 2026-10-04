@@ -1,0 +1,171 @@
+// ============================================================
+// SaaS landing dark theme
+// Reuses the shared FLOW dark palette and stays page-scoped.
+// ============================================================
+
+@use '../variables' as tokens;
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  .saas-landing {
+    --saas-primary: #{tokens.$dark-primary};
+    --saas-primary-dark: #{tokens.$dark-primary-dark};
+    --saas-accent: #{tokens.$dark-accent};
+    --saas-ink: #{tokens.$dark-text};
+    --saas-copy: #{tokens.$dark-text-muted};
+    --saas-muted: #{tokens.$dark-text-muted};
+    --saas-border: #{tokens.$dark-border};
+    --saas-surface: #{tokens.$dark-surface};
+    --saas-surface-soft: #{tokens.$dark-surface-2};
+    --saas-shadow-sm: #{tokens.$dark-shadow};
+    --saas-shadow-lg: #{tokens.$dark-shadow-lg};
+
+    background: tokens.$dark-bg;
+
+    .navbar {
+      background: rgba(17, 28, 46, 0.9);
+      border-color: tokens.$dark-border;
+      box-shadow: tokens.$dark-shadow-sm;
+    }
+
+    .navbar .nav-link,
+    .plan li,
+    .gw .chip {
+      color: tokens.$dark-text-muted;
+    }
+
+    .navbar-toggler,
+    .theme-toggle {
+      border-color: tokens.$dark-border;
+      background: tokens.$dark-surface-2;
+      color: tokens.$dark-text;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus {
+      border-color: tokens.$dark-primary;
+      color: tokens.$dark-primary;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 88% 12%, rgba(240, 138, 142, 0.13), transparent 30%),
+        radial-gradient(circle at 8% 20%, rgba(212, 91, 96, 0.14), transparent 28%),
+        linear-gradient(180deg, tokens.$dark-surface-2 0%, tokens.$dark-bg 78%);
+    }
+
+    .hero::before {
+      border-color: rgba(240, 138, 142, 0.18);
+    }
+
+    .hero::after,
+    .feature::after {
+      background: rgba(212, 91, 96, 0.08);
+    }
+
+    .btn-ghost {
+      border-color: tokens.$dark-border;
+      background: tokens.$dark-surface;
+      color: tokens.$dark-primary;
+
+      &:hover,
+      &:focus {
+        border-color: tokens.$dark-primary;
+        background: tokens.$dark-surface-2;
+        color: tokens.$dark-text;
+      }
+    }
+
+    .pill {
+      border-color: rgba(240, 138, 142, 0.35);
+      background: rgba(212, 91, 96, 0.12);
+      color: tokens.$dark-primary;
+    }
+
+    .mock {
+      border-color: tokens.$dark-border;
+      background: tokens.$dark-surface;
+    }
+
+    .mock-bar {
+      background: tokens.$dark-bg;
+    }
+
+    .mini-stat {
+      border-color: tokens.$dark-border;
+      background: linear-gradient(145deg, tokens.$dark-surface-2, tokens.$dark-surface);
+    }
+
+    .stats,
+    .gw {
+      background: tokens.$dark-surface;
+      border-color: tokens.$dark-border;
+    }
+
+    .feature,
+    .plan,
+    .quote,
+    .faq .card,
+    .faq .card-header {
+      background: tokens.$dark-surface !important;
+      border-color: tokens.$dark-border;
+    }
+
+    .feature:hover,
+    .plan:hover {
+      border-color: rgba(240, 138, 142, 0.55);
+    }
+
+    .feature .ic {
+      border-color: rgba(240, 138, 142, 0.28);
+      background: tokens.$dark-surface-2;
+    }
+
+    .how,
+    .testimonials {
+      background:
+        linear-gradient(180deg, rgba(17, 28, 46, 0.98), rgba(11, 18, 32, 0.88)),
+        tokens.$dark-bg;
+    }
+
+    .step .num {
+      border-color: rgba(240, 138, 142, 0.22);
+    }
+
+    .pricing {
+      background:
+        radial-gradient(circle at 50% 0, rgba(212, 91, 96, 0.12), transparent 34%),
+        linear-gradient(180deg, tokens.$dark-bg, tokens.$dark-surface);
+    }
+
+    .plan li {
+      border-color: tokens.$dark-border;
+    }
+
+    .gw .chip {
+      border-color: tokens.$dark-border;
+      background: tokens.$dark-surface-2;
+      box-shadow: tokens.$dark-shadow-sm;
+    }
+
+    .quote::before {
+      color: rgba(240, 138, 142, 0.18);
+    }
+
+    .text-dark {
+      color: tokens.$dark-text !important;
+    }
+
+    .text-muted {
+      color: tokens.$dark-text-muted !important;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        border-color: tokens.$dark-border;
+        background: rgba(17, 28, 46, 0.98);
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+// ============================================================
+//  FLOW — Runtime Theme Tokens
+//  Literal color values live only in this file. Components use
+//  the semantic CSS-variable aliases defined below.
+// ============================================================
+
+// ---------- Light theme palette ----------
+$light-primary:             #A81A20;
+$light-primary-dark:        #7A1117;
+$light-secondary:           #F7E7E8;
+$light-accent:              #D45B60;
+$light-success:             #22C55E;
+$light-danger:              #EF4444;
+$light-warning:             #F59E0B;
+$light-info:                #A81A20;
+$light-text:                #1E293B;
+$light-text-muted:          #64748B;
+$light-placeholder:         #8593A7;
+$light-bg:                  #FFFAFA;
+$light-surface:             #FFFFFF;
+$light-surface-2:           #FFFFFF;
+$light-section-bg:          #FFF5F5;
+$light-border:              #E8D2D4;
+$light-primary-50:          #FFF1F2;
+$light-primary-100:         #F7DADB;
+$light-primary-200:         #E8A8AB;
+$light-primary-soft:        rgba(168, 26, 32, .12);
+$light-on-brand:            #FFFFFF;
+$light-on-accent:           #FFFFFF;
+$light-contrast-surface:    #FFFFFF;
+$light-contrast-text:       #7A1117;
+$light-inverse:             #261314;
+$light-deep:                #3A0E12;
+$light-overlay:             #1B1011;
+$light-whatsapp:            #25D366;
+$light-transparent:         transparent;
+$light-badge-success:       #22C55E;
+$light-badge-danger:        #EF4444;
+$light-badge-warning:       #F59E0B;
+$light-badge-accent:        #D45B60;
+$light-selection-bg:        rgba(168, 26, 32, .14);
+$light-selection-text:      #7A1117;
+
+// ---------- Dark theme palette ----------
+$dark-primary:              #D45B60;
+$dark-primary-dark:         #F08A8E;
+$dark-accent:               #F08A8E;
+$dark-success:              #22C55E;
+$dark-danger:               #EF4444;
+$dark-warning:              #F59E0B;
+$dark-info:                 #D45B60;
+$dark-text:                 #E7EEF8;
+$dark-text-muted:           #9EACC0;
+$dark-placeholder:          #9EACC0;
+$dark-bg:                   #1B1011;
+$dark-surface:              #261314;
+$dark-surface-2:            #341719;
+$dark-section-bg:           #221213;
+$dark-border:               #5C282B;
+$dark-primary-50:           rgba(212, 91, 96, .14);
+$dark-primary-100:          rgba(212, 91, 96, .18);
+$dark-primary-200:          rgba(240, 138, 142, .46);
+$dark-primary-soft:         rgba(212, 91, 96, .16);
+$dark-on-brand:             #FFFFFF;
+$dark-on-accent:            #1B1011;
+$dark-contrast-surface:     #FFFFFF;
+$dark-contrast-text:        #A81A20;
+$dark-inverse:              #F8FAFC;
+$dark-deep:                 #12090A;
+$dark-overlay:              #12090A;
+$dark-whatsapp:             #25D366;
+$dark-transparent:          transparent;
+$dark-badge-success:        #70E49A;
+$dark-badge-danger:         #FF8A8A;
+$dark-badge-warning:        #FFC766;
+$dark-badge-accent:         #65DBFF;
+$dark-selection-bg:         rgba(212, 91, 96, .32);
+$dark-selection-text:       #E7EEF8;
+
+// ---------- Light shadows ----------
+$light-shadow-sm:           0 1px 2px rgba(16, 24, 40, .05);
+$light-shadow:              0 8px 24px rgba(30, 41, 59, .08);
+$light-shadow-md:           0 12px 32px rgba(30, 41, 59, .10);
+$light-shadow-lg:           0 24px 60px rgba(30, 41, 59, .14);
+$light-shadow-brand:        0 14px 34px rgba(168, 26, 32, .26);
+$light-shadow-brand-hover:  0 18px 40px rgba(168, 26, 32, .36);
+$light-shadow-whatsapp:     0 12px 28px rgba(37, 211, 102, .40);
+$light-shadow-focus:        0 0 0 .2rem rgba(168, 26, 32, .14);
+$light-shadow-focus-button: 0 0 0 .25rem rgba(168, 26, 32, .14);
+$light-shadow-ring:         0 0 0 4px rgba(168, 26, 32, .14);
+
+// ---------- Dark shadows ----------
+$dark-shadow-sm:            0 1px 2px rgba(0, 0, 0, .18);
+$dark-shadow:               0 12px 32px rgba(0, 0, 0, .28);
+$dark-shadow-md:            0 16px 40px rgba(0, 0, 0, .30);
+$dark-shadow-lg:            0 24px 60px rgba(0, 0, 0, .34);
+$dark-shadow-brand:         0 14px 34px rgba(168, 26, 32, .34);
+$dark-shadow-brand-hover:   0 18px 40px rgba(168, 26, 32, .44);
+$dark-shadow-whatsapp:      0 12px 28px rgba(37, 211, 102, .30);
+$dark-shadow-focus:         0 0 0 .2rem rgba(212, 91, 96, .18);
+$dark-shadow-focus-button:  0 0 0 .25rem rgba(212, 91, 96, .18);
+$dark-shadow-ring:          0 0 0 4px rgba(212, 91, 96, .18);
+
+// ---------- Runtime semantic aliases ----------
+$primary:          var(--tv-primary);
+$primary-dark:     var(--tv-primary-dark);
+$secondary:        var(--tv-secondary);
+$accent:           var(--tv-accent);
+$success:          var(--tv-success);
+$danger:           var(--tv-danger);
+$warning:          var(--tv-warning);
+$info:             var(--tv-info);
+$text-dark:        var(--tv-text-dark);
+$text-light:       var(--tv-text-light);
+$placeholder:      var(--tv-placeholder);
+$bg:               var(--tv-bg);
+$surface:          var(--tv-surface);
+$surface-2:        var(--tv-surface-2);
+$section-bg:       var(--tv-section-bg);
+$border:           var(--tv-border);
+$primary-50:       var(--tv-primary-50);
+$primary-100:      var(--tv-primary-100);
+$primary-200:      var(--tv-primary-200);
+$primary-soft:     var(--tv-primary-soft);
+$on-brand:         var(--tv-on-brand);
+$on-accent:        var(--tv-on-accent);
+$contrast-surface: var(--tv-contrast-surface);
+$contrast-text:    var(--tv-contrast-text);
+$inverse:          var(--tv-inverse);
+$deep:             var(--tv-deep);
+$overlay:          var(--tv-overlay);
+$whatsapp:         var(--tv-whatsapp);
+$transparent:      var(--tv-transparent);
+$badge-success:    var(--tv-badge-success);
+$badge-danger:     var(--tv-badge-danger);
+$badge-warning:    var(--tv-badge-warning);
+$badge-accent:     var(--tv-badge-accent);
+$selection-bg:     var(--tv-selection-bg);
+$selection-text:   var(--tv-selection-text);
+$shadow-sm:        var(--tv-shadow-sm);
+$shadow:           var(--tv-shadow);
+$shadow-md:        var(--tv-shadow-md);
+$shadow-lg:        var(--tv-shadow-lg);
+$shadow-brand:     var(--tv-shadow-brand);
+$shadow-brand-hover: var(--tv-shadow-brand-hover);
+$shadow-whatsapp:  var(--tv-shadow-whatsapp);
+$shadow-focus:     var(--tv-shadow-focus);
+$shadow-focus-button: var(--tv-shadow-focus-button);
+$shadow-ring:      var(--tv-shadow-ring);
+$gradient-brand:   var(--tv-gradient-brand);
+$gradient-brand-reverse: var(--tv-gradient-brand-reverse);
+$gradient-accent:  var(--tv-gradient-accent);
+$gradient-page:    var(--tv-gradient-page);
+$gradient-deep:    var(--tv-gradient-deep);
+$gradient-text:    var(--tv-gradient-text);
+$gradient-media:   var(--tv-gradient-media);
+$gradient-hero-fade: var(--tv-gradient-hero-fade);
+$gradient-hero-overlay: var(--tv-gradient-hero-overlay);
+
+// ---------- Typography ----------
+$font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-head: 'Sora', 'Inter', system-ui, sans-serif;
+$fs-base: 1rem;
+$lh-base: 1.65;
+
+// ---------- Radius ----------
+$radius-sm: 8px;
+$radius: 14px;
+$radius-lg: 20px;
+$radius-xl: 28px;
+$radius-pill: 999px;
+
+// ---------- Layout ----------
+$container-max: 1240px;
+$header-h: 76px;
+
+// ---------- Transitions ----------
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$transition: all .25s $ease;
+
+// ---------- Breakpoints ----------
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// ---------- Bootstrap variable references ----------
+$theme-colors-extra: (
+  "brand": $primary,
+  "accent": $accent,
+);

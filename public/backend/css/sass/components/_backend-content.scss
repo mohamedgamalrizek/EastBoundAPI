@@ -1,0 +1,612 @@
+// ============================================
+// Backend Content — Color Override Layer
+// Loaded last to win against legacy/vendor styles.
+// Color-only: no layout, spacing, or display changes.
+// ============================================
+
+// ── Cards (legacy + tv) ──────────────────────
+.card,
+.tv-card,
+.tv-analytics,
+.tv-filter-card,
+.dataTables_wrapper > .card {
+  color: var(--tv-text);
+}
+.card-body,
+.tv-card-body {
+  color: var(--tv-text);
+}
+.card-footer,
+.tv-card-foot {
+  color: var(--tv-text);
+  border-top-color: var(--tv-border);
+}
+
+// ── Forms ────────────────────────────────────
+.form-control,
+.form-select,
+.custom-select,
+select.form-control,
+textarea.form-control,
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"],
+input[type="month"],
+input[type="week"] {
+  color: var(--tv-control);
+}
+.form-control::placeholder,
+input::placeholder,
+textarea::placeholder,
+.select2-selection__placeholder {
+  color: var(--tv-placeholder) !important;
+  opacity: 1;
+}
+.form-control:disabled,
+.form-control[readonly],
+input:disabled,
+input[readonly],
+select:disabled,
+textarea:disabled,
+textarea[readonly] {
+  color: var(--tv-disabled) !important;
+  opacity: 0.7;
+}
+.input-group-text {
+  color: var(--tv-text);
+  border-color: var(--tv-border);
+}
+label,
+.label-style-1,
+.col-form-label,
+.form-label {
+  color: var(--tv-label) !important;
+}
+.input-style-1,
+.textarea-style-1 {
+  color: var(--tv-control);
+  border-color: var(--tv-border);
+}
+.input-style-1::placeholder,
+.textarea-style-1::placeholder {
+  color: var(--tv-placeholder);
+}
+
+// ── Tables & DataTables ──────────────────────
+.table,
+.tv-table,
+table.dataTable {
+  color: var(--tv-table-color);
+}
+.table tbody td,
+.table tbody th,
+.tv-table tbody td,
+.tv-table tbody th,
+table.dataTable tbody td,
+table.dataTable tbody th {
+  color: var(--tv-table-color);
+}
+.table thead th,
+.tv-table thead th,
+table.dataTable thead th {
+  color: var(--tv-muted) !important;
+}
+table.dataTable thead th {
+  color: var(--tv-muted) !important;
+}
+table.dataTable tbody td {
+  color: var(--tv-table-color);
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  color: var(--tv-muted) !important;
+}
+.dataTables_wrapper input[type="search"],
+.dataTables_wrapper input[type="text"],
+.dataTables_wrapper select {
+  color: var(--tv-control) !important;
+}
+.dataTables_wrapper input[type="search"]::placeholder,
+.dataTables_wrapper input[type="text"]::placeholder {
+  color: var(--tv-placeholder) !important;
+}
+
+// ── Modals ───────────────────────────────────
+.modal-content {
+  color: var(--tv-modal);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+.modal-header {
+  color: var(--tv-heading);
+  border-bottom-color: var(--tv-border);
+}
+.modal-body {
+  color: var(--tv-modal);
+}
+.modal-footer {
+  border-top-color: var(--tv-border);
+}
+.modal-title {
+  color: var(--tv-heading);
+}
+.modal-header .close,
+.modal-header .btn-close {
+  color: var(--tv-text);
+}
+
+// ── Dropdowns ────────────────────────────────
+.dropdown-menu {
+  color: var(--tv-dropdown);
+  background: var(--tv-surface-raised) !important;
+  border-color: var(--tv-border);
+}
+.dropdown-item {
+  color: var(--tv-dropdown) !important;
+}
+.dropdown-header {
+  color: var(--tv-muted) !important;
+}
+.dropdown-menu .dropdown-item i {
+  color: var(--tv-muted);
+}
+
+// ── Tabs & Navs ──────────────────────────────
+.nav-tabs {
+  border-bottom-color: var(--tv-border);
+}
+.nav-tabs .nav-link {
+  color: var(--tv-text);
+  border-color: transparent;
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: var(--tv-border);
+}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: var(--tv-primary-strong);
+  background: var(--tv-surface);
+  border-color: var(--tv-border) var(--tv-border) var(--tv-surface);
+}
+.nav-pills .nav-link {
+  color: var(--tv-text);
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary-strong);
+}
+.tab-content,
+.tab-pane {
+  color: var(--tv-text);
+}
+.nav-link {
+  color: var(--tv-text);
+}
+
+// ── Breadcrumbs ──────────────────────────────
+.breadcrumb {
+  color: var(--tv-muted);
+}
+.breadcrumb-item {
+  color: var(--tv-muted);
+}
+.breadcrumb-item.active {
+  color: var(--tv-text);
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--tv-muted);
+}
+
+// ── Pagination ───────────────────────────────
+.page-link {
+  color: var(--tv-text);
+  background: var(--tv-surface);
+  border-color: var(--tv-border);
+}
+.page-link:hover {
+  color: var(--tv-primary-dark);
+  background: var(--tv-surface-hover);
+  border-color: var(--tv-border);
+}
+.page-item.active .page-link {
+  color: var(--tv-text-on-brand) !important;
+}
+.page-item.disabled .page-link {
+  color: var(--tv-disabled);
+  background: var(--tv-surface-muted);
+  border-color: var(--tv-border);
+}
+
+// ── Alerts ───────────────────────────────────
+.alert {
+  color: var(--tv-text);
+  background: var(--tv-surface);
+  border-color: var(--tv-border);
+}
+.alert-heading {
+  color: var(--tv-heading);
+}
+.alert-primary {
+  color: var(--tv-primary-strong);
+  background: var(--tv-secondary);
+  border-color: var(--tv-primary);
+}
+.alert-success {
+  color: var(--tv-success);
+}
+.alert-danger {
+  color: var(--tv-danger);
+}
+.alert-warning {
+  color: var(--tv-warning);
+}
+.alert-info {
+  color: var(--tv-primary);
+}
+.alert-dismissible .close,
+.alert-dismissible .btn-close {
+  color: var(--tv-text);
+}
+
+// ── Empty States ─────────────────────────────
+.nodata,
+.no-data,
+.no-record,
+.empty-state,
+.tv-empty,
+.dataTables_empty {
+  color: var(--tv-empty) !important;
+}
+.dataTables_empty {
+  padding: 2rem 0 !important;
+}
+
+// ── Select2 ──────────────────────────────────
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  color: var(--tv-control);
+  background: var(--tv-control-bg);
+  border-color: var(--tv-border);
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--tv-control);
+}
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: var(--tv-placeholder);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  color: var(--tv-control);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary-strong);
+  border-color: var(--tv-primary-strong);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: var(--tv-text-on-brand);
+}
+.select2-dropdown {
+  color: var(--tv-text);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+.select2-container--default .select2-results__option {
+  color: var(--tv-text);
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary-strong);
+}
+.select2-container--default .select2-results__option[aria-selected="true"] {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary);
+}
+.select2-search--dropdown .select2-search__field {
+  color: var(--tv-control);
+  background: var(--tv-control-bg);
+  border-color: var(--tv-border);
+}
+.select2-search--dropdown .select2-search__field::placeholder {
+  color: var(--tv-placeholder);
+}
+
+// ── Flatpickr ────────────────────────────────
+.flatpickr-calendar {
+  color: var(--tv-text);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+  box-shadow: 0 8px 24px var(--tv-shadow-color);
+}
+.flatpickr-months,
+.flatpickr-month {
+  color: var(--tv-heading);
+  fill: var(--tv-heading);
+}
+.flatpickr-monthDropdown-months,
+.numInputWrapper input {
+  color: var(--tv-heading);
+}
+.flatpickr-weekday {
+  color: var(--tv-muted);
+}
+.flatpickr-day {
+  color: var(--tv-text);
+}
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+  background: var(--tv-surface-hover);
+  color: var(--tv-text);
+}
+.flatpickr-day.today {
+  border-color: var(--tv-primary);
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary-strong);
+  border-color: var(--tv-primary-strong);
+}
+.flatpickr-day.inRange,
+.flatpickr-day.prevMonthDay.inRange,
+.flatpickr-day.nextMonthDay.inRange,
+.flatpickr-day.today.inRange,
+.flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-day.nextMonthDay.today.inRange {
+  color: var(--tv-text);
+  background: var(--tv-surface-hover);
+  border-color: var(--tv-surface-hover);
+}
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay,
+.flatpickr-day.notAllowed,
+.flatpickr-day.notAllowed.prevMonthDay,
+.flatpickr-day.notAllowed.nextMonthDay {
+  color: var(--tv-disabled);
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  color: var(--tv-heading);
+}
+.flatpickr-current-month .numInputWrapper span.arrowUp,
+.flatpickr-current-month .numInputWrapper span.arrowDown {
+  border-color: var(--tv-muted);
+}
+.flatpickr-time {
+  border-top-color: var(--tv-border);
+}
+.flatpickr-time input {
+  color: var(--tv-text);
+}
+.flatpickr-time .flatpickr-time-separator,
+.flatpickr-time .flatpickr-am-pm {
+  color: var(--tv-text);
+}
+.flatpickr-time .flatpickr-am-pm:hover,
+.flatpickr-time .flatpickr-am-pm:focus {
+  background: var(--tv-surface-hover);
+}
+
+// ── Summernote (scoped, late-loaded) ─────────
+.note-editor.note-frame {
+  border-color: var(--tv-border);
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+  color: var(--tv-editor);
+  background: var(--tv-control-bg);
+}
+.note-editor.note-frame .note-editing-area .note-editable[contenteditable="false"] {
+  color: var(--tv-disabled);
+  background: var(--tv-surface-muted);
+}
+.note-editor.note-frame .note-statusbar {
+  background: var(--tv-surface-muted);
+  border-top-color: var(--tv-border);
+}
+.note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
+  border-top-color: var(--tv-muted);
+}
+.note-editor .note-toolbar {
+  background: var(--tv-surface-muted);
+  border-bottom-color: var(--tv-border);
+}
+.note-editor .note-toolbar .note-btn-group .note-btn {
+  color: var(--tv-text);
+  background: transparent;
+  border-color: transparent;
+}
+.note-editor .note-toolbar .note-btn-group .note-btn:hover,
+.note-editor .note-toolbar .note-btn-group .note-btn:focus {
+  background: var(--tv-surface-hover);
+  color: var(--tv-primary-dark);
+}
+.note-editor .note-dropdown-menu {
+  color: var(--tv-dropdown);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+.note-editor .note-dropdown-menu .note-dropdown-item {
+  color: var(--tv-dropdown);
+}
+.note-editor .note-dropdown-menu .note-dropdown-item:hover {
+  background: var(--tv-surface-hover);
+  color: var(--tv-primary-dark);
+}
+.note-editor .note-modal-content {
+  color: var(--tv-modal);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+.note-editor .note-modal-header {
+  color: var(--tv-heading);
+  border-bottom-color: var(--tv-border);
+}
+.note-editor .note-modal-body {
+  color: var(--tv-modal);
+}
+.note-editor .note-modal-footer {
+  border-top-color: var(--tv-border);
+}
+.note-editor .note-input {
+  color: var(--tv-control);
+  background: var(--tv-control-bg);
+  border-color: var(--tv-border);
+}
+.note-editor .note-placeholder {
+  color: var(--tv-placeholder) !important;
+}
+.note-editor .note-hint-group .note-hint-item {
+  color: var(--tv-text);
+}
+.note-editor .note-hint-group .note-hint-item.active {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-primary-strong);
+}
+.note-btn-group .note-current-fontname {
+  color: var(--tv-text);
+}
+.note-editor .note-color-btn {
+  border-color: var(--tv-border);
+}
+// Summernote popovers
+.note-popover .popover-content {
+  color: var(--tv-text);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+
+// ── Legacy layouts (j-* classes) ─────────────
+.j-create-main {
+  color: var(--tv-text);
+  background: var(--tv-surface);
+}
+.j-cart-total {
+  color: var(--tv-text);
+  background: var(--tv-surface-muted);
+}
+.jj-cart-full p,
+.jj-cart-full span {
+  color: var(--tv-heading);
+}
+.j-header-content {
+  color: var(--tv-text);
+}
+
+// ── Profile ──────────────────────────────────
+.wel-user-bio p,
+.wel-user-bio span,
+.j-eml-card p,
+.j-eml-card span {
+  color: var(--tv-text);
+}
+.j-eml-card > h5,
+.j-eml-list li h6 {
+  color: var(--tv-heading);
+}
+
+// ── Utility overrides (Bootstrap) ────────────
+.text-dark {
+  color: var(--tv-text-primary) !important;
+}
+.text-black {
+  color: var(--tv-text-primary) !important;
+}
+.text-light {
+  color: var(--tv-text-on-brand) !important;
+}
+.text-white-50 {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.text-body {
+  color: var(--tv-text) !important;
+}
+.text-secondary {
+  color: var(--tv-text-secondary) !important;
+}
+// text-muted is already mapped in _admin-core.scss via --tv-muted
+
+// ── Miscellaneous ────────────────────────────
+.page-titles {
+  color: var(--tv-text);
+  background: var(--tv-surface);
+}
+.tooltip-inner {
+  color: var(--tv-text-on-brand);
+  background: var(--tv-text-primary);
+}
+.popover {
+  color: var(--tv-text);
+  background: var(--tv-surface-raised);
+  border-color: var(--tv-border);
+}
+.popover-header {
+  color: var(--tv-heading);
+  background: var(--tv-surface-muted);
+  border-bottom-color: var(--tv-border);
+}
+.popover-body {
+  color: var(--tv-text);
+}
+hr {
+  border-color: var(--tv-border);
+}
+.list-group-item {
+  color: var(--tv-text);
+  background: var(--tv-surface);
+  border-color: var(--tv-border);
+}
+.list-group-item-action:hover {
+  color: var(--tv-text);
+  background: var(--tv-surface-hover);
+}
+.progress {
+  background: var(--tv-progress-bg);
+}
+.progress-bar {
+  color: var(--tv-text-on-brand);
+}
+.close,
+button.close {
+  color: var(--tv-text);
+}
+code {
+  color: var(--tv-primary);
+  background: var(--tv-secondary);
+}
+pre {
+  color: var(--tv-text);
+  background: var(--tv-surface-muted);
+  border-color: var(--tv-border);
+}
+blockquote {
+  color: var(--tv-text-secondary);
+  border-left-color: var(--tv-border);
+}
+

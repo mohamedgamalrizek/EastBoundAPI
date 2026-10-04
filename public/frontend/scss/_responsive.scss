@@ -1,0 +1,246 @@
+// ============================================================
+//  Responsive — global breakpoint tweaks
+// ============================================================
+
+// AOS's default 100px horizontal starting offset can enlarge the document's
+// scrollable area before an element animates. Retain the fade/motion entrance
+// on the vertical axis so edge-aligned columns always stay inside the viewport.
+[data-aos='fade-left'],
+[data-aos='fade-right'] { transform: translate3d(0, 20px, 0); }
+
+// Swiper is a component viewport; allow it and its slides to shrink inside any
+// Bootstrap column or flex/grid parent instead of honoring intrinsic widths.
+.swiper,
+.swiper-slide {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: $bp-lg) {
+  .hero { min-height: 560px; text-align: center;
+    h1, .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-trust { justify-content: center; }
+  }
+}
+
+@media (max-width: $bp-md) {
+  .section-head { margin-bottom: 2rem; }
+  .stats-band .stat { margin-bottom: 1.25rem; }
+  .footer-bottom .fb-inner { flex-direction: column; text-align: center; }
+  .site-footer .f-links a:hover { padding-left: 0; }
+}
+
+// Phone-only refinements. Keep this below the shared breakpoint rules so these
+// compact values never leak into Bootstrap's tablet (`sm`) layout and above.
+@media (max-width: 575.98px) {
+  body {
+    font-size: .9rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .display-1, .display-2, .display-3 {
+    line-height: 1.25;
+    letter-spacing: -.015em;
+  }
+
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.5rem; }
+  h3, .h3 { font-size: 1.2rem; }
+  h4, .h4 { font-size: 1.05rem; }
+  h5, .h5 { font-size: .98rem; }
+  h6, .h6 { font-size: .88rem; }
+
+  p { line-height: 1.65; }
+  .lead { font-size: .95rem; line-height: 1.65; }
+
+  // Shared section rhythm
+  .section-space { padding: 2.75rem 0; }
+  .section-head {
+    margin-bottom: 1.5rem;
+
+    .eyebrow {
+      padding: .32rem .7rem;
+      margin-bottom: .7rem;
+      font-size: .68rem;
+      letter-spacing: .065em;
+    }
+
+    h2 { margin-bottom: .45rem; }
+    p { font-size: .88rem; line-height: 1.6; }
+  }
+
+  .eyebrow-text {
+    font-size: .7rem;
+    letter-spacing: .075em;
+  }
+
+  // Home hero and its search/CTA content
+  .hero {
+    min-height: 0;
+    padding: 2.75rem 0 4.5rem;
+
+    &::after { height: 56px; }
+
+    h1 {
+      max-width: 17ch;
+      margin-bottom: .65rem;
+      font-size: 2rem;
+      line-height: 1.18;
+      letter-spacing: -.025em;
+    }
+
+    .hero-sub {
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .hero-trust {
+      gap: .55rem 1rem;
+      margin-top: 1rem;
+
+      .ht-item { gap: .4rem; font-size: .78rem; }
+    }
+  }
+
+  .search-widget {
+    margin-top: 1.25rem !important;
+
+    .search-tabs {
+      gap: .15rem;
+      padding: .25rem .25rem 0;
+
+      .stab {
+        gap: .35rem;
+        padding: .5rem .45rem;
+        font-size: .75rem;
+      }
+    }
+
+    .search-panel { padding: .75rem; }
+    .search-row { gap: .65rem; }
+  }
+
+  // Reusable inner-page hero
+  .page-hero {
+    padding: 2.5rem 0;
+
+    h1 {
+      margin-bottom: .35rem;
+      font-size: 1.85rem;
+      line-height: 1.2;
+    }
+
+    .page-hero-subtitle {
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .breadcrumb {
+      margin-top: .6rem;
+      font-size: .78rem;
+    }
+  }
+
+  // Compact content components while retaining their relative hierarchy
+  .service-card,
+  .review-card,
+  .enquiry-card,
+  .job-card { padding: 1.15rem; }
+
+  .service-card {
+    .sc-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: .8rem;
+      font-size: 1.2rem;
+    }
+
+    h4 { font-size: 1rem; }
+    p { font-size: .84rem; line-height: 1.6; }
+  }
+
+  .feature-item {
+    gap: .75rem;
+
+    .fi-icon { width: 42px; height: 42px; font-size: 1rem; }
+    h5 { font-size: .94rem; }
+    p { font-size: .82rem; line-height: 1.55; }
+  }
+
+  .review-card {
+    .rc-text { font-size: .88rem; line-height: 1.65; }
+    .rc-user { margin-top: .75rem; }
+  }
+
+  .blog-card {
+    .bc-body { padding: 1rem; }
+    .bc-title { font-size: .98rem; line-height: 1.35; }
+  }
+
+  .stats-band { padding: 1.5rem 1rem; }
+  .stat {
+    .stat-num { font-size: 1.8rem; }
+    .stat-label { font-size: .78rem; margin-top: .3rem; }
+  }
+
+  .newsletter,
+  .cta-band { padding: 1.6rem 1rem; }
+
+  .newsletter {
+    h2 { font-size: 1.4rem; }
+    p { font-size: .86rem; }
+  }
+
+  .cta-band {
+    h2 { font-size: 1.45rem; line-height: 1.25; }
+    p { margin-bottom: 1.25rem !important; font-size: .86rem; line-height: 1.6; }
+    .btn-lg { padding: .7rem 1.05rem; font-size: .85rem; }
+  }
+
+  // Long-form pages need less air without sacrificing reading comfort.
+  .prose {
+    h2 { margin-top: 1.6rem; margin-bottom: .55rem; font-size: 1.3rem; }
+    h3 { margin-top: 1.2rem; font-size: 1.08rem; }
+    p, li { font-size: .88rem; line-height: 1.7; }
+    blockquote { padding: .8rem 1rem; margin: 1rem 0; }
+    .toc { padding: 1rem; }
+  }
+
+  .section {
+    h4.text-20 { font-size: 1.05rem !important; }
+    h5.text-16 { font-size: .94rem !important; }
+
+    .g-5 { --bs-gutter-y: 2rem; }
+    .mb-5 { margin-bottom: 2rem !important; }
+    .mt-5 { margin-top: 2rem !important; }
+    .p-5 { padding: 1.5rem !important; }
+  }
+
+  .usp-row { gap: .75rem 1rem; }
+
+  .site-footer {
+    padding-top: 3rem;
+
+    .f-about,
+    .f-links a,
+    .f-contact-item { font-size: .84rem; }
+
+    .f-title { margin-bottom: .75rem; font-size: .92rem; }
+    .f-links li { margin-bottom: .45rem; }
+
+    .footer-bottom {
+      margin-top: 2.25rem;
+      padding: 1.1rem 0;
+      font-size: .76rem;
+    }
+  }
+
+  .btn-lg { padding: .75rem 1.15rem; font-size: .88rem; }
+  .top-bar { font-size: .72rem; }
+}
+
+// ---------- Print ----------
+@media print {
+  .site-header, .site-footer, .scroll-top, .wa-float, .top-bar { display: none !important; }
+}

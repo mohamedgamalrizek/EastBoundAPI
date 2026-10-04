@@ -1,0 +1,46 @@
+// ============================================================
+//  FLOW — Main SCSS entry
+//  Premium Travel Agency ERP & Booking Website
+//  Layered on top of Bootstrap 5 (loaded via CDN in master layout)
+//  Compile:  sass public/frontend/scss/main.scss public/frontend/css/app.css --style=compressed
+// ============================================================
+
+@use 'sass:color';
+
+// 1. Tokens
+@import 'variables';
+
+// 2. Foundations
+@import 'base';
+@import 'typography';
+
+// 3. Elements
+@import 'buttons';
+@import 'forms';
+@import 'flatpickr';
+@import 'select2';
+@import 'cards';
+@import 'how-it-works';
+
+// 4. Layout
+@import 'header';
+@import 'footer';
+
+// 5. Pages
+@import 'home';
+@import 'about';
+@import 'contact';
+@import 'package';
+@import 'blog';
+@import 'dashboard';
+
+@import 'utility';
+
+// 6. Responsive
+@import 'responsive';
+
+// 7. Optional themes (must remain last so light mode is unchanged)
+@import 'dark-mode';
+
+// 8. Directional overrides must remain last
+@import 'rtl';

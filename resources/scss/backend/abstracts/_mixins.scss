@@ -1,0 +1,19 @@
+@use "variables";
+
+@mixin media-down($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin background-transition {
+    transition: background variables.$transition-fast;
+}
+
+@mixin interactive-transition {
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}

@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Nationalities offered on public forms (e.g. the visa application's
+ * Nationality field). There's no business reason to curate this list the
+ * way VisaService's country catalogue is curated — every world nationality
+ * is a legitimate answer here — so it lives as a static reference list
+ * rather than a database table an admin would have to maintain.
+ */
+return [
+    'Afghan', 'Albanian', 'Algerian', 'American', 'Andorran', 'Angolan', 'Argentine',
+    'Armenian', 'Australian', 'Austrian', 'Azerbaijani', 'Bahamian', 'Bahraini',
+    'Bangladeshi', 'Barbadian', 'Belarusian', 'Belgian', 'Belizean', 'Beninese',
+    'Bhutanese', 'Bolivian', 'Bosnian', 'Botswanan', 'Brazilian', 'British',
+    'Bruneian', 'Bulgarian', 'Burkinabe', 'Burmese', 'Burundian', 'Cambodian',
+    'Cameroonian', 'Canadian', 'Cape Verdean', 'Central African', 'Chadian',
+    'Chilean', 'Chinese', 'Colombian', 'Comoran', 'Congolese', 'Costa Rican',
+    'Croatian', 'Cuban', 'Cypriot', 'Czech', 'Danish', 'Djiboutian', 'Dominican',
+    'Dutch', 'East Timorese', 'Ecuadorian', 'Egyptian', 'Emirati', 'Equatorial Guinean',
+    'Eritrean', 'Estonian', 'Ethiopian', 'Fijian', 'Filipino', 'Finnish', 'French',
+    'Gabonese', 'Gambian', 'Georgian', 'German', 'Ghanaian', 'Greek', 'Grenadian',
+    'Guatemalan', 'Guinean', 'Guyanese', 'Haitian', 'Honduran', 'Hungarian',
+    'Icelandic', 'Indian', 'Indonesian', 'Iranian', 'Iraqi', 'Irish', 'Israeli',
+    'Italian', 'Ivorian', 'Jamaican', 'Japanese', 'Jordanian', 'Kazakhstani',
+    'Kenyan', 'Kittitian', 'Kuwaiti', 'Kyrgyzstani', 'Lao', 'Latvian', 'Lebanese',
+    'Liberian', 'Libyan', 'Liechtensteiner', 'Lithuanian', 'Luxembourgish',
+    'Macedonian', 'Malagasy', 'Malawian', 'Malaysian', 'Maldivian', 'Malian',
+    'Maltese', 'Marshallese', 'Mauritanian', 'Mauritian', 'Mexican', 'Micronesian',
+    'Moldovan', 'Monacan', 'Mongolian', 'Montenegrin', 'Moroccan', 'Mozambican',
+    'Namibian', 'Nauruan', 'Nepali', 'New Zealander', 'Nicaraguan', 'Nigerian',
+    'Nigerien', 'North Korean', 'Norwegian', 'Omani', 'Pakistani', 'Palauan',
+    'Palestinian', 'Panamanian', 'Papua New Guinean', 'Paraguayan', 'Peruvian',
+    'Polish', 'Portuguese', 'Qatari', 'Romanian', 'Russian', 'Rwandan',
+    'Salvadoran', 'Samoan', 'San Marinese', 'Saudi Arabian', 'Senegalese',
+    'Serbian', 'Seychellois', 'Sierra Leonean', 'Singaporean', 'Slovak',
+    'Slovenian', 'Solomon Islander', 'Somali', 'South African', 'South Korean',
+    'South Sudanese', 'Spanish', 'Sri Lankan', 'Sudanese', 'Surinamese', 'Swazi',
+    'Swedish', 'Swiss', 'Syrian', 'Taiwanese', 'Tajikistani', 'Tanzanian', 'Thai',
+    'Togolese', 'Tongan', 'Trinidadian', 'Tunisian', 'Turkish', 'Turkmen',
+    'Tuvaluan', 'Ugandan', 'Ukrainian', 'Uruguayan', 'Uzbekistani', 'Vanuatuan',
+    'Venezuelan', 'Vietnamese', 'Yemeni', 'Zambian', 'Zimbabwean', 'Other',
+];

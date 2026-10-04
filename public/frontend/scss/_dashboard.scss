@@ -1,0 +1,140 @@
+// ============================================================
+//  Dashboard (Customer + Agent portal UI)
+// ============================================================
+
+.dash {
+  display: flex;
+  min-height: 100vh;
+  background: $section-bg;
+}
+
+// ---------- Sidebar ----------
+.dash-sidebar {
+  width: 270px;
+  flex: 0 0 270px;
+  background: $surface;
+  border-right: 1px solid $border;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  transition: transform .3s $ease;
+  z-index: 1045;
+
+  .ds-brand {
+    display: flex; align-items: center; gap: .6rem;
+    padding: 1.1rem 1.4rem;
+    font-family: $font-head; font-weight: 800; font-size: 1.3rem; color: $text-dark;
+    border-bottom: 1px solid $border;
+    .brand-logo { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px;
+      color: $on-brand; background: $gradient-brand; transform: rotate(-8deg); }
+    span span { color: $primary-dark; }
+  }
+
+  .ds-nav { padding: 1rem .8rem; overflow-y: auto; flex: 1; }
+  .ds-group-label {
+    font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    color: $text-light; padding: .9rem .7rem .4rem;
+  }
+  .ds-link {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .65rem .75rem; margin-bottom: .15rem;
+    border-radius: $radius-sm; color: $text-dark; font-weight: 500; font-size: .92rem;
+    transition: $transition;
+    i { width: 20px; text-align: center; color: $text-light; transition: $transition; }
+    .badge-tv { margin-left: auto; }
+    &:hover { background: $primary-50; color: $primary-dark; i { color: $primary-dark; } }
+    &.active { background: $gradient-brand; color: $on-brand;
+      box-shadow: $shadow-brand; i { color: $on-brand; } }
+  }
+  .ds-foot { padding: 1rem; border-top: 1px solid $border; }
+}
+
+// ---------- Main column ----------
+.dash-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.dash-topbar {
+  display: flex; align-items: center; gap: 1rem;
+  background: $surface; border-bottom: 1px solid $border;
+  padding: .85rem 1.5rem; position: sticky; top: 0; z-index: 1040;
+
+  .dt-title { font-family: $font-head; font-weight: 700; font-size: 1.15rem; margin: 0; }
+  .dt-search { flex: 1; max-width: 380px; }
+  .dt-actions { margin-left: auto; display: flex; align-items: center; gap: .6rem; }
+  .dt-user {
+    display: flex; align-items: center; gap: .6rem; padding-left: .85rem; border-left: 1px solid $border;
+    img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+    .du-name { font-weight: 700; font-size: .88rem; line-height: 1.1; }
+    .du-role { font-size: .75rem; color: $text-light; }
+  }
+}
+
+.dash-content { padding: 1.75rem 1.5rem; }
+
+// ---------- Mobile sidebar toggle ----------
+.ds-toggle { display: none; }
+@media (max-width: $bp-lg) {
+  .dash-sidebar { position: fixed; left: 0; top: 0; bottom: 0; transform: translateX(-100%); box-shadow: $shadow-lg; }
+  .dash-sidebar.open { transform: translateX(0); }
+  .ds-toggle { display: grid; place-items: center; }
+}
+
+// ---------- Stat cards ----------
+.dash-stat {
+  background: $surface; border: 1px solid $border; border-radius: $radius-lg;
+  padding: 1.25rem 1.35rem; height: 100%;
+  .dst-top { display: flex; align-items: center; justify-content: space-between; }
+  .dst-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: $radius;
+    font-size: 1.15rem; color: $primary-dark; background: $secondary; }
+  .dst-num { font-family: $font-head; font-weight: 800; font-size: 1.85rem; line-height: 1; margin-top: .85rem; }
+  .dst-label { color: $text-light; font-size: .85rem; margin-top: .25rem; }
+  .dst-trend { font-size: .78rem; font-weight: 700; }
+  .up { color: $success; } .down { color: $danger; }
+
+  &.is-primary { background: $gradient-brand; border: 0; color: $on-brand;
+    .dst-icon { background: color-mix(in srgb, $on-brand 20%, $transparent); color: $on-brand; }
+    .dst-label { color: color-mix(in srgb, $on-brand 85%, $transparent); } }
+}
+
+// ---------- Panel / card ----------
+.panel {
+  background: $surface; border: 1px solid $border; border-radius: $radius-lg; overflow: hidden;
+  .panel-head { display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 1.35rem; border-bottom: 1px solid $border;
+    h5 { margin: 0; font-size: 1.02rem; } }
+  .panel-body { padding: 1.35rem; }
+  .panel-body.p-0 { padding: 0; }
+}
+
+// ---------- Tables ----------
+.dash-table {
+  width: 100%; border-collapse: collapse;
+  th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+    color: $text-light; font-weight: 700; padding: .85rem 1.35rem; background: $section-bg; white-space: nowrap; }
+  td { padding: .9rem 1.35rem; border-top: 1px solid $border; font-size: .9rem; vertical-align: middle; }
+  tbody tr:hover { background: $primary-50; }
+  .td-strong { font-weight: 700; color: $text-dark; }
+}
+
+// ---------- Profile / forms in dash ----------
+.dash-avatar-lg { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid $on-brand; box-shadow: $shadow; }
+
+// ---------- Wallet card ----------
+.wallet-card {
+  background: $gradient-deep;
+  color: $on-brand; border-radius: $radius-lg; padding: 1.6rem; position: relative; overflow: hidden;
+  .wc-label { font-size: .8rem; opacity: .8; }
+  .wc-balance { font-family: $font-head; font-weight: 800; font-size: 2.2rem; }
+  .wc-chip { position: absolute; right: 1.4rem; top: 1.4rem; font-size: 1.6rem; opacity: .5; }
+}
+
+// ---------- Timeline (notifications) ----------
+.notif-item {
+  display: flex; gap: .9rem; padding: .9rem 0; border-bottom: 1px solid $border;
+  .ni-icon { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center;
+    border-radius: 50%; background: $secondary; color: $primary-dark; }
+  &:last-child { border-bottom: 0; }
+  .ni-time { font-size: .78rem; color: $text-light; }
+  &.unread { background: $primary-50; margin: 0 -1.35rem; padding: .9rem 1.35rem; border-radius: $radius-sm; }
+}

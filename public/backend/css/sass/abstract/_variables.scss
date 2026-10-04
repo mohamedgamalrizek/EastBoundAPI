@@ -1,0 +1,77 @@
+// ============================================
+// SCSS Variables & Theming
+// ============================================
+
+// --- Font Families ---
+$font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-heading: 'Sora', 'Inter', sans-serif;
+$font-mono: 'SF Mono', 'Fira Code', monospace;
+
+// --- Font Weights ---
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+$weight-extrabold: 800;
+
+// --- Font Sizes ---
+$fs-xs: 0.68rem;
+$fs-sm: 0.72rem;
+$fs-base: 0.875rem;
+$fs-md: 0.92rem;
+$fs-lg: 1rem;
+$fs-xl: 1.2rem;
+$fs-2xl: 1.35rem;
+$fs-3xl: 1.7rem;
+
+// --- Spacing ---
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+
+// --- Border Radius ---
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 10px;
+$radius-xl: 12px;
+$radius-2xl: 14px;
+$radius-3xl: 16px;
+$radius-4xl: 18px;
+$radius-full: 999px;
+
+// --- Form Controls ---
+$control-height: 44px;
+
+// --- Sidebar ---
+$sidebar-width: 17.1875rem;
+$sidebar-collapsed: 3.75rem;
+$admin-header-height: 5rem;
+
+// --- Transition ---
+$transition-fast: 0.12s ease;
+$transition-base: 0.15s ease;
+$transition-normal: 0.18s ease;
+$transition-slow: 0.2s ease;
+$transition-menu: 0.25s ease;
+$transition-submenu: 0.28s ease;
+
+// --- Shadows (hardcoded defaults; theme-colors override at runtime) ---
+$shadow-card: 0 2px 10px;
+$shadow-dropdown: 0 4px 20px;
+$shadow-btn: 0 8px 20px;
+$shadow-btn-hover: 0 12px 26px;
+$shadow-brand: 0 10px 26px;
+$shadow-page-item: 0 10px 22px;
+
+// --- Z-Index ---
+$z-sidebar-backdrop: 1038;
+$z-header: 1039;
+$z-sidebar: 1040;
+$z-nav-header: 1042;
+$z-sidebar-toggle: 1043;
+$z-modal-backdrop: 1044;
+$z-modal: 1050;

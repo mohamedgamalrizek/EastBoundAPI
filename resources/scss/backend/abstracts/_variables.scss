@@ -1,0 +1,811 @@
+/* ============================================================
+   FLOW Backend — Design Token Variables
+   All colour values are defined here as SCSS variables.
+   Themes (light / dark) consume these to generate CSS custom
+   properties so that switching mode requires toggling a single
+   class / attribute — no component‑level changes needed.
+   ============================================================ */
+
+// ─── Transition tokens ─────────────────────────────────────
+$transition-fast: 0.15s ease;
+$transition-standard: 0.2s ease;
+
+// ─── Radius tokens ─────────────────────────────────────────
+$radius-xs: 6px;
+$radius-sm: 8px;
+$radius-md: 10px;
+$radius-lg: 14px;
+
+// ─── Spacing tokens ────────────────────────────────────────
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+
+// ═══════════════════════════════════════════════════════════
+//  LIGHT MODE — Brand & Semantic Colours
+// ═══════════════════════════════════════════════════════════
+
+// ─── Brand palette ─────────────────────────────────────────
+$brand-primary:        #A81A20;
+$brand-primary-dark:   #7A1117;
+$brand-primary-deeper: #5A0D11;
+$brand-accent:         #D45B60;
+$brand-secondary:      #F7E7E8;
+
+// ─── Semantic states ───────────────────────────────────────
+$color-success: #22C55E;
+$color-danger:  #EF4444;
+$color-warning: #F59E0B;
+$color-info:    #A81A20;
+
+// ─── Surfaces ──────────────────────────────────────────────
+$surface-bg:         #FFFAFA;
+$surface-card:       #ffffff;
+$surface-raised:     #ffffff;
+$surface-hover:      #FFF1F2;
+$surface-muted:      #f8fafc;
+$surface-alt:        #FFF5F5;
+
+// ─── Text ──────────────────────────────────────────────────
+$text-primary:   #1E293B;
+$text-secondary: #64748B;
+$text-muted:     #94A3B8;
+$text-heading:   #334155;
+$text-body:      #798494;
+$text-body-2:    #97a0ae;
+$text-dark:      #212529;
+
+// ─── Borders ───────────────────────────────────────────────
+$border-default: #E2E8F0;
+$border-light:   #eaeaea;
+$border-input:   #E8D2D4;
+$border-focus:   #A81A20;
+
+// ─── Shadows ───────────────────────────────────────────────
+$shadow-card:          rgba(30,41,59,.08);
+$shadow-brand:         rgba(168,26,32,.28);
+$shadow-soft:          rgba(15, 23, 42, .05);
+$shadow-control-focus: rgba(168,26,32,.16);
+$shadow-brand-focus:   rgba(168,26,32,.24);
+
+// ─── Misc ──────────────────────────────────────────────────
+$color-white:       #ffffff;
+$color-black:       #000000;
+$color-selection:   rgba(168,26,32,.14);
+
+// ═══════════════════════════════════════════════════════════
+//  LIGHT MODE — Legacy clr‑* palette (application-base)
+// ═══════════════════════════════════════════════════════════
+$clr-heading:   #38414d;
+$clr-body:      #798494;
+$clr-body-2:    #97a0ae;
+$clr-bg:        #fff5f5;
+$clr-bg-2:      #fff5f5;
+$clr-primary:   #A81A20;
+$clr-primary-2: #7A1117;
+$clr-white:     #ffffff;
+$clr-black:     #000000;
+$clr-border:    #e8d2d4;
+$clr-red:       #ff3b3b;
+$clr-ylw:       #fea412;
+$clr-green:     #0caf60;
+$clr-green-2:   #06c270;
+$clr-rgb:       168, 26, 32;
+
+// ═══════════════════════════════════════════════════════════
+//  LIGHT MODE — Frequently‑used raw colour primitives
+//  (for tokens that are only referenced in a handful of spots)
+// ═══════════════════════════════════════════════════════════
+$raw-white:    #fff;
+$raw-black:    #000;
+$raw-gray-50:  #f8f9fa;
+$raw-gray-100: #fafafa;
+$raw-gray-200: #e9ecef;
+$raw-gray-300: #dee2e6;
+$raw-gray-400: #ced4da;
+$raw-gray-500: #adb5bd;
+$raw-gray-600: #6c757d;
+$raw-gray-700: #495057;
+$raw-gray-800: #343a40;
+$raw-gray-900: #212529;
+$raw-blue:     #A81A20;
+$raw-indigo:   #6610f2;
+$raw-purple:   #6f42c1;
+$raw-pink:     #e83e8c;
+$raw-red:      #dc3545;
+$raw-orange:   #fd7e14;
+$raw-yellow:   #ffc107;
+$raw-green:    #28a745;
+$raw-teal:     #20c997;
+$raw-cyan:     #17a2b8;
+
+// ═══════════════════════════════════════════════════════════
+//  LIGHT MODE — Complete theme‑color token map
+//  Every hashed token that legacy component SCSS references.
+//  Keys are the 8‑char hash, values are the resolved colour.
+// ═══════════════════════════════════════════════════════════
+$theme-color-light: (
+  "0069cf03": #ebebeb,
+  "008cd5d8": #00abc5,
+  "00d26aef": rgba(0, 0, 0, 0.15),
+  "0181bb0a": #898989,
+  "018eb9c9": rgba(168, 26, 32, 0.08),
+  "01949889": #dcf9f3,
+  "0199ff6c": #06c2700f,
+  "0445cae2": #A81A20,
+  "0452d66e": #00000014,
+  "057e4ab1": #57329a,
+  "0590929a": #3d21b5,
+  "059760e8": #20c7a1,
+  "0669453b": #aa2200,
+  "078bd092": rgba(246, 104, 47, 0.99),
+  "0850a770": rgba(255, 255, 255, 0.96),
+  "0892b680": #5e72e4,
+  "08a9fb88": rgba(0, 0, 0, 0.9),
+  "090bfe15": #0c85d0,
+  "09636643": #ea4c89,
+  "09884d7f": rgba(0,0,0,.18),
+  "0b66b930": #4dedf5,
+  "0be2ac36": #252525,
+  "0c3e15e5": #d4c8eb,
+  "0d41cad3": rgba(255, 255, 255, .18),
+  "0e378c94": #121843,
+  "0e74138b": rgba(255, 255, 255, 0.18),
+  "0f5bc553": rgba(126, 211, 33, 0.5),
+  "0fc26def": #558b2f,
+  "12bde32f": #104d92,
+  "135ef597": #1d276b,
+  "143b4f40": #ffe0e0,
+  "14cec9a8": #e2e6ea,
+  "15656097": #ff6a8b,
+  "169406c4": #ffe7db,
+  "170a3f45": #dae2f3,
+  "18046fe2": #64748B,
+  "18bff5f3": rgba(80, 227, 194, 0.5),
+  "18e36c23": rgba(255,255,255,.62),
+  "19285130": #fe60ae,
+  "19305ee4": #9e9e9e,
+  "1999bafe": rgba(126, 88, 194, 0.5),
+  "1a31bb32": #f4f7ff,
+  "1ab88891": #2c2c2c,
+  "1ba88ba0": #a4f0df,
+  "1bc1e2ba": #ffdea5,
+  "1c00df78": #c8c8c8,
+  "1cacfd4b": #222e3d,
+  "1cbc6705": rgba(186, 1, 181, 0.85),
+  "1d35fe79": #6cb13c,
+  "1d8e689d": #EAF4FF,
+  "1dc53d14": #bd081c,
+  "1dff4ce9": rgba(15, 23, 42, .05),
+  "1fdb28a3": #cdf1a6,
+  "21786734": rgba(76, 84, 160, 0.14),
+  "21c01327": #199b7e,
+  "221ea574": #426e11,
+  "229a6a07": rgba(255,255,255,.65),
+  "22f1e410": #97a0ae,
+  "230a568c": #cef7ee,
+  "23ceb27f": #dadada,
+  "244fab72": #0277bd,
+  "24b95201": rgba(120, 130, 200, .14),
+  "24de2da4": rgba(255, 170, 22, 0.5),
+  "24fa876f": #b099da,
+  "26fb22bc": #8b5cf6,
+  "27019009": #828690,
+  "274c1329": rgba(255, 255, 255, 0.15),
+  "276d9818": rgba(255, 22, 22, 0.5),
+  "2832ff55": #ded8f8,
+  "2867bd89": #D45B60,
+  "28ce17ea": #999999,
+  "2917bdb4": rgba(255, 255, 255, 0.86),
+  "2a6f73ff": #e1d8f1,
+  "2a959f49": #002629,
+  "2b2d13a6": rgba(0, 0, 0, 0),
+  "2b674dd3": #3343bb,
+  "2d4aa082": #3fc6d4,
+  "2dd7a70c": #ce82fd,
+  "2dd8ad37": rgba(255, 255, 255, 0.85),
+  "2deedf11": #430297,
+  "2e0751af": rgba(255, 22, 22, 0.9),
+  "2e1104e1": #ffd386,
+  "2f3c829d": rgba(89, 59, 219, 0.5),
+  "301b07f2": #ebe7fb,
+  "306bb540": #013758,
+  "30dfc6fb": rgba(255, 255, 255, 0.68),
+  "315bc9ac": #6f42c1,
+  "32e588c5": #c6bcf3,
+  "32f99bc4": #01578b,
+  "33ec4fef": #cc0000,
+  "343e6ecb": #5c3fdc,
+  "348c9372": rgba(0, 0, 0, 0.08),
+  "35768a34": #eef5f9,
+  "35913b41": rgba(0, 0, 0, 0.075),
+  "35e7cc01": #4400eb,
+  "364cb729": #db4439,
+  "3669ce4f": #11cae7,
+  "3742997b": #798494,
+  "3830a03c": #d58700,
+  "391df974": rgba(0, 0, 0, 0.2),
+  "3975378a": #4123c0,
+  "3984d914": #989ca0,
+  "3988fdc8": #46287d,
+  "3a74d675": #666666,
+  "3ac23dca": #e6e8ed,
+  "3c359ed9": #512f90,
+  "3c7db0b2": #ff0000,
+  "3c8c8be2": #0b0b0b,
+  "3d30716b": #7A1117,
+  "3daa04fd": #1f1f1f,
+  "3de0edf4": #0f172a,
+  "3e35a304": #646c9a,
+  "3eb3d433": #00000008,
+  "3ef5b627": #c5b5e4,
+  "3f829a76": #d3e7fe,
+  "3fa6987d": #a999ec,
+  "41225719": rgba(15, 23, 42, .48),
+  "4132b283": #dedede,
+  "4273641d": #ef0000,
+  "42d90206": #ff9696,
+  "42ef4fa1": rgba(109, 94, 252, 0.14),
+  "4325d192": #2b177f,
+  "43bcc076": rgba(255, 255, 255, 0.25),
+  "43d1b60c": #dbf3c1,
+  "43ee7f52": #ff3b3b0f,
+  "43f25a36": #36b9d8,
+  "441bd41f": #43e794,
+  "4435a27d": rgba(173, 173, 173, 0.32),
+  "45816795": #f48665,
+  "462be1bc": #22d2aa,
+  "466bc8ce": black,
+  "470ee02b": #fea412,
+  "477e088c": rgba(0, 0, 0, 0.125),
+  "47bd9b93": #321b95,
+  "47e3ea2c": #909093,
+  "4906effd": #2e1f72,
+  "4988412a": #f3f3f3,
+  "499668ca": #f8fafc,
+  "49b93deb": #361f5f,
+  "4a8c9724": #16181b,
+  "4b09feed": rgba(109, 94, 252, 0.35),
+  "4b0c3d18": #8553ee,
+  "4c46ca18": rgba(0, 0, 0, 0.5),
+  "4cbd4810": #ff9800,
+  "4d2c9df8": rgba(0, 0, 0, 0.31),
+  "4ddfd10d": #424d63,
+  "4e24f456": #dee5f0,
+  "4e3d1051": rgba(0, 0, 0, 0.03),
+  "4e94791d": #e5f6d3,
+  "4f2de124": #c0392b,
+  "50302a7a": #f63465,
+  "506661e6": rgba(255, 45, 85, 0.32),
+  "50673afa": #50e3c2,
+  "50d3031f": #c52424,
+  "512cac12": #fafafa,
+  "512e8162": #313a46,
+  "51c2fab3": rgba(255, 255, 255, 0.60),
+  "52301daa": #be2d23,
+  "524bf277": #f5f5f5,
+  "5281e13d": #965f00,
+  "528cef87": white,
+  "52aa8d29": #673bb7,
+  "530f42ea": #cbcbcb,
+  "535e0502": #1f63c4,
+  "54d44672": #263f15,
+  "560b7061": #51f5ae,
+  "567073f4": #f7f8fa,
+  "56a17256": #ffd0d0,
+  "56f3f229": #f3f6f9,
+  "579862cd": rgba(124, 180, 66, 0.7),
+  "5858f7f2": #E2E8F0,
+  "58bb3fe4": #0b3564,
+  "58d44d32": #475569,
+  "598b32b7": #000,
+  "5ab9c0eb": rgba(0, 0, 0, 0.20),
+  "5ad7944c": #bce88c,
+  "5b4b5d69": rgba(109, 94, 252, 0.07),
+  "5be122e1": #2a2c32,
+  "5c078993": #ff8686,
+  "5c0e15d5": rgba(168, 26, 32, .24),
+  "5c15a1bb": #ffffff1a,
+  "5ce121fd": #e2e2e2,
+  "5ce2647f": rgba(120, 130, 140, 0.13),
+  "5cf9c170": #992180,
+  "5d490939": #afcff7,
+  "5e25c916": #aeb9c5,
+  "5e27cd57": #cfefac,
+  "5f562728": #391faa,
+  "5f880a79": #2a7665,
+  "5f8cb271": #a291eb,
+  "6055e5f7": #e36cd9,
+  "60ccdb9b": rgba(73, 199, 171, 0.5),
+  "60fff7b0": #ffbf31,
+  "61b8a228": #27420a,
+  "61f95580": #480ceb,
+  "6237d48c": rgba(255, 255, 255, 0.94),
+  "627be900": #1ab7ea,
+  "62c07079": #44e7f5,
+  "63208f92": #1565c0,
+  "637aff79": #4827d5,
+  "63a8bd35": #d4d7da,
+  "63b7ea25": rgba(255, 255, 255, 0.45),
+  "65600e3c": #323232,
+  "6675cea5": rgba(77,166,255,.18),
+  "669e694e": #7A1117,
+  "675ea1cc": #454d55,
+  "67762757": #ffbebe,
+  "67f88176": #fea4120f,
+  "680a345d": #1ed760,
+  "68df3f62": #fbfcfc,
+  "6a703863": rgba(76,84,160,.12),
+  "6a83cdea": #38414d,
+  "6b1019b2": #242424,
+  "6b371962": #c90000,
+  "6bf6f186": #777,
+  "6c98d329": #64a71a,
+  "6e31f513": rgba(0, 0, 0, 0.75),
+  "6e46e58b": #2d4373,
+  "6e895266": rgba(89, 59, 219, 0.25),
+  "6ee4e562": rgba(89, 59, 219, 0.1),
+  "6ef68ccc": #bfb2f1,
+  "6f82d65c": #2f9b1b,
+  "705c220e": #656c73,
+  "714e5c34": #bef5e8,
+  "7165925b": #ffe7be,
+  "735a0f90": rgba(255, 255, 255, 0.22),
+  "736c1e54": #dae0e5,
+  "7371e081": rgba(0, 0, 0, 0.25),
+  "73a06625": rgba(255,255,255,.7),
+  "7437b68d": #F59E0B,
+  "744f9ed1": #292b48,
+  "74729e64": #96ffad,
+  "759acae9": #005983,
+  "76fd0a7f": rgba(154, 161, 171, 0.15),
+  "7702fbb0": #331d77,
+  "776b0f80": #007bb6,
+  "77ea75cb": #e9ecef,
+  "78327de2": #6c757d,
+  "784773f5": #711717,
+  "7859f038": rgba(97, 97, 97, 0.5),
+  "78988010": red,
+  "78b92fe0": #3ab54b,
+  "78f2335d": rgba(255, 255, 255, 0.8),
+  "7a2a5b2b": #6b51df,
+  "7a92317e": rgba(255, 255, 255, .15),
+  "7b66c35b": #06b6d4,
+  "7c3ff626": #1da1f2,
+  "7cb7fc38": #569117,
+  "7e539be2": #555555,
+  "7fd84222": #9c1f1f,
+  "80207c79": #25d366,
+  "80484f58": #201239,
+  "80f177d9": #adb6c7,
+  "8153fcd0": #ffe1e1,
+  "81c75a77": #20c997,
+  "825f0854": #eaeaea,
+  "829bbf7d": rgba(255, 255, 255, 0.5),
+  "82dfe22b": rgba(120, 130, 200, 0.14),
+  "82f65626": #c62828,
+  "830f6c82": rgba(245, 60, 121, 0.99),
+  "832e4d5c": #107125,
+  "8394798d": #3c3e68,
+  "83bae011": #06c270,
+  "847a2f06": #f0a907,
+  "85383645": #1e144a,
+  "85a87a6e": #ff2d55,
+  "85e09961": #5d9c18,
+  "85f89ec1": rgba(255, 255, 255, 0.05),
+  "85fa5f1f": #ee3232,
+  "86967987": rgba(0, 0, 0, 0.3),
+  "8735628a": #008abd,
+  "87ef6d66": #eef2f7,
+  "88a4f120": #1295bf,
+  "894153ed": rgba(77, 155, 255, 0.14),
+  "897f25fd": rgba(152, 166, 173, 0.15),
+  "8a3cac0d": #343a40,
+  "8aa38588": #3e6522,
+  "8aa69edf": #3fbcda,
+  "8ab95d17": #563907,
+  "8b3d3ade": #686868,
+  "8c3bc205": rgba(255, 255, 255, 0.75),
+  "8c87a26c": rgba(109, 94, 252, 0.18),
+  "8d757033": #8b572a,
+  "8e03ed07": #cc3700,
+  "8e1a3019": #6366f1,
+  "8ef9b518": #ff4500,
+  "8f49e967": #3c6510,
+  "900e4a00": #36e1b4,
+  "901dbdcd": rgba(126, 211, 33, 0.25),
+  "90f26e9e": rgba(119, 119, 119, 0.1),
+  "91646b0d": #7ed321,
+  "92c29fa7": #907ce7,
+  "92d8cb64": #fffa6f,
+  "9313786c": rgba(255, 255, 255, .2),
+  "93b2e22e": rgba(216, 217, 219, 0.5),
+  "93ef3b71": #fd712c,
+  "94e60589": #212529,
+  "95c0f951": #cbd3da,
+  "95c78365": #7cb442,
+  "95caa71b": #F0F7FF,
+  "96520d71": rgba(168,26,32,.28),
+  "97a59663": #4526cd,
+  "99e67897": #fd7e14,
+  "9bfe3f3c": #f9c70a,
+  "9cb106b0": rgba(248, 249, 250, 0.5),
+  "9d0484b0": #6ab21c,
+  "9d47ceef": #f53c79,
+  "9d9002f1": #adb5bd,
+  "9d9fe953": rgba(69, 69, 69, 0.5),
+  "9db6db51": #1266f1,
+  "9e08be88": #eeeeee,
+  "9f36b219": rgba(255, 255, 255, .8),
+  "a107c331": rgba(0, 0, 0, 0.05),
+  "a172cd26": rgba(109, 94, 252, 0.45),
+  "a1c7f766": rgba(112, 185, 34, 0.5),
+  "a2144a9f": #d1c8f5,
+  "a293054a": #EF4444,
+  "a5a9c1a4": rgba(255, 255, 255, 0.2),
+  "a5b0747c": #31343b,
+  "a5e75201": #b4a7ef,
+  "a6f95565": rgba(222, 150, 25, 0.5),
+  "a7896559": #f7fafc,
+  "a7d7499c": rgba(255, 255, 255, 0.55),
+  "a96693a5": #00838f,
+  "aa4f46da": #eceff2,
+  "ab33d366": #d2d6de,
+  "ab96a211": #a3afb7,
+  "abfef18f": #000000,
+  "ac78209c": #715d5d,
+  "acbb802b": #2d0165,
+  "acd0b7d0": rgba(255, 255, 255, 0.075),
+  "add2aee3": #495057,
+  "ae5de46f": #00b2c2,
+  "ae5def70": rgba(255, 255, 255, .16),
+  "afc43450": #f7b00f,
+  "aff2a8c9": #4425cb,
+  "b001a3a2": rgba(15, 23, 42, .22),
+  "b204248b": #ddd,
+  "b288fd4e": #d9d2f7,
+  "b36634cc": #334155,
+  "b3a458fe": #ccca00,
+  "b3eb19fc": #8c0615,
+  "b48832b1": rgba(255, 57, 57, 0.5),
+  "b5e59f53": #ff3b3b,
+  "b62d674c": rgba(103, 25, 255, 0.85),
+  "b640cbfe": #27ae60,
+  "b67e9e7e": rgba(255, 255, 255, 0.7),
+  "b7287a93": #2082fb,
+  "b76db732": rgba(0, 0, 0, 0.175),
+  "b79f9c53": rgba(114, 88, 224, 0.5),
+  "b8079b9d": rgba(255, 255, 255, 0.80),
+  "b8b504d0": #323a4b,
+  "b8d33d7e": #eaeefc,
+  "b8e2ecea": #ffa5a5,
+  "b971a0ba": #496375,
+  "b988605a": #4d9bff,
+  "b9f33174": #3d4465,
+  "b9f4f8b8": #818182,
+  "bab0b826": rgba(255, 255, 255, .22),
+  "bb1ab787": #c4c9d5,
+  "bb4e827d": #4527a0,
+  "bbc2a788": #00a2ff,
+  "bbe05529": #97e245,
+  "bbe9dda6": #23bdb8,
+  "bc6270c8": #ff4949,
+  "bc68b004": #2fdeb7,
+  "bd3986e2": #def2db,
+  "bd5a3016": #e24747,
+  "bd5aa653": #f8f9fa,
+  "be9f329d": #8d6e63,
+  "c06fb634": #eef1f6,
+  "c11254a3": #c00a27,
+  "c1419dcb": #22C55E,
+  "c15dd44e": #f31e7a,
+  "c1afb6dc": #44ecf5,
+  "c1dec203": #7d66e3,
+  "c218b4b1": rgba(82, 63, 105, 0.05),
+  "c22384a1": rgba(255,255,255,.4),
+  "c2a026c7": #e83e8c,
+  "c396db69": #4bffa2,
+  "c42653b7": #eef3fa,
+  "c42d1f13": #3065d0,
+  "c43683df": #1d5045,
+  "c4fb9cb1": #040407,
+  "c57dd4b6": #da4747,
+  "c5f11b37": #a15cff,
+  "c5ff4c74": #176ad2,
+  "c659d630": #ffffff,
+  "c6753b73": rgba(255, 22, 22, 0.25),
+  "c681d040": #1da851,
+  "c6bbcdf7": #217ee7,
+  "c6c14563": #0d1d63b2,
+  "c7238605": rgba(0, 0, 0, 0.1),
+  "c7c0ba64": rgba(76,84,160,.08),
+  "c82f339b": #F8FBFF,
+  "c8cb0787": #6a707e,
+  "c905f266": #ececf6,
+  "c90ada57": rgba(255, 255, 255, 0.78),
+  "c949c62c": #d3d9df,
+  "c9d7a367": #f87533,
+  "ca5219e3": rgba(168, 26, 32, .12),
+  "cb48e6e5": #333,
+  "cc92ebb7": rgba(103, 59, 183, 0.5),
+  "cca40dd9": #4f6fe6,
+  "cd408808": #c97f00,
+  "cd57add3": #9fabb1,
+  "cd6f9397": #454545,
+  "ce1301f2": #e51e6b,
+  "cebcdb89": #ef9800,
+  "cf203e57": #ae95dd,
+  "cf42094b": rgba(255, 255, 255, 0.58),
+  "cf4cbe75": #dddfe1,
+  "cfc00bbd": #ff890e,
+  "d02a95a0": #00545c,
+  "d06abad9": #850b0b,
+  "d14f9016": #fff,
+  "d16ed620": rgba(0, 0, 0, 0.78),
+  "d1910b2b": #b3b3b3,
+  "d2687877": rgba(15,23,42,.16),
+  "d2df153a": #771800,
+  "d354bdc0": rgba(76, 84, 160, .06),
+  "d425e3e4": #fefefe,
+  "d46886d9": rgba(126, 211, 33, 0.9),
+  "d5b06a13": rgba(0, 0, 0, .20),
+  "d5c50b5d": #e7e7e7,
+  "d699259c": #f1f5f9,
+  "d6f0e3f8": rgba(255, 255, 255, 0.72),
+  "d6f2fe6a": #6d5efc,
+  "d709501b": #22134e,
+  "d79400c1": #b8f3e6,
+  "d94a7aa5": #fcf8e3,
+  "d98ee4e8": #aaaaaa,
+  "d9eb44cc": #0397ef,
+  "da3d8a08": rgba(255, 255, 255, .96),
+  "db768271": rgba(30,41,59,.08),
+  "dcd67678": #ffaa16,
+  "dcf7d3e5": #18aa4c,
+  "dd41d761": #9a56ff,
+  "dd87b029": #35465d,
+  "ddcaf262": #1d1d1d,
+  "df9c1d2d": #666,
+  "dfa43ecc": #dee2e6,
+  "e19978a7": #239132,
+  "e209515a": rgba(89, 59, 219, 0.3),
+  "e2ea3a52": #f2f2f2,
+  "e2f713db": rgba(49, 58, 70, 0.1),
+  "e4464fb9": #e20000,
+  "e44819a8": #34a3ff,
+  "e4b15368": #333333,
+  "e50e19e1": #f7f7f7,
+  "e5bbedae": #4c2b87,
+  "e5c6c239": rgba(255, 255, 255, 0.16),
+  "e5dd59dc": #f8f8f8,
+  "e60eef7e": #A81A20,
+  "e62f0f52": rgba(243, 30, 122, 0.3),
+  "e6c6f105": rgba(255, 255, 255, .72),
+  "e74504f0": #283593,
+  "e7e6e6da": #d50000,
+  "e81bd48c": #ffd996,
+  "e834ad3b": #24dcb3,
+  "e8945e80": #311c57,
+  "e946900b": rgba(0, 0, 0, 0.7),
+  "e94b9730": rgba(76, 84, 160, 0.06),
+  "e97e6d81": #297f00,
+  "e9981764": #ffeed0,
+  "e99bd411": #3b5998,
+  "e9db2df9": #1E293B,
+  "ea1f792b": #0caf60,
+  "eb5118ba": #fdfdfe,
+  "ec705538": #464a53,
+  "ec8f71e3": #7f7f7f,
+  "edfe77a6": #00aff0,
+  "ee42bfd2": #bebebe,
+  "ee62ebb3": #6610f2,
+  "eeb0e508": rgba(30,41,59,.05),
+  "ef736947": #4f46e5,
+  "efab383f": #fda23f,
+  "efb5fb7c": #c32aa3,
+  "efdac027": #4285f4,
+  "f0252325": rgba(255, 255, 255, 0.65),
+  "f1ff7f4d": #560707,
+  "f21db72d": rgba(0, 194, 255, 0.10),
+  "f2f51f6b": #f25521,
+  "f42cccb3": #e29000,
+  "f4818af9": rgba(0, 194, 255, 0.16),
+  "f5eb8a60": #cccccc,
+  "f60cdf0a": #94A3B8,
+  "f8200947": rgba(255, 255, 255, 0.1),
+  "f87bea10": #050505,
+  "f913ba99": #abafb3,
+  "f9356e34": #2980b9,
+  "f9884ffa": #161828,
+  "fa539cea": #4b3fd6,
+  "fb88b087": #3398fb,
+  "fcca3571": #f5f7fb,
+  "fce29da7": #960000,
+  "fd89992c": #fffc00,
+  "fdc773fa": rgba(89, 59, 219, 0.4),
+  "fec58423": #85580b,
+  "fedeed36": #ff1616,
+  "fee5063e": #5731c9,
+);
+
+// ═══════════════════════════════════════════════════════════
+//  DARK MODE — Brand & Semantic Colours
+// ═══════════════════════════════════════════════════════════
+$dark-brand-primary:        #D45B60;
+$dark-brand-primary-dark:   #A81A20;
+$dark-brand-primary-deeper: #7A1117;
+$dark-brand-accent:         #F08A8E;
+$dark-brand-secondary:      #3A181A;
+
+$dark-color-success: #22C55E;
+$dark-color-danger:  #EF4444;
+$dark-color-warning: #F59E0B;
+$dark-color-info:    #D45B60;
+
+$dark-surface-bg:         #1B1011;
+$dark-surface-card:       #261314;
+$dark-surface-raised:     #341719;
+$dark-surface-hover:      #421C1F;
+$dark-surface-muted:      #301617;
+$dark-surface-alt:        #3A181A;
+
+$dark-text-primary:   #f8fafc;
+$dark-text-secondary: #94a3b8;
+$dark-text-muted:     #64748b;
+$dark-text-heading:   #f1f5f9;
+$dark-text-body:      #94a3b8;
+$dark-text-body-2:    #94a3b8;
+$dark-text-dark:      #f8fafc;
+
+$dark-border-default: #5C282B;
+$dark-border-light:   #7A373B;
+$dark-border-input:   #7A373B;
+$dark-border-focus:   #D45B60;
+
+$dark-shadow-card:          rgba(0,0,0,.25);
+$dark-shadow-brand:         rgba(168,26,32,.34);
+$dark-shadow-soft:          rgba(0,0,0,.15);
+$dark-shadow-control-focus: rgba(212,91,96,.24);
+$dark-shadow-brand-focus:   rgba(168,26,32,.32);
+
+$dark-color-white:     #341719;
+$dark-color-black:     #000000;
+$dark-color-selection: rgba(212,91,96,.24);
+
+// ─── Dark mode legacy clr‑* overrides ──────────────────────
+$dark-clr-heading:   #f1f5f9;
+$dark-clr-body:      #94a3b8;
+$dark-clr-body-2:    #94a3b8;
+$dark-clr-bg:        #341719;
+$dark-clr-bg-2:      #341719;
+$dark-clr-primary:   #D45B60;
+$dark-clr-primary-2: #A81A20;
+$dark-clr-white:     #341719;
+$dark-clr-black:     #000000;
+$dark-clr-border:    #5C282B;
+$dark-clr-red:       #ef4444;
+$dark-clr-ylw:       #f59e0b;
+$dark-clr-green:     #22c55e;
+$dark-clr-green-2:   #22c55e;
+$dark-clr-rgb:       168, 26, 32;
+
+// ═══════════════════════════════════════════════════════════
+//  DARK MODE — Theme‑color token overrides
+//  Only tokens whose value differs from light mode are listed.
+// ═══════════════════════════════════════════════════════════
+$theme-color-dark: (
+  // ── Brand ──
+  "0445cae2": #D45B60,
+  "669e694e": #A81A20,
+  "2867bd89": #F08A8E,
+  "1d8e689d": #421C1F,
+  "535e0502": #D45B60,
+  "6675cea5": rgba(212,91,96,.24),
+  "ca5219e3": rgba(212,91,96,.16),
+  "5c0e15d5": rgba(168,26,32,.32),
+  "96520d71": rgba(168,26,32,.34),
+  "e60eef7e": #D45B60,
+  "3d30716b": #A81A20,
+  "c6bbcdf7": #A81A20,
+  "d9eb44cc": #D45B60,
+  "b7287a93": #D45B60,
+  "b988605a": #D45B60,
+  "fb88b087": #A81A20,
+  "c5ff4c74": #A81A20,
+  "f9356e34": #A81A20,
+
+  // ── Surfaces (whites / light grays → dark) ──
+  "d14f9016": #341719,
+  "c659d630": #341719,
+  "528cef87": #341719,
+  "d425e3e4": #341719,
+  "c82f339b": #1B1011,
+  "499668ca": #301617,
+  "1a31bb32": #421C1F,
+  "fcca3571": #341719,
+  "bd5aa653": #341719,
+  "e5dd59dc": #341719,
+  "e50e19e1": #341719,
+  "524bf277": #341719,
+  "512cac12": #341719,
+  "fbfcfc":   #341719,
+  "eb5118ba": #341719,
+  "fdfdfe":   #341719,
+  "f7f8fa":   #341719,
+  "87ef6d66": #421C1F,
+  "c06fb634": #341719,
+  "c42653b7": #341719,
+  "d699259c": #341719,
+  "f3f6f9":   #341719,
+  "eef5f9":   #341719,
+  "a7896559": #421C1F,
+  "95caa71b": #1B1011,
+  "1dff4ce9": rgba(0,0,0,.15),
+  "eeb0e508": rgba(0,0,0,.1),
+  "b001a3a2": rgba(0,0,0,.3),
+  "d2687877": rgba(0,0,0,.2),
+  "41225719": rgba(0,0,0,.4),
+  "db768271": rgba(0,0,0,.25),
+  "3eb3d433": rgba(0,0,0,.2),
+
+  // ── Text (darks → light) ──
+  "e9db2df9": #f8fafc,
+  "b36634cc": #f1f5f9,
+  "94e60589": #f8fafc,
+  "cd6f9397": #94a3b8,
+  "6a83cdea": #f1f5f9,
+  "3742997b": #94a3b8,
+  "18046fe2": #94a3b8,
+  "22f1e410": #94a3b8,
+  "27019009": #94a3b8,
+  "ec705538": #cbd5e1,
+  "df9c1d2d": #94a3b8,
+  "ddcaf262": #f8fafc,
+  "cd57add3": #64748b,
+  "80f177d9": #64748b,
+  "bb1ab787": #64748b,
+  "5e25c916": #64748b,
+  "ab96a211": #64748b,
+  "9d9002f1": #64748b,
+  "b9f4f8b8": #64748b,
+  "4ddfd10d": #94a3b8,
+  "58d44d32": #94a3b8,
+  "c6c14563": #cbd5e1,
+  "c8cb0787": #94a3b8,
+  "3e35a304": #94a3b8,
+  "3984d914": #94a3b8,
+
+  // ── Borders ──
+  "5858f7f2": #5C282B,
+  "825f0854": #5C282B,
+  "4e24f456": #5C282B,
+  "dfa43ecc": #5C282B,
+  "d5c50b5d": #5C282B,
+  "cf4cbe75": #5C282B,
+  "14cec9a8": #5C282B,
+  "5ce121fd": #7A373B,
+  "4132b283": #7A373B,
+  "530f42ea": #7A373B,
+  "ab33d366": #7A373B,
+  "95c0f951": #7A373B,
+  "c949c62c": #7A373B,
+  "736c1e54": #7A373B,
+
+  // ── Shadows ──
+  "b76db732": rgba(0,0,0,.35),
+  "c218b4b1": rgba(0,0,0,.2),
+  "391df974": rgba(0,0,0,.35),
+  "7371e081": rgba(0,0,0,.35),
+  "09884d7f": rgba(0,0,0,.3),
+  "c7238605": rgba(0,0,0,.2),
+  "86967987": rgba(0,0,0,.4),
+  "4c46ca18": rgba(0,0,0,.45),
+  "4d2c9df8": rgba(0,0,0,.45),
+  "e946900b": rgba(0,0,0,.6),
+  "08a9fb88": rgba(0,0,0,.7),
+  "d16ed620": rgba(0,0,0,.6),
+  "5ab9c0eb": rgba(0,0,0,.35),
+  "d5b06a13": rgba(0,0,0,.35),
+  "6e31f513": rgba(0,0,0,.6),
+);

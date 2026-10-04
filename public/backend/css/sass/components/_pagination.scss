@@ -1,0 +1,58 @@
+// ============================================
+// Pagination
+// ============================================
+
+.page-item.active .page-link {
+  background: linear-gradient(135deg, var(--tv-primary), var(--tv-primary-dark)) !important;
+  border-color: var(--tv-primary-dark) !important;
+}
+
+.page-link {
+  color: var(--tv-primary-dark);
+}
+
+// --- DataTables Pagination (scoped) ---
+.tv-backend .content-body {
+  .page-item .page-link {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 0.9rem !important;
+    margin: 0 0.2rem !important;
+    border: 1px solid var(--tv-border) !important;
+    border-radius: $radius-sm !important;
+    // background: var(--tv-surface) !important;
+    color: var(--tv-text) !important;
+    font-size: 0.9rem;
+    font-weight: $weight-semibold;
+    line-height: 1;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: var(--tv-primary) !important;
+      border-color:var(--tv-primary) !important;
+      color: var(--tv-text-on-brand) !important;
+    }
+  }
+
+  .page-item.active .page-link,
+  .dataTables_wrapper .dataTables_paginate .page-item.active .page-link {
+    @include gradient(135deg, var(--tv-primary), var(--tv-primary-dark));
+    // background: var(--tv-primary) !important;
+    border-color:var(--tv-primary) !important;
+    color: var(--tv-text-on-brand) !important;
+    box-shadow: 0 10px 22px var(--tv-focus-ring-strong) !important;
+  }
+
+  .dataTables_wrapper .dataTables_paginate .page-item.disabled .page-link,
+  .dataTables_wrapper .dataTables_paginate .page-item.disabled .page-link:hover {
+    opacity: 0.5;
+    cursor: default !important;
+    background: var(--tv-surface-muted) !important;
+    color: var(--tv-muted) !important;
+    border-color: var(--tv-border) !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,116 @@
+// ---------- "How it works" collapsible helper (x-how-it-works component) ----------
+.hiw { display: contents; }
+
+.hiw-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-inline-start: auto;
+  padding: 7px 14px;
+  border: 1px solid var(--tv-border, #e2e8f0);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tv-muted, #64748b);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.hiw-toggle:hover,
+.hiw-toggle.open {
+  color: var(--tv-primary-dark, #1d4ed8);
+  border-color: var(--tv-primary-dark, #1d4ed8);
+  background: rgba(var(--bs-primary-rgb, 29, 78, 216), .06);
+}
+.hiw-toggle:focus { outline: none; }
+.hiw-toggle .hiw-chevron { transition: transform .25s ease; }
+.hiw-toggle.open .hiw-chevron { transform: rotate(180deg); }
+
+.hiw-panel {
+  flex-basis: 100%;
+  min-width: 100%;
+  order: 99;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s ease;
+}
+.hiw-panel.open { grid-template-rows: 1fr; }
+.hiw-panel-clip { min-height: 0; overflow: hidden; }
+
+.hiw-panel-inner {
+  margin-top: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--tv-border, #dbeafe);
+  border-inline-start: 3px solid var(--tv-primary-dark, #1d4ed8);
+  border-radius: 10px;
+  background: rgba(var(--bs-primary-rgb, 29, 78, 216), .04);
+}
+.hiw-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--tv-primary-dark, #1d4ed8);
+}
+.hiw-intro {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tv-text, #334155);
+}
+.hiw-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: hiw-step;
+}
+.hiw-steps li {
+  counter-increment: hiw-step;
+  position: relative;
+  padding-inline-start: 34px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tv-text, #334155);
+}
+.hiw-steps li:last-child { margin-bottom: 0; }
+.hiw-steps li::before {
+  content: counter(hiw-step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--tv-primary-dark, #1d4ed8);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+.hiw-tips {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--tv-border, #dbeafe);
+}
+.hiw-tips p {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--tv-muted, #64748b);
+}
+.hiw-tips p:last-child { margin-bottom: 0; }
+.hiw-tips .fa-lightbulb-o { color: var(--tv-warning, #f59e0b); }
+
+// Let the panel wrap to its own full-width row inside whatever flex
+// header the helper is placed in (inert on non-flex parents)
+*:has(> .hiw) { flex-wrap: wrap; }

@@ -1,0 +1,135 @@
+@use "../abstracts/mixins";
+
+/* ============================================================
+   Responsive card spacing
+   ============================================================ */
+@media (max-width: 767.98px) {
+  .card-body, .tv-card-body { padding: 16px 16px; }
+  .card-header, .tv-card-head { padding: 12px 16px; }
+  .card, .tv-card { margin-bottom: 16px; }
+  .card-header, .tv-card-head { flex-direction: column; gap: 12px; }
+}
+
+@media (max-width: 575.98px) {
+  .card-body, .tv-card-body { padding: 14px 14px; }
+  .card-header, .tv-card-head { padding: 11px 14px; }
+  .card, .tv-card { margin-bottom: 14px; }
+}
+
+/* ============================================================
+   Dropdown menus — unified style
+   ============================================================ */
+.dropdown-menu {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px var(--theme-color-348c9372) !important;
+    border: 1px solid var(--tv-border) !important;
+    padding: 8px !important;
+    min-width: 160px;
+    background: var(--theme-color-d14f9016) !important;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    color: var(--tv-text) !important;
+    border-radius: 6px;
+    margin-bottom: 0 !important;
+    @include mixins.background-transition;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background: var(--tv-secondary) !important;
+    color: var(--tv-primary-dark) !important;
+}
+
+.dropdown-menu .dropdown-item i {
+    /* width: 20px; */
+    text-align: center;
+    margin-right: 8px;
+    color: var(--tv-muted);
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--tv-primary-dark);
+}
+
+.dropdown-divider {
+    border-color: var(--tv-border) !important;
+}
+
+.dropdown-header {
+    color: var(--tv-muted) !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px !important;
+}
+
+/* Action column trigger (three-dot) */
+td .input-group-prepend.be-addon .d-flex[data-toggle="dropdown"] {
+    cursor: pointer;
+    border-radius: 6px;
+    @include mixins.background-transition;
+}
+
+td .input-group-prepend.be-addon .d-flex[data-toggle="dropdown"]:hover {
+    background: var(--tv-secondary);
+}
+
+td .input-group-prepend.be-addon .d-flex[data-toggle="dropdown"] a {
+    color: var(--tv-text);
+}
+
+@media print {
+  .tv-sidebar,
+  .tv-sidebar-backdrop,
+  .nav-header,
+  .header {
+    display: none !important;
+  }
+
+  .tv-backend .content-body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.tv-dash{ padding-top:1.875rem; padding-bottom:1.875rem; }
+.tv-dash h4,.tv-dash h5{ color:var(--theme-color-3de0edf4); }
+.tv-date-chip{ background:var(--theme-color-73a06625);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--theme-color-229a6a07);border-radius:999px;padding:.5rem 1rem;font-size:.85rem;font-weight:600;color:var(--theme-color-58d44d32);box-shadow:0 4px 14px var(--theme-color-c7c0ba64); }
+
+/* KPI cards */
+.tv-kpi{ position:relative;overflow:hidden;border-radius:10px;padding:1.25rem 1.35rem;color:var(--theme-color-d14f9016);background:var(--grad);box-shadow:0 12px 30px var(--theme-color-d2687877);min-height:150px; }
+.tv-kpi-glow{ position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:var(--theme-color-ae5def70); }
+.tv-kpi-ico{ width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;background:var(--theme-color-bab0b826);backdrop-filter:blur(4px); }
+.tv-kpi-val{ font-size:1.7rem;font-weight:800;margin-top:.85rem;line-height:1.1;letter-spacing:-.02em; }
+.tv-kpi-label{ font-weight:600;opacity:.95; }
+.tv-kpi-sub{ font-size:.76rem;opacity:.8; }
+.tv-trend{ display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:700;padding:.25rem .55rem;border-radius:999px;background:var(--theme-color-bab0b826); }
+.tv-trend.down{ background:var(--theme-color-09884d7f); }
+
+/* Cards — see flow-admin.css for .tv-card / .tv-card-head / .tv-card-body */
+.fs-13{ font-size:.8rem; }
+.tv-legend{ display:flex;gap:1rem;font-size:.8rem;color:var(--theme-color-18046fe2); }
+.tv-legend .dot{ display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:.35rem; }
+.tv-link{ font-size:.85rem;font-weight:600;color:var(--theme-color-8e1a3019);text-decoration:none;white-space:nowrap; }
+.tv-link:hover{ color:var(--theme-color-ef736947); }
+
+/* Mini stats */
+.tv-mini{ display:flex;align-items:center;gap:.9rem;background:var(--theme-color-18e36c23);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border:1px solid var(--theme-color-229a6a07);border-radius:16px;padding:1rem 1.15rem;box-shadow:0 10px 28px var(--theme-color-6a703863); }
+.tv-mini-ico{ width:46px;height:46px;flex:0 0 auto;border-radius:13px;display:grid;place-items:center;font-size:1.2rem; }
+.tv-mini-val{ font-size:1.2rem;font-weight:800;color:var(--theme-color-3de0edf4);line-height:1.1; }
+.tv-mini-label{ font-size:.8rem;color:var(--theme-color-18046fe2); }
+
+/* Table */
+.tv-table thead th{ font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--theme-color-f60cdf0a);font-weight:700;border:0;background:var(--theme-color-c22384a1);padding:.8rem 1.35rem;white-space:nowrap; }
+.tv-table tbody td{ padding:.85rem 1.35rem;border-top:1px solid var(--theme-color-d699259c);vertical-align:middle;font-size:.9rem; }
+.tv-table tbody tr:hover{ background:var(--theme-color-499668ca); }
+.tv-avatar{ width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.78rem;font-weight:700;color:var(--theme-color-d14f9016);background:linear-gradient(135deg,var(--theme-color-8e1a3019),var(--theme-color-26fb22bc)); }
+
+/* Progress */
+.tv-progress{ height:8px;border-radius:999px;background:var(--theme-color-87ef6d66);overflow:hidden; }
+.tv-progress-bar{ height:100%;border-radius:999px;background:linear-gradient(90deg,var(--theme-color-8e1a3019),var(--theme-color-7b66c35b)); }

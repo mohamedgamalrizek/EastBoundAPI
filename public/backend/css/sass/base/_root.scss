@@ -1,0 +1,21 @@
+// ============================================
+// CSS Custom Properties (Root)
+// ============================================
+
+:root {
+  // --- Style Tokens ---
+  --tv-radius: 14px;
+
+  // --- Layout ---
+  --tv-sidebar-width: #{$sidebar-width};
+  --tv-sidebar-collapsed: #{$sidebar-collapsed};
+  --tv-admin-header-height: #{$admin-header-height};
+
+  // --- Component Geometry ---
+  --tv-card-radius: #{$radius-lg};
+  --tv-control-radius: #{$radius-sm};
+  --tv-table-cell-y: 0.95rem;
+  --tv-table-cell-x: 1.25rem;
+  --tv-card-space-y: 1.5rem;
+  --tv-card-space-x: 1.5rem;
+}

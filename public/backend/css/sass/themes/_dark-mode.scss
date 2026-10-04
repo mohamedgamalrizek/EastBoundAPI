@@ -1,0 +1,467 @@
+// ============================================
+// Backend Theme Color System
+// ============================================
+// Color literals live only in this partial. Components consume the
+// semantic --tv-* properties so runtime theme changes need no rebuild.
+
+:root,
+.tv-backend {
+  color-scheme: light;
+
+  // Brand and status
+  --tv-primary: #a81a20;
+  --tv-primary-strong: #7a1117;
+  --tv-primary-rgb: 168, 26, 32;
+  --tv-primary-dark: var(--tv-primary-strong);
+  --tv-accent: #d45b60;
+  --tv-secondary: #f7e7e8;
+  --tv-success: #22c55e;
+  --tv-danger: #ef4444;
+  --tv-warning: #f59e0b;
+  --tv-brand-indigo: #6366f1;
+  --tv-brand-indigo-strong: #4f46e5;
+  --tv-brand-purple: #8b5cf6;
+  --tv-brand-cyan: #06b6d4;
+  --tv-indigo-soft: rgba(109, 94, 252, 0.14);
+  --tv-accent-soft: rgba(0, 194, 255, 0.1);
+  --tv-danger-soft: #ff6a8b;
+  --tv-danger-strong: #ff2d55;
+
+  // Backgrounds and surfaces
+  --tv-bg-primary: #fffafa;
+  --tv-bg: var(--tv-bg-primary);
+  --tv-content-bg: #eaeefc;
+  --tv-card-bg: #ffffff;
+  --tv-surface: #ffffff;
+  --tv-surface-raised: #ffffff;
+  --tv-surface-muted: #f8fafc;
+  --tv-surface-hover: #fff5f5;
+  --tv-control-bg: rgba(255, 255, 255, 0.72);
+  --tv-control-bg-strong: rgba(255, 255, 255, 0.94);
+  --tv-surface-glass: rgba(255, 255, 255, 0.62);
+  --tv-surface-glass-strong: rgba(255, 255, 255, 0.7);
+  --tv-navbar-bg: #ffffff;
+  --tv-header-bg: rgba(255, 255, 255, 0.68);
+
+  // Text and icons
+  --tv-text-primary: #1e293b;
+  --tv-text: var(--tv-text-primary);
+  --tv-text-heading: #334155;
+  --tv-heading: var(--tv-text-heading);
+  --tv-text-secondary: #475569;
+  --tv-text-muted: #64748b;
+  --tv-muted: var(--tv-text-muted);
+  --tv-text-subtle: #94a3b8;
+  --tv-text-disabled: #64748b;
+  --tv-text-on-brand: #ffffff;
+  --tv-icon-color: #475569;
+  --tv-sidebar-text: rgba(255, 255, 255, 0.86);
+  --tv-sidebar-text-muted: rgba(255, 255, 255, 0.72);
+  --tv-sidebar-text-soft: rgba(255, 255, 255, 0.58);
+
+  // Semantic component text tokens (independent control points)
+  --tv-placeholder: #94a3b8;
+  --tv-icon: var(--tv-icon-color);
+  --tv-editor: var(--tv-text-primary);
+  --tv-modal: var(--tv-text-primary);
+  --tv-dropdown: var(--tv-text-primary);
+  --tv-table-color: var(--tv-text-primary);
+  --tv-control: var(--tv-text-primary);
+  --tv-label: var(--tv-text-secondary);
+  --tv-disabled: var(--tv-text-disabled);
+  --tv-empty: var(--tv-text-muted);
+  --tv-badge-text: #ffffff;
+
+  // Borders, focus, and dividers
+  --tv-border-color: #e2e8f0;
+  --tv-border: var(--tv-border-color);
+  --tv-border-strong: #dee5f0;
+  --tv-divider: rgba(120, 130, 200, 0.14);
+  --tv-header-border: rgba(255, 255, 255, 0.55);
+  --tv-divider-on-brand: rgba(255, 255, 255, 0.22);
+  --tv-focus-ring: rgba(168, 26, 32, 0.16);
+  --tv-focus-ring-soft: rgba(168, 26, 32, 0.12);
+  --tv-focus-ring-strong: rgba(168, 26, 32, 0.24);
+
+  // Shadows and overlays
+  --tv-shadow-color: rgba(30, 41, 59, 0.08);
+  --tv-shadow-soft-color: rgba(30, 41, 59, 0.05);
+  --tv-shadow-header-color: rgba(76, 84, 160, 0.06);
+  --tv-shadow-dropdown-color: rgba(0, 0, 0, 0.08);
+  --tv-shadow-sidebar-color: rgba(0, 0, 0, 0.2);
+  --tv-shadow-mobile-color: rgba(15, 23, 42, 0.22);
+  --tv-shadow-brand-color: rgba(168, 26, 32, 0.28);
+  --tv-shadow-primary-color: rgba(168, 26, 32, 0.28);
+  --tv-shadow-primary-hover-color: rgba(168, 26, 32, 0.38);
+  --tv-shadow-danger-color: rgba(255, 45, 85, 0.32);
+  --tv-kpi-card-shadow: rgba(15, 23, 42, 0.16);
+  --tv-overlay: rgba(15, 23, 42, 0.48);
+  --tv-black-10: rgba(0, 0, 0, 0.1);
+  --tv-black-20: rgba(0, 0, 0, 0.2);
+  --tv-black-30: rgba(0, 0, 0, 0.3);
+  --tv-black-35: rgba(0, 0, 0, 0.35);
+  --tv-black-40: rgba(0, 0, 0, 0.4);
+  --tv-black-45: rgba(0, 0, 0, 0.45);
+  --tv-black-60: rgba(0, 0, 0, 0.6);
+  --tv-black-70: rgba(0, 0, 0, 0.7);
+  --tv-shadow: 0 8px 24px var(--tv-shadow-color);
+  --tv-shadow-brand: 0 10px 26px var(--tv-shadow-brand-color);
+  --tv-soft-shadow: 0 10px 28px var(--tv-shadow-soft-color);
+
+  // Glass
+  --tv-glass-bg: rgba(255, 255, 255, 0.6);
+  --tv-glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --tv-glass-border: rgba(255, 255, 255, 0.65);
+  --tv-glass-shadow-color: rgba(76, 84, 160, 0.14);
+  --glass: var(--tv-glass-bg);
+  --glass-strong: var(--tv-glass-bg-strong);
+  --glass-brd: var(--tv-glass-border);
+  --glass-shadow: 0 12px 34px var(--tv-glass-shadow-color);
+
+  // Navigation
+  --tv-sidebar-gradient-start: #a81a20;
+  --tv-sidebar-gradient-middle: #7a1117;
+  --tv-sidebar-gradient-end: #4a0d10;
+  --tv-sidebar-hover-bg: rgba(255, 255, 255, 0.15);
+  --tv-sidebar-active-bg: rgba(255, 255, 255, 0.96);
+  --tv-sidebar-active-soft-bg: rgba(255, 255, 255, 0.16);
+
+  // Content decoration and data surfaces
+  --tv-content-glow-primary: rgba(168, 26, 32, 0.16);
+  --tv-content-glow-accent: rgba(212, 91, 96, 0.14);
+  --tv-content-glow-blue: rgba(168, 26, 32, 0.10);
+  --tv-kpi-bg: rgba(255, 255, 255, 0.7);
+  --tv-kpi-border: rgba(255, 255, 255, 0.65);
+  --tv-kpi-shadow: rgba(76, 84, 160, 0.08);
+  --tv-kpi-shadow-strong: rgba(76, 84, 160, 0.12);
+  --tv-trend-down-bg: rgba(0, 0, 0, 0.18);
+  --tv-progress-bg: #eef2f7;
+  --tv-table-head-bg: rgba(255, 255, 255, 0.45);
+  --tv-table-row-hover: rgba(109, 94, 252, 0.07);
+  --tv-table-footer-bg: rgba(255, 255, 255, 0.4);
+  --tv-table-border: #f1f5f9;
+  --tv-chart-grid: #f1f5f9;
+  --tv-chart-label: #475569;
+  --tv-transparent: transparent;
+
+  // Bootstrap and historical aliases still consumed by vendor/legacy CSS.
+  --bs-primary: var(--tv-primary-strong);
+  --bs-primary-rgb: var(--tv-primary-rgb);
+  --bs-link-color: var(--tv-primary-strong);
+  --bs-link-hover-color: #1f63c4;
+  --clr-heading: #38414d;
+  --clr-body: #798494;
+  --clr-body-2: #97a0ae;
+  --clr-bg: #fff5f5;
+  --clr-bg-2: #fff5f5;
+  --clr-primary: #a81a20;
+  --clr-primary-2: #7a1117;
+  --clr-white: #ffffff;
+  --clr-black: #000000;
+  --clr-border: #e8d2d4;
+  --clr-red: #ff3b3b;
+  --clr-ylw: #fea412;
+  --clr-green: #0caf60;
+  --clr-green-2: #06c270;
+  --clr-rgb: 168, 26, 32;
+  --theme-channel-13b49a72: var(--tv-primary-rgb);
+
+  // Existing glass-gradient aliases.
+  --g1: #a81a20;
+  --g2: #7a1117;
+  --g3: var(--tv-accent);
+}
+
+.tv-backend.dark-mode,
+.tv-backend[data-theme='dark'] {
+  color-scheme: dark;
+
+  --tv-primary: #d45b60;
+  --tv-primary-strong: #a81a20;
+  --tv-primary-rgb: 168, 26, 32;
+  --tv-accent: #f08a8e;
+  --tv-secondary: #3a181a;
+  --tv-success: #22c55e;
+  --tv-danger: #ef4444;
+  --tv-warning: #f59e0b;
+
+  --tv-bg-primary: #1b1011;
+  --tv-content-bg: #1b1011;
+  --tv-card-bg: #261314;
+  --tv-surface: #261314;
+  --tv-surface-raised: #341719;
+  --tv-surface-muted: #301617;
+  --tv-surface-hover: #421c1f;
+  --tv-control-bg: #341719;
+  --tv-control-bg-strong: #341719;
+  --tv-surface-glass: rgba(52, 23, 25, 0.86);
+  --tv-surface-glass-strong: rgba(52, 23, 25, 0.94);
+  --tv-navbar-bg: #261314;
+  --tv-header-bg: #261314;
+
+  --tv-text-primary: #f8fafc;
+  --tv-text-heading: #f1f5f9;
+  --tv-text-secondary: #cbd5e1;
+  --tv-text-muted: #94a3b8;
+  --tv-text-subtle: #94a3b8;
+  --tv-icon-color: #cbd5e1;
+
+  // Semantic component text tokens (dark overrides)
+  --tv-placeholder: var(--tv-text-subtle);
+  --tv-icon: var(--tv-icon-color);
+  --tv-editor: var(--tv-text-primary);
+  --tv-modal: var(--tv-text-primary);
+  --tv-dropdown: var(--tv-text-primary);
+  --tv-table-color: var(--tv-text-primary);
+  --tv-control: var(--tv-text-primary);
+  --tv-label: var(--tv-text-secondary);
+  --tv-disabled: var(--tv-text-disabled);
+  --tv-empty: var(--tv-text-muted);
+  --tv-badge-text: #ffffff;
+
+  --tv-border-color: #5c282b;
+  --tv-border-strong: #7a373b;
+  --tv-divider: #5c282b;
+  --tv-header-border: #5c282b;
+  --tv-focus-ring: rgba(212, 91, 96, 0.24);
+  --tv-focus-ring-soft: rgba(212, 91, 96, 0.16);
+  --tv-focus-ring-strong: rgba(168, 26, 32, 0.32);
+
+  --tv-shadow-color: rgba(0, 0, 0, 0.25);
+  --tv-shadow-soft-color: rgba(0, 0, 0, 0.15);
+  --tv-shadow-header-color: rgba(0, 0, 0, 0.2);
+  --tv-shadow-dropdown-color: rgba(0, 0, 0, 0.3);
+  --tv-shadow-sidebar-color: rgba(0, 0, 0, 0.35);
+  --tv-shadow-mobile-color: rgba(0, 0, 0, 0.3);
+  --tv-shadow-brand-color: rgba(168, 26, 32, 0.34);
+  --tv-shadow-primary-color: rgba(168, 26, 32, 0.34);
+  --tv-shadow-primary-hover-color: rgba(168, 26, 32, 0.44);
+  --tv-shadow-danger-color: rgba(239, 68, 68, 0.28);
+  --tv-kpi-card-shadow: rgba(0, 0, 0, 0.2);
+  --tv-overlay: rgba(0, 0, 0, 0.6);
+
+  --tv-glass-bg: rgba(38, 19, 20, 0.86);
+  --tv-glass-bg-strong: rgba(52, 23, 25, 0.94);
+  --tv-glass-border: rgba(240, 138, 142, 0.24);
+  --tv-glass-shadow-color: rgba(0, 0, 0, 0.35);
+
+  --tv-sidebar-gradient-start: #a81a20;
+  --tv-sidebar-gradient-middle: #7a1117;
+  --tv-sidebar-gradient-end: #3a181a;
+  --tv-sidebar-text: rgba(226, 232, 240, 0.9);
+  --tv-sidebar-text-muted: rgba(203, 213, 225, 0.72);
+  --tv-sidebar-text-soft: rgba(148, 163, 184, 0.72);
+  --tv-sidebar-hover-bg: rgba(240, 138, 142, 0.14);
+  --tv-sidebar-active-bg: rgba(240, 138, 142, 0.2);
+  --tv-sidebar-active-soft-bg: rgba(240, 138, 142, 0.16);
+
+  --tv-kpi-bg: rgba(52, 23, 25, 0.9);
+  --tv-kpi-border: rgba(240, 138, 142, 0.24);
+  --tv-kpi-shadow: rgba(0, 0, 0, 0.2);
+  --tv-kpi-shadow-strong: rgba(0, 0, 0, 0.3);
+  --tv-trend-down-bg: rgba(0, 0, 0, 0.3);
+  --tv-progress-bg: #421c1f;
+  --tv-table-head-bg: #341719;
+  --tv-table-row-hover: #421c1f;
+  --tv-table-footer-bg: #341719;
+  --tv-table-border: #5c282b;
+  --tv-chart-grid: #7a373b;
+  --tv-chart-label: #cbd5e1;
+
+  --bs-primary: var(--tv-primary-strong);
+  --bs-primary-rgb: var(--tv-primary-rgb);
+  --bs-link-color: var(--tv-primary-strong);
+  --bs-link-hover-color: var(--tv-primary);
+  --clr-heading: var(--tv-text-heading);
+  --clr-body: var(--tv-text-primary);
+  --clr-body-2: var(--tv-text-primary);
+  --clr-bg: var(--tv-surface-raised);
+  --clr-bg-2: var(--tv-surface-raised);
+  --clr-primary: var(--tv-primary);
+  --clr-primary-2: var(--tv-primary-strong);
+  --clr-white: var(--tv-surface-raised);
+  --clr-black: #000000;
+  --clr-border: var(--tv-border-color);
+  --clr-red: var(--tv-danger);
+  --clr-ylw: var(--tv-warning);
+  --clr-green: var(--tv-success);
+  --clr-green-2: var(--tv-success);
+  --clr-rgb: var(--tv-primary-rgb);
+  --theme-channel-13b49a72: var(--tv-primary-rgb);
+
+  // Legacy token compatibility. These preserve dark-mode.css behavior for
+  // bootstrap.css/custom.css while new SASS uses semantic properties.
+  --theme-color-0445cae2: var(--tv-primary);
+  --theme-color-669e694e: var(--tv-primary-strong);
+  --theme-color-2867bd89: var(--tv-accent);
+  --theme-color-1d8e689d: var(--tv-surface-hover);
+  --theme-color-535e0502: var(--tv-primary);
+  --theme-color-6675cea5: var(--tv-focus-ring);
+  --theme-color-ca5219e3: var(--tv-focus-ring-soft);
+  --theme-color-5c0e15d5: var(--tv-focus-ring-strong);
+  --theme-color-96520d71: var(--tv-shadow-brand-color);
+  --theme-color-e60eef7e: var(--tv-primary);
+  --theme-color-3d30716b: var(--tv-primary-strong);
+  --theme-color-c6bbcdf7: var(--tv-primary-strong);
+  --theme-color-d9eb44cc: var(--tv-primary);
+  --theme-color-b7287a93: var(--tv-primary);
+  --theme-color-b988605a: var(--tv-primary);
+  --theme-color-fb88b087: var(--tv-primary-strong);
+  --theme-color-c5ff4c74: var(--tv-primary-strong);
+  --theme-color-f9356e34: var(--tv-primary-strong);
+
+  --theme-color-d14f9016: var(--tv-surface-raised);
+  --theme-color-c659d630: var(--tv-surface-raised);
+  --theme-color-528cef87: var(--tv-surface-raised);
+  --theme-color-d425e3e4: var(--tv-surface-raised);
+  --theme-color-c82f339b: var(--tv-bg-primary);
+  --theme-color-499668ca: var(--tv-surface-muted);
+  --theme-color-1a31bb32: var(--tv-surface-hover);
+  --theme-color-fcca3571: var(--tv-surface-raised);
+  --theme-color-bd5aa653: var(--tv-surface-raised);
+  --theme-color-e5dd59dc: var(--tv-surface-raised);
+  --theme-color-e50e19e1: var(--tv-surface-raised);
+  --theme-color-524bf277: var(--tv-surface-raised);
+  --theme-color-512cac12: var(--tv-surface-raised);
+  --theme-color-fbfcfc: var(--tv-surface-raised);
+  --theme-color-eb5118ba: var(--tv-surface-raised);
+  --theme-color-fdfdfe: var(--tv-surface-raised);
+  --theme-color-f7f8fa: var(--tv-surface-raised);
+  --theme-color-87ef6d66: var(--tv-progress-bg);
+  --theme-color-c06fb634: var(--tv-surface-raised);
+  --theme-color-c42653b7: var(--tv-surface-raised);
+  --theme-color-d699259c: var(--tv-surface-raised);
+  --theme-color-f3f6f9: var(--tv-surface-raised);
+  --theme-color-eef5f9: var(--tv-surface-raised);
+  --theme-color-a7896559: var(--tv-surface-hover);
+  --theme-color-95caa71b: var(--tv-bg-primary);
+
+  --theme-color-1dff4ce9: var(--tv-shadow-soft-color);
+  --theme-color-eeb0e508: var(--tv-black-10);
+  --theme-color-b001a3a2: var(--tv-black-30);
+  --theme-color-d2687877: var(--tv-kpi-card-shadow);
+  --theme-color-41225719: var(--tv-black-40);
+  --theme-color-db768271: var(--tv-shadow-color);
+  --theme-color-3eb3d433: var(--tv-black-20);
+
+  --theme-color-e9db2df9: var(--tv-text-primary);
+  --theme-color-b36634cc: var(--tv-text-heading);
+  --theme-color-94e60589: var(--tv-text-primary);
+  --theme-color-cd6f9397: var(--tv-text-muted);
+  --theme-color-6a83cdea: var(--tv-text-heading);
+  --theme-color-3742997b: var(--tv-text-primary);
+  --theme-color-18046fe2: var(--tv-text-muted);
+  --theme-color-22f1e410: var(--tv-text-primary);
+  --theme-color-27019009: var(--tv-text-muted);
+  --theme-color-ec705538: var(--tv-text-secondary);
+  --theme-color-df9c1d2d: var(--tv-text-muted);
+  --theme-color-ddcaf262: var(--tv-text-primary);
+  --theme-color-cd57add3: var(--tv-text-disabled);
+  --theme-color-80f177d9: var(--tv-text-disabled);
+  --theme-color-bb1ab787: var(--tv-text-disabled);
+  --theme-color-5e25c916: var(--tv-text-disabled);
+  --theme-color-ab96a211: var(--tv-text-disabled);
+  --theme-color-9d9002f1: var(--tv-text-disabled);
+  --theme-color-b9f4f8b8: var(--tv-text-disabled);
+  --theme-color-4ddfd10d: var(--tv-text-muted);
+  --theme-color-58d44d32: var(--tv-text-muted);
+  --theme-color-c6c14563: var(--tv-text-secondary);
+  --theme-color-c8cb0787: var(--tv-text-muted);
+  --theme-color-3e35a304: var(--tv-text-muted);
+  --theme-color-3984d914: var(--tv-text-muted);
+
+  --theme-color-5858f7f2: var(--tv-border-color);
+  --theme-color-825f0854: var(--tv-border-color);
+  --theme-color-4e24f456: var(--tv-border-color);
+  --theme-color-dfa43ecc: var(--tv-border-color);
+  --theme-color-d5c50b5d: var(--tv-border-color);
+  --theme-color-cf4cbe75: var(--tv-border-color);
+  --theme-color-14cec9a8: var(--tv-border-color);
+  --theme-color-5ce121fd: var(--tv-border-strong);
+  --theme-color-4132b283: var(--tv-border-strong);
+  --theme-color-530f42ea: var(--tv-border-strong);
+  --theme-color-ab33d366: var(--tv-border-strong);
+  --theme-color-95c0f951: var(--tv-border-strong);
+  --theme-color-c949c62c: var(--tv-border-strong);
+  --theme-color-736c1e54: var(--tv-border-strong);
+
+  --theme-color-b76db732: var(--tv-black-35);
+  --theme-color-c218b4b1: var(--tv-black-20);
+  --theme-color-391df974: var(--tv-black-35);
+  --theme-color-7371e081: var(--tv-black-35);
+  --theme-color-09884d7f: var(--tv-trend-down-bg);
+  --theme-color-c7238605: var(--tv-black-20);
+  --theme-color-86967987: var(--tv-black-40);
+  --theme-color-4c46ca18: var(--tv-black-45);
+  --theme-color-4d2c9df8: var(--tv-black-45);
+  --theme-color-e946900b: var(--tv-black-60);
+  --theme-color-08a9fb88: var(--tv-black-70);
+  --theme-color-d16ed620: var(--tv-black-60);
+  --theme-color-5ab9c0eb: var(--tv-shadow-sidebar-color);
+  --theme-color-d5b06a13: var(--tv-shadow-sidebar-color);
+  --theme-color-6e31f513: var(--tv-black-60);
+
+  // Additional aliases consumed by the current SASS tree.
+  --theme-color-0850a770: var(--tv-sidebar-active-bg);
+  --theme-color-0d41cad3: var(--tv-sidebar-hover-bg);
+  --theme-color-0e74138b: var(--tv-sidebar-hover-bg);
+  --theme-color-15656097: var(--tv-danger-soft);
+  --theme-color-18e36c23: var(--tv-surface-glass);
+  --theme-color-21786734: var(--tv-glass-shadow-color);
+  --theme-color-229a6a07: var(--tv-kpi-border);
+  --theme-color-24b95201: var(--tv-divider);
+  --theme-color-26fb22bc: var(--tv-brand-purple);
+  --theme-color-274c1329: var(--tv-sidebar-hover-bg);
+  --theme-color-2917bdb4: var(--tv-sidebar-text);
+  --theme-color-30dfc6fb: var(--tv-header-bg);
+  --theme-color-348c9372: var(--tv-shadow-dropdown-color);
+  --theme-color-3de0edf4: var(--tv-text-primary);
+  --theme-color-42ef4fa1: var(--tv-indigo-soft);
+  --theme-color-4b09feed: var(--tv-shadow-primary-color);
+  --theme-color-506661e6: var(--tv-shadow-danger-color);
+  --theme-color-51c2fab3: var(--tv-glass-bg);
+  --theme-color-5b4b5d69: var(--tv-table-row-hover);
+  --theme-color-6237d48c: var(--tv-control-bg-strong);
+  --theme-color-63b7ea25: var(--tv-table-head-bg);
+  --theme-color-6a703863: var(--tv-kpi-shadow-strong);
+  --theme-color-735a0f90: var(--tv-divider-on-brand);
+  --theme-color-73a06625: var(--tv-kpi-bg);
+  --theme-color-7437b68d: var(--tv-warning);
+  --theme-color-7a92317e: var(--tv-sidebar-hover-bg);
+  --theme-color-7b66c35b: var(--tv-brand-cyan);
+  --theme-color-82dfe22b: var(--tv-divider);
+  --theme-color-85a87a6e: var(--tv-danger-strong);
+  --theme-color-894153ed: var(--tv-content-glow-blue);
+  --theme-color-8c87a26c: var(--tv-content-glow-primary);
+  --theme-color-8e1a3019: var(--tv-brand-indigo);
+  --theme-color-9313786c: var(--tv-divider-on-brand);
+  --theme-color-9f36b219: var(--tv-sidebar-text);
+  --theme-color-a172cd26: var(--tv-shadow-primary-hover-color);
+  --theme-color-a293054a: var(--tv-danger);
+  --theme-color-a5a9c1a4: var(--tv-divider-on-brand);
+  --theme-color-a7d7499c: var(--tv-header-border);
+  --theme-color-ae5def70: var(--tv-sidebar-active-soft-bg);
+  --theme-color-b8079b9d: var(--tv-sidebar-text);
+  --theme-color-b8d33d7e: var(--tv-content-bg);
+  --theme-color-bab0b826: var(--tv-divider-on-brand);
+  --theme-color-c1419dcb: var(--tv-success);
+  --theme-color-c22384a1: var(--tv-table-footer-bg);
+  --theme-color-c7c0ba64: var(--tv-kpi-shadow);
+  --theme-color-c90ada57: var(--tv-glass-bg-strong);
+  --theme-color-cca40dd9: var(--tv-sidebar-gradient-middle);
+  --theme-color-cf42094b: var(--tv-sidebar-text-soft);
+  --theme-color-d354bdc0: var(--tv-shadow-header-color);
+  --theme-color-d6f0e3f8: var(--tv-control-bg);
+  --theme-color-d6f2fe6a: var(--tv-sidebar-gradient-start);
+  --theme-color-da3d8a08: var(--tv-sidebar-active-bg);
+  --theme-color-e44819a8: var(--tv-sidebar-gradient-end);
+  --theme-color-e5c6c239: var(--tv-sidebar-active-soft-bg);
+  --theme-color-e6c6f105: var(--tv-sidebar-text-muted);
+  --theme-color-e94b9730: var(--tv-shadow-header-color);
+  --theme-color-ef736947: var(--tv-brand-indigo-strong);
+  --theme-color-f0252325: var(--tv-glass-border);
+  --theme-color-f21db72d: var(--tv-accent-soft);
+  --theme-color-f4818af9: var(--tv-content-glow-accent);
+  --theme-color-f60cdf0a: var(--tv-text-subtle);
+  --theme-color-fa539cea: var(--tv-sidebar-gradient-start);
+}

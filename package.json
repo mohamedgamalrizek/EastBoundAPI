@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "npm run build:backend-css && npm run build:frontend-css",
+        "build:backend-css": "sass --style=compressed --no-source-map resources/scss/backend/foundation.scss public/backend/css/backend-foundation.css && sass --style=compressed --no-source-map resources/scss/backend/responsive.scss public/backend/css/backend-responsive.css && sass --style=compressed --no-source-map resources/scss/backend/admin.scss public/backend/css/flow-admin.css && sass --style=compressed --no-source-map public/backend/css/sass/main.scss public/backend/css/sass/main.css",
+        "build:frontend-css": "sass --style=compressed --no-source-map public/frontend/scss/main.scss public/frontend/scss/main.css && sass --style=compressed --no-source-map public/frontend/scss/saas-landing-pages/saas-landing-main.scss public/frontend/scss/saas-landing-pages/saas-landing-main.css",
+        "refactor:backend-colors": "node scripts/refactor-backend-colors.mjs"
+    },
+    "devDependencies": {
+        "postcss": "^8.5.28",
+        "postcss-value-parser": "^4.2.0",
+        "sass": "^1.101.0"
+    }
+}

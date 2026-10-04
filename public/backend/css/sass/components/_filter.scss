@@ -1,0 +1,61 @@
+// ============================================
+// Filter Components
+// ============================================
+
+.tv-filter-card {
+  transition: opacity $transition-base;
+
+  &.tv-collapsed {
+    display: none !important;
+  }
+}
+
+.tv-filter-card .form-control,
+.tv-filter-card .input-style-1 {
+  height: 42px;
+}
+
+.tv-filter-card .label-style-1 {
+  font-size: 0.78rem;
+  font-weight: $weight-semibold;
+  color: var(--tv-muted);
+}
+
+.tv-filter-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+}
+
+.tv-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--tv-card-bg) !important;
+  color: var(--tv-primary-dark) !important;
+  border: 1.5px solid var(--tv-border) !important;
+  @include pill;
+  padding: 8px 16px !important;
+  font-family: $font-heading;
+  font-weight: $weight-semibold;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    border-color: var(--tv-primary) !important;
+    background: var(--tv-secondary) !important;
+  }
+
+  &.is-active {
+    @include gradient(135deg, var(--tv-primary), var(--tv-primary-dark));
+    border-color: var(--tv-transparent) !important;
+    color: var(--tv-text-on-brand) !important;
+    box-shadow: var(--tv-shadow-brand);
+  }
+
+  i {
+    font-size: 0.82rem;
+  }
+}

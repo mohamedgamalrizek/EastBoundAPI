@@ -1,0 +1,6 @@
+body { background:#0f172a; font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+.login-card { max-width:400px; margin:9vh auto; }
+.brand { font-weight:800; color:#fff; }
+.btn-blue { background:#2563eb;border:none;color:#fff;font-weight:600 } .btn-blue:hover{background:#1d4ed8;color:#fff}
+.brand-dot{color:#0ea5e9}
+.fs-sm{font-size:.8rem}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <!--
+            Tests MUST NOT run against the development database. Several suite
+            tests use RefreshDatabase, which drops every table — pointed at
+            DB_DATABASE it wipes real data. Keep this override in place.
+            Create the database once:  CREATE DATABASE flow_test;
+            (sqlite is not usable here: migrations and list analytics use MySQL
+            functions such as DATE_FORMAT.)
+        -->
+        <env name="DB_DATABASE" value="flow_test"/>
+        <env name="APP_DEMO" value="true"/>
+        <!-- The installer guard runs as global middleware, so without this every
+             web-route test redirects to /install depending on the local .env. -->
+        <env name="APP_INSTALLED" value="true"/>
+        <!-- Pinned so the suite does not depend on the developer's own APP_URL;
+             the same-origin checks compare against this host. -->
+        <env name="APP_URL" value="http://localhost"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>

@@ -1,0 +1,172 @@
+.gradient_one {
+    background-image: linear-gradient(
+        to right,
+        var(--theme-color-1cbc6705) 0%,
+        var(--theme-color-b62d674c) 100%
+    );
+}
+
+.gradient-1 {
+    background: var(--theme-color-847a2f06);
+    background: -moz-linear-gradient(top, var(--theme-color-847a2f06) 0%, var(--theme-color-9d47ceef) 100%);
+    background: -webkit-linear-gradient(top, var(--theme-color-847a2f06) 0%, var(--theme-color-9d47ceef) 100%);
+    background: linear-gradient(to bottom, var(--theme-color-847a2f06) 0%, var(--theme-color-9d47ceef) 100%) !important;
+
+}
+
+.gradient-2 {
+    background: var(--theme-color-0b66b930);
+    background: -moz-linear-gradient(top, var(--theme-color-0b66b930) 0%, var(--theme-color-61f95580) 100%);
+    background: -webkit-linear-gradient(top, var(--theme-color-0b66b930) 0%, var(--theme-color-61f95580) 100%);
+    background: linear-gradient(to bottom, var(--theme-color-0b66b930) 0%, var(--theme-color-61f95580) 100%) !important;
+
+}
+
+.gradient-3,
+.morris-hover {
+    background: var(--theme-color-560b7061);
+    background: -moz-linear-gradient(top, var(--theme-color-560b7061) 0%, var(--theme-color-8aa69edf) 100%);
+    background: -webkit-linear-gradient(top, var(--theme-color-560b7061) 0%, var(--theme-color-8aa69edf) 100%);
+    background: linear-gradient(to bottom, var(--theme-color-560b7061) 0%, var(--theme-color-8aa69edf) 100%) !important;
+
+}
+
+.gradient-4 {
+    background: var(--theme-color-f2f51f6b);
+    background: -moz-linear-gradient(left, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%);
+    background: linear-gradient(to right, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%);
+
+}
+
+.gradient-5 {
+    background: var(--theme-color-9d47ceef);
+    background: -moz-linear-gradient(left, var(--theme-color-9d47ceef) 0%, var(--theme-color-847a2f06) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-9d47ceef) 0%, var(--theme-color-847a2f06) 100%);
+    background: linear-gradient(to right, var(--theme-color-9d47ceef) 0%, var(--theme-color-847a2f06) 100%) !important;
+
+}
+
+.gradient-6 {
+    background: var(--theme-color-43f25a36);
+    background: -moz-linear-gradient(left, var(--theme-color-43f25a36) 0%, var(--theme-color-c396db69) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-43f25a36) 0%, var(--theme-color-c396db69) 100%);
+    background: linear-gradient(to right, var(--theme-color-43f25a36) 0%, var(--theme-color-c396db69) 100%) !important;
+
+}
+
+.gradient-7 {
+    background: var(--theme-color-35e7cc01);
+    background: -moz-linear-gradient(left, var(--theme-color-35e7cc01) 0%, var(--theme-color-62c07079) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-35e7cc01) 0%, var(--theme-color-62c07079) 100%);
+    background: linear-gradient(to right, var(--theme-color-35e7cc01) 0%, var(--theme-color-62c07079) 100%) !important;
+
+}
+
+.gradient-8 {
+    background: var(--theme-color-afc43450);
+    background: -moz-linear-gradient(top, var(--theme-color-afc43450) 0%, var(--theme-color-f2f51f6b) 100%);
+    background: -webkit-linear-gradient(top, var(--theme-color-afc43450) 0%, var(--theme-color-f2f51f6b) 100%);
+    background: linear-gradient(to bottom, var(--theme-color-afc43450) 0%, var(--theme-color-f2f51f6b) 100%);
+
+}
+
+.gradient-9,
+.datepicker.datepicker-dropdown td.day:hover,
+.datepicker.datepicker-dropdown th.next:hover,
+.datepicker.datepicker-dropdown th.prev:hover,
+.datepicker table tr td.selected,
+.datepicker table tr td.active,
+.datepicker table tr td.today,
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today.disabled,
+.datepicker table tr td.today.disabled:hover {
+    background: var(--theme-color-c15dd44e) !important;
+    background: -moz-linear-gradient(left, var(--theme-color-c15dd44e) 0%, var(--theme-color-93ef3b71) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-c15dd44e) 0%, var(--theme-color-93ef3b71) 100%);
+    background: linear-gradient(to right, var(--theme-color-c15dd44e) 0%, var(--theme-color-93ef3b71) 100%) !important;
+
+}
+
+.gradient-10 {
+    background: var(--theme-color-f2f51f6b) !important;
+    background: -moz-linear-gradient(left, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%);
+    background: linear-gradient(to top, var(--theme-color-f2f51f6b) 0%, var(--theme-color-9bfe3f3c) 100%) !important;
+
+}
+
+.gradient-11 {
+    background: var(--theme-color-fb88b087);
+    background: -moz-linear-gradient(left, var(--theme-color-fb88b087) 0%, var(--theme-color-4b0c3d18) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-fb88b087) 0%, var(--theme-color-4b0c3d18) 100%);
+    background: linear-gradient(to right, var(--theme-color-fb88b087) 0%, var(--theme-color-4b0c3d18) 100%);
+
+}
+
+.gradient-12 {
+    background: var(--theme-color-900e4a00);
+    background: -moz-linear-gradient(left, var(--theme-color-900e4a00) 0%, var(--theme-color-3669ce4f) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-900e4a00) 0%, var(--theme-color-3669ce4f) 100%);
+    background: linear-gradient(to right, var(--theme-color-900e4a00) 0%, var(--theme-color-3669ce4f) 100%);
+
+}
+
+.gradient-13 {
+    background: var(--theme-color-60fff7b0);
+    background: -moz-linear-gradient(left, var(--theme-color-60fff7b0) 0%, var(--theme-color-cfc00bbd) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-60fff7b0) 0%, var(--theme-color-cfc00bbd) 100%);
+    background: linear-gradient(to right, var(--theme-color-60fff7b0) 0%, var(--theme-color-cfc00bbd) 100%);
+
+}
+
+.gradient-14 {
+    background: var(--theme-color-bbe9dda6);
+    background: -moz-linear-gradient(-45deg, var(--theme-color-bbe9dda6) 0%, var(--theme-color-441bd41f) 100%);
+    background: -webkit-linear-gradient(-45deg, var(--theme-color-bbe9dda6) 0%, var(--theme-color-441bd41f) 100%);
+    background: linear-gradient(135deg, var(--theme-color-bbe9dda6) 0%, var(--theme-color-441bd41f) 100%);
+
+}
+
+.gradient-15 {
+    background: var(--theme-color-dd41d761);
+    background: -moz-linear-gradient(-45deg, var(--theme-color-dd41d761) 0%, var(--theme-color-6055e5f7) 100%);
+    background: -webkit-linear-gradient(-45deg, var(--theme-color-dd41d761) 0%, var(--theme-color-6055e5f7) 100%);
+    background: linear-gradient(135deg, var(--theme-color-dd41d761) 0%, var(--theme-color-6055e5f7) 100%);
+
+}
+
+.gradient-16 {
+    background: var(--theme-color-45816795);
+    background: -moz-linear-gradient(-45deg, var(--theme-color-45816795) 0%, var(--theme-color-efab383f) 100%);
+    background: -webkit-linear-gradient(-45deg, var(--theme-color-45816795) 0%, var(--theme-color-efab383f) 100%);
+    background: linear-gradient(135deg, var(--theme-color-45816795) 0%, var(--theme-color-efab383f) 100%);
+
+}
+
+.gradient-17 {
+    background: var(--theme-color-6055e5f7);
+    background: -moz-linear-gradient(-45deg, var(--theme-color-6055e5f7) 0%, var(--theme-color-19285130) 100%);
+    background: -webkit-linear-gradient(-45deg, var(--theme-color-6055e5f7) 0%, var(--theme-color-19285130) 100%);
+    background: linear-gradient(135deg, var(--theme-color-6055e5f7) 0%, var(--theme-color-19285130) 100%);
+
+}
+
+.gradient-18 {
+    background: var(--theme-color-c5f11b37);
+    background: -moz-linear-gradient(left, var(--theme-color-c5f11b37) 0%, var(--theme-color-2dd7a70c) 100%);
+    background: -webkit-linear-gradient(left, var(--theme-color-c5f11b37) 0%, var(--theme-color-2dd7a70c) 100%);
+    background: linear-gradient(to right, var(--theme-color-c5f11b37) 0%, var(--theme-color-2dd7a70c) 100%);
+
+}
+
+/*
+0 - 600: Phone
+600 - 900: Tablet portrait
+900 - 1200: Tablet landscape
+1200 - 1800: Normal styles
+1800+ : Big Desktop
+1em = 16px
+The smaller device rules always should write below the bigger device rules
+Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
+*/

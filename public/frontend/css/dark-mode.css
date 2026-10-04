@@ -1,0 +1,38 @@
+/* FLOW dark mode — generated from public/frontend/scss/_dark-mode.scss */
+html[data-theme=dark]{color-scheme:dark;--tv-primary:#70b8ff;--tv-primary-dark:#70b8ff;--tv-secondary:#17243a;--tv-text-dark:#e7eef8;--tv-text-light:#9eacc0;--tv-section-bg:#111c2e;--tv-border:#293750;--tv-shadow:0 12px 32px rgba(0,0,0,.28)}
+html[data-theme=dark] body{color:#e7eef8;background:#0b1220}
+/* html[data-theme=dark] a{color:#70b8ff} */
+html[data-theme=dark] :is(h1,h2,h3,h4,h5,h6,.display-1,.display-2,.display-3,.brand,.brand:hover,.main-nav .nav-link,.mega-menu .mega-link,.nav-dropdown a,.lang-switch .lang-menu a,.mobile-drawer .md-link,.form-label,.prose,.prose blockquote,.review-card .rc-text,.blog-card .bc-title a,.dash-sidebar .ds-brand,.dash-sidebar .ds-link,.dash-table .td-strong){color:#e7eef8}
+html[data-theme=dark] :is(.lead,.section-head p,.text-muted-2,.field .field-label,.service-card p,.feature-item p,.stat .stat-label,.review-card .rc-role,.blog-card .bc-meta,.prose p,.prose li,.faq .accordion-body,.track-timeline li .t-time,.dash-sidebar .ds-group-label,.dash-topbar .dt-user .du-role,.dash-stat .dst-label,.dash-table th,.notif-item .ni-time){color:#9eacc0!important}
+html[data-theme=dark] :is(.section--tint,.bg-tint,.newsletter,.dash,.prose blockquote,.prose .toc,.dash-table th){background:#111c2e!important}
+html[data-theme=dark] :is(.card,.service-card,.review-card,.enquiry-card,.job-card,.search-widget,.site-header,.mega-menu,.nav-dropdown,.lang-switch .lang-menu,.mobile-drawer,.dash-sidebar,.dash-topbar,.dash-stat,.panel,.accordion-item,.accordion-button){color:#e7eef8;background-color:#111c2e;border-color:#293750}
+html[data-theme=dark] :is(.card,.service-card,.review-card,.job-card,.newsletter,.site-header,.mega-menu,.nav-dropdown,.icon-action,.nav-toggler,.mobile-drawer,.form-control,.form-select,.faq .accordion-item,.dash-sidebar,.dash-topbar,.dash-stat,.panel,.dash-table td,.notif-item,.divider){border-color:#293750}
+html[data-theme=dark] :is(.card-hover:hover,.service-card:hover,.job-card:hover){border-color:rgba(112,184,255,.5);box-shadow:0 12px 32px rgba(0,0,0,.28)}
+html[data-theme=dark] :is(.form-control,.form-select){color:#e7eef8;background-color:#17243a}
+html[data-theme=dark] :is(.form-control,.form-select)::placeholder{color:#9eacc0}
+html[data-theme=dark] :is(.form-control,.form-select):focus{color:#e7eef8;background-color:#17243a;border-color:#70b8ff;box-shadow:0 0 0 .2rem rgba(77,166,255,.15)}
+html[data-theme=dark] .newsletter-form{background:#17243a;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+html[data-theme=dark] :is(.icon-action,.nav-toggler,.btn-outline-brand){color:#e7eef8;background:#17243a}
+html[data-theme=dark] :is(.icon-action:hover,.main-nav .nav-link:hover,.main-nav .nav-link.active,.mega-menu .mega-link:hover,.nav-dropdown a:hover,.lang-switch .lang-menu a:hover,.btn-ghost:hover,.dash-sidebar .ds-link:hover,.dash-table tbody tr:hover,.notif-item.unread){color:#70b8ff;background:rgba(77,166,255,.15)}
+html[data-theme=dark] .btn-ghost{color:#e7eef8}
+html[data-theme=dark] :is(.btn-soft,.call-btn,.section-head .eyebrow,.badge-tv,.service-card .sc-icon,.feature-item .fi-icon,.dash-stat .dst-icon,.notif-item .ni-icon,.mega-menu .mega-link i,.search-widget .search-tabs .stab.active){color:#70b8ff;background:rgba(77,166,255,.15)}
+html[data-theme=dark] .badge-tv.is-success{color:#70e49a}
+html[data-theme=dark] .badge-tv.is-danger{color:#ff8a8a}
+html[data-theme=dark] .badge-tv.is-warning{color:#ffc766}
+html[data-theme=dark] .badge-tv.is-accent{color:#65dbff}
+html[data-theme=dark] .pc-fav{color:#9eacc0;background:rgba(17,28,46,.9)}
+html[data-theme=dark] :is(.pc-foot,.mobile-drawer .md-head,.mobile-drawer .md-link,.mobile-drawer .md-foot,.dash-sidebar .ds-brand,.dash-sidebar .ds-foot,.dash-topbar .dt-user,.panel .panel-head){border-color:#293750}
+html[data-theme=dark] .search-overlay{background:rgba(11,18,32,.98)}
+html[data-theme=dark] .search-widget .search-tabs .stab{color:#9eacc0}
+html[data-theme=dark] .search-widget .search-tabs .stab:hover{color:#70b8ff}
+html[data-theme=dark] .faq .accordion-button:not(.collapsed){color:#70b8ff;background:rgba(77,166,255,.15)}
+html[data-theme=dark] .track-timeline li::before{background:#293750}
+html[data-theme=dark] .track-timeline li .dot{background:#111c2e;border-color:#293750}
+html[data-theme=dark] .hero::after{background:linear-gradient(to top,#0b1220,transparent)}
+html[data-theme=dark] .brand-img--light{display:none}
+html[data-theme=dark] .brand-img--dark{display:block}
+html[data-theme=dark] :is(.shadow-tv,.site-header.is-stuck){box-shadow:0 12px 32px rgba(0,0,0,.28)!important}
+html[data-theme=dark] ::selection{color:#e7eef8;background:rgba(77,166,255,.35)}
+.brand-img--dark{display:none}
+.theme-toggle .fa-sun{color:#f59e0b}
+@media print{.theme-toggle{display:none!important}}

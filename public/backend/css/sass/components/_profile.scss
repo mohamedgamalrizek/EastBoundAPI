@@ -1,0 +1,16 @@
+// ============================================
+// Profile Card Colors
+// ============================================
+
+.tv-backend .j-profile-main {
+  .j-eml-list li h6,
+  .j-eml-card > h5 {
+    color: var(--tv-text-heading) !important;
+  }
+
+  .j-eml-list li span,
+  .settings-form,
+  .wel-user-bio p {
+    color: var(--tv-text-primary) !important;
+  }
+}

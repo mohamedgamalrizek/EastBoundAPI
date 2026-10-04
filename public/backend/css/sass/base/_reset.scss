@@ -1,0 +1,12 @@
+// ============================================
+// Base Reset & Global Styles
+// ============================================
+
+.bg-primary {
+  background: var(--tv-primary-dark) !important;
+}
+
+.bg-secondary-soft,
+.bg-light {
+  background: var(--tv-secondary) !important;
+}

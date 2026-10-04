@@ -1,0 +1,121 @@
+/**
+ * Dark mode changes tokens only. Component selectors remain theme-agnostic.
+ *
+ * Usage:  <div class="tv-backend" data-theme="dark">
+ *         <div class="tv-backend dark-mode">
+ */
+
+@use "../abstracts/variables" as *;
+
+// ── Via [data-theme="dark"] attribute ──────────────────────
+.tv-backend[data-theme="dark"] {
+    // --tv-* overrides (consumed by admin-core.scss & admin-data.scss)
+    --tv-primary: #{$dark-brand-primary};
+    --tv-primary-dark: #{$dark-brand-primary-dark};
+    --tv-accent: #{$dark-brand-accent};
+    --tv-text: #{$dark-text-primary};
+    --tv-muted: #{$dark-text-secondary};
+    --tv-bg: #{$dark-surface-bg};
+    --tv-border: #{$dark-border-default};
+
+    // --clr-* overrides (consumed by application-base & legacy files)
+    --clr-heading: #{$dark-clr-heading};
+    --clr-body: #{$dark-clr-body};
+    --clr-body-2: #{$dark-clr-body-2};
+    --clr-bg: #{$dark-clr-bg};
+    --clr-bg-2: #{$dark-clr-bg-2};
+    --clr-primary: #{$dark-clr-primary};
+    --clr-primary-2: #{$dark-clr-primary-2};
+    --clr-white: #{$dark-clr-white};
+    --clr-black: #{$dark-clr-black};
+    --clr-border: #{$dark-clr-border};
+    --clr-red: #{$dark-clr-red};
+    --clr-ylw: #{$dark-clr-ylw};
+    --clr-green: #{$dark-clr-green};
+    --clr-green-2: #{$dark-clr-green-2};
+    --clr-rgb: #{$dark-clr-rgb};
+
+    // --theme-channel-* overrides
+    --theme-channel-13b49a72: #{$dark-clr-rgb};
+
+    // --theme-color-* overrides (tokens that differ from light)
+    @each $key, $value in $theme-color-dark {
+        --theme-color-#{$key}: #{$value};
+    }
+
+    // ── Semantic surface tokens (consumed by admin-data) ──
+    --tv-surface: #{$dark-surface-card};
+    --tv-surface-muted: #{$dark-surface-muted};
+    --tv-surface-hover: #{$dark-surface-hover};
+    --tv-heading: #{$dark-text-heading};
+
+    // ── Shadow tokens ──
+    --tv-shadow: 0 8px 24px #{$dark-shadow-card};
+    --tv-shadow-brand: 0 10px 26px #{$dark-shadow-brand};
+    --tv-soft-shadow: 0 10px 28px #{$dark-shadow-soft};
+
+    // ── Bootstrap overrides ──
+    --bs-primary: #{$dark-brand-primary-dark};
+    --bs-primary-rgb: #{$dark-clr-rgb};
+    --bs-link-color: #{$dark-brand-primary-dark};
+    --bs-link-hover-color: #{$dark-brand-primary};
+
+    // ── Navbar ──
+    --tv-navbar-bg: #{$dark-surface-card};
+
+    // ── Selection ──
+    ::selection {
+        background: #{$dark-color-selection};
+    }
+}
+
+// ── Via .dark-mode class (shorthand, same effect) ──────────
+// Note: Does NOT extend .tv-backend — only the overridden tokens
+// are emitted here. The light-mode defaults from :root still apply
+// for any token not listed.
+.tv-backend.dark-mode {
+    color-scheme: dark;
+
+    --tv-primary: #{$dark-brand-primary};
+    --tv-primary-dark: #{$dark-brand-primary-dark};
+    --tv-accent: #{$dark-brand-accent};
+    --tv-text: #{$dark-text-primary};
+    --tv-muted: #{$dark-text-secondary};
+    --tv-bg: #{$dark-surface-bg};
+    --tv-border: #{$dark-border-default};
+
+    --clr-heading: #{$dark-clr-heading};
+    --clr-body: #{$dark-clr-body};
+    --clr-body-2: #{$dark-clr-body-2};
+    --clr-bg: #{$dark-clr-bg};
+    --clr-bg-2: #{$dark-clr-bg-2};
+    --clr-primary: #{$dark-clr-primary};
+    --clr-primary-2: #{$dark-clr-primary-2};
+    --clr-white: #{$dark-clr-white};
+    --clr-black: #{$dark-clr-black};
+    --clr-border: #{$dark-clr-border};
+    --clr-red: #{$dark-clr-red};
+    --clr-ylw: #{$dark-clr-ylw};
+    --clr-green: #{$dark-clr-green};
+    --clr-green-2: #{$dark-clr-green-2};
+    --clr-rgb: #{$dark-clr-rgb};
+
+    --theme-channel-13b49a72: #{$dark-clr-rgb};
+
+    @each $key, $value in $theme-color-dark {
+        --theme-color-#{$key}: #{$value};
+    }
+
+    --tv-surface: #{$dark-surface-card};
+    --tv-surface-muted: #{$dark-surface-muted};
+    --tv-surface-hover: #{$dark-surface-hover};
+    --tv-heading: #{$dark-text-heading};
+    --tv-shadow: 0 8px 24px #{$dark-shadow-card};
+    --tv-shadow-brand: 0 10px 26px #{$dark-shadow-brand};
+    --tv-soft-shadow: 0 10px 28px #{$dark-shadow-soft};
+    --bs-primary: #{$dark-brand-primary-dark};
+    --bs-primary-rgb: #{$dark-clr-rgb};
+    --bs-link-color: #{$dark-brand-primary-dark};
+    --bs-link-hover-color: #{$dark-brand-primary};
+    --tv-navbar-bg: #{$dark-surface-card};
+}

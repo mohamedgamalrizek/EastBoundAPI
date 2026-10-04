@@ -1,0 +1,533 @@
+
+.ct-golden-section:before {
+    float: none;
+}
+
+.ct-chart {
+    max-height: 15.7rem;
+}
+
+.ct-chart .ct-label {
+    fill: var(--theme-color-ab96a211);
+    color: var(--theme-color-ab96a211);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.ct-grid {
+    stroke: var(--theme-color-e2f713db);
+}
+
+.ct-chart.simple-pie-chart-chartist .ct-label {
+    color: var(--theme-color-c659d630);
+    fill: var(--theme-color-c659d630);
+    font-size: 0.625rem;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar,
+.ct-chart .ct-series.ct-series-a .ct-line,
+.ct-chart .ct-series.ct-series-a .ct-point,
+.ct-chart .ct-series.ct-series-a .ct-slice-donut {
+    stroke: var(--theme-color-c1afb6dc);
+}
+
+.ct-chart .ct-series.ct-series-b .ct-bar,
+.ct-chart .ct-series.ct-series-b .ct-line,
+.ct-chart .ct-series.ct-series-b .ct-point,
+.ct-chart .ct-series.ct-series-b .ct-slice-donut {
+    stroke: var(--theme-color-c11254a3);
+}
+
+.ct-chart .ct-series.ct-series-c .ct-bar,
+.ct-chart .ct-series.ct-series-c .ct-line,
+.ct-chart .ct-series.ct-series-c .ct-point,
+.ct-chart .ct-series.ct-series-c .ct-slice-donut {
+    stroke: var(--theme-color-9bfe3f3c);
+}
+
+.ct-chart .ct-series.ct-series-d .ct-bar,
+.ct-chart .ct-series.ct-series-d .ct-line,
+.ct-chart .ct-series.ct-series-d .ct-point,
+.ct-chart .ct-series.ct-series-d .ct-slice-donut {
+    stroke: var(--theme-color-f2f51f6b);
+}
+
+.ct-chart .ct-series.ct-series-e .ct-bar,
+.ct-chart .ct-series.ct-series-e .ct-line,
+.ct-chart .ct-series.ct-series-e .ct-point,
+.ct-chart .ct-series.ct-series-e .ct-slice-donut {
+    stroke: var(--theme-color-512e8162);
+}
+
+.ct-chart .ct-series.ct-series-f .ct-bar,
+.ct-chart .ct-series.ct-series-f .ct-line,
+.ct-chart .ct-series.ct-series-f .ct-point,
+.ct-chart .ct-series.ct-series-f .ct-slice-donut {
+    stroke: var(--theme-color-bbc2a788);
+}
+
+.ct-chart .ct-series.ct-series-g .ct-bar,
+.ct-chart .ct-series.ct-series-g .ct-line,
+.ct-chart .ct-series.ct-series-g .ct-point,
+.ct-chart .ct-series.ct-series-g .ct-slice-donut {
+    stroke: var(--theme-color-be9f329d);
+}
+
+.ct-series-a .ct-area,
+.ct-series-a .ct-slice-pie {
+    fill: var(--theme-color-c1afb6dc);
+}
+
+.ct-series-b .ct-area,
+.ct-series-b .ct-slice-pie {
+    fill: var(--theme-color-bbc2a788);
+}
+
+.ct-series-c .ct-area,
+.ct-series-c .ct-slice-pie {
+    fill: var(--theme-color-4cbd4810);
+}
+
+.ct-series-d .ct-area,
+.ct-series-d .ct-slice-pie {
+    fill: var(--theme-color-4cbd4810);
+}
+
+.chartist-tooltip {
+    position: absolute;
+    display: inline-block;
+    opacity: 0;
+    min-width: 0.625rem;
+    padding: 2px 0.625rem;
+    border-radius: 3px;
+    background: var(--theme-color-512e8162);
+    color: var(--theme-color-c659d630);
+    text-align: center;
+    pointer-events: none;
+    z-index: 1;
+    -webkit-transition: opacity 0.2s linear;
+    -moz-transition: opacity 0.2s linear;
+    -o-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear;
+}
+
+.chartist-tooltip.tooltip-show {
+    opacity: 1;
+}
+
+#donught_graph .ct-series.ct-series-a .ct-slice-donut {
+    stroke: var(--theme-color-2d4aa082);
+}
+
+#donught_graph .ct-series.ct-series-b .ct-slice-donut {
+    stroke: var(--theme-color-e4b15368);
+}
+
+#donught_graph .ct-series.ct-series-c .ct-slice-donut {
+    stroke: var(--theme-color-50302a7a);
+}
+
+#visitor_graph {
+    height: 253px !important;
+}
+
+#user_rating_graph {
+    height: 280px !important;
+}
+
+#activity {
+    height: 230px !important;
+}
+
+#visitorOnline {
+    height: 72px !important;
+}
+
+#trendMeter {
+    height: 72px !important;
+}
+
+#widget-revenue1,
+#widget-revenue2,
+#widget-revenue3 {
+    height: 117px !important;
+}
+
+#widget-profit1,
+#widget-profit2,
+#widget-profit3 {
+    height: 160px !important;
+}
+
+#comparison-rate {
+    height: 230px !important;
+}
+
+#session_day {
+    height: 175px !important;
+    width: auto !important;
+    margin: 0 auto;
+}
+
+#walet-status {
+    height: 140px !important;
+}
+
+#bar1 {
+    height: 150px !important;
+}
+
+#sold-product {
+    height: 230px !important;
+}
+
+#chart-venue-expenses,
+#chart-online-sale,
+#chart-gross-sale {
+    height: 150px !important;
+}
+
+#areaChart_3 {
+    height: 295px !important;
+}
+
+.c3 {
+    height: 250px;
+}
+
+.c3-legend-item {
+    fill: var(--theme-color-cd57add3);
+}
+
+.c3 .c3-axis-x path,
+.c3 .c3-axis-x line,
+.c3 .c3-axis-y path,
+.c3 .c3-axis-y line,
+.tick text {
+    stroke: var(--theme-color-d14f9016);
+}
+
+.flot-chart {
+    height: 15.7rem;
+}
+
+.tooltipflot {
+    background-color: transparent;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    color: var(--theme-color-b67e9e7e);
+    border-radius: 0.2rem;
+}
+
+.legendColorBox > div {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.legendLabel {
+    font-size: 0.825rem;
+    padding-left: 0.5rem;
+    color: var(--theme-color-d14f9016);
+}
+
+.flotTip {
+    background: var(--theme-color-598b32b7);
+    border: 1px solid var(--theme-color-598b32b7);
+    color: var(--theme-color-d14f9016);
+}
+
+.legend > div {
+    background: transparent !important;
+}
+
+#balance_graph {
+    height: 260px;
+}
+
+.morris-hover {
+    position: absolute;
+    z-index: 1;
+    color: var(--theme-color-d14f9016);
+}
+
+.morris-hover .morris-hover-point {
+    color: var(--theme-color-d14f9016) !important;
+    margin: 3px 0;
+    text-align: center;
+    padding: 0 25px;
+}
+
+.morris-hover .morris-hover-row-label {
+    background-color: var(--theme-color-cd6f9397);
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.morris-hover.morris-default-style {
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+svg text {
+    font-weight: 600 !important;
+}
+
+#morris_donught,
+#morris_donught_2,
+#line_chart_2,
+#morris_bar,
+#morris_bar_stalked,
+#morris_bar_2,
+#morris_area_2,
+#morris_area {
+    height: 240px !important;
+}
+
+#morris_line {
+    height: 278px !important;
+}
+
+#crypto-btc-card,
+#crypto-eth-card,
+#crypto-rpl-card,
+#crypto-ltc-card {
+    height: 9.375rem;
+}
+
+#daily-sales,
+#comparison-rate,
+#usage-chart,
+#walet-status {
+    width: 100%;
+    display: block;
+}
+#daily-sales canvas,
+#comparison-rate canvas,
+#usage-chart canvas,
+#walet-status canvas {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+#sparkline-composite-chart canvas,
+#composite-bar canvas,
+#sparkline11 canvas,
+#StackedBarChart canvas,
+#spark-bar canvas,
+#tristate canvas {
+    height: 100px !important;
+}
+
+#sparkline11 canvas {
+    width: 100px !important;
+}
+
+.easy-pie-chart {
+    position: relative;
+    text-align: center;
+}
+.easy-pie-chart .inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+}
+.easy-pie-chart img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.easy-pie-chart canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#revenue-chart {
+    height: 27.7rem;
+}
+
+#duration-value-axis {
+    height: 27.6rem;
+    width: 100%;
+}
+
+#combined-bullet {
+    height: 28.125rem;
+    width: 100%;
+}
+
+#zoomable-chart {
+    height: 28.125rem;
+    width: 100%;
+}
+
+#chartMap {
+    height: 28.125rem;
+    width: 100%;
+}
+
+#professional-candlesticks {
+    width: 100%;
+    height: 28.125rem;
+}
+
+#comparing-stock-indices {
+    width: 100%;
+    height: 28.125rem;
+}
+
+#multiple-panel-data {
+    width: 100%;
+    height: 28.125rem;
+}
+
+#depth-chart {
+    width: 100%;
+    height: 28.125rem;
+}
+
+.amcharts-export-menu {
+    display: none;
+}
+
+.amcharts-data-set-selector-div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 16.875rem;
+    margin: 0 auto;
+}
+.amcharts-data-set-selector-div select {
+    border: 0;
+    margin-left: 0.625rem;
+    background: var(--theme-color-b204248b);
+    color: var(--theme-color-598b32b7);
+}
+
+.amChartsInputField {
+    border: 0;
+    background: var(--theme-color-3d30716b);
+    color: var(--theme-color-d14f9016);
+    padding: 0.3125rem 0.9375rem;
+    margin: 0 0.9375rem;
+}
+
+.amcharts-data-set-select {
+    border: 0;
+    background: var(--theme-color-b204248b);
+    color: var(--theme-color-598b32b7);
+}
+
+.amcharts-period-input,
+.amcharts-period-input-selected {
+    border: 0;
+    margin-left: 0.625rem;
+    background: var(--theme-color-3d30716b);
+    color: var(--theme-color-d14f9016);
+    padding: 0.3125rem 0.9375rem;
+}
+
+.amcharts-graph-g2 .amcharts-graph-stroke {
+    stroke-dasharray: 3px 3px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    -webkit-animation: am-moving-dashes 1s linear infinite;
+    animation: am-moving-dashes 1s linear infinite;
+}
+
+@-webkit-keyframes am-moving-dashes {
+    100% {
+        stroke-dashoffset: -1.9375rem;
+    }
+}
+
+@keyframes am-moving-dashes {
+    100% {
+        stroke-dashoffset: -1.9375rem;
+    }
+}
+
+.lastBullet {
+    -webkit-animation: am-pulsating 1s ease-out infinite;
+    animation: am-pulsating 1s ease-out infinite;
+}
+
+@-webkit-keyframes am-pulsating {
+    0% {
+        stroke-opacity: 1;
+        stroke-width: 0px;
+    }
+    100% {
+        stroke-opacity: 0;
+        stroke-width: 3.125rem;
+    }
+}
+
+@keyframes am-pulsating {
+    0% {
+        stroke-opacity: 1;
+        stroke-width: 0px;
+    }
+    100% {
+        stroke-opacity: 0;
+        stroke-width: 3.125rem;
+    }
+}
+
+.amcharts-graph-column-front {
+    -webkit-transition: all 0.3s 0.3s ease-out;
+    transition: all 0.3s 0.3s ease-out;
+}
+
+.amcharts-graph-column-front:hover {
+    fill: var(--theme-color-b971a0ba);
+    stroke: var(--theme-color-b971a0ba);
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+@-webkit-keyframes am-draw {
+    0% {
+        stroke-dashoffset: 500%;
+    }
+    100% {
+        stroke-dashoffset: 0%;
+    }
+}
+
+@keyframes am-draw {
+    0% {
+        stroke-dashoffset: 500%;
+    }
+    100% {
+        stroke-dashoffset: 0%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .amChartsPeriodSelector > fieldset > div {
+        float: none !important;
+        display: block !important;
+        margin-bottom: 0.625rem;
+    }
+}
+
+.highcharts-root text {
+    font-weight: 300 !important;
+}
+
+.highcharts-credits {
+    display: none;
+}
+
+#chart_employee_gender,
+#chart_employee_status {
+    width: auto;
+    height: 350px;
+}

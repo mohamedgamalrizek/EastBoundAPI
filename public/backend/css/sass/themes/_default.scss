@@ -1,0 +1,29 @@
+// ============================================
+// Default Theme (current runtime theme)
+// Theme-colors are defined at runtime via CSS
+// custom properties. This file provides the
+// default glass/light theme structure.
+// ============================================
+
+// Card / Glass overrides applied via runtime tokens
+.card,
+.tv-card,
+.tv-analytics,
+.tv-filter-card,
+.dataTables_wrapper > .card,
+.tv-mini {
+  // Glass effect (runtime toggles via :root variables)
+  // background: var(--glass) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--glass-brd) !important;
+  box-shadow: var(--glass-shadow) !important;
+  border-radius: $radius-lg !important;
+}
+
+.card .card-header,
+.tv-card .tv-card-head,
+.tv-card-head {
+  background: var(--tv-transparent) !important;
+  border-bottom: 1px solid var(--tv-divider) !important;
+}

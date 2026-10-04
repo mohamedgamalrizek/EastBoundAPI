@@ -1,0 +1,59 @@
+// ============================================
+// Analytics Section
+// ============================================
+
+.tv-analytics__head {
+  margin-bottom: 6px;
+}
+
+.tv-analytics__title {
+  font-family: $font-heading;
+  font-weight: $weight-bold;
+  font-size: $fs-lg;
+  color: var(--tv-text);
+  margin: 0;
+}
+
+.tv-analytics .row {
+  align-items: center;
+}
+
+.tv-analytics .tv-kpi {
+  background: linear-gradient(135deg, var(--tv-indigo-soft), var(--tv-accent-soft)) !important;
+  border: 1px solid var(--tv-glass-border) !important;
+  border-radius: $radius-2xl;
+}
+
+.tv-chart {
+  min-height: 240px;
+}
+
+// ApexCharts emits presentation attributes and inline legend colors.
+// These color-only overrides keep generated chart UI readable in both themes.
+.tv-backend {
+  .apexcharts-text,
+  .apexcharts-datalabel-label,
+  .apexcharts-datalabel-value {
+    fill: var(--tv-chart-label) !important;
+  }
+
+  .apexcharts-legend-text {
+    color: var(--tv-chart-label) !important;
+  }
+
+  .apexcharts-pie-label {
+    fill: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(15, 23, 42, 0.45);
+  }
+
+  .apexcharts-gridline {
+    stroke: var(--tv-chart-grid) !important;
+  }
+
+  .apexcharts-tooltip,
+  .apexcharts-tooltip-title {
+    color: var(--tv-text-primary) !important;
+    background: var(--tv-surface-raised) !important;
+    border-color: var(--tv-border-color) !important;
+  }
+}

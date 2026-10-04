@@ -1,0 +1,179 @@
+/*-------------------------------------------------------
+18. Parcel List css
+---------------------------------------------------------*/
+.j-create-main {
+    box-shadow: 0px 20px 50px 0px var(--theme-color-3eb3d433);
+    border-radius: 6px;
+    padding: 20px;
+    background: var(--clr-white);
+}
+
+.label-style-1 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body);
+    margin-bottom: 15px;
+}
+.label-style-1 sup {
+    color: var(--clr-red);
+}
+
+.input-style-1 {
+    height: 44px;
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+    color: var(--clr-body-2);
+    font-size: 14px;
+    padding: 8px;
+}
+.input-style-1::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body-2);
+}
+.input-style-1:focus {
+    border: 1px solid var(--clr-border);
+    outline: none;
+}
+
+.textarea-style-1 {
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+    color: var(--clr-body-2);
+    font-size: 14px;
+    padding-top: 20px;
+}
+.textarea-style-1::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body-2);
+}
+
+.tv-card > .card-header .title-site {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.j-cart-jj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.j-cart-jj-list li .jj-cart-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jj-cart-full p {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-heading);
+}
+.jj-cart-full span {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-heading);
+    display: inline-block;
+}
+
+.jj-cart-border-top {
+    padding-top: 20px;
+    border-top: 1px solid var(--clr-border);
+}
+
+.j-cart-total {
+    background: var(--theme-color-56f3f229);
+    height: 100vh;
+    padding: 20px;
+}
+
+.s-hidden {
+    visibility: hidden;
+    padding-right: 10px;
+}
+
+.select {
+    position: relative;
+}
+
+.styledSelect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid var(--clr-border) !important;
+    line-height: 44px;
+    padding-left: 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--clr-body-2);
+}
+.styledSelect::after {
+    position: absolute;
+    content: "";
+    background-image: var(--theme-asset-f907e862);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    height: 12px;
+    width: 12px;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    opacity: 1;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0 0;
+    list-style: none;
+    border: 1px solid var(--clr-border);
+    box-shadow: 0px 0px 13px 0px var(--theme-color-c218b4b1);
+    padding: 20px 26px 20px 20px;
+    border-radius: 6px;
+    background: var(--clr-white);
+}
+.options li {
+    padding: 0 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--theme-color-c6c14563);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.options li:last-child {
+    margin-bottom: 0;
+}
+.options li:hover {
+    background-color: none;
+    color: var(--clr-def);
+}
+
+.cal-style .styledSelect {
+    border: 1px solid var(--theme-color-5c15a1bb) !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body-2);
+}
+.cal-style .styledSelect::after {
+    background-image: var(--theme-asset-c9961e94);
+}
+

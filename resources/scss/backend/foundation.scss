@@ -1,0 +1,33 @@
+// Theme primitives must precede every rule that consumes them.
+@use "abstracts/theme";
+@use "themes/dark";
+
+// Historical order is intentional: it preserves the existing cascade.
+@use "base/font-imports";
+@use "utilities/legacy-gradients";
+@use "vendors/bootstrap-compat";
+@use "base/legacy-shell-base";
+@use "layouts/legacy-header-footer";
+@use "layouts/legacy-rtl";
+@use "layouts/legacy-sidebar";
+@use "themes/legacy-variants";
+@use "components/calendar";
+@use "components/email";
+@use "pages/legacy-profile";
+@use "components/charts";
+@use "components/legacy-form-controls";
+@use "components/legacy-ui";
+@use "components/legacy-tables";
+@use "pages/auth-pricing";
+@use "pages/legacy-pages";
+
+@use "base/application-base";
+@use "utilities/application-utilities";
+@use "components/application-widgets";
+@use "layouts/application-layout";
+@use "components/pagination";
+@use "layouts/application-navigation";
+@use "pages/profile";
+@use "components/lists";
+@use "components/forms";
+@use "components/dropdowns";

@@ -1,0 +1,59 @@
+# EastBound Requirements Map
+
+Classification:
+
+- A: already exists sufficiently.
+- B: extend existing FLOW concept.
+- C: add new module.
+- D: unavoidable core change.
+
+| Requirement | FLOW Existing Feature | Existing Tables/Models | Existing Routes/UI | Class | Recommended Approach | Files likely affected | DB impact | Risk | Testing required |
+|---|---|---|---|---|---|---|---|---|---|
+| Websites | CMS pages/menus/content/public frontend | `cms_pages`, `menus`, `content_blocks` | public routes, CMS views | B | Reuse CMS for managed pages; add website/source identity if multiple external sites feed leads. | `FrontendController`, CMS routes/views, new attribution service | Add `websites` or source table only if needed | Low | CMS page render, lead source attribution |
+| Lead sources | `leads.source`, `campaigns.channel` | `leads`, `campaigns` | CRM lead form | B | Normalize sources via settings/table or add source metadata table; keep `leads`. | Lead requests/repo/views | Add source/UTM fields or related attribution table | Low | Lead CRUD, filters |
+| Campaigns | Campaign module | `campaigns` | campaign routes/views | B | Extend campaigns with UTM fields and website/source relation. | `Campaign*`, migrations/views | Add columns/table | Low | Campaign CRUD, lead attribution |
+| Leads/enquiries | Lead module + contact/enquiry API | `leads`, `contact_messages`, `crm_activities` | `crm/leads`, `/api/v1/enquiries` | B | Use `leads` as sales lead. Contact messages remain messages. | Lead controller/repo/API content controller | Add attribution/status fields | Medium | Lead intake, conversion, permissions |
+| Lead statuses | `leads.stage` enum-ish string values | `leads.stage` | lead form/list | B | Preserve values; add configurable statuses or extra columns without breaking existing stages. | Lead request/views/repo | Add `lead_statuses` or nullable fields | Medium | Old stages still render |
+| Lead assignment | `leads.assigned_to` | `Lead::assignedTo`, `User::assignedLeads` | lead forms | A/B | Reuse; add assignment automation separately. | Lead repository/request/views | None initially | Low | Assignment visibility |
+| Sales teams | None first-class | `users`, `roles` only | user/role UI | C | Add team module and relate users/leads/opportunities. | New module/controllers/views | New tables | Medium | Team CRUD, permissions |
+| Sales reps | Users with roles/permissions | `users`, `roles` | user admin | B | Reuse users; add sales profile/team relation if needed. | User views or new sales profile module | Related profile table | Low | Permission/home routing |
+| Customers | Customer module | `customers`, `users.customer_id` | customer CRUD/portal | A | Reuse. | Existing customer only if fields needed | Add related contacts table | Low | Customer CRUD/API |
+| Contacts | Travelers/passports are not business contacts | `travelers` partial | customer views | C | Add customer contacts table; do not misuse travelers. | New contacts module | New table | Low | Contact CRUD |
+| Activities/follow-ups | CRM activities + task module | `crm_activities`, `tasks` | CRM activity/task views | B | Extend activities/tasks with due/follow-up semantics and links. | CrmActivity/Task modules | Add columns/relations | Medium | Activity timeline, task scope |
+| Communication logs | CRM activities | `crm_activities` | communication/history pages | B | Use `crm_activities` with channel/type. | CrmActivity request/views | Possible columns for direction/external id | Low | Timeline filtering |
+| Customer notes | Customer notes and CRM activity body | `customers.notes`, `crm_activities` | customer/CRM views | B | Reuse, add structured note type if needed. | Customer/CrmActivity | Optional related notes table | Low | Notes display |
+| UTM attribution | Not explicit | `leads.notes` may hold unstructured source details | API/public forms | B | Add structured attribution related table or nullable lead columns. | API content controller, FrontendController, Lead module | Add `lead_attributions` recommended | Low | Public/API lead submit |
+| Round-robin assignment | Not found | none | none | C | Add assignment service using existing `assigned_to`. | New service + lead intake | Optional config table | Medium | Assignment fairness/concurrency |
+| Response-time tracking | Not found | timestamps only | none | B/C | Add first-response timestamps on lead/activity. | Lead/CrmActivity service | Add columns | Medium | Response SLA tests |
+| Opportunities | Lead stages are not enough | `leads` only | CRM lead UI | C | Add opportunity module linked to lead/customer. | New module | New tables | Medium | Lead-to-opportunity flow |
+| Packages | Package module | `packages`, `package_itineraries`, categories | package/admin/public | A/B | Reuse as package template/catalogue. | Package module | Optional costing/template extensions | Low | Existing package booking |
+| Package templates | Existing packages function as product templates | `packages` | package CRUD | B | Add template/version flags or related quotation template tables. | Package module/new quotation module | Add related tables | Medium | Package CRUD and quote reuse |
+| Quotation/proposal | Not present | none | none | C | Add quotation module linked to opportunity/customer/lead/package. | New Sales/Quotation module | New tables | Medium | Quotation lifecycle |
+| Quotation items | Not present | none | none | C | Add item table with service type, supplier cost, sell price. | New module | New tables | Medium | Pricing/margin tests |
+| Hotels in quotation | Hotel catalogue/bookings exist | `hotels`, `hotel_rooms`, `hotel_bookings` | hotel UI | B/C | Reuse hotel master data; add quotation item type. | Quotation module + hotel lookups | New quote item rows | Medium | Quote item calculation |
+| Transportation in quotation | Transport services/bookings exist | `transport_services`, `transport_bookings`, drivers | transport UI | B/C | Reuse transport catalogue; add quote item type. | Quotation module | New quote item rows | Medium | Quote item calculation |
+| Tours/activities in quotation | Packages/event tours exist | `packages`, `event_tours` | package/event UI | B/C | Reuse catalogue; add quote item type. | Quotation module | New quote item rows | Medium | Quote item calculation |
+| Guides in quotation | Guide master/assignment exists | `tour_guides`, assignments | tour guide UI | B/C | Reuse guide master; add service item/cost line. | Quotation/operations module | New quote item rows | Medium | Guide costing |
+| Other services | Side-service tables exist but fragmented | insurance/student/medical/corporate/event | service UIs | B/C | Use generic quotation item for miscellaneous services. | Quotation module | New quote item rows | Low | Quote item CRUD |
+| Supplier cost | Supplier contracts/ledger exist, not per sale line | suppliers/contracts/transactions | supplier UI | B/C | Reuse suppliers/contracts; add cost fields on quote/trip service items. | Quotation/trip modules | New cost columns/tables | High | Margin, purchasing |
+| Selling price | Existing sale tables have amount/fare | booking/service tables | booking UIs | B | Store per quotation item and map to booking/invoice. | Quotation/trip modules | New columns | Medium | Totals |
+| Markup/discount/profit/margin | Booking discounts exist, no line margin | bookings/coupons | booking pricing | B/C | Keep booking discounts; add quote/trip item margin model. | Quotation/trip services | New columns | High | Financial calculations |
+| Quotation PDF | PDF service exists | `DocumentService`, pdf views | PDF routes | B | Extend DocumentService with quotation PDF. | DocumentService, new pdf view | None | Low | PDF scope/render |
+| Quotation revisions | Not present | none | none | C | Add revision/version tables. | Quotation module | New tables | Medium | Version immutability |
+| Approval workflow | Not for quotation | some statuses elsewhere | none | C | Add quotation status/approval service. | Quotation module | New status/history tables | Medium | Permission/workflow |
+| Customer acceptance | Not present | none | none | C | Add signed/tokenized acceptance flow or portal acceptance. | Quotation module/API/portal | New acceptance fields | High | Security, idempotency |
+| Confirmed booking/sales order | `bookings` exists but package-specific | bookings and service bookings | booking UIs | B/C | Add sales order/trip module linked to existing bookings/service bookings. | New module + small integration | New tables | High | Backward compatibility |
+| Trip | `trip_plans` is not a confirmed trip | `bookings`, `trip_plans` | customer trip planner | C | Add `trips` as operations container related to booking/order. | New Trip module | New tables | High | Existing bookings unaffected |
+| Trip services | Service booking tables exist separately | hotel/transport/flight/visa/event/hajj | module UIs | B/C | Add generic trip service wrapper linking to existing service rows. | New TripService module | New tables | High | Service linking |
+| Reservations/operations | Fragmented service statuses/tasks | tasks/service bookings | tasks/booking views | B/C | Extend tasks and add service reservation status/history. | Task/trip services | New tables/columns | Medium | Operations workflow |
+| Supplier/vendor purchasing | Supplier ledger exists | suppliers/contracts/transactions | supplier UI | B/C | Extend suppliers; add purchase orders/service cost allocations. | Supplier + new purchasing module | New tables | High | Payables/profitability |
+| Customer accounting | Invoices/receipts/refunds exist | invoices/receipts/refunds | accounting UI | A/B | Reuse. Link new sales order/trip source morphs. | BillingService/Ledger integration | Add source refs | High | Ledger idempotency |
+| Vendor accounting | Supplier transactions exist | supplier_transactions | supplier ledger | B | Reuse; add trip/service source relation. | SupplierAccountingService | Add source morph columns maybe | High | Supplier balance |
+| Trip profitability | Not present | reports only | reports center | C | Add profitability service from revenue and supplier costs. | New reports/services | New cost allocation tables | High | Margin reports |
+| Reservation tasks | Task module exists | `tasks` | task views | B | Add trip/service relations to tasks. | Task module | Add nullable relation fields | Medium | Task CRUD/backward |
+| Hotel confirmation | Hotel booking status/voucher | hotel_bookings | hotel booking/voucher | B | Extend statuses/confirmation fields related to trip service. | Hotel/trip service | Add related confirmation table | Medium | Existing hotel bookings |
+| Transportation confirmation | Transport status/driver | transport_bookings | transport UI | B | Extend through trip service confirmations. | Transport/trip service | Add related table | Medium | Existing transport |
+| Guide assignment | Existing guide assignments | tour_guides/assignments | tour guide UI/API | B | Reuse guide master; add trip-service guide assignment for custom trips. | Tour/Trip module | New relation table | Medium | Guide API |
+| Vouchers | Hotel voucher PDF exists | DocumentService/pdf views | voucher routes | B | Extend document service for trip/service vouchers. | DocumentService | None/new doc records | Medium | PDF/security |
+| Internal notes/comments | Notes fields exist, no generic comments | leads/bookings/tasks notes | scattered | B/C | Add polymorphic comments/attachments if needed. | New shared module | New tables | Low | Scope/permissions |
+| External lead API | Enquiries API exists, not full EastBound lead intake | `/api/v1/enquiries`, `leads` | API content controller | B | Add FLOW-style `/api/v1/leads` or enhance enquiries. | API routes/controller/request | Attribution fields/table | Medium | Throttle/security |

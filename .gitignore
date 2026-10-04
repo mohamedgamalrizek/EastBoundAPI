@@ -1,0 +1,40 @@
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+# auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+/public/uploads/*
+*.bak
+tinker_test.php
+
+# Sass compiles resources/scss/backend/*.scss straight to public/backend/css;
+# no build ever writes .css/.css.map back into resources/scss/backend, so any
+# that show up there are stray local output and should not be committed.
+/resources/scss/backend/*.css
+/resources/scss/backend/*.css.map
+
+# public/frontend/scss/*.css is served directly by the frontend layout and is
+# committed on purpose, but the source maps are local build output only.
+/public/frontend/scss/*.css.map
+/public/frontend/scss/**/*.css.map
+
+# Laravel LSP / IDE helper cache written into storage/framework by editor
+# tooling — machine-local, never shipped.
+/storage/framework/lsp-*.php
+
+# Source maps anywhere are local build output.
+*.css.map

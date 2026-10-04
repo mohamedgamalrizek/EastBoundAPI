@@ -1,0 +1,8 @@
+body{background:#f3f6fb;font-family:system-ui,sans-serif}
+.wrap{max-width:520px;margin:60px auto}
+.ic{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:2rem;margin:0 auto 14px}
+.ic-success{background:#10b981}
+.ic-failed{background:#ef4444}
+.ic-cancelled{background:#f59e0b}
+.ic-pending{background:#6366f1}
+.kv-box{background:#f8fafc;border-radius:10px;padding:16px 20px}

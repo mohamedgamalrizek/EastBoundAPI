@@ -1,0 +1,293 @@
+/*-------------------------------------------------------
+09. BTN Css
+---------------------------------------------------------*/
+/*Theme Button*/
+.btn-amir {
+    width: auto;
+    padding: 6px 8px 3px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--clr-border);
+    color: var(--theme-color-28ce17ea);
+    background: transparent;
+}
+.btn-amir span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    gap: 5px;
+}
+.btn-amir span img {
+    margin-top: -5px;
+}
+
+.btn-ami {
+    height: 44px;
+    padding: 0 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--theme-color-4e24f456);
+    color: var(--theme-color-28ce17ea);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.btn-ami span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    /* padding-top: 5px; */
+}
+
+.j-btn-custom {
+    background: transparent;
+    border: 1px solid var(--theme-color-4e24f456);
+    padding: 9px 15px 9px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body);
+}
+
+.j-btn-sm {
+    padding: 10px 16px 7px 16px;
+    border-radius: 4px;
+    background: var(--clr-primary-2);
+    border: 1px solid transparent;
+    color: var(--clr-white);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+}
+.j-btn-sm:hover {
+    background: transparent;
+    border: 1px solid var(--clr-heading);
+    color: var(--clr-heading);
+}
+
+.j-td-btn {
+    max-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.5s ease;
+    background: var(--clr-primary-2);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--clr-white);
+    padding: 7px;
+}
+.j-td-btn span{
+    margin-top: 3px;
+}
+/* .j-td-btn img{
+    padding-bottom: 2px;
+} */
+.j-td-btn.btn-red {
+    background: var(--clr-red);
+}
+.j-td-btn:hover {
+    background: transparent;
+    border: 1px solid var(--clr-heading);
+    color: var(--clr-heading);
+}
+.j-td-btn:hover .jj {
+    filter: invert(1);
+}
+/* .j-create-btns>.drp-btns .j-td-btn{
+    padding: 10px 7px 7px 7px;
+}
+.j-td-btn .fa-solid.fa-floppy-disk, .fa-solid.fa-rectangle-xmark {
+    margin-top: -4px;
+} */
+/*-------------------------------------------------------
+10. Home 2 css
+---------------------------------------------------------*/
+.j-data-box {
+    background: var(--clr-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 20px 50px 0px var(--theme-color-3eb3d433);
+    padding: 35px 20px 30px 20px;
+    border-radius: 6px;
+}
+.j-data-box .j-box-left .j-box-icon {
+    display: flex;
+    gap: 16px;
+}
+.j-data-box .j-box-left .j-box-icon i {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+}
+.j-data-box .j-box-left .j-box-icon .j-box-txt h6 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body);
+    margin-bottom: 24px;
+}
+.j-data-box .j-box-left .j-box-icon .j-box-txt span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--clr-heading);
+}
+.j-data-box .j-box-right {
+    display: flex;
+    gap: 19px;
+    flex-direction: column;
+}
+.j-data-box .j-box-right span {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 5px;
+    color: var(--clr-green);
+}
+.j-data-box .j-box-right span i {
+    line-height: 1;
+}
+.j-data-box .j-box-right p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.j-clr-red {
+    color: var(--clr-red) !important;
+}
+
+.j-chart-parent {
+    display: grid;
+    grid-template-columns: 910px 1fr;
+    grid-gap: 20px;
+}
+
+.j-chart-box .card {
+    margin-bottom: 0;
+    padding: 20px 30px 20px 30px;
+    border-radius: 6px;
+    box-shadow: 0px 20px 50px 0px var(--theme-color-3eb3d433);
+}
+.j-chart-box .card .card-header {
+    padding: 0;
+    margin-bottom: 20px;
+}
+.j-chart-box .card .card-header .card-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.j-chart-box .card .card-body {
+    padding: 0;
+}
+
+.ct-chart {
+    max-height: 240px;
+}
+
+.j-chart-box .btn {
+    background: transparent;
+    border: 1px solid var(--theme-color-4e24f456);
+    padding: 9px 15px 9px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body);
+}
+
+.j-card-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.j-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.j-card-list li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.j-card-list li span {
+    height: 9px;
+    width: 9px;
+    line-height: 9px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: var(--clr-primary-2);
+    display: inline-block;
+}
+.j-card-list li span.clr-red {
+    background: var(--clr-red);
+}
+.j-card-list li span.clr-green {
+    background: var(--clr-green);
+}
+
+.j-card-list-dir {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.j-crcl {
+    margin-right: -20px;
+}
+
+.j-crcl svg,
+.j-crcl svg {
+    width: 240px !important;
+}
+
+.ct-series-a .ct-area,
+.ct-series-a .ct-slice-pie {
+    fill: var(--clr-primary-2);
+}
+
+.ct-chart .ct-label {
+    fill: var(--theme-color-ab96a211);
+    color: var(--theme-color-22f1e410);
+    font-size: 12px;
+    line-height: 1;
+}
+
+svg text {
+    font-weight: 400 !important;
+    color: var(--theme-color-22f1e410);
+    font-size: 12px;
+    line-height: 1;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar,
+.ct-chart .ct-series.ct-series-a .ct-line,
+.ct-chart .ct-series.ct-series-a .ct-point,
+.ct-chart .ct-series.ct-series-a .ct-slice-donut {
+    stroke: var(--clr-primary);
+}
+
+.ct-chart .ct-series.ct-series-c .ct-bar,
+.ct-chart .ct-series.ct-series-c .ct-line,
+.ct-chart .ct-series.ct-series-c .ct-point,
+.ct-chart .ct-series.ct-series-c .ct-slice-donut {
+    stroke: var(--clr-red);
+}
+
+.ct-chart .ct-series.ct-series-b .ct-bar,
+.ct-chart .ct-series.ct-series-b .ct-line,
+.ct-chart .ct-series.ct-series-b .ct-point,
+.ct-chart .ct-series.ct-series-b .ct-slice-donut {
+    stroke: var(--clr-green);
+}
+

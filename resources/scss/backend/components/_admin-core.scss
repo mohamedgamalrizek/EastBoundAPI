@@ -1,0 +1,289 @@
+/* ============================================================
+   FLOW Admin — re-skin layer (blue theme)
+   Loaded after the legacy template CSS to own the final admin look.
+   It controls colours, fonts, radius, shadows and the custom shell.
+   ============================================================ */
+@use "../abstracts/variables" as *;
+// Fonts are self-hosted in public/fonts/ and loaded via <link> in the layout (no external requests).
+:root {
+
+  --tv-primary:      var(--theme-color-0445cae2);
+  --tv-primary-dark: var(--theme-color-669e694e);
+  --tv-accent:       var(--theme-color-2867bd89);
+  --tv-secondary:    var(--theme-color-1d8e689d);
+  --tv-success:      var(--theme-color-c1419dcb);
+  --tv-danger:       var(--theme-color-a293054a);
+  --tv-warning:      var(--theme-color-7437b68d);
+  --tv-text:         var(--theme-color-e9db2df9);
+  --tv-muted:        var(--theme-color-18046fe2);
+  --tv-bg:           var(--theme-color-c82f339b);
+  --tv-border:       var(--theme-color-5858f7f2);
+  --tv-radius:       14px;
+  --tv-shadow:       0 8px 24px var(--theme-color-db768271);
+  --tv-shadow-brand: 0 10px 26px var(--theme-color-96520d71);
+
+  /* Bootstrap primary remap */
+  --bs-primary:      var(--theme-color-669e694e);
+  --bs-primary-rgb:  var(--theme-channel-13b49a72);
+  --bs-link-color:   var(--theme-color-669e694e);
+  --bs-link-hover-color: var(--theme-color-535e0502);
+
+}
+
+/* ---------- Base ---------- */
+body,
+.content-body,
+#main-wrapper {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+  color: var(--tv-text);
+}
+
+.content-body { background: var(--tv-bg) !important; }
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,
+.card-title,.nav-text,.brand-title {
+  font-family: 'Sora','Inter',sans-serif !important;
+  color: var(--tv-text);
+  letter-spacing: -.01em;
+}
+a { color: var(--tv-primary-dark); }
+a:hover { color: var(--tv-primary); }
+.text-primary { color: var(--tv-primary-dark) !important; }
+.bg-primary { background: var(--tv-primary-dark) !important; }
+
+/* ---------- Sidebar (quixnav) ---------- */
+.quixnav,
+.quixnav .quixnav-scroll {
+  background: var(--theme-color-d14f9016) !important;
+  border-right: 1px solid var(--tv-border);
+}
+.nav-header,
+.quixnav .nav-header { background: var(--theme-color-d14f9016) !important; border-bottom: 1px solid var(--tv-border); }
+
+.quixnav .metismenu > li > a,
+.quixnav .metismenu a {
+  font-family: 'Sora','Inter',sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--tv-text) !important;
+  border-radius: $radius-md;
+  margin: 2px 12px;
+  transition: all .2s ease;
+}
+.quixnav .metismenu > li > a i,
+.quixnav .metismenu a i { color: var(--tv-muted) !important; transition: all .2s ease; }
+
+.quixnav .metismenu > li > a:hover,
+.quixnav .metismenu a:hover {
+  background: var(--theme-color-95caa71b) !important;
+  color: var(--tv-primary-dark) !important;
+}
+.quixnav .metismenu > li > a:hover i,
+.quixnav .metismenu a:hover i { color: var(--tv-primary-dark) !important; }
+
+/* Full blue gradient ONLY for a real active LEAF (e.g. Dashboard) — a
+   top-level link with no sub-menu (no .has-arrow). */
+.quixnav .metismenu > li.mm-active > a:not(.has-arrow),
+.quixnav .metismenu > li > a.mm-active:not(.has-arrow) {
+  background: linear-gradient(135deg, var(--tv-primary), var(--tv-primary-dark)) !important;
+  color: var(--theme-color-d14f9016) !important;
+  box-shadow: var(--tv-shadow-brand);
+}
+.quixnav .metismenu > li.mm-active > a:not(.has-arrow) i { color: var(--theme-color-d14f9016) !important; }
+
+/* An EXPANDED / active PARENT (has a sub-menu) — soft highlight only, never
+   the full gradient, so the opened group doesn't become one blue block. */
+.quixnav .metismenu > li.mm-active > a.has-arrow,
+.quixnav .metismenu > li > a.has-arrow.mm-active {
+  background: var(--theme-color-95caa71b) !important;
+  color: var(--tv-primary-dark) !important;
+  box-shadow: none !important;
+}
+
+/* Sub-menu container — always white, never a blue block.
+   Also neutralise any background the template paints on the <li> itself. */
+.quixnav .metismenu li,
+.quixnav .metismenu ul,
+.quixnav .metismenu .mm-collapse,
+.quixnav .metismenu li ul { background: var(--theme-color-d14f9016) !important; }
+.quixnav .metismenu > li,
+.quixnav .metismenu ul li { background: transparent !important; }
+
+/* Sub-menu links — dark text, soft hover/active */
+.quixnav .metismenu ul a {
+  font-weight: 500 !important;
+  font-size: .88rem;
+  color: var(--tv-text) !important;
+  background: transparent !important;
+}
+.quixnav .metismenu ul a:hover,
+.quixnav .metismenu ul a.mm-active,
+.quixnav .metismenu ul a.active {
+  color: var(--tv-primary-dark) !important;
+  background: var(--theme-color-95caa71b) !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- Header / topbar ---------- */
+.header { background: var(--theme-color-d14f9016) !important; border-bottom: 1px solid var(--tv-border); box-shadow: none !important; }
+.header .navbar { background: transparent !important; }
+.j-search .j-form-control,
+.j-search input {
+  background: var(--tv-bg) !important;
+  border: 1.5px solid var(--tv-border) !important;
+  border-radius: 999px !important;
+  color: var(--tv-text);
+}
+.j-search .j-form-control:focus { border-color: var(--tv-primary) !important; }
+
+/* ---------- Cards ---------- */
+.card, .tv-card {
+  border: 1px solid var(--tv-border) !important;
+  border-radius: var(--tv-radius) !important;
+  box-shadow: var(--tv-shadow) !important;
+  background: var(--theme-color-d14f9016);
+}
+.card .card-header, .tv-card .tv-card-head {
+  background: var(--theme-color-d14f9016) !important;
+  border-bottom: 1px solid var(--tv-border) !important;
+  font-family: 'Sora',sans-serif;
+  font-weight: 700;
+}
+.card .card-header .card-title, .tv-card .tv-card-head .card-title,
+.card .card-title, .tv-card .card-title { font-weight: 700; margin: 0; }
+
+/* ---------- Buttons ---------- */
+.btn { border-radius: 999px !important; font-family: 'Sora',sans-serif !important; font-weight: 600 !important; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--tv-primary), var(--tv-primary-dark)) !important;
+  border: 0 !important;
+  box-shadow: var(--tv-shadow-brand);
+}
+.btn-primary:hover { filter: brightness(1.03); transform: translateY(-1px); }
+.btn-outline-primary { color: var(--tv-primary-dark) !important; border: 1.5px solid var(--tv-primary) !important; background: var(--theme-color-d14f9016); }
+.btn-outline-primary:hover { background: var(--tv-primary-dark) !important; color: var(--theme-color-d14f9016) !important; border-color: var(--tv-primary-dark) !important; }
+.btn-secondary,.btn-light { border-radius: 999px !important; }
+.btn-success { background: var(--tv-success) !important; border-color: var(--tv-success) !important; }
+.btn-danger  { background: var(--tv-danger) !important;  border-color: var(--tv-danger) !important; }
+
+/* ---------- Tables ---------- */
+.table thead th {
+  text-transform: uppercase;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  color: var(--tv-muted) !important;
+  font-family: 'Sora',sans-serif;
+  background: var(--tv-bg);
+  border-bottom: 1px solid var(--tv-border) !important;
+}
+.table td, .table th { border-color: var(--tv-border) !important; vertical-align: middle; }
+.table tbody tr:hover { background: var(--theme-color-95caa71b); }
+
+/* ---------- Forms ---------- */
+.form-control, .form-select, .custom-select, select.form-control {
+  border: 1.5px solid var(--tv-border) !important;
+  border-radius: $radius-md !important;
+  color: var(--tv-text);
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--tv-primary) !important;
+  box-shadow: 0 0 0 .2rem var(--theme-color-6675cea5) !important;
+}
+
+/* all input-like elements get radius-md */
+.input-style-1, .textarea-style-1,
+select.input-style-1, textarea.form-control,
+.j-search-form .j-form-control {
+  border-radius: $radius-md !important;
+}
+
+.input-group-text {
+  border-radius: $radius-md !important;
+}
+
+/* Select2 – match radius-md */
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-search--dropdown .select2-search__field,
+.ot_fileUploader {
+  border-radius: $radius-md !important;
+}
+
+/* ---------- Badges ---------- */
+.badge-primary,.bullet-badge-primary { background: var(--tv-primary-dark) !important; }
+.badge-success,.bullet-badge-success { background: var(--tv-success) !important; }
+.badge-danger, .bullet-badge-danger  { background: var(--tv-danger) !important; }
+.badge { border-radius: 999px; font-family: 'Sora',sans-serif; }
+
+/* ---------- Misc accents ---------- */
+.page-titles,
+.breadcrumb { background: transparent !important; }
+.text-muted { color: var(--tv-muted) !important; }
+.bg-secondary-soft,.bg-light { background: var(--tv-secondary) !important; }
+::selection { background: var(--theme-color-6675cea5); color: var(--tv-primary-dark); }
+
+/* pagination */
+.page-item.active .page-link { background: var(--tv-primary-dark) !important; border-color: var(--tv-primary-dark) !important; }
+.page-link { color: var(--tv-primary-dark); }
+
+/* ============================================================
+   FIXES (screenshot review)
+   ============================================================ */
+
+/* 1) Open sub-menu must NOT be a blue block — the template paints
+   `.quixnav .metismenu > li.mm-active ul { background: var(--clr-primary-2) }`.
+   Match that selector exactly (loaded later + !important) to force white. */
+.quixnav .metismenu > li.mm-active ul,
+.quixnav .metismenu > li.mm-active ul ul,
+.quixnav .metismenu li.mm-active > ul,
+.quixnav .metismenu.mm-show .mm-active,
+.quixnav .metismenu .mm-collapse.mm-show {
+  background-color: var(--theme-color-d14f9016) !important;
+  background: var(--theme-color-d14f9016) !important;
+}
+/* sub-menu links inside an active group: dark text, soft active/hover */
+.quixnav .metismenu > li.mm-active ul li a {
+  color: var(--tv-text) !important;
+  background: transparent !important;
+}
+.quixnav .metismenu > li.mm-active ul li a:hover,
+.quixnav .metismenu > li.mm-active ul li a:focus,
+.quixnav .metismenu > li.mm-active ul li a.mm-active {
+  color: var(--tv-primary-dark) !important;
+  background: var(--theme-color-95caa71b) !important;
+  font-weight: 600 !important;
+}
+/* expanded parent row: soft, never blue gradient (overrides template line 5-6) */
+.quixnav .metismenu > li.mm-active > a.has-arrow {
+  background-color: var(--theme-color-95caa71b) !important;
+  background: var(--theme-color-95caa71b) !important;
+  color: var(--tv-primary-dark) !important;
+}
+
+/* 2) Sidebar icons were too faint — make them clearly visible */
+.quixnav .metismenu a i,
+.quixnav .metismenu > li > a i { color: var(--theme-color-58d44d32) !important; font-size: 1.05rem; }
+.quixnav .metismenu > li.mm-active > a.has-arrow i { color: var(--tv-primary-dark) !important; }
+/* collapsed (mini) sidebar icons too */
+.quixnav.deznav-mini .metismenu a i,
+[data-sidebar-style="mini"] .quixnav .metismenu a i { color: var(--theme-color-58d44d32) !important; }
+
+/* 3) Status pills (bullet-badge) — text was washing out on the solid fill.
+   Force white text, padding and pill shape; drop the leading dot. */
+[class*="bullet-badge"] {
+  display: inline-block !important;
+  color: var(--theme-color-d14f9016) !important;
+  padding: .34rem .8rem !important;
+  border-radius: 999px !important;
+  font-size: .7rem !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  font-family: 'Sora', sans-serif !important;
+}
+[class*="bullet-badge"]::before { display: none !important; }
+.bullet-badge-warning { background: var(--tv-warning) !important; }
+.bullet-badge-info    { background: var(--tv-primary) !important; }
+.bullet-badge-secondary,.bullet-badge-default { background: var(--tv-muted) !important; }

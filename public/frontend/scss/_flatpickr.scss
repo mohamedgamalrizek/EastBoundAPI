@@ -1,0 +1,108 @@
+// ============================================================
+//  Flatpickr calendar
+//  The vendor stylesheet ships a neutral grey theme; this skins
+//  it with the FLOW tokens so it follows light/dark mode.
+// ============================================================
+
+.flatpickr-calendar {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius;
+  box-shadow: $shadow-lg;
+  font-family: inherit;
+
+  // Drop the vendor speech-bubble arrow — it can't follow the themed border.
+  &:before,
+  &:after { display: none; }
+}
+
+.flatpickr-months {
+  .flatpickr-month { color: $text-dark; fill: $text-dark; }
+
+  .flatpickr-prev-month,
+  .flatpickr-next-month {
+    fill: $text-light;
+
+    &:hover { color: $primary; }
+    &:hover svg { fill: $primary; }
+  }
+}
+
+.flatpickr-current-month {
+  font-weight: 700;
+
+  .flatpickr-monthDropdown-months {
+    background: $surface;
+    color: $text-dark;
+    font-weight: 700;
+
+    &:hover { background: $primary-50; }
+
+    .flatpickr-monthDropdown-month {
+      background: $surface;
+      color: $text-dark;
+    }
+  }
+
+  input.cur-year { color: $text-dark; font-weight: 700; }
+}
+
+.numInputWrapper:hover { background: $primary-50; }
+
+span.flatpickr-weekday {
+  color: $text-light;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.flatpickr-day {
+  color: $text-dark;
+  border-radius: $radius-sm;
+  font-weight: 500;
+
+  &:hover,
+  &:focus,
+  &.prevMonthDay:hover,
+  &.nextMonthDay:hover {
+    background: $primary-50;
+    border-color: transparent;
+    color: $primary;
+  }
+
+  &.today {
+    border-color: $primary;
+    color: $primary;
+
+    &:hover,
+    &:focus {
+      background: $primary;
+      border-color: $primary;
+      color: $on-brand;
+    }
+  }
+
+  &.selected,
+  &.startRange,
+  &.endRange {
+    &,
+    &:hover,
+    &:focus {
+      background: $primary;
+      border-color: $primary;
+      color: $on-brand;
+      box-shadow: $shadow-brand;
+    }
+  }
+
+  &.prevMonthDay,
+  &.nextMonthDay { color: $placeholder; }
+
+  &.flatpickr-disabled,
+  &.flatpickr-disabled:hover {
+    background: transparent;
+    color: $placeholder;
+    opacity: .45;
+  }
+}
