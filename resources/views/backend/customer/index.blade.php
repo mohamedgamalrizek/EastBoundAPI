@@ -78,5 +78,3 @@ Customers
     </div>
 </div>
 @endsection
-
-@push@endpush

@@ -116,5 +116,3 @@
 
     </div>
 @endsection()
-
-@push@endpush

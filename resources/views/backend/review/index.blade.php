@@ -54,5 +54,3 @@
     </x-data-table>
 </x-page>
 @endsection
-
-@push@endpush

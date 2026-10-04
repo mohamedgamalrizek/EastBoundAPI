@@ -100,5 +100,3 @@
     </div>
 </x-page>
 @endsection
-
-@push@endpush

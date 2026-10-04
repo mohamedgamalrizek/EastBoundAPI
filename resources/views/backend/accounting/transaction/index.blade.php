@@ -52,5 +52,3 @@
 
 </x-page>
 @endsection
-
-@push@endpush

@@ -74,5 +74,3 @@ Tour Packages
     </div>
 </div>
 @endsection
-
-@push@endpush

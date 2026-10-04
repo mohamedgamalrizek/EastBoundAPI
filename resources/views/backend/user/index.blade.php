@@ -150,5 +150,3 @@
 </div>
 
 @endsection()
-
-@push@endpush

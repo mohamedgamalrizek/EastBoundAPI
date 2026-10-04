@@ -101,5 +101,3 @@
     @include('backend.todo.to_do_completed') --}}
     </div>
 @endsection()
-
-@push@endpush

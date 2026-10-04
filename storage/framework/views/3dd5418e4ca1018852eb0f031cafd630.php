@@ -82,7 +82,7 @@ unset($__defined_vars, $__key, $__value); ?>
     </div>
 </div>
 
-<?php if (! $__env->hasRenderedOnce('9a0fcd3b-ce16-47e2-bd0d-b40126bd1c90')): $__env->markAsRenderedOnce('9a0fcd3b-ce16-47e2-bd0d-b40126bd1c90'); ?>
+<?php if (! $__env->hasRenderedOnce('b298d6d3-c1ad-4252-bc63-d099f6725a82')): $__env->markAsRenderedOnce('b298d6d3-c1ad-4252-bc63-d099f6725a82'); ?>
 <?php $__env->startPush('scripts'); ?>
 <script src="<?php echo e(asset('frontend/js/pages/how-it-works.js')); ?>?v=<?php echo e(filemtime(public_path('frontend/js/pages/how-it-works.js'))); ?>"></script>
 <?php $__env->stopPush(); ?>
