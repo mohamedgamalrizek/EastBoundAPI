@@ -32,6 +32,7 @@ class AffiliateLeadIntakeTest extends TestCase
 
         $response->assertCreated()
             ->assertJsonPath('data.count', 1)
+            ->assertJsonPath('data.leads.0.subject', 'Tour packages')
             ->assertJsonPath('data.leads.0.website', 'English');
 
         $lead = Lead::firstOrFail();
@@ -51,6 +52,27 @@ class AffiliateLeadIntakeTest extends TestCase
         $this->assertSame('نتمناتماتا', $lead->comments);
         $this->assertStringContainsString('From Date: 2026-09-23', $lead->notes);
         $this->assertStringContainsString('Adults: 1', $lead->notes);
+    }
+
+    public function test_lead_intake_preserves_subject_separately_from_destinations(): void
+    {
+        $response = $this->postJson('/api/v1/leads', [
+            'full_name' => 'Ahmed Hassan',
+            'website' => 'Egypt Tours',
+            'subject' => 'Visa services',
+            'destinations' => 'Italy',
+        ]);
+
+        $response->assertCreated()
+            ->assertJsonPath('data.leads.0.subject', 'Visa services')
+            ->assertJsonPath('data.leads.0.interest', 'Italy');
+
+        $this->assertDatabaseHas('leads', [
+            'id' => $response->json('data.leads.0.id'),
+            'subject' => 'Visa services',
+            'destinations' => 'Italy',
+            'interest' => 'Italy',
+        ]);
     }
 
     public function test_contact_endpoint_keeps_subject_and_website_on_the_lead(): void

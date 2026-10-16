@@ -305,6 +305,7 @@ class ContentController extends Controller
                     'language' => $lead->language,
                     'country'  => $lead->country,
                     'campaign_source' => $lead->campaign_source,
+                    'subject' => $lead->subject,
                     'interest' => $lead->interest,
                     'stage'    => $lead->stage,
                 ];
