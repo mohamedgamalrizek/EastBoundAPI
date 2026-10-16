@@ -13,13 +13,19 @@
                     <li class="mb-2"><i class="fa fa-phone text-muted mr-2"></i> {{ $lead->phone ?: '—' }}</li>
                     <li class="mb-2"><i class="fa fa-envelope text-muted mr-2"></i> {{ $lead->email ?: '—' }}</li>
                     <li class="mb-2"><i class="fa fa-bullhorn text-muted mr-2"></i> Source: {{ $lead->source ?: '—' }}</li>
+                    <li class="mb-2"><i class="fa fa-globe text-muted mr-2"></i> Website: {{ $lead->website ?: '—' }}</li>
+                    <li class="mb-2">Language: {{ $lead->language ?: '—' }}</li>
+                    <li class="mb-2">Country: {{ $lead->country ?: '—' }}</li>
+                    <li class="mb-2">Campaign Source: {{ $lead->campaign_source ?: '—' }}</li>
                     <li class="mb-2"><i class="fa fa-suitcase text-muted mr-2"></i> Interest: {{ $lead->interest ?: '—' }}</li>
                     <li class="mb-2"><i class="fa fa-user-tie text-muted mr-2"></i> Owner: {{ $lead->owner ?: ($lead->assignedTo->name ?? '—') }}</li>
-                    <li class="mb-0"><i class="fa fa-money-bill text-muted mr-2"></i> Value: {{ currency_symbol() }}{{ number_format($lead->value) }}</li>
+                    <li class="mb-2"><i class="fa fa-money-bill text-muted mr-2"></i> Value: {{ currency_symbol() }}{{ number_format($lead->value, 2) }}</li>
+                    <li class="mb-0">Created At: {{ $lead->created_at?->format('Y-m-d H:i:s') ?? '—' }}</li>
                 </ul>
                 @if($lead->notes)
                 <hr>
-                <p class="text-muted text-left mb-0">{{ $lead->notes }}</p>
+                <h5 class="text-left">Notes / Original Submission</h5>
+                <div class="text-muted text-left mb-0" dir="auto">{!! nl2br(e($lead->notes)) !!}</div>
                 @endif
                 <div class="d-flex justify-content-center mt-3 tv-action-gap-md">
                     @if($lead->phone)
@@ -41,7 +47,25 @@
             </div></div>
         </div>
         <div class="col-lg-8 mb-4">
-            <div class="tv-card h-100"><div class="tv-card-head"><h4 class="title-site mb-0">Activity Timeline</h4></div>
+            <div class="tv-card mb-4">
+                <div class="tv-card-head"><h4 class="title-site mb-0">Trip Details</h4></div>
+                <div class="tv-card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Subject</dt><dd class="col-sm-8">{{ $lead->subject ?: '—' }}</dd>
+                        <dt class="col-sm-4">Destinations</dt><dd class="col-sm-8">{{ $lead->destinations ?: '—' }}</dd>
+                        <dt class="col-sm-4">From Date</dt><dd class="col-sm-8">{{ $lead->from_date?->format('Y-m-d') ?? '—' }}</dd>
+                        <dt class="col-sm-4">To Date</dt><dd class="col-sm-8">{{ $lead->to_date?->format('Y-m-d') ?? '—' }}</dd>
+                        <dt class="col-sm-4">Duration (Days)</dt><dd class="col-sm-8">{{ $lead->duration ?? '—' }}</dd>
+                        <dt class="col-sm-4">Adults</dt><dd class="col-sm-8">{{ $lead->adults ?? '—' }}</dd>
+                        <dt class="col-sm-4">Children</dt><dd class="col-sm-8">{{ $lead->children ?? '—' }}</dd>
+                        <dt class="col-sm-4">Budget</dt><dd class="col-sm-8">{{ $lead->budget ?: '—' }}</dd>
+                    </dl>
+                    <hr>
+                    <h5>Customer Comments</h5>
+                    <div dir="auto">{!! nl2br(e($lead->comments ?: '—')) !!}</div>
+                </div>
+            </div>
+            <div class="tv-card"><div class="tv-card-head"><h4 class="title-site mb-0">Activity Timeline</h4></div>
                 <div class="tv-card-body">
                     <ul class="list-unstyled">
                         @php
@@ -75,7 +99,7 @@
                             <div class="mr-3"><span class="tv-circle-icon-38 bg-secondary text-white"><i class="fa-solid fa-flag"></i></span></div>
                             <div>
                                 <div class="d-flex justify-content-between"><b>Lead created</b></div>
-                                <div class="text-muted tv-text-sm">Came in via {{ $lead->source ?: 'an unknown source' }}.</div>
+                                <div class="text-muted tv-text-sm">Came in via {{ $lead->source ?: 'an unknown source' }}{{ $lead->website ? ' / '.$lead->website : '' }}.</div>
                                 <small class="text-muted">{{ $lead->created_at->format('M j, Y') }}</small>
                             </div>
                         </li>

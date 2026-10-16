@@ -3,7 +3,7 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <label>Name <span class="text-danger">*</span></label>
-        <input type="text" name="name" class="form-control input-style-1" placeholder="Lead name" value="{{ old('name', $lead->name ?? '') }}">
+        <input type="text" name="name" class="form-control input-style-1" placeholder="Lead name" maxlength="255" required value="{{ old('name', $lead->name ?? '') }}">
         @error('name') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
     <div class="form-group col-md-6">
@@ -32,8 +32,38 @@
         @error('source') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
     <div class="form-group col-md-4">
+        <label>Website</label>
+        <input type="text" name="website" class="form-control input-style-1" placeholder="e.g. Egypt Tours" maxlength="255" value="{{ old('website', $lead->website ?? '') }}">
+        @error('website') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Language</label>
+        <select name="language" class="form-control input-style-1 select2">
+            <option value="">Not specified</option>
+            @foreach(\App\Models\Lead::LANGUAGES as $language)
+            <option value="{{ $language }}" @selected(old('language', $lead->language ?? '') === $language)>{{ $language }}</option>
+            @endforeach
+        </select>
+        @error('language') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Country</label>
+        <input type="text" name="country" class="form-control input-style-1" placeholder="e.g. Egypt" maxlength="255" value="{{ old('country', $lead->country ?? '') }}">
+        @error('country') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Campaign Source</label>
+        <select name="campaign_source" class="form-control input-style-1 select2">
+            <option value="">Not specified</option>
+            @foreach(\App\Models\Lead::CAMPAIGN_SOURCES as $campaignSource)
+            <option value="{{ $campaignSource }}" @selected(old('campaign_source', $lead->campaign_source ?? '') === $campaignSource)>{{ $campaignSource }}</option>
+            @endforeach
+        </select>
+        @error('campaign_source') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
         <label>Estimated Value ({{ currency_symbol() }})</label>
-        <input type="number" step="0.01" name="value" class="form-control input-style-1" placeholder="115000" value="{{ old('value', $lead->value ?? 0) }}">
+        <input type="number" min="0" step="0.01" name="value" class="form-control input-style-1" placeholder="2500" value="{{ old('value', $lead->value ?? 0) }}">
         @error('value') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
     <div class="form-group col-md-4">
@@ -66,7 +96,61 @@
         @error('owner') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
     <div class="form-group col-md-12">
-        <label>Notes</label>
+        <h5 class="mt-3">Trip Details</h5>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Subject</label>
+        <input type="text" name="subject" class="form-control input-style-1" maxlength="255" placeholder="e.g. Tour packages" value="{{ old('subject', $lead->subject ?? '') }}">
+        @error('subject') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-6">
+        <label>Destinations</label>
+        <input type="text" name="destinations" class="form-control input-style-1" maxlength="255" placeholder="e.g. Cairo, Luxor" value="{{ old('destinations', $lead->destinations ?? '') }}">
+        @error('destinations') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>From Date</label>
+        <input type="date" name="from_date" class="form-control input-style-1" value="{{ old('from_date', $lead?->from_date?->format('Y-m-d') ?? '') }}">
+        @error('from_date') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>To Date</label>
+        <input type="date" name="to_date" class="form-control input-style-1" value="{{ old('to_date', $lead?->to_date?->format('Y-m-d') ?? '') }}">
+        @error('to_date') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Duration (Days)</label>
+        <input type="number" name="duration" min="0" step="1" class="form-control input-style-1" value="{{ old('duration', $lead->duration ?? '') }}">
+        @error('duration') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Adults</label>
+        <input type="number" name="adults" min="0" step="1" class="form-control input-style-1" value="{{ old('adults', $lead->adults ?? '') }}">
+        @error('adults') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Children</label>
+        <input type="number" name="children" min="0" step="1" class="form-control input-style-1" value="{{ old('children', $lead->children ?? '') }}">
+        @error('children') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Budget</label>
+        <input type="text" name="budget" maxlength="100" class="form-control input-style-1" placeholder="e.g. high" value="{{ old('budget', $lead->budget ?? '') }}">
+        @error('budget') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-6">
+        <label>Created At</label>
+        <input type="datetime-local" name="created_at" step="1" class="form-control input-style-1" value="{{ old('created_at', $lead?->created_at?->format('Y-m-d\TH:i:s') ?? '') }}">
+        <small class="text-muted">Leave empty to use the current time for a new lead.</small>
+        @error('created_at') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-12">
+        <label>Customer Comments</label>
+        <textarea name="comments" rows="3" maxlength="5000" class="form-control input-style-1" dir="auto">{{ old('comments', $lead->comments ?? '') }}</textarea>
+        @error('comments') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-12">
+        <label>Notes / Original Submission</label>
         <textarea name="notes" rows="3" class="form-control input-style-1" placeholder="Lead details…">{{ old('notes', $lead->notes ?? '') }}</textarea>
         @error('notes') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>

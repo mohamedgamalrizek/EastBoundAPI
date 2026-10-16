@@ -96,6 +96,7 @@ Route::prefix('v1')->group(function () {
     Route::post('become-an-agent', [ContentController::class, 'becomeAgent']);
     Route::get('enquiry-types',   [ContentController::class, 'enquiryTypes']);
     Route::post('enquiries',      [ContentController::class, 'enquiry']);
+    Route::post('leads',          [ContentController::class, 'leadIntake'])->middleware('throttle:30,1');
     Route::get('contact-info',    [ContentController::class, 'contactInfo']);
     Route::post('contact',        [ContentController::class, 'contact']);
 

@@ -38,6 +38,10 @@ class ContactMessageRepository implements ContactMessageInterface
                     'email'   => $request->email,
                     'phone'   => $request->phone,
                     'subject' => $request->subject,
+                    'website' => $request->website,
+                    'language' => $request->language,
+                    'country'  => $request->country,
+                    'campaign_source' => $request->campaign_source,
                     'message' => $request->message,
                     'status'  => 'new',
                 ]);
@@ -48,6 +52,10 @@ class ContactMessageRepository implements ContactMessageInterface
                     'email'    => $message->email,
                     'interest' => $message->subject ?: 'General enquiry',
                     'source'   => 'Website',
+                    'website'  => $message->website,
+                    'language' => $message->language,
+                    'country'  => $message->country,
+                    'campaign_source' => $message->campaign_source,
                     'stage'    => 'New',
                     'notes'    => trim("Contact message #{$message->id}\n\n{$message->message}"),
                 ]);

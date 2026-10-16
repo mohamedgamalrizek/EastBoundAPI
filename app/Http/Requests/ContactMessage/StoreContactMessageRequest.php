@@ -32,6 +32,10 @@ class StoreContactMessageRequest extends FormRequest
             'subject_choice' => ['nullable', 'string', 'max:255'],
             'subject_custom' => ['nullable', 'string', 'max:255'],
             'subject'        => ['nullable', 'string', 'max:255'],
+            'website'        => ['nullable', 'string', 'max:255'],
+            'language'       => ['nullable', 'in:English,Spanish,Italian,French'],
+            'country'        => ['nullable', 'string', 'max:255'],
+            'campaign_source' => ['nullable', 'in:Google Ads,Social Media,Organic Leads,Referral,Other'],
             'message'        => ['required', 'string', 'max:5000'],
         ];
     }

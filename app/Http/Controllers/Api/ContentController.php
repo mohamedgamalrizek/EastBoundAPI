@@ -9,6 +9,7 @@ use App\Models\Lead;
 use App\Models\Testimonial;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiReturnFormatTrait;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -25,10 +26,17 @@ class ContentController extends Controller
     /** The subject options the website's contact form offers. */
     public const CONTACT_SUBJECTS = [
         'General enquiry',
+        'Tour packages',
         'Booking support',
         'Visa services',
         'Hajj & Umrah',
     ];
+
+    /** Languages the affiliate websites currently serve. */
+    public const LANGUAGE_OPTIONS = Lead::LANGUAGES;
+
+    /** Marketing sources accepted for affiliate lead attribution. */
+    public const CAMPAIGN_SOURCE_OPTIONS = Lead::CAMPAIGN_SOURCES;
 
     /** FAQs grouped by category. Optional ?category= filter. */
     public function faqs(Request $request)
@@ -163,6 +171,8 @@ class ContentController extends Controller
                 'whatsapp'        => settings('whatsapp'),
             ],
             'subjects' => self::CONTACT_SUBJECTS,
+            'languages' => self::LANGUAGE_OPTIONS,
+            'campaign_sources' => self::CAMPAIGN_SOURCE_OPTIONS,
         ]);
     }
 
@@ -174,6 +184,11 @@ class ContentController extends Controller
             'email'   => ['nullable', 'email', 'max:255'],
             'phone'   => ['nullable', 'string', 'max:50'],
             'subject' => ['nullable', 'string', 'max:255'],
+            'website' => ['nullable', 'string', 'max:255'],
+            'lead_source' => ['nullable', 'string', 'max:255'],
+            'language' => ['nullable', Rule::in(self::LANGUAGE_OPTIONS)],
+            'country' => ['nullable', 'string', 'max:255'],
+            'campaign_source' => ['nullable', Rule::in(self::CAMPAIGN_SOURCE_OPTIONS)],
             'message' => ['required', 'string', 'max:5000'],
         ]);
         if ($validator->fails()) {
@@ -186,6 +201,10 @@ class ContentController extends Controller
                 'email'   => $request->email,
                 'phone'   => $request->phone,
                 'subject' => $request->input('subject', self::CONTACT_SUBJECTS[0]),
+                'website' => $request->input('website', $request->input('lead_source')),
+                'language' => $request->language,
+                'country' => $request->country,
+                'campaign_source' => $request->campaign_source,
                 'message' => $request->message,
                 'status'  => 'new',
             ]);
@@ -196,8 +215,12 @@ class ContentController extends Controller
                 'email'    => $message->email,
                 'interest' => $message->subject ?: 'General enquiry',
                 'source'   => 'Website',
+                'website'  => $message->website,
+                'language' => $message->language,
+                'country'  => $message->country,
+                'campaign_source' => $message->campaign_source,
                 'stage'    => 'New',
-                'notes'    => trim("Contact message #{$message->id}\n\n{$message->message}"),
+                'notes'    => trim($this->formatContactLeadNotes($message)),
             ]);
         });
 
@@ -206,6 +229,92 @@ class ContentController extends Controller
             [],
             201
         );
+    }
+
+    /**
+     * Affiliate website lead intake. Accepts one lead object or an array of
+     * lead objects and stores each as a CRM Lead.
+     */
+    public function leadIntake(Request $request)
+    {
+        $items = $this->normaliseLeadPayload($request->all());
+
+        $validator = Validator::make(['leads' => $items], [
+            'leads'                 => ['required', 'array', 'min:1', 'max:50'],
+            'leads.*.name'          => ['required', 'string', 'max:255'],
+            'leads.*.email'         => ['nullable', 'email', 'max:255'],
+            'leads.*.phone'         => ['nullable', 'string', 'max:50'],
+            'leads.*.website'       => ['required', 'string', 'max:255'],
+            'leads.*.language'      => ['nullable', Rule::in(self::LANGUAGE_OPTIONS)],
+            'leads.*.country'       => ['nullable', 'string', 'max:255'],
+            'leads.*.campaign_source' => ['nullable', Rule::in(self::CAMPAIGN_SOURCE_OPTIONS)],
+            'leads.*.subject'       => ['nullable', 'string', 'max:255'],
+            'leads.*.destinations'  => ['nullable', 'string', 'max:255'],
+            'leads.*.from_date'     => ['nullable', 'date'],
+            'leads.*.to_date'       => ['nullable', 'date', 'after_or_equal:leads.*.from_date'],
+            'leads.*.duration'      => ['nullable', 'integer', 'min:0', 'max:4294967295'],
+            'leads.*.adults'        => ['nullable', 'integer', 'min:0', 'max:4294967295'],
+            'leads.*.children'      => ['nullable', 'integer', 'min:0', 'max:4294967295'],
+            'leads.*.budget'        => ['nullable', 'string', 'max:100'],
+            'leads.*.value'         => ['nullable', 'numeric', 'min:0'],
+            'leads.*.comments'      => ['nullable', 'string', 'max:5000'],
+            'leads.*.created_at'    => ['nullable', 'date'],
+        ]);
+
+        if ($validator->fails()) {
+            return $this->responseWithError('Validation failed.', $validator->errors(), 422);
+        }
+
+        $created = DB::transaction(function () use ($items) {
+            return collect($items)->map(function (array $item) {
+                $subject = $item['subject'] ?: 'Tour packages';
+
+                $lead = Lead::create([
+                    'name'     => $item['name'],
+                    'phone'    => $item['phone'],
+                    'email'    => $item['email'],
+                    'interest' => $item['destinations'] ?: $subject,
+                    'source'   => 'Website',
+                    'website'  => $item['website'],
+                    'language' => $item['language'],
+                    'country'  => $item['country'],
+                    'campaign_source' => $item['campaign_source'],
+                    'subject' => $subject,
+                    'destinations' => $item['destinations'],
+                    'from_date' => $item['from_date'],
+                    'to_date' => $item['to_date'],
+                    'duration' => $item['duration'],
+                    'adults' => $item['adults'],
+                    'children' => $item['children'],
+                    'budget' => $item['budget'],
+                    'comments' => $item['comments'],
+                    'value'    => $item['value'] ?? 0,
+                    'stage'    => 'New',
+                    'notes'    => $this->formatAffiliateLeadNotes($item, $subject),
+                ]);
+
+                if ($item['created_at']) {
+                    $lead->created_at = Carbon::parse($item['created_at']);
+                    $lead->save();
+                }
+
+                return [
+                    'id'       => $lead->id,
+                    'name'     => $lead->name,
+                    'website'  => $lead->website,
+                    'language' => $lead->language,
+                    'country'  => $lead->country,
+                    'campaign_source' => $lead->campaign_source,
+                    'interest' => $lead->interest,
+                    'stage'    => $lead->stage,
+                ];
+            })->values();
+        });
+
+        return $this->responseWithSuccess('Lead intake completed.', [
+            'count' => $created->count(),
+            'leads' => $created,
+        ], 201);
     }
 
     /** The service types the enquiry endpoint accepts, for the app's picker. */
@@ -222,6 +331,69 @@ class ContentController extends Controller
         return $this->responseWithSuccess('Enquiry types fetched.', [
             'types' => $types,
         ]);
+    }
+
+    private function normaliseLeadPayload(array $payload): array
+    {
+        $items = array_is_list($payload) ? $payload : [$payload];
+
+        return collect($items)->map(function (array $item) {
+            return [
+                'created_at'   => $item['created_at'] ?? null,
+                'name'         => $item['full_name'] ?? $item['name'] ?? null,
+                'email'        => $item['email'] ?? null,
+                'phone'        => $item['phone'] ?? null,
+                'website'      => $item['lead_source'] ?? $item['website'] ?? $item['site'] ?? null,
+                'language'     => $item['language'] ?? null,
+                'country'      => $item['country'] ?? null,
+                'campaign_source' => $item['campaign_source'] ?? $item['campaign'] ?? null,
+                'subject'      => $item['subject'] ?? null,
+                'destinations' => $item['destinations'] ?? $item['destination'] ?? null,
+                'from_date'    => $item['from_date'] ?? $item['start_date'] ?? null,
+                'to_date'      => $item['to_date'] ?? $item['end_date'] ?? null,
+                'duration'     => $item['duration'] ?? null,
+                'adults'       => $item['adults'] ?? null,
+                'children'     => $item['children'] ?? null,
+                'budget'       => $item['budget'] ?? null,
+                'value'        => $item['value'] ?? $item['estimated_value'] ?? null,
+                'comments'     => $item['comments'] ?? $item['message'] ?? $item['details'] ?? null,
+            ];
+        })->all();
+    }
+
+    private function formatAffiliateLeadNotes(array $item, string $subject): string
+    {
+        return collect([
+            'Affiliate lead',
+            'Lead Source / Website: ' . $item['website'],
+            'Language: ' . ($item['language'] ?: 'Not specified'),
+            'Country: ' . ($item['country'] ?: 'Not specified'),
+            'Campaign Source: ' . ($item['campaign_source'] ?: 'Not specified'),
+            'Subject: ' . $subject,
+            'Destinations: ' . ($item['destinations'] ?: 'Not specified'),
+            'From Date: ' . ($item['from_date'] ?: 'Not specified'),
+            'To Date: ' . ($item['to_date'] ?: 'Not specified'),
+            'Duration: ' . ($item['duration'] !== null ? $item['duration'] : 'Not specified'),
+            'Adults: ' . ($item['adults'] !== null ? $item['adults'] : 'Not specified'),
+            'Children: ' . ($item['children'] !== null ? $item['children'] : 'Not specified'),
+            'Budget: ' . ($item['budget'] ?: 'Not specified'),
+            'Original Created At: ' . ($item['created_at'] ?: 'Not specified'),
+            '',
+            $item['comments'],
+        ])->filter(fn ($line) => $line !== null)->implode("\n");
+    }
+
+    private function formatContactLeadNotes(ContactMessage $message): string
+    {
+        return collect([
+            "Contact message #{$message->id}",
+            'Lead Source / Website: ' . ($message->website ?: 'Not specified'),
+            'Language: ' . ($message->language ?: 'Not specified'),
+            'Country: ' . ($message->country ?: 'Not specified'),
+            'Campaign Source: ' . ($message->campaign_source ?: 'Not specified'),
+            '',
+            $message->message,
+        ])->implode("\n");
     }
 
     /** Become an Agent — files a CRM lead for the partnerships team. */

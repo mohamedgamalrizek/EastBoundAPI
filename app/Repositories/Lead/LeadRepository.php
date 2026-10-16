@@ -30,7 +30,11 @@ class LeadRepository implements LeadInterface
     public function store($request)
     {
         try {
-            $this->model::create($this->data($request));
+            $lead = new Lead($this->data($request));
+            if ($request->filled('created_at')) {
+                $lead->created_at = $request->created_at;
+            }
+            $lead->save();
 
             return $this->responseWithSuccess(___('alert.successfully_added'));
         } catch (\Throwable $th) {
@@ -41,7 +45,12 @@ class LeadRepository implements LeadInterface
     public function update($request, $id)
     {
         try {
-            $this->model::findOrFail($id)->update($this->data($request));
+            $lead = $this->model::findOrFail($id);
+            $lead->fill($this->data($request));
+            if ($request->filled('created_at')) {
+                $lead->created_at = $request->created_at;
+            }
+            $lead->save();
 
             return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
@@ -68,6 +77,19 @@ class LeadRepository implements LeadInterface
             'email'    => $request->email,
             'interest' => $request->interest,
             'source'   => $request->source,
+            'website'  => $request->website,
+            'language' => $request->language,
+            'country'  => $request->country,
+            'campaign_source' => $request->campaign_source,
+            'subject' => $request->subject,
+            'destinations' => $request->destinations,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
+            'duration' => $request->duration,
+            'adults' => $request->adults,
+            'children' => $request->children,
+            'budget' => $request->budget,
+            'comments' => $request->comments,
             'value'    => $request->value ?? 0,
             'stage'    => $request->stage,
             'owner'    => $request->owner,

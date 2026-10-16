@@ -3,7 +3,7 @@
 @section('maincontent')
 <x-page title="Contact Messages" :breadcrumb="['CRM','Contact Messages']">
 
-    <x-data-table :headers="['Name','Contact','Subject','Message','Status','Submitted','Action']">
+    <x-data-table :headers="['Name','Contact','Subject','Website','Message','Status','Submitted','Action']">
         @forelse($messages as $message)
             <tr id="row_{{ $message->id }}">
                 <td><b>{{ $message->name }}</b></td>
@@ -19,6 +19,7 @@
                     @endif
                 </td>
                 <td>{{ $message->subject ?: 'General enquiry' }}</td>
+                <td>{{ $message->website ?: '—' }}</td>
                 <td>{{ \Illuminate\Support\Str::limit($message->message, 80) }}</td>
                 <td>{!! $message->statusBadge() !!}</td>
                 <td>{{ $message->created_at?->format('d M Y, h:i A') }}</td>

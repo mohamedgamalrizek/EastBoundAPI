@@ -22,6 +22,7 @@
                         <tr><th>Name</th><td>{{ $message->name }}</td></tr>
                         <tr><th>Email</th><td>@if($message->email)<a href="mailto:{{ $message->email }}">{{ $message->email }}</a>@else<span class="text-muted">N/A</span>@endif</td></tr>
                         <tr><th>Phone</th><td>@if($message->phone)<a href="tel:{{ preg_replace('/[^\d+]/', '', $message->phone) }}">{{ $message->phone }}</a>@else<span class="text-muted">N/A</span>@endif</td></tr>
+                        <tr><th>Website</th><td>{{ $message->website ?: 'N/A' }}</td></tr>
                         <tr><th>Status</th><td>{!! $message->statusBadge() !!}</td></tr>
                         <tr><th>Submitted</th><td>{{ $message->created_at?->format('d M Y, h:i A') }}</td></tr>
                     </table>

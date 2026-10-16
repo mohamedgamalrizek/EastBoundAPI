@@ -10,6 +10,10 @@ class Lead extends Model
 {
     use LogsActivity;
 
+    public const LANGUAGES = ['English', 'Spanish', 'Italian', 'French'];
+
+    public const CAMPAIGN_SOURCES = ['Google Ads', 'Social Media', 'Organic Leads', 'Referral', 'Other'];
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->useLogName('Lead')->logOnly(['name', 'stage', 'value'])->setDescriptionForEvent(fn (string $event) => $event);
@@ -22,11 +26,35 @@ class Lead extends Model
         'email',
         'interest',
         'source',
+        'website',
+        'language',
+        'country',
+        'campaign_source',
+        'subject',
+        'destinations',
+        'from_date',
+        'to_date',
+        'duration',
+        'adults',
+        'children',
+        'budget',
+        'comments',
         'value',
         'stage',
         'owner',
         'notes',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'from_date' => 'date',
+            'to_date' => 'date',
+            'duration' => 'integer',
+            'adults' => 'integer',
+            'children' => 'integer',
+        ];
+    }
 
     public function assignedTo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

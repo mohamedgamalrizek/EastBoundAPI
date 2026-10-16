@@ -13,16 +13,30 @@
                 <div class="table-responsive">
                     <table class="table table-responsive-sm">
                         <thead class="bg">
-                            <tr><th>ID</th><th>Name</th><th>Interest</th><th>Source</th><th>Value</th><th>Stage</th><th>Owner</th><th>Action</th></tr>
+                            <tr><th>Contact</th><th>Interest</th><th>Source</th><th>Language / Country</th><th>CSource</th><th>Travel Dates</th><th>Travelers</th><th>Budget</th><th>Stage</th><th>Owner</th><th>Action</th></tr>
                         </thead>
                         <tbody>
                             @forelse($leads as $key => $lead)
                             <tr id="row_{{ $lead->id }}">
-                                <td>{{ $leads->firstItem() + $key }}</td>
-                                <td><div>{{ $lead->name }}</div><small class="text-muted">{{ $lead->phone }}</small></td>
-                                <td>{{ $lead->interest ?? '—' }}</td>
-                                <td>{{ $lead->source }}</td>
-                                <td>{{ currency_symbol() }}{{ number_format($lead->value) }}</td>
+                                <td>
+                                    <a href="{{ route('crm.leads.show', $lead->id) }}">{{ $lead->name }}</a>
+                                    <div class="text-muted"><small>{{ $lead->phone ?: '—' }}</small></div>
+                                    <div class="text-muted"><small>{{ $lead->email ?: '—' }}</small></div>
+                                </td>
+                                <td>
+                                    <div>{{ $lead->interest ?: '—' }}</div>
+                                    <small class="d-block text-muted">Subject: {{ $lead->subject ?: '—' }}</small>
+                                    <small class="d-block text-muted">Destinations: {{ $lead->destinations ?: '—' }}</small>
+                                </td>
+                                <td><div>{{ $lead->source }}</div><small class="text-muted">{{ $lead->website ?: '—' }}</small></td>
+                                <td><div>{{ $lead->language ?: '—' }}</div><small class="text-muted">{{ $lead->country ?: '—' }}</small></td>
+                                <td>{{ $lead->campaign_source ?: '—' }}</td>
+                                <td>
+                                    <div>{{ $lead->from_date?->format('Y-m-d') ?? '—' }} → {{ $lead->to_date?->format('Y-m-d') ?? '—' }}</div>
+                                    <small class="text-muted">Days: {{ $lead->duration ?? '—' }}</small>
+                                </td>
+                                <td><div>Adults: {{ $lead->adults ?? '—' }}</div><small class="text-muted">Children: {{ $lead->children ?? '—' }}</small></td>
+                                <td><div>{{ currency_symbol() }}{{ number_format($lead->value, 2) }}</div><small class="text-muted">Budget: {{ $lead->budget ?: '—' }}</small></td>
                                 <td>{!! $lead->stageBadge() !!}</td>
                                 <td>{{ $lead->owner ?? '—' }}</td>
                                 <td>
@@ -42,7 +56,7 @@
                                 </td>
                             </tr>
                             @empty
-                            <x-nodata-found :colspan="8" />
+                            <x-nodata-found :colspan="13" />
                             @endforelse
                         </tbody>
                     </table>

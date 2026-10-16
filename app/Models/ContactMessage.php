@@ -11,6 +11,10 @@ class ContactMessage extends Model
         'email',
         'phone',
         'subject',
+        'website',
+        'language',
+        'country',
+        'campaign_source',
         'message',
         'status',
     ];
