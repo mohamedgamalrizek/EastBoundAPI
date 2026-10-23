@@ -6,7 +6,10 @@ use Illuminate\Support\Str;
 
 class DmcModules
 {
-    public const EXCLUDED = ['visa', 'hajj', 'student_service'];
+    public const EXCLUDED = [
+        'visa', 'hajj', 'flight', 'insurance', 'student_service', 'medical_tour',
+        'corporate_travel', 'event_tour', 'coupon', 'review',
+    ];
 
     public static function permissionEnabled(?string $permission): bool
     {
@@ -23,7 +26,11 @@ class DmcModules
     {
         return ! Str::is([
             'visa.*', 'hajj.*', 'student-service.*',
-            'report.visa', 'sup.visa', 'cms.visa-service.*',
+            'flight.*', 'insurance.*', 'medical-tour.*', 'corporate-travel.*', 'event-tour.*',
+            'coupon.*', 'review.*', 'newsletter-subscriber.*',
+            'report.visa', 'report.flight', 'sup.visa', 'cms.visa-service.*', 'cms.flight-route.*',
+            'crm.leads.convert.flight', 'crm.leads.store.flight',
+            'settings.flight-api.*',
         ], $route ?? '');
     }
 }

@@ -9,12 +9,6 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('form'); ?>
-    <div class="top-link">
-        <?php echo e(___('auth.login_top_text')); ?>
-
-        <a href="<?php echo e(route('registerForm')); ?>"><?php echo e(___('auth.login_top_link')); ?></a>
-    </div>
-
     <h2><?php echo e(___('auth.login_form_title')); ?></h2>
     <p class="lead-sm"><?php echo e(___('auth.login_form_intro')); ?></p>
 
@@ -85,14 +79,6 @@ unset($__errorArgs, $__bag); ?>
     <?php endif; ?>
 
     <?php echo $__env->make('auth.partials.demo-logins', ['portalOnly' => false], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-
-    <div class="divider"><?php echo e(___('auth.divider_text')); ?></div>
-
-    <p class="signup-line mb-0">
-        <?php echo e(___('auth.login_signup_text')); ?>
-
-        <a href="<?php echo e(route('registerForm')); ?>"><?php echo e(___('auth.login_signup_link')); ?></a>
-    </p>
 
     <div class="admin-hint">
         <a href="<?php echo e(route('admin.loginForm')); ?>"><?php echo e(___('auth.login_admin_link')); ?></a>

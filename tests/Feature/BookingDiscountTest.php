@@ -79,6 +79,26 @@ class BookingDiscountTest extends TestCase
         $this->assertNull($quote['coupon_error']);
     }
 
+    public function test_editing_a_legacy_booking_without_the_removed_coupon_field_preserves_its_amount(): void
+    {
+        Coupon::create(['code' => 'LEGACY10', 'type' => Coupon::PERCENTAGE, 'value' => 10, 'status' => 'active']);
+        $booking = $this->book([], $this->pricing()->quote(1000, null, 'LEGACY10'));
+
+        $result = app(\App\Repositories\Booking\BookingRepository::class)->update(new \Illuminate\Http\Request([
+            'package_id' => $booking->package_id,
+            'customer_id' => $booking->customer_id,
+            'travel_date' => $booking->travel_date->toDateString(),
+            'travelers' => 1,
+            'amount' => 1000,
+            'status' => 'pending',
+        ]), $booking->id);
+
+        $this->assertTrue($result['status']);
+        $this->assertEquals(900, $booking->fresh()->amount);
+        $this->assertSame('LEGACY10', $booking->fresh()->coupon_code);
+        $this->assertEquals(100, $booking->fresh()->coupon_discount);
+    }
+
     public function test_a_fixed_coupon_can_never_exceed_the_booking(): void
     {
         Coupon::create(['code' => 'BIG', 'type' => Coupon::FIXED, 'value' => 99999, 'status' => 'active']);

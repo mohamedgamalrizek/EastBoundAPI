@@ -10,10 +10,8 @@
             || hasPermission('general_settings_update');
 
         $mainVisible        = hasPermission('dashboard_read') || hasPermission('user_read') || hasPermission('role_read') || hasPermission('todo_read');
-        $bookingsCrmVisible = hasPermission('customer_read') || hasPermission('crm_read');
-        $marketingVisible   = hasPermission('coupon_read') || hasPermission('campaign_read') || hasPermission('review_read');
-        $operationsVisible  = hasPermission('tour_read') || hasPermission('hotel_read') || hasPermission('transport_read') || hasPermission('flight_read');
-        $servicesVisible    = hasPermission('insurance_read') || hasPermission('medical_tour_read') || hasPermission('corporate_travel_read') || hasPermission('event_tour_read');
+        $bookingsCrmVisible = hasPermission('customer_read') || hasPermission('crm_read') || hasPermission('campaign_read');
+        $operationsVisible  = hasPermission('tour_read') || hasPermission('hotel_read') || hasPermission('transport_read');
         $financeVisible     = hasPermission('accounting_read') || hasPermission('supplier_read') || hasPermission('agent_finance_read');
         $workVisible        = hasPermission('task_read') || hasPermission('support_read');
         $reportsVisible     = hasPermission('report_read');
@@ -88,21 +86,8 @@
             </li>
             @endif
 
-            @if($marketingVisible)
-            <li class="tv-nav-section"><span>{{ ___('menus.marketing') }}</span></li>
-            @endif
-
-            @if(hasPermission('coupon_read'))
-            <li> <a href="{{ route('coupon.index') }}" class="{{ request()->is('coupons*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-tag"></i> <span class="nav-text">{{ ___('menus.coupons') }}</span> </a> </li>
-            @endif
-
-            @if(hasPermission('review_read'))
-            <li> <a href="{{ route('review.index') }}" class="{{ request()->is('reviews*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-star"></i> <span class="nav-text">Reviews</span> </a> </li>
-            @endif
-
             @if(hasPermission('campaign_read'))
-            <li> <a href="{{ route('campaign.index') }}" class="{{ request()->is('campaigns*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-speech"></i> <span class="nav-text">{{ ___('menus.campaigns') }}</span> </a> </li>
-            <li> <a href="{{ route('newsletter-subscriber.index') }}" class="{{ request()->is('marketing/newsletter-subscribers*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-envelope"></i> <span class="nav-text">{{ ___('menus.newsletter_subscribers') }}</span> </a> </li>
+            <li> <a href="{{ route('campaign.index') }}" class="{{ request()->is('campaigns*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-speech"></i> <span class="nav-text">Sales & Lead Campaigns</span> </a> </li>
             @endif
 
             @if($operationsVisible)
@@ -157,38 +142,6 @@
                     <li><a href="{{ route('transport.reports') }}">{{ ___('menus.transport_reports') }}</a></li>
                 </ul>
             </li>
-            @endif
-
-            @if(hasPermission('flight_read'))
-            {{-- Flight Management --}}
-            <li class="{{ request()->is('flight*') ? 'mm-active' : '' }}">
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-plane"></i> <span class="nav-text">{{ ___('menus.flight_management') }}</span> </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('flight.index') }}">{{ ___('menus.flight_bookings') }}</a></li>
-                    <li><a href="{{ route('flight.reissue') }}">{{ ___('menus.reissue_requests') }}</a></li>
-                    <li><a href="{{ route('flight.cancellation') }}">{{ ___('menus.cancellation_requests') }}</a></li>
-                    <li><a href="{{ route('flight.refund') }}">{{ ___('menus.refund_tracking') }}</a></li>
-                    <li><a href="{{ route('flight.reports') }}">{{ ___('menus.reports') }}</a></li>
-                </ul>
-            </li>
-            @endif
-
-            @if($servicesVisible)
-            <li class="tv-nav-section"><span>{{ ___('menus.services') }}</span></li>
-            @endif
-
-            @if(hasPermission('insurance_read'))
-            <li> <a href="{{ route('insurance.index') }}" class="{{ request()->is('insurances*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-shield"></i> <span class="nav-text">{{ ___('menus.travel_insurance') }}</span> </a> </li>
-            @endif
-            @if(hasPermission('medical_tour_read'))
-            <li> <a href="{{ route('medical-tour.index') }}" class="{{ request()->is('medical-tours*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-heart"></i> <span class="nav-text">{{ ___('menus.medical_tourism') }}</span> </a> </li>
-            @endif
-            @if(hasPermission('corporate_travel_read'))
-            <li> <a href="{{ route('corporate-travel.index') }}" class="{{ request()->is('corporate-travels*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-briefcase"></i> <span class="nav-text">{{ ___('menus.corporate_travel') }}</span> </a> </li>
-            @endif
-            @if(hasPermission('event_tour_read'))
-            <li> <a href="{{ route('event-tour.index') }}" class="{{ request()->is('event-tours*') && ! request()->is('event-tours/bookings*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-calender"></i> <span class="nav-text">{{ ___('menus.events_conference') }}</span> </a> </li>
-            <li> <a href="{{ route('event-tour.booking.index') }}" class="{{ request()->is('event-tours/bookings*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="fa-solid fa-calendar-check"></i> <span class="nav-text">{{ ___('label.event_bookings') }}</span> </a> </li>
             @endif
 
             @if($financeVisible)
@@ -293,7 +246,6 @@
                     <li><a href="{{ route('report.sales') }}">{{ ___('menus.sales_reports') }}</a></li>
                     <li><a href="{{ route('report.leads') }}">Lead Languages & Websites</a></li>
                     <li><a href="{{ route('report.package') }}">{{ ___('menus.package_reports') }}</a></li>
-                    <li><a href="{{ route('report.flight') }}">{{ ___('menus.flight_reports') }}</a></li>
                     <li><a href="{{ route('report.hotel') }}">{{ ___('menus.hotel_reports') }}</a></li>
                     <li><a href="{{ route('report.agent') }}">{{ ___('menus.agent_reports') }}</a></li>
                     <li><a href="{{ route('report.customer') }}">{{ ___('menus.customer_reports') }}</a></li>
@@ -321,7 +273,6 @@
                     <li><a href="{{ route('cms.faq.index') }}">{{ ___('menus.manage_faqs') }}</a></li>
                     <li><a href="{{ route('cms.menu.index') }}">{{ ___('menus.manage_menus') }}</a></li>
                     {{-- Catalogues rendered by the public marketing site --}}
-                    <li><a href="{{ route('cms.flight-route.index') }}">{{ ___('menus.flight_fare_deals') }}</a></li>
                     <li><a href="{{ route('cms.transport-service.index') }}">{{ ___('menus.transport_services') }}</a></li>
                     <li><a href="{{ route('cms.job-opening.index') }}">{{ ___('menus.job_openings') }}</a></li>
                     <li><a href="{{ route('cms.content-block.index') }}">{{ ___('menus.content_blocks') }}</a></li>
@@ -380,7 +331,6 @@
                     @if(hasPermission('general_settings_read'))
                     <li> <a href="{{route('settings.general.index')}}">{{ ___('menus.general_settings') }}</a> </li>
                     <li> <a href="{{ route('settings.ai.index') }}">{{ ___('menus.ai_settings') }}</a> </li>
-                    <li> <a href="{{ route('settings.flight-api.index') }}">{{ ___('menus.flight_api') }}</a> </li>
                     <li> <a href="{{ route('settings.whatsapp.index') }}">{{ ___('menus.whatsapp_settings') }}</a> </li>
                     <li> <a href="{{ route('settings.loyalty.index') }}">{{ ___('menus.loyalty_settings') }}</a> </li>
                     @endif

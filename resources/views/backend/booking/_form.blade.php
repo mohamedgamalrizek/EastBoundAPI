@@ -90,10 +90,14 @@
              owes is this figure minus the discount, not this figure. --}}
         <input type="number" step="0.01" name="amount" class="form-control input-style-1" placeholder="115000"
             value="{{ old('amount', isset($booking) ? $booking->grossAmount() : '') }}">
-        <small class="d-block pt-2 text-muted">Price before any promo code.</small>
+        <small class="d-block pt-2 text-muted">Booking amount before existing adjustments.</small>
+        @if(isset($booking) && $booking->hasDiscount())
+            <small class="d-block pt-2 text-muted">Net payable: {{ currency_symbol() }}{{ number_format((float) $booking->amount, 2) }}</small>
+        @endif
         @error('amount') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
 
+    @if(hasPermission('coupon_read'))
     <div class="form-group col-md-4">
         <label>Promo code</label>
         <input type="text" name="coupon_code" class="form-control input-style-1" placeholder="e.g. SUMMER20"
@@ -111,6 +115,7 @@
         @endif
         @error('coupon_code') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
+    @endif
 
     <div class="form-group col-md-6">
         <label>Payment method</label>

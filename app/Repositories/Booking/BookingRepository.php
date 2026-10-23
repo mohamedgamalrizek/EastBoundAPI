@@ -57,7 +57,8 @@ class BookingRepository implements BookingInterface
             // re-saving a booking to change its status cannot claim a second
             // use of the same coupon.
             $typed   = (float) $request->amount;
-            $changed = trim((string) $request->coupon_code) !== (string) $booking->coupon_code
+            $couponCode = $request->exists('coupon_code') ? $request->coupon_code : $booking->coupon_code;
+            $changed = trim((string) $couponCode) !== (string) $booking->coupon_code
                 || abs($typed - $booking->grossAmount()) > 0.009;
 
             if (! $changed) {
@@ -73,7 +74,7 @@ class BookingRepository implements BookingInterface
             // redeemed themselves are carried over by requote().
             $pricing->releaseCoupon($booking);
 
-            $quote = $pricing->requote($booking, $typed, $request->coupon_code);
+            $quote = $pricing->requote($booking, $typed, $couponCode);
             $booking->update($this->data($request) + $pricing->columns($quote));
 
             $lost = $pricing->commit($booking, $quote);

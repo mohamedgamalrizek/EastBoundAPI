@@ -24,11 +24,7 @@ class CustomerRepository implements CustomerInterface
 
     public function get($id)
     {
-        // The profile lists the side services sold to this customer; loading
-        // them here keeps the view from firing a query per module.
-        return $this->model::with([
-            'insurances', 'medicalTours', 'corporateTravels',
-        ])->find($id);
+        return $this->model::find($id);
     }
 
     public function store($request)

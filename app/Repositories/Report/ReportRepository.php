@@ -211,14 +211,13 @@ class ReportRepository implements ReportInterface
             'snapshot' => collect([
                 (object) ['module' => 'Bookings',     'records' => Booking::count(),          'value' => $bookingRevenue,                  'label' => 'Revenue'],
                 (object) ['module' => 'Packages',     'records' => Package::count(),          'value' => (float) Package::sum('price'),    'label' => 'Catalog value'],
-                (object) ['module' => 'Flights',      'records' => FlightBooking::count(),    'value' => (float) FlightBooking::sum('fare'), 'label' => 'Fare'],
                 (object) ['module' => 'Hotels',       'records' => Hotel::count(),            'value' => null,                             'label' => '-'],
                 (object) ['module' => 'Customers',    'records' => Customer::count(),         'value' => null,                             'label' => '-'],
                 (object) ['module' => 'Agents',       'records' => AgentCommission::count(),  'value' => (float) AgentCommission::sum('amount'), 'label' => 'Commission'],
                 (object) ['module' => 'Transactions', 'records' => AccountTransaction::count(), 'value' => $income - $expense,             'label' => 'Net'],
             ]),
             'totalRecords' => Booking::count() + Package::count()
-                + FlightBooking::count() + Hotel::count() + Customer::count()
+                + Hotel::count() + Customer::count()
                 + AgentCommission::count() + AccountTransaction::count(),
             'income'  => $income,
             'expense' => $expense,

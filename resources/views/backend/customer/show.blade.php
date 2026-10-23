@@ -58,61 +58,6 @@ Customer Details
         </div>
     </div>
 
-    {{-- Side services used to live only in their own modules, so a customer's
-         profile showed no sign that they had bought insurance or a medical
-         trip — and nothing added up what those sales earned. --}}
-    @php
-        $services = collect()
-            ->concat($customer->insurances->map(fn ($r) => [
-                'module' => ___('menus.travel_insurance'),
-                'detail' => trim($r->provider . ' · ' . $r->plan_name, ' ·'),
-                'fee'    => $r->service_fee,
-                'status' => $r->status,
-            ]))
-            ->concat($customer->medicalTours->map(fn ($r) => [
-                'module' => ___('menus.medical_tourism'),
-                'detail' => trim($r->hospital . ' · ' . $r->destination, ' ·'),
-                'fee'    => $r->service_fee,
-                'status' => $r->status,
-            ]))
-            ->concat($customer->corporateTravels->map(fn ($r) => [
-                'module' => ___('menus.corporate_travel'),
-                'detail' => trim($r->company_name . ' · ' . $r->service_type, ' ·'),
-                'fee'    => $r->service_fee,
-                'status' => $r->status,
-            ]));
-    @endphp
-
-    @if($services->count())
-    <div class="row"><div class="col-12 mb-4"><div class="tv-card">
-        <div class="tv-card-head">
-            <h4 class="title-site mb-0">{{ ___('menus.services') }}</h4>
-            <span class="text-muted tv-text-sm">
-                {{ ___('label.service_revenue') }}: {{ currency_symbol() }}{{ number_format($services->sum('fee')) }}
-            </span>
-        </div>
-        <div class="tv-card-body"><div class="table-responsive">
-            <table class="table table-responsive-sm mb-0">
-                <thead class="bg"><tr>
-                    <th>{{ ___('menus.services') }}</th>
-                    <th>{{ ___('label.details') }}</th>
-                    <th>{{ ___('label.service_fee') }}</th>
-                    <th>{{ ___('label.status') }}</th>
-                </tr></thead>
-                <tbody>
-                    @foreach($services as $service)
-                    <tr>
-                        <td><b>{{ $service['module'] }}</b></td>
-                        <td>{{ $service['detail'] ?: '—' }}</td>
-                        <td>{{ $service['fee'] !== null ? currency_symbol() . number_format($service['fee']) : '—' }}</td>
-                        <td>{{ ucfirst($service['status']) }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div></div>
-    </div></div></div>
-    @endif
     {{-- Wallet: money the agency is holding for this customer. Every line is
          either a top-up/adjustment made here, or a receipt/refund that already
          posted itself — so this and account 2300 always agree. --}}

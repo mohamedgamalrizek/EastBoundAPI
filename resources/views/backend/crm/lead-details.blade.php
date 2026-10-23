@@ -34,9 +34,6 @@
                     @if($lead->email)
                         <a href="mailto:{{ $lead->email }}" class="btn btn-sm btn-outline-primary"><i class="fa fa-envelope"></i> Email</a>
                     @endif
-                    @if(hasPermission('crm_update') && str_contains(strtolower($lead->interest ?? ''), 'flight'))
-                        <a href="{{ route('crm.leads.convert.flight', $lead->id) }}" class="btn btn-sm btn-success"><i class="fa fa-plane"></i> Convert to Booking</a>
-                    @endif
                     @if(hasPermission('crm_update') && str_contains(strtolower($lead->interest ?? ''), 'hotel'))
                         <a href="{{ route('crm.leads.convert.hotel', $lead->id) }}" class="btn btn-sm btn-success"><i class="fa fa-hotel"></i> Convert to Hotel Booking</a>
                     @endif

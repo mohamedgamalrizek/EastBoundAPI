@@ -40,7 +40,7 @@ class LeadAttributionReportTest extends TestCase
 
         $migration = require database_path('migrations/2026_10_23_000001_link_bookings_to_leads.php');
         $migration->up();
-        config(['lead-reporting.websites' => ['one.test', 'two.test', 'three.test', 'four.test', 'five.test']]);
+        config(['lead-reporting.websites' => ['one.test', 'two.test', 'three.test', 'four.test', 'five.test', 'six.test']]);
     }
 
     protected function tearDown(): void
@@ -49,13 +49,13 @@ class LeadAttributionReportTest extends TestCase
         parent::tearDown();
     }
 
-    public function test_all_five_websites_and_four_languages_are_visible_without_activity(): void
+    public function test_all_six_websites_and_four_languages_are_visible_without_activity(): void
     {
         $report = app(LeadAttributionReport::class)->build();
 
-        $this->assertCount(5, $report['byWebsite']);
+        $this->assertCount(6, $report['byWebsite']);
         $this->assertCount(4, $report['byLanguage']);
-        $this->assertCount(20, $report['matrix']);
+        $this->assertCount(24, $report['matrix']);
         $this->assertEquals(0, $report['totals']['leads']);
         $this->assertEquals(0, $report['totals']['revenue']);
     }
