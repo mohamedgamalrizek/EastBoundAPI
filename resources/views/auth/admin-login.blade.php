@@ -1,5 +1,11 @@
 @extends('auth.saas-layout')
 @section('title') {{ ___('menus.login') }} @endsection
+@section('brand_name'){{ ___('auth.admin_brand_name') }}@endsection
+@section('brand_features'){{ ___('auth.admin_brand_features') }}@endsection
+@section('brand_quote_stars'){{ ___('auth.admin_access_label') }}@endsection
+@section('brand_quote_text'){{ ___('auth.admin_invitation_notice') }}@endsection
+@section('brand_quote_name'){{ ___('auth.admin_account_owner') }}@endsection
+@section('brand_quote_role'){{ ___('auth.admin_account_policy') }}@endsection
 
 @section('brand_heading')
     @php
@@ -10,11 +16,6 @@
 @endsection
 
 @section('form')
-    <div class="top-link">
-        {{ ___('auth.admin_top_text') }}
-        <a href="{{ route('loginForm') }}">{{ ___('auth.admin_top_link') }}</a>
-    </div>
-
     <h2>{{ ___('auth.admin_form_title') }}</h2>
     <p class="lead-sm">{{ ___('auth.admin_form_intro') }}</p>
 
@@ -51,5 +52,4 @@
         <button type="submit" class="btn-blue">{{ ___('auth.admin_submit_button') }}</button>
     </form>
 
-    @include('auth.partials.demo-logins', ['adminOnly' => true])
 @endsection

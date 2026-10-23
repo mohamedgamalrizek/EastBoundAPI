@@ -10,11 +10,6 @@
 @endsection
 
 @section('form')
-    <div class="top-link">
-        {{ ___('auth.login_top_text') }}
-        <a href="{{ route('registerForm') }}">{{ ___('auth.login_top_link') }}</a>
-    </div>
-
     <h2>{{ ___('auth.login_form_title') }}</h2>
     <p class="lead-sm">{{ ___('auth.login_form_intro') }}</p>
 
@@ -70,13 +65,6 @@
     @endif
 
     @include('auth.partials.demo-logins', ['portalOnly' => false])
-
-    <div class="divider">{{ ___('auth.divider_text') }}</div>
-
-    <p class="signup-line mb-0">
-        {{ ___('auth.login_signup_text') }}
-        <a href="{{ route('registerForm') }}">{{ ___('auth.login_signup_link') }}</a>
-    </p>
 
     <div class="admin-hint">
         <a href="{{ route('admin.loginForm') }}">{{ ___('auth.login_admin_link') }}</a>

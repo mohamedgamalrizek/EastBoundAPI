@@ -1,6 +1,6 @@
 @php
-    $appName = settings('name') ?: 'FLOW';
-    $authBrandName = ___('auth.brand_name');
+    $appName = trim($__env->yieldContent('brand_name')) ?: (settings('name') ?: 'FLOW');
+    $authBrandName = trim($__env->yieldContent('brand_name')) ?: ___('auth.brand_name');
 
     // The brand panel is shared by login, registration and the staff sign-in,
     // but they are not selling the same thing: registration creates a customer
@@ -94,7 +94,7 @@
             @endif
         </div>
         <div class="quote-box">
-            <div class="stars mb-1">{{ ___('auth.quote_stars') }}</div>
+            <div class="stars mb-1">@yield('brand_quote_stars', ___('auth.quote_stars'))</div>
             <p>{{ $authQuoteText }}</p>
             <div class="who">{{ $authQuoteName }}</div>
             <div class="role">{{ $authQuoteRole }}</div>
