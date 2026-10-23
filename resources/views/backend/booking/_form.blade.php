@@ -1,6 +1,7 @@
 @php $booking = $booking ?? null; @endphp
 
 <div class="form-row">
+    @include('backend.crm._lead-origin', ['originLeadId' => $booking->lead_id ?? null])
     <div class="form-group col-md-6">
         <label>Customer <span class="text-danger">*</span></label>
         @php $selCustomer = old('customer_id', $booking->customer_id ?? ''); @endphp

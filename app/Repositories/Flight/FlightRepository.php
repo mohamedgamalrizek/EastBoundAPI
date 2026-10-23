@@ -26,6 +26,7 @@ class FlightRepository extends BaseRepository implements FlightInterface
     protected function data($request): array
     {
         return [
+            ...($request->exists('lead_id') ? ['lead_id' => $request->lead_id ?: null] : []),
             'customer_id'    => $request->customer_id ?: null,
             'booking_id'     => $request->booking_id ?: null,
             'pnr'            => $request->pnr,

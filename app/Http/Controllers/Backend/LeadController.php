@@ -154,6 +154,7 @@ class LeadController extends Controller
         ]);
 
         $flight = FlightBooking::create([
+            'lead_id'        => $lead->id,
             'customer_id'    => $data['customer_id'] ?? null,
             'booking_id'     => $data['booking_id'] ?? null,
             'pnr'            => $data['pnr'],
@@ -232,6 +233,7 @@ class LeadController extends Controller
         ]);
 
         $booking = HotelBooking::create([
+            'lead_id'        => $lead->id,
             'booking_no'     => $data['booking_no'],
             'hotel_id'       => $data['hotel_id'],
             'customer_id'    => $data['customer_id'] ?? null,

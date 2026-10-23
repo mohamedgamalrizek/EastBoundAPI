@@ -611,6 +611,7 @@ Route::middleware('auth')->group(function () {
     Route::get('support/knowledge-base', [SupportController::class, 'kb'])->name('support.kb')->middleware('hasPermission:support_read');
 
     // Reporting Center
+    Route::get('reports-center/leads', [ReportController::class, 'leads'])->name('report.leads')->middleware('hasPermission:report_read');
     Route::get('reports-center/sales', [ReportController::class, 'sales'])->name('report.sales')->middleware('hasPermission:report_read');
     Route::get('reports-center/visa', [ReportController::class, 'visa'])->name('report.visa')->middleware('hasPermission:report_read');
     Route::get('reports-center/package', [ReportController::class, 'package'])->name('report.package')->middleware('hasPermission:report_read');

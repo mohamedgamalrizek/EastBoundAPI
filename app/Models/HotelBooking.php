@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class HotelBooking extends Model
 {
     protected $fillable = [
+        'lead_id',
         'booking_no', 'hotel_id', 'customer_id', 'agent_id', 'hotel_room_id',
         'guest_name', 'check_in', 'check_out', 'nights', 'amount', 'status',
         'payment_method', 'payment_claimed_at',

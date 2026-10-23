@@ -16,6 +16,7 @@ class StoreFlightRequest extends FormRequest
     public function rules()
     {
         return [
+            'lead_id' => ['nullable', 'integer', 'exists:leads,id'],
             'customer_id'    => ['nullable', 'exists:customers,id'],
             'booking_id'     => ['nullable', 'exists:bookings,id'],
             'pnr'            => ['required', 'string', 'max:50', 'unique:flight_bookings,pnr'],

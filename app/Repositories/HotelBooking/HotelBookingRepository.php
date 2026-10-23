@@ -29,6 +29,7 @@ class HotelBookingRepository extends BaseRepository implements HotelBookingInter
     protected function data($request): array
     {
         return [
+            ...($request->exists('lead_id') ? ['lead_id' => $request->lead_id ?: null] : []),
             'booking_no'    => $request->booking_no,
             'hotel_id'      => $request->hotel_id,
             'customer_id'   => $request->customer_id,

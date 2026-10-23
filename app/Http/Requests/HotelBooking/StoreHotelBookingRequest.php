@@ -16,6 +16,7 @@ class StoreHotelBookingRequest extends FormRequest
     public function rules()
     {
         return [
+            'lead_id' => ['nullable', 'integer', 'exists:leads,id'],
             'booking_no'    => ['required', 'string', 'max:50', 'unique:hotel_bookings,booking_no'],
             'hotel_id'      => ['required', 'exists:hotels,id'],
             'customer_id'   => ['nullable', 'exists:customers,id'],

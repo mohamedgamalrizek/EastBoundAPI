@@ -3,6 +3,9 @@
 @section('maincontent')
 <x-page title="Leads" :breadcrumb="['CRM','Leads']">
     <x-slot:action>
+        @if(hasPermission('report_read'))
+            <a href="{{ route('report.leads') }}" class="btn btn-outline-primary">Languages & Websites Report</a>
+        @endif
         <a href="{{ route('crm.leads.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-1"></i> Add Lead</a>
     </x-slot:action>
 

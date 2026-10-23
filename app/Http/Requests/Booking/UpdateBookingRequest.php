@@ -14,6 +14,7 @@ class UpdateBookingRequest extends FormRequest
     public function rules()
     {
         return [
+            'lead_id'        => ['nullable', 'integer', 'exists:leads,id'],
             'package_id'     => ['nullable', 'exists:packages,id'],
             'customer_id'    => ['required', 'integer', 'exists:customers,id'],
             'agent_id'       => ['nullable', 'integer', 'exists:users,id'],

@@ -105,6 +105,7 @@ class BookingRepository implements BookingInterface
         $customer = \App\Models\Customer::find($request->customer_id);
 
         return [
+            ...($request->exists('lead_id') ? ['lead_id' => $request->lead_id ?: null] : []),
             'package_id'     => $request->package_id,
             'customer_id'    => $customer?->id,
             // Who sold it. Without this the booking never reaches the agent's

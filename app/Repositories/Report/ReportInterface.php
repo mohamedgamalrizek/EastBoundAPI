@@ -6,6 +6,8 @@ interface ReportInterface
 {
     public function sales(array $filters = []);
 
+    public function leads(array $filters = []);
+
     public function visa(array $filters = []);
 
     public function package(array $filters = []);

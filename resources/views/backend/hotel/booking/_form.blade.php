@@ -7,6 +7,7 @@
 @endphp
 
 <div class="form-row">
+    @include('backend.crm._lead-origin', ['originLeadId' => $lead->id ?? $app->lead_id ?? null])
 
     <div class="form-group col-md-4">
         <label class="label-style-1" for="booking_no">{{ ___('label.booking_no') }} <span class="text-danger">*</span></label>

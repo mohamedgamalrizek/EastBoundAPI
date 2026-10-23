@@ -16,6 +16,7 @@ class UpdateFlightRequest extends FormRequest
     public function rules()
     {
         return [
+            'lead_id' => ['nullable', 'integer', 'exists:leads,id'],
             'id'             => ['required', 'exists:flight_bookings,id'],
             'customer_id'    => ['nullable', 'exists:customers,id'],
             'booking_id'     => ['nullable', 'exists:bookings,id'],

@@ -21,6 +21,19 @@ class ReportController extends Controller
         return $this->render($request, 'sales');
     }
 
+    public function leads(Request $request)
+    {
+        $request->validate([
+            'from' => ['nullable', 'date_format:Y-m-d'],
+            'to' => array_merge(['nullable', 'date_format:Y-m-d'], $request->filled('from') ? ['after_or_equal:from'] : []),
+            'website' => ['nullable', 'string', 'max:255'],
+            'language' => ['nullable', 'string', 'max:255'],
+            'export' => ['nullable', 'in:csv'],
+        ]);
+
+        return $this->render($request, 'leads');
+    }
+
     public function visa(Request $request)
     {
         return $this->render($request, 'visa');
@@ -67,7 +80,8 @@ class ReportController extends Controller
      */
     private function render(Request $request, string $type)
     {
-        $filters = array_filter($request->only(['from', 'to']));
+        $filters = array_filter($request->only($type === 'leads'
+            ? ['from', 'to', 'website', 'language'] : ['from', 'to']), fn ($value) => $value !== null && $value !== '');
 
         if ($request->query('export') === 'csv') {
             return $this->streamCsv($this->repo->export($type, $filters));

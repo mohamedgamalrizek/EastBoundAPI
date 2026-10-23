@@ -19,6 +19,7 @@
 @endphp
 
 <div class="form-row">
+    @include('backend.crm._lead-origin', ['originLeadId' => $lead->id ?? $app->lead_id ?? null])
     <input type="hidden" id="customer_id" name="customer_id" value="{{ old('customer_id', $app->customer_id ?? '') }}">
 
     <div class="form-group col-md-4">

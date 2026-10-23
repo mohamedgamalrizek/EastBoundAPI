@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class FlightBooking extends Model
 {
     protected $fillable = [
+        'lead_id',
         'customer_id', 'booking_id',
         'agent_id',
         'pnr', 'passenger_name', 'airline', 'route',

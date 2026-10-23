@@ -79,6 +79,7 @@ class LeadFlightConversionTest extends TestCase
         $response->assertRedirect(route('flight.booking', $flight->id));
 
         $this->assertDatabaseHas('flight_bookings', [
+            'lead_id' => $lead->id,
             'pnr'            => 'ABC123',
             'passenger_name' => 'Rahim Uddin',
             'airline'        => 'Emirates',

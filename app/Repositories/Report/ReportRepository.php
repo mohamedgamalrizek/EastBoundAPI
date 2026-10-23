@@ -15,6 +15,11 @@ use App\Repositories\Report\ReportInterface;
 
 class ReportRepository implements ReportInterface
 {
+    public function leads(array $filters = [])
+    {
+        return app(\App\Services\Reports\LeadAttributionReport::class)->build($filters);
+    }
+
     /**
      * Apply an optional [from, to] date window to a query on the given column.
      * Empty filters leave the query untouched (whole-table report).
@@ -231,6 +236,13 @@ class ReportRepository implements ReportInterface
             : '';
 
         switch ($type) {
+            case 'leads':
+                $data = $this->leads($filters);
+                return $this->csv("lead_attribution{$suffix}",
+                    ['Website', 'Language', 'Leads', 'Won leads', 'Potential value', 'Won lead value', 'Bookings', 'Booked revenue'],
+                    $data['matrix']->map(fn ($row) => [$row->website, $row->language, $row->leads,
+                        $row->won, $row->potential_value, $row->won_value, $row->bookings, $row->revenue]));
+
             case 'sales':
                 $d = $this->sales($filters);
                 return $this->csv("sales{$suffix}", ['Status', 'Orders', 'Revenue'],

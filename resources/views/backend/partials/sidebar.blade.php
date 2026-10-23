@@ -291,6 +291,7 @@
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-graph"></i> <span class="nav-text">{{ ___('menus.reporting_center') }}</span> </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('report.sales') }}">{{ ___('menus.sales_reports') }}</a></li>
+                    <li><a href="{{ route('report.leads') }}">Lead Languages & Websites</a></li>
                     <li><a href="{{ route('report.package') }}">{{ ___('menus.package_reports') }}</a></li>
                     <li><a href="{{ route('report.flight') }}">{{ ___('menus.flight_reports') }}</a></li>
                     <li><a href="{{ route('report.hotel') }}">{{ ___('menus.hotel_reports') }}</a></li>

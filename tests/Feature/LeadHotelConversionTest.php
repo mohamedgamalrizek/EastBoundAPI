@@ -82,6 +82,7 @@ class LeadHotelConversionTest extends TestCase
         $response->assertRedirect(route('hotel.booking.index'));
 
         $this->assertDatabaseHas('hotel_bookings', [
+            'lead_id' => $lead->id,
             'booking_no'    => 'HTL-1001',
             'hotel_id'      => $room->hotel_id,
             'hotel_room_id' => $room->id,

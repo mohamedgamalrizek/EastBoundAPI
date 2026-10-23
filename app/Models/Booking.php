@@ -16,6 +16,7 @@ class Booking extends Model
     }
 
     protected $fillable = [
+        'lead_id',
         'customer_id',
         'agent_id',
         'package_id',
