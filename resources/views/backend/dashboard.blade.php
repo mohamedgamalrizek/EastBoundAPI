@@ -23,13 +23,12 @@
         $kpis = [
             ['label'=>'Total Bookings','value'=>number_format($totalBookings),'icon'=>'fa-suitcase-rolling','grad'=>'linear-gradient(135deg,#6366f1,#8b5cf6)','delta'=>$bookingsDelta,'sub'=>'vs last month'],
             ['label'=>'Revenue','value'=>currency_symbol().number_format($revenue),'icon'=>'fa-sack-dollar','grad'=>'linear-gradient(135deg,#059669,#10b981)','delta'=>$revenueDelta,'sub'=>'vs last month'],
-            ['label'=>'Visa Approvals','value'=>number_format($visaApproved),'icon'=>'fa-passport','grad'=>'linear-gradient(135deg,#0ea5e9,#06b6d4)','delta'=>null,'sub'=>'approved total'],
             ['label'=>'Open Leads','value'=>number_format($openLeads),'icon'=>'fa-user-plus','grad'=>'linear-gradient(135deg,#f59e0b,#f97316)','delta'=>null,'sub'=>'in pipeline'],
         ];
     @endphp
     <div class="row g-3 mb-4">
         @foreach($kpis as $k)
-        <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
+        <div class="col-xl-4 col-md-6 mb-4 mb-xl-0">
             <div class="tv-kpi" style="--grad:linear-gradient(135deg,#A81A20,#D45B60)">
                 <div class="tv-kpi-glow"></div>
                 <div class="d-flex align-items-start justify-content-between">

@@ -69,12 +69,6 @@ Customer Details
                 'fee'    => $r->service_fee,
                 'status' => $r->status,
             ]))
-            ->concat($customer->studentServices->map(fn ($r) => [
-                'module' => ___('menus.student_consultancy'),
-                'detail' => trim($r->university . ' · ' . $r->country, ' ·') ?: $r->service_type,
-                'fee'    => $r->service_fee,
-                'status' => $r->status,
-            ]))
             ->concat($customer->medicalTours->map(fn ($r) => [
                 'module' => ___('menus.medical_tourism'),
                 'detail' => trim($r->hospital . ' · ' . $r->destination, ' ·'),

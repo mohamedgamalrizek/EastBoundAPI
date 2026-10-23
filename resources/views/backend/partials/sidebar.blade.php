@@ -12,8 +12,8 @@
         $mainVisible        = hasPermission('dashboard_read') || hasPermission('user_read') || hasPermission('role_read') || hasPermission('todo_read');
         $bookingsCrmVisible = hasPermission('customer_read') || hasPermission('crm_read');
         $marketingVisible   = hasPermission('coupon_read') || hasPermission('campaign_read') || hasPermission('review_read');
-        $operationsVisible  = hasPermission('tour_read') || hasPermission('visa_read') || hasPermission('hajj_read') || hasPermission('hotel_read') || hasPermission('transport_read') || hasPermission('flight_read');
-        $servicesVisible    = hasPermission('insurance_read') || hasPermission('student_service_read') || hasPermission('medical_tour_read') || hasPermission('corporate_travel_read') || hasPermission('event_tour_read');
+        $operationsVisible  = hasPermission('tour_read') || hasPermission('hotel_read') || hasPermission('transport_read') || hasPermission('flight_read');
+        $servicesVisible    = hasPermission('insurance_read') || hasPermission('medical_tour_read') || hasPermission('corporate_travel_read') || hasPermission('event_tour_read');
         $financeVisible     = hasPermission('accounting_read') || hasPermission('supplier_read') || hasPermission('agent_finance_read');
         $workVisible        = hasPermission('task_read') || hasPermission('support_read');
         $reportsVisible     = hasPermission('report_read');
@@ -126,39 +126,6 @@
             </li>
             @endif
 
-            @if(hasPermission('visa_read'))
-            {{-- Visa Management --}}
-            <li class="{{ request()->is('visa*') ? 'mm-active' : '' }}">
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-doc"></i> <span class="nav-text">{{ ___('menus.visa_management') }}</span> </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('visa.dashboard') }}">{{ ___('menus.visa_dashboard') }}</a></li>
-                    <li><a href="{{ route('visa.applications') }}">{{ ___('menus.applications') }}</a></li>
-                    <li><a href="{{ route('visa.appointment') }}">{{ ___('menus.embassy_appointment') }}</a></li>
-                    <li><a href="{{ route('visa.documents') }}">{{ ___('menus.visa_documents') }}</a></li>
-                    <li><a href="{{ route('visa.tracking') }}">{{ ___('menus.status_tracking') }}</a></li>
-                    <li><a href="{{ route('visa.expiry') }}">{{ ___('menus.expiry_management') }}</a></li>
-                    <li><a href="{{ route('visa.reports') }}">{{ ___('menus.visa_reports') }}</a></li>
-                </ul>
-            </li>
-            @endif
-
-            @if(hasPermission('hajj_read'))
-            {{-- Hajj & Umrah --}}
-            <li class="{{ request()->is('hajj*') ? 'mm-active' : '' }}">
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-compass"></i> <span class="nav-text">{{ ___('menus.hajj_umrah') }}</span> </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('hajj.index') }}">{{ ___('menus.manage_packages') }}</a></li>
-                    <li><a href="{{ route('hajj.pilgrim.index') }}">{{ ___('menus.manage_pilgrims') }}</a></li>
-                    <li><a href="{{ route('hajj.hotel') }}">{{ ___('menus.hotel_allocation') }}</a></li>
-                    <li><a href="{{ route('hajj.flight') }}">{{ ___('menus.flight_allocation') }}</a></li>
-                    <li><a href="{{ route('hajj.groups') }}">{{ ___('menus.group_management') }}</a></li>
-                    <li><a href="{{ route('hajj.payments') }}">{{ ___('menus.payment_management') }}</a></li>
-                    <li><a href="{{ route('hajj.documents') }}">{{ ___('menus.document_verification') }}</a></li>
-                    <li><a href="{{ route('hajj.reports') }}">{{ ___('menus.reports') }}</a></li>
-                </ul>
-            </li>
-            @endif
-
             @if(hasPermission('hotel_read'))
             {{-- Hotel Management --}}
             <li class="{{ request()->is('hotel*') ? 'mm-active' : '' }}">
@@ -213,9 +180,6 @@
             @if(hasPermission('insurance_read'))
             <li> <a href="{{ route('insurance.index') }}" class="{{ request()->is('insurances*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-shield"></i> <span class="nav-text">{{ ___('menus.travel_insurance') }}</span> </a> </li>
             @endif
-            @if(hasPermission('student_service_read'))
-            <li> <a href="{{ route('student-service.index') }}" class="{{ request()->is('student-services*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-graduation"></i> <span class="nav-text">{{ ___('menus.student_consultancy') }}</span> </a> </li>
-            @endif
             @if(hasPermission('medical_tour_read'))
             <li> <a href="{{ route('medical-tour.index') }}" class="{{ request()->is('medical-tours*') ? 'mm-active' : '' }}" aria-expanded="true"> <i class="icon-heart"></i> <span class="nav-text">{{ ___('menus.medical_tourism') }}</span> </a> </li>
             @endif
@@ -265,7 +229,6 @@
                     <li><a href="{{ route('sup.airlines') }}">{{ ___('menus.airlines') }}</a></li>
                     <li><a href="{{ route('sup.hotels') }}">{{ ___('menus.hotels') }}</a></li>
                     <li><a href="{{ route('sup.transport') }}">{{ ___('menus.transport_vendors') }}</a></li>
-                    <li><a href="{{ route('sup.visa') }}">{{ ___('menus.visa_partners') }}</a></li>
                     <li><a href="{{ route('sup.contracts') }}">{{ ___('menus.contracts') }}</a></li>
                     <li><a href="{{ route('sup.ledger') }}">{{ ___('menus.supplier_ledger') }}</a></li>
                     <li><a href="{{ route('sup.reports') }}">{{ ___('menus.supplier_reports') }}</a></li>
@@ -328,7 +291,6 @@
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-graph"></i> <span class="nav-text">{{ ___('menus.reporting_center') }}</span> </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('report.sales') }}">{{ ___('menus.sales_reports') }}</a></li>
-                    <li><a href="{{ route('report.visa') }}">{{ ___('menus.visa_reports') }}</a></li>
                     <li><a href="{{ route('report.package') }}">{{ ___('menus.package_reports') }}</a></li>
                     <li><a href="{{ route('report.flight') }}">{{ ___('menus.flight_reports') }}</a></li>
                     <li><a href="{{ route('report.hotel') }}">{{ ___('menus.hotel_reports') }}</a></li>
@@ -358,7 +320,6 @@
                     <li><a href="{{ route('cms.faq.index') }}">{{ ___('menus.manage_faqs') }}</a></li>
                     <li><a href="{{ route('cms.menu.index') }}">{{ ___('menus.manage_menus') }}</a></li>
                     {{-- Catalogues rendered by the public marketing site --}}
-                    <li><a href="{{ route('cms.visa-service.index') }}">{{ ___('menus.visa_services') }}</a></li>
                     <li><a href="{{ route('cms.flight-route.index') }}">{{ ___('menus.flight_fare_deals') }}</a></li>
                     <li><a href="{{ route('cms.transport-service.index') }}">{{ ___('menus.transport_services') }}</a></li>
                     <li><a href="{{ route('cms.job-opening.index') }}">{{ ___('menus.job_openings') }}</a></li>

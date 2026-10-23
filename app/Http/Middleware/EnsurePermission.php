@@ -16,7 +16,10 @@ class EnsurePermission
      */
     public function handle(Request $request, Closure $next, $permission): Response
     {
-        if (Auth::check() && in_array($permission, Auth::user()->permissions)) {
+        abort_unless(\App\Support\DmcModules::permissionEnabled($permission)
+            && \App\Support\DmcModules::routeEnabled($request->route()?->getName()), 404);
+
+        if (Auth::check() && Auth::user()->can_access($permission)) {
             return $next($request);
         }
 

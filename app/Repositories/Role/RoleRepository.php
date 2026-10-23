@@ -31,7 +31,7 @@ class RoleRepository implements RoleInterface
 
     public function permissions()
     {
-        return Permission::all();
+        return Permission::whereNotIn('attribute', \App\Support\DmcModules::EXCLUDED)->get();
     }
 
     public function all(int $paginate = null, int $status = null)

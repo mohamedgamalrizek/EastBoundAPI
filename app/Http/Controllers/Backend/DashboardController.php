@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Lead;
 use App\Models\Booking;
 use App\Models\Customer;
-use App\Models\VisaApplication;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -61,7 +60,6 @@ class DashboardController extends Controller
         return view('backend.dashboard', [
             'totalBookings'    => $totalBookings,
             'revenue'          => $revenue,
-            'visaApproved'     => VisaApplication::where('status', 'Approved')->count(),
             'openLeads'        => Lead::count(),
             'customers'        => $customers,
             'paidRevenue'      => $paidRevenue,

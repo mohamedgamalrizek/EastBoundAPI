@@ -87,7 +87,8 @@ class User extends Authenticatable
      */
     public function can_access(string $permission): bool
     {
-        return in_array($permission, $this->permissions ?? [], true);
+        return \App\Support\DmcModules::permissionEnabled($permission)
+            && in_array($permission, $this->permissions ?? [], true);
     }
 
     /**
