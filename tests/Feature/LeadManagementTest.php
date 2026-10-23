@@ -19,7 +19,9 @@ class LeadManagementTest extends TestCase
             'phone' => '+201000000000',
             'interest' => 'Cairo, Luxor',
             'source' => 'Website',
-            'website' => 'Egypt Tours',
+            'website' => 'English Flow',
+            'dmc_website_id' => \App\Models\Dmc\Website::where('slug', 'english-flow')->value('id'),
+            'campaign_id' => \App\Models\Campaign::value('id'),
             'language' => 'English',
             'country' => 'Egypt',
             'campaign_source' => 'Google Ads',
@@ -50,7 +52,7 @@ class LeadManagementTest extends TestCase
     public function test_create_and_edit_forms_support_all_intake_fields(): void
     {
         $this->get(route('crm.leads.create'))->assertOk()
-            ->assertSee('name="website"', false)
+            ->assertSee('name="dmc_website_id"', false)
             ->assertSee('name="campaign_source"', false)
             ->assertSee('name="destinations"', false)
             ->assertSee('name="comments"', false);
@@ -58,7 +60,7 @@ class LeadManagementTest extends TestCase
         $lead = Lead::create($this->payload());
 
         $this->get(route('crm.leads.edit', $lead->id))->assertOk()
-            ->assertSee('value="Egypt Tours"', false)
+            ->assertSee('Recorded label: English Flow')
             ->assertSee('value="2026-11-01"', false)
             ->assertSee('value="0"', false)
             ->assertSee('عايز برنامج شامل الإقامة');
@@ -103,11 +105,11 @@ class LeadManagementTest extends TestCase
         $lead = Lead::create(array_merge($this->payload(), ['comments' => '<script>alert(1)</script>']));
 
         $this->get(route('crm.leads'))->assertOk()
-            ->assertSee('Egypt Tours')->assertSee('Google Ads')
+            ->assertSee('English Flow')->assertSee('Google Ads')
             ->assertSee('2026-11-01')->assertSee('Children: 0')->assertSee('2,500.50');
 
         $this->get(route('crm.leads.show', $lead->id))->assertOk()
-            ->assertSee('Egypt Tours')->assertSee('Google Ads')
+            ->assertSee('English Flow')->assertSee('Google Ads')
             ->assertSee('2026-11-01')->assertSee('high')
             ->assertSee('<script>alert(1)</script>')
             ->assertDontSee('<script>alert(1)</script>', false);

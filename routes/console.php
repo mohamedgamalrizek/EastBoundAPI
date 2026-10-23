@@ -24,3 +24,10 @@ Artisan::command('passports:refresh-statuses', function () {
 
     $this->info("Passport statuses refreshed. Updated: {$updated}");
 })->purpose('Refresh stored passport statuses from expiry dates');
+
+Artisan::command('dmc:trip-alerts', function () {
+    $created = app(\App\Services\Dmc\TripOperations::class)->generateAlerts();
+    $this->info('Trip readiness alerts created: '.$created);
+})->purpose('Create idempotent trip readiness tasks and internal notifications');
+
+\Illuminate\Support\Facades\Schedule::command('dmc:trip-alerts')->hourly()->withoutOverlapping();

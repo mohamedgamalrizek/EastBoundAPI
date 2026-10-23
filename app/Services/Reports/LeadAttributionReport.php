@@ -29,6 +29,7 @@ class LeadAttributionReport
             ->groupByRaw(self::WEBSITE.', '.self::LANGUAGE)->get();
 
         $websites = collect(config('lead-reporting.websites', []))
+            ->merge(\Illuminate\Support\Facades\Schema::hasTable('dmc_websites') ? \App\Models\Dmc\Website::pluck('name') : [])
             ->merge(DB::table('leads')->selectRaw(self::WEBSITE.' as website')->distinct()->pluck('website'))
             ->map(fn ($website) => trim($website))->filter()->unique()->sort()->values();
 

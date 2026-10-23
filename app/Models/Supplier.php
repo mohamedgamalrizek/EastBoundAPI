@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Supplier extends Model
 {
     protected $fillable = [
+        'payment_terms', 'currency', 'bank_details', 'rating',
         'name', 'type', 'contact_person', 'phone', 'email', 'balance', 'status',
     ];
 
     protected $casts = [
+        'bank_details' => 'encrypted',
         'balance' => 'decimal:2',
     ];
 

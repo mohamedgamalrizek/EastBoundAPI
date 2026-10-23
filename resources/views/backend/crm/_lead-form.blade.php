@@ -33,8 +33,14 @@
     </div>
     <div class="form-group col-md-4">
         <label>Website</label>
-        <input type="text" name="website" class="form-control input-style-1" placeholder="e.g. Egypt Tours" maxlength="255" value="{{ old('website', $lead->website ?? '') }}">
-        @error('website') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+        <select name="dmc_website_id" class="form-control input-style-1 select2" required>
+            <option value="">Select source website</option>
+            @foreach(\App\Models\Dmc\Website::where('active', true)->when(isset($lead), fn ($query) => $query->orWhere('id', $lead->dmc_website_id))->orderBy('name')->get() as $website)
+                <option value="{{ $website->id }}" @selected((string) old('dmc_website_id', $lead->dmc_website_id ?? '') === (string) $website->id)>{{ $website->name }}</option>
+            @endforeach
+        </select>
+        @if(isset($lead) && $lead->website)<small>Recorded label: {{ $lead->website }}</small>@endif
+        @error('dmc_website_id') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
     <div class="form-group col-md-4">
         <label>Language</label>
@@ -65,6 +71,16 @@
         <label>Estimated Value ({{ currency_symbol() }})</label>
         <input type="number" min="0" step="0.01" name="value" class="form-control input-style-1" placeholder="2500" value="{{ old('value', $lead->value ?? 0) }}">
         @error('value') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Campaign</label>
+        <select name="campaign_id" class="form-control input-style-1 select2"><option value="">No campaign</option>@foreach(\App\Models\Campaign::orderBy('name')->get(['id', 'name']) as $campaign)<option value="{{ $campaign->id }}" @selected((string) old('campaign_id', $lead->campaign_id ?? '') === (string) $campaign->id)>{{ $campaign->name }}</option>@endforeach</select>
+        @error('campaign_id')<p class="text-danger">{{ $message }}</p>@enderror
+    </div>
+    <div class="form-group col-md-4">
+        <label>Lost reason (required for Lost leads)</label>
+        <input name="lost_reason" class="form-control input-style-1" maxlength="1000" value="{{ old('lost_reason', $lead->lost_reason ?? '') }}">
+        @error('lost_reason')<p class="text-danger">{{ $message }}</p>@enderror
     </div>
     <div class="form-group col-md-4">
         <label>Stage <span class="text-danger">*</span></label>

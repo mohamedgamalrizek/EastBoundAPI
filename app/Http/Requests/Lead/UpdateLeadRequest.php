@@ -14,15 +14,18 @@ class UpdateLeadRequest extends FormRequest
     public function rules()
     {
         return [
+            'dmc_website_id' => ['required', 'integer', 'exists:dmc_websites,id'],
+            'campaign_id' => ['nullable', 'required_if:campaign_source,Google Ads', 'integer', 'exists:campaigns,id'],
+            'lost_reason' => ['nullable', 'required_if:stage,Lost', 'string', 'max:1000'],
             'name'     => ['required', 'string', 'max:255'],
             'phone'    => ['nullable', 'string', 'max:50'],
             'email'    => ['nullable', 'email', 'max:255'],
             'interest' => ['nullable', 'string', 'max:255'],
             'source'   => ['required', 'in:Facebook,Website,Referral,WhatsApp,Instagram,Walk-in'],
             'website'  => ['nullable', 'string', 'max:255'],
-            'language' => ['nullable', 'in:English,Spanish,Italian,French'],
-            'country'  => ['nullable', 'string', 'max:255'],
-            'campaign_source' => ['nullable', 'in:Google Ads,Social Media,Organic Leads,Referral,Other'],
+            'language' => ['required', 'in:English,Spanish,Italian,French'],
+            'country'  => ['required', 'string', 'max:255'],
+            'campaign_source' => ['required', 'in:Google Ads,Social Media,Organic Leads,Referral,Other'],
             'value'    => ['nullable', 'numeric', 'min:0'],
             'subject' => ['nullable', 'string', 'max:255'],
             'destinations' => ['nullable', 'string', 'max:255'],

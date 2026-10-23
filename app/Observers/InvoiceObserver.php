@@ -12,6 +12,20 @@ use App\Services\Accounting\LedgerService;
  */
 class InvoiceObserver
 {
+    public function creating(Invoice $invoice): void
+    {
+        app(\App\Services\Dmc\CommittedSalesGuard::class)->invoice($invoice);
+    }
+    public function updating(Invoice $invoice): void
+    {
+        app(\App\Services\Dmc\CommittedSalesGuard::class)->invoice($invoice);
+    }
+
+    public function deleting(Invoice $invoice): void
+    {
+        app(\App\Services\Dmc\CommittedSalesGuard::class)->invoice($invoice, true);
+    }
+
     public function __construct(protected LedgerService $ledger) {}
 
     public function saved(Invoice $invoice): void

@@ -12,6 +12,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (! auth()->user()->can_access('dmc_sales_approve_gm')) {
+            return view('backend.dmc.dashboard', ['metrics' => app(\App\Services\Dmc\ManagementReports::class)->departmentOverview(auth()->user())]);
+        }
         $now  = Carbon::now();
         $year = $now->year;
 
@@ -58,6 +61,7 @@ class DashboardController extends Controller
         $paidRevenue   = (int) Booking::whereIn('status', ['paid', 'confirmed'])->sum('amount');
 
         return view('backend.dashboard', [
+            'dmcManagementMetrics' => app(\App\Services\Dmc\ManagementReports::class)->overview(),
             'totalBookings'    => $totalBookings,
             'revenue'          => $revenue,
             'openLeads'        => Lead::count(),

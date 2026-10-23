@@ -155,6 +155,7 @@ class DatabaseSeeder extends Seeder
         // (invoices, receipts, payslips, agent commissions and payouts) and
         // re-derive balances and agent wallets, so a freshly seeded database
         // opens with a trial balance that actually balances.
+        $this->call(DmcDepartmentRoleSeeder::class);
         app(\App\Services\Accounting\LedgerService::class)->rebuildAll();
     }
 }

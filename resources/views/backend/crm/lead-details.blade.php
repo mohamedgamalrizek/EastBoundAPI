@@ -38,6 +38,7 @@
                         <a href="{{ route('crm.leads.convert.hotel', $lead->id) }}" class="btn btn-sm btn-success"><i class="fa fa-hotel"></i> Convert to Hotel Booking</a>
                     @endif
                     @if(hasPermission('crm_update'))
+                        @if(hasPermission('crm_create'))<a href="{{ route('dmc.opportunities.create', ['lead_id' => $lead->id]) }}" class="btn btn-sm btn-outline-primary">Create Opportunity</a>@endif
                         <a href="{{ route('crm.leads.edit', $lead->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-edit"></i> Edit</a>
                     @endif
                 </div>

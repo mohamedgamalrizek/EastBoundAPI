@@ -35,7 +35,7 @@ class AffiliateLeadIntakeTest extends TestCase
             ->assertJsonPath('data.leads.0.subject', 'Tour packages')
             ->assertJsonPath('data.leads.0.website', 'English');
 
-        $lead = Lead::firstOrFail();
+        $lead = Lead::findOrFail($response->json('data.leads.0.id'));
 
         $this->assertSame('Martina Mohsen', $lead->name);
         $this->assertSame('Egypt Tours', $lead->interest);
@@ -88,9 +88,9 @@ class AffiliateLeadIntakeTest extends TestCase
 
         $response->assertCreated();
 
-        $this->assertSame('Italy', ContactMessage::firstOrFail()->website);
+        $this->assertSame('Italy', ContactMessage::where('email', 'ahmed@example.com')->latest('id')->firstOrFail()->website);
 
-        $lead = Lead::firstOrFail();
+        $lead = Lead::where('email', 'ahmed@example.com')->latest('id')->firstOrFail();
 
         $this->assertSame('Visa services', $lead->interest);
         $this->assertSame('Italy', $lead->website);

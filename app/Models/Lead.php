@@ -16,10 +16,12 @@ class Lead extends Model
 
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()->useLogName('Lead')->logOnly(['name', 'stage', 'value'])->setDescriptionForEvent(fn (string $event) => $event);
+        return LogOptions::defaults()->useLogName('Lead')->logOnly(['name', 'stage', 'value', 'website', 'dmc_website_id', 'language', 'country', 'campaign_id', 'campaign_source', 'lost_reason', 'created_at'])->logOnlyDirty()->setDescriptionForEvent(fn (string $event) => $event);
     }
 
     protected $fillable = [
+        'dmc_external_reference', 'dmc_payload_hash',
+        'dmc_website_id', 'campaign_id', 'lost_reason',
         'assigned_to',
         'name',
         'phone',
@@ -55,6 +57,8 @@ class Lead extends Model
             'children' => 'integer',
         ];
     }
+
+    protected $hidden = ['dmc_payload_hash'];
 
     public function assignedTo(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

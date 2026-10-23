@@ -7,6 +7,7 @@
 @endphp
 
 <div class="container-fluid tv-dash">
+    <div class="row mb-4">@foreach($dmcManagementMetrics as $label => $value)<div class="col-md-3 mb-3"><div class="tv-card"><div class="tv-card-body"><div class="text-muted">{{ $label }}</div><h3>{{ number_format($value) }}</h3></div></div></div>@endforeach</div>
 
     {{-- Greeting --}}
     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-4">

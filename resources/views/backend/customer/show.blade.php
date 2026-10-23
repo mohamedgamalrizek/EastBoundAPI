@@ -21,6 +21,7 @@ Customer Details
     </div>
 
     @if($customer)
+    @include('backend.dmc.customer-360')
     <div class="row">
         <div class="col-lg-4 mb-4">
             <div class="tv-card"><div class="tv-card-body text-center">

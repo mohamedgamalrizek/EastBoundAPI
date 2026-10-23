@@ -66,6 +66,11 @@ class RoleSeeder extends Seeder
     private function superAdminPermissions(): array
     {
         return array_merge($this->selfPermissions(), [
+            'dmc_sales_approve_tl', 'dmc_sales_approve_gm',
+            'dmc_sales_read', 'dmc_sales_create', 'dmc_sales_update',
+            'dmc_operations_read', 'dmc_operations_create', 'dmc_operations_update',
+            'dmc_procurement_read', 'dmc_procurement_create', 'dmc_procurement_update',
+            'dmc_marketing_read', 'dmc_marketing_create', 'dmc_marketing_update',
             'dashboard_read',
 
             'user_read', 'user_create', 'user_update', 'user_delete', 'permission_update',

@@ -1,17 +1,17 @@
 @extends('backend.partials.master')
-@section('title') Leads @endsection
+@section('title') {{ $leadListTitle ?? 'Leads' }} @endsection
 @section('maincontent')
-<x-page title="Leads" :breadcrumb="['CRM','Leads']">
+<x-page :title="$leadListTitle ?? 'Leads'" :breadcrumb="['CRM', $leadListTitle ?? 'Leads']">
     <x-slot:action>
-        @if(hasPermission('report_read'))
-            <a href="{{ route('report.leads') }}" class="btn btn-outline-primary">Languages & Websites Report</a>
+        @if(hasPermission('report_read') || hasPermission('dmc_marketing_read'))
+            <a href="{{ route(hasPermission('dmc_marketing_read') ? 'dmc.lead-performance' : 'report.leads') }}" class="btn btn-outline-primary">Languages & Websites Report</a>
         @endif
         <a href="{{ route('crm.leads.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-1"></i> Add Lead</a>
     </x-slot:action>
 
     <div class="row"><div class="col-12">
         <div class="tv-card">
-            <div class="tv-card-head"><h4 class="title-site mb-0">All Leads</h4></div>
+            <div class="tv-card-head"><h4 class="title-site mb-0">{{ $leadListTitle ?? 'All Leads' }}</h4></div>
             <div class="tv-card-body">
                 <div class="table-responsive">
                     <table class="table table-responsive-sm">
@@ -41,7 +41,7 @@
                                 <td><div>Adults: {{ $lead->adults ?? '—' }}</div><small class="text-muted">Children: {{ $lead->children ?? '—' }}</small></td>
                                 <td><div>{{ currency_symbol() }}{{ number_format($lead->value, 2) }}</div><small class="text-muted">Budget: {{ $lead->budget ?: '—' }}</small></td>
                                 <td>{!! $lead->stageBadge() !!}</td>
-                                <td>{{ $lead->owner ?? '—' }}</td>
+                                <td>{{ $lead->owner ?? '—' }}</td
                                 <td>
                                     <div class="input-group">
                                         <div class="input-group-prepend be-addon">

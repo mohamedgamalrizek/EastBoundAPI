@@ -66,6 +66,10 @@ class CustomerController extends Controller
 
         return view('backend.customer.show', [
             'customer'           => $customer,
+            'dmcTrips' => \App\Models\Dmc\Trip::where('customer_id', $id)->latest()->get(),
+            'dmcContacts' => \App\Models\Dmc\Contact::where('customer_id', $id)->get(),
+            'customerInvoices' => $customer ? $customer->invoices()->latest()->get() : collect(),
+            'customerBookings' => $customer ? $customer->bookings()->with('package')->latest()->get() : collect(),
             'walletBalance'      => $customer ? $wallet->balance((int) $customer->id) : 0,
             'walletTransactions' => $customer
                 ? $customer->walletTransactions()->orderByDesc('txn_date')->orderByDesc('id')->get()

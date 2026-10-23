@@ -59,6 +59,7 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__.'/../routes/auth.php',
             __DIR__.'/../routes/setting.php',
             __DIR__.'/../routes/user.php',
+            __DIR__.'/../routes/dmc.php',
         ],
         api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',

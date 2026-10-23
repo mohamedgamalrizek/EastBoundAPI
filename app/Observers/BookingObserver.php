@@ -17,6 +17,16 @@ use App\Services\WhatsAppService;
  */
 class BookingObserver
 {
+    public function updating(Booking $booking): void
+    {
+        app(\App\Services\Dmc\CommittedSalesGuard::class)->booking($booking);
+    }
+
+    public function deleting(Booking $booking): void
+    {
+        app(\App\Services\Dmc\CommittedSalesGuard::class)->booking($booking, true);
+    }
+
     public function __construct(
         protected AgentSettlementService $settlement,
         protected BillingService $billing,
