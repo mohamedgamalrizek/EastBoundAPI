@@ -41,7 +41,7 @@
                                 <td><div>Adults: {{ $lead->adults ?? '—' }}</div><small class="text-muted">Children: {{ $lead->children ?? '—' }}</small></td>
                                 <td><div>{{ currency_symbol() }}{{ number_format($lead->value, 2) }}</div><small class="text-muted">Budget: {{ $lead->budget ?: '—' }}</small></td>
                                 <td>{!! $lead->stageBadge() !!}</td>
-                                <td>{{ $lead->owner ?? '—' }}</td
+                                <td>{{ $lead->owner ?? '—' }}</td>
                                 <td>
                                     <div class="input-group">
                                         <div class="input-group-prepend be-addon">
