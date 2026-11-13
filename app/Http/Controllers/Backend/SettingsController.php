@@ -54,6 +54,7 @@ class SettingsController extends Controller
         // SettingsRepository::UpdateSettings), so the two booking-policy
         // numbers are validated here rather than in a FormRequest that this
         // route does not use.
+        \Log::info('Updating settings', ['user_id' => auth()->id(), 'request' => $request->all()]);
         $request->validate([
             'booking_cancellation_window_hours'   => ['nullable', 'integer', 'min:0'],
             'booking_cancellation_penalty_percent' => ['nullable', 'integer', 'min:0', 'max:100'],
