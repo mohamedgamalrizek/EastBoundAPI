@@ -17,6 +17,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "nwidart/laravel-modules": "^13.0",
+        "rap2hpoutre/laravel-log-viewer": "^3.1",
         "spatie/laravel-activitylog": "^4.10",
         "stancl/tenancy": "^3.10"
     },

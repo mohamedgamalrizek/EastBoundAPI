@@ -28,6 +28,15 @@
         if (!wrapper || !sidebar || !menu || !toggle) return;
 
         var mobileQuery = window.matchMedia('(max-width: 991.98px)');
+        var scroller = sidebar.querySelector('.tv-sidebar-scroll');
+        var scrollStorageKey = 'flow-sidebar-scroll';
+
+        function saveSidebarPosition() {
+            if (!scroller) return;
+            try {
+                sessionStorage.setItem(scrollStorageKey, String(scroller.scrollTop));
+            } catch (e) { /* Navigation still works when browser storage is disabled. */ }
+        }
 
         function isMobile() {
             return mobileQuery.matches;
@@ -57,6 +66,13 @@
         }
 
         function markCurrentLink() {
+            // Blade knows which query-specific menu entry is current.
+            var serverCurrent = menu.querySelector('a[aria-current="page"]');
+            if (serverCurrent) {
+                serverCurrent.classList.add('mm-active');
+                return;
+            }
+
             var current = new URL(window.location.href);
             var currentPath = current.pathname.replace(/\/+$/, '') || '/';
 
@@ -72,6 +88,9 @@
 
                 var targetPath = target.pathname.replace(/\/+$/, '') || '/';
                 if (target.origin !== current.origin || targetPath !== currentPath) return;
+                if (Array.from(target.searchParams).some(function (entry) {
+                    return current.searchParams.get(entry[0]) !== entry[1];
+                })) return;
 
                 link.classList.add('mm-active');
                 var item = link.closest('li');
@@ -86,6 +105,29 @@
             });
         }
 
+        function revealCurrentLink() {
+            if (isMobile() && !wrapper.classList.contains('tv-sidebar-open')) return;
+            if (wrapper.classList.contains('tv-sidebar-collapsed')) return;
+
+            var currentLink = menu.querySelector('a[aria-current="page"]')
+                || menu.querySelector('a.mm-active:not(.has-arrow), li.mm-active > a:not(.has-arrow)');
+            try {
+                var selectedHref = sessionStorage.getItem('flow-sidebar-selected');
+                var selectedLink = Array.from(menu.querySelectorAll('a:not(.has-arrow)')).find(function (link) {
+                    return link.href === selectedHref && link.href === window.location.href;
+                });
+                if (selectedLink) currentLink = selectedLink;
+            } catch (e) { /* Server selection remains available without storage. */ }
+            if (!scroller || !currentLink || !scroller.clientHeight) return;
+
+            // Allow even the last entry to sit at the top of the viewport.
+            scroller.style.paddingBottom = scroller.clientHeight + 'px';
+            var bounds = scroller.getBoundingClientRect();
+            var linkBounds = currentLink.getBoundingClientRect();
+            scroller.scrollTop += linkBounds.top - bounds.top - 6;
+
+        }
+
         function updateToggle() {
             var expanded = isMobile()
                 ? wrapper.classList.contains('tv-sidebar-open')
@@ -94,6 +136,7 @@
             toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
             toggle.setAttribute('aria-label', expanded ? 'Close sidebar' : 'Open sidebar');
             toggle.classList.toggle('is-active', !expanded);
+            if (expanded) window.requestAnimationFrame(revealCurrentLink);
         }
 
         function setMobileOpen(open) {
@@ -118,6 +161,13 @@
         }
 
         markCurrentLink();
+
+        // Render the initial open branches without an animation so their full
+        // height is available before restoring the saved scroll position.
+        var initialSubmenus = menu.querySelectorAll('li > ul');
+        initialSubmenus.forEach(function (submenu) {
+            submenu.style.transition = 'none';
+        });
 
         menu.querySelectorAll('a.has-arrow').forEach(function (trigger) {
             var item = trigger.parentElement;
@@ -151,6 +201,10 @@
 
         menu.querySelectorAll('a:not(.has-arrow)').forEach(function (link) {
             link.addEventListener('click', function () {
+                try {
+                    sessionStorage.setItem('flow-sidebar-selected', link.href);
+                } catch (e) { /* Storage is optional. */ }
+                saveSidebarPosition();
                 if (isMobile()) setMobileOpen(false);
             });
         });
@@ -189,7 +243,33 @@
         if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', syncResponsiveState);
         else mobileQuery.addListener(syncResponsiveState);
 
+        // Measure nested branches from the inside out.
+        Array.from(menu.querySelectorAll('li.tv-open')).reverse().forEach(function (item) {
+            setSubmenu(item, true);
+        });
+        if (scroller) {
+            try {
+                var savedScroll = Number(sessionStorage.getItem(scrollStorageKey));
+                if (Number.isFinite(savedScroll)) scroller.scrollTop = savedScroll;
+            } catch (e) { /* Fall back to revealing the current link. */ }
+        }
         syncResponsiveState();
+        revealCurrentLink();
+        // Commit the initial layout before enabling interactive transitions.
+        void menu.offsetHeight;
+        initialSubmenus.forEach(function (submenu) {
+            submenu.style.removeProperty('transition');
+        });
+        window.addEventListener('pagehide', saveSidebarPosition);
+        window.requestAnimationFrame(revealCurrentLink);
+        // History restoration and font loading can occur after DOMContentLoaded.
+        window.addEventListener('pageshow', function () {
+            window.requestAnimationFrame(revealCurrentLink);
+        });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(revealCurrentLink);
+        }
+        window.addEventListener('load', revealCurrentLink, { once: true });
     }
 
     function initLegacyAdminControls() {

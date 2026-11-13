@@ -53,7 +53,7 @@
 <script src="{{ asset('backend/js/custom/delete_ajax.js') }}?v={{ filemtime(public_path('backend/js/custom/delete_ajax.js')) }}"></script>
 
 {{-- FLOW admin behaviour layer (collapsible filters, etc.) --}}
-<script src="{{ asset('backend/js/flow-admin.js') }}"></script>
+<script src="{{ asset('backend/js/flow-admin.js') }}?v={{ filemtime(public_path('backend/js/flow-admin.js')) }}"></script>
 
 {{-- ApexCharts is only needed on dashboards/reports that render #flow-data. --}}
 @if(request()->is('dashboard', 'accounting/dashboard', 'visa/dashboard', 'visa/reports', 'flight/reports', 'reports-center/*', 'portal/agent/reports'))

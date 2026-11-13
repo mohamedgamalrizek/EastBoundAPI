@@ -98,6 +98,8 @@ Route::get('cache-clear', function () {
     return redirect()->back()->with('success', ___('alert.cache_successfully_cleared.'));
 })->name('cache.clear')->middleware('auth', 'hasPermission:dashboard_read');
 
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
 // 🔹 Public frontend website (no auth)
 Route::redirect('/', '/login')->name('home');
 //Route::get('/', [FrontendController::class, 'home'])->name('home');
