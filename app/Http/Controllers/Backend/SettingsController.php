@@ -54,7 +54,11 @@ class SettingsController extends Controller
         // SettingsRepository::UpdateSettings), so the two booking-policy
         // numbers are validated here rather than in a FormRequest that this
         // route does not use.
-        \Log::info('Updating settings', ['user_id' => auth()->id(), 'request' => $request->all()]);
+        \Log::info('Settings update started', [
+            'user_id' => auth()->id(),
+            'request_keys' => array_keys($request->except(['_token', '_method'])),
+            'uploaded_file_fields' => array_keys($request->allFiles()),
+        ]);
         $request->validate([
             'booking_cancellation_window_hours'   => ['nullable', 'integer', 'min:0'],
             'booking_cancellation_penalty_percent' => ['nullable', 'integer', 'min:0', 'max:100'],
@@ -74,7 +78,18 @@ class SettingsController extends Controller
             'review_auto_approve' => ['nullable', 'in:0,1'],
         ]);
 
+        \Log::info('Settings request validated', [
+            'user_id' => auth()->id(),
+            'uploaded_file_fields' => array_keys($request->allFiles()),
+        ]);
+
         $result = $this->repo->UpdateSettings($request);
+
+        \Log::info('Settings update repository returned', [
+            'user_id' => auth()->id(),
+            'status' => (bool) ($result['status'] ?? false),
+            'uploaded_file_fields' => array_keys($request->allFiles()),
+        ]);
 
         if ($result['status']) {
             return back()->with('success', $result['message']);

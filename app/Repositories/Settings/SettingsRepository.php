@@ -11,6 +11,8 @@ use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\UploadedFile;
 use App\Repositories\Upload\UploadInterface;
 
 class SettingsRepository implements SettingsInterface
@@ -44,6 +46,11 @@ class SettingsRepository implements SettingsInterface
     public function UpdateSettings($request)
     {
         try {
+            Log::info('Settings repository processing started', [
+                'user_id' => auth()->id(),
+                'request_keys' => array_keys($request->except(['_token', '_method'])),
+                'uploaded_file_fields' => array_keys($request->allFiles()),
+            ]);
 
             if ($request->has('currency_code')) {
                 $currency   = Currency::where('code', $request->currency_code)->first();
@@ -74,7 +81,22 @@ class SettingsRepository implements SettingsInterface
                 }
 
                 if (in_array($key, $images_keys)) {
-                    $settings->value    = $this->upload->uploadImage($value, 'settings/', [], $settings->value);
+                    $file = $value instanceof UploadedFile ? $value : null;
+                    Log::info('Settings image upload started', [
+                        'setting_key' => $key,
+                        'existing_upload_id' => $settings->value,
+                        'file_present' => $file !== null,
+                        'file_valid' => $file ? $file->isValid() : null,
+                        'file_size' => $file ? $file->getSize() : null,
+                        'file_extension' => $file ? $file->getClientOriginalExtension() : null,
+                    ]);
+
+                    $settings->value = $this->upload->uploadImage($value, 'settings/', [], $settings->value);
+
+                    Log::info('Settings image upload completed', [
+                        'setting_key' => $key,
+                        'upload_id' => $settings->value,
+                    ]);
                 } elseif (in_array($key, self::ENCRYPTED_KEYS, true)) {
                     // Read these back with decrypt_setting(), never settings().
                     $settings->value   = encrypt($value);
@@ -95,9 +117,16 @@ class SettingsRepository implements SettingsInterface
                 }
 
                 $settings->save();
+                if (in_array($key, $images_keys, true)) {
+                    Log::info('Settings image reference saved', [
+                        'setting_key' => $key,
+                        'upload_id' => $settings->value,
+                    ]);
+                }
             }
 
             DB::commit();
+            Log::info('Settings update transaction committed', ['user_id' => auth()->id()]);
 
             // Tenant-aware: clears the current context's keys (central or the
             // active tenant) so logo/favicon/settings refresh immediately.
@@ -107,6 +136,10 @@ class SettingsRepository implements SettingsInterface
             return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
             DB::rollBack();
+            Log::error('Settings update failed', [
+                'user_id' => auth()->id(),
+                'exception' => $th,
+            ]);
             return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
