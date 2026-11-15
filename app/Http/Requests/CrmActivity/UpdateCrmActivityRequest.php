@@ -18,7 +18,7 @@ class UpdateCrmActivityRequest extends FormRequest
         return [
             'id'            => ['required', 'exists:crm_activities,id'],
             'customer_id'   => ['nullable', 'required_without:lead_id', 'exists:customers,id'],
-            'lead_id'       => ['nullable', 'required_without:customer_id', 'exists:leads,id'],
+            'lead_id'       => ['nullable', 'required_without:customer_id', \Illuminate\Validation\Rule::exists('leads', 'id')->where(fn ($query) => \App\Support\LeadAccess::constrain($query)->whereNull('deleted_at'))],
             'customer_name' => ['nullable', 'string', 'max:100'],
             'type'          => ['required', Rule::in(CrmActivityRepository::TYPES)],
             'subject'       => ['required', 'string', 'max:150'],

@@ -85,6 +85,7 @@
                 @endif
             </a>
             @yield('brand_heading')
+            {{-- Temporarily hidden: remove this Blade comment to restore the feature list.
             @if($authFeatures->isNotEmpty())
                 <ul class="feat-list">
                     @foreach($authFeatures as $feature)
@@ -92,13 +93,16 @@
                     @endforeach
                 </ul>
             @endif
+            --}}
         </div>
+        {{-- Temporarily hidden: remove this Blade comment to restore the testimonial.
         <div class="quote-box">
             <div class="stars mb-1">@yield('brand_quote_stars', ___('auth.quote_stars'))</div>
             <p>{{ $authQuoteText }}</p>
             <div class="who">{{ $authQuoteName }}</div>
             <div class="role">{{ $authQuoteRole }}</div>
         </div>
+        --}}
     </aside>
 
     <main class="auth-form-side">

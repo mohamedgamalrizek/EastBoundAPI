@@ -1,0 +1,17 @@
+{
+    "payment_gateway_setting": "Payment Gateway Settings",
+    "bkash_setting": "bKash (Tokenized Checkout)",
+    "sslcommerz_setting": "SSLCOMMERZ",
+    "app_key": "App Key",
+    "app_secret": "App Secret",
+    "username": "Username",
+    "password": "Password",
+    "store_id": "Store ID",
+    "store_password": "Store Password",
+    "sandbox": "Mode",
+    "sandbox_on": "Sandbox (testing)",
+    "sandbox_off": "Live",
+    "callback_urls": "Callback URLs",
+    "callback_hint": "Give these to the provider when they ask for your success, fail, cancel and IPN URLs. REFERENCE is filled in per transaction.",
+    "live_mode_hint": "A gateway only takes money once its credentials are filled in AND its status is Active. While every gateway is off, the app and the customer portal keep offering cash, bank and wallet only."
+}

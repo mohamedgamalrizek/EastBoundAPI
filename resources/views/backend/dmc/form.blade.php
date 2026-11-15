@@ -3,9 +3,20 @@
 @section('maincontent')
 <x-page :title="($record->exists ? 'Edit ' : 'Create ').$definition['title']" :breadcrumb="['DMC', $definition['title']]">
     @if($errors->any())<div class="alert alert-danger" role="alert"><ul>@foreach($errors->all() as $message)<li>{{ $message }}</li>@endforeach</ul></div>@endif
+    @if(isset($quotationLead))
+        <div class="alert alert-info">Quotation for lead #{{ $quotationLead->id }} — {{ $quotationLead->name }}.
+            @if($continueToQuotation ?? false) Select the customer and sales owner, then continue to the quotation. @endif
+        </div>
+    @endif
     <div class="tv-card"><div class="tv-card-body">
         <form method="POST" action="{{ $record->exists ? route('dmc.'.$module.'.update', $record->id) : route('dmc.'.$module.'.store') }}">
             @csrf
+            @if(isset($quotationLead))
+                <input type="hidden" name="quotation_lead_id" value="{{ $quotationLead->id }}">
+            @endif
+            @if($continueToQuotation ?? false)
+                <input type="hidden" name="continue_to_quotation" value="1">
+            @endif
             @if($record->exists) @method('PUT') @endif
             <div class="form-row">
                 @foreach($definition['fields'] as $name => $field)
@@ -38,7 +49,7 @@
             @if($module === 'approval-policies')
                 <p class="text-muted">All three limits must be configured to permit Team Leader approval. Otherwise every quotation requires General Manager approval. A different employee must approve the quotation.</p>
             @endif
-            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-primary" type="submit">{{ ($continueToQuotation ?? false) ? 'Save & Create Quotation' : 'Save' }}</button>
             <a class="btn btn-light" href="{{ route('dmc.'.$module.'.index') }}">Cancel</a>
         </form>
     </div></div>

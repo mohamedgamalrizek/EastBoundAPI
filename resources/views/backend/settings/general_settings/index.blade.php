@@ -10,10 +10,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ ___('menus.settings') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('settings.general.index') }}" class="breadcrumb-link active">{{ ___('menus.general_settings') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.settings'), ___('menus.general_settings')]" />
                     </nav>
                 </div>
             </div>

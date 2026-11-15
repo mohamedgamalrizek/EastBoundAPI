@@ -9,11 +9,7 @@
             <div class="page-header d-flex justify-content-between align-items-center flex-wrap">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('menus.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('menus.settings') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('settings.social.login.index') }}" class="breadcrumb-link active">{{ ___('menus.social_login_settings') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.dashboard'), ___('menus.settings'), ___('menus.social_login_settings')]" />
                     </nav>
                 </div>
                 <x-how-it-works />

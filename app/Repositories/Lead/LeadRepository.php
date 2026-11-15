@@ -17,14 +17,26 @@ class LeadRepository implements LeadInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function all(array $filters = [])
     {
-        return $this->model::orderByDesc('id')->paginate(10);
+        return $this->model::filtered($filters)->paginate($filters['per_page'] ?? 10)->withQueryString();
     }
 
     public function get($id)
     {
         return $this->model::find($id);
+    }
+
+    public function assignTo($id, int $userId)
+    {
+        return \Illuminate\Support\Facades\DB::transaction(function () use ($id, $userId) {
+            $lead = $this->model::lockForUpdate()->findOrFail($id);
+            $user = \App\Models\User::leadAssignees()->findOrFail($userId);
+            $lead->assigned_to = $user->id;
+            $lead->owner = $user->name;
+            $lead->save();
+            return $lead;
+        });
     }
 
     public function store($request)
@@ -34,6 +46,7 @@ class LeadRepository implements LeadInterface
             if ($request->filled('created_at')) {
                 $lead->created_at = $request->created_at;
             }
+            $this->assign($lead, $request, true);
             $lead->save();
 
             return $this->responseWithSuccess(___('alert.successfully_added'));
@@ -50,6 +63,7 @@ class LeadRepository implements LeadInterface
             if ($request->filled('created_at')) {
                 $lead->created_at = $request->created_at;
             }
+            $this->assign($lead, $request, false);
             $lead->save();
 
             return $this->responseWithSuccess(___('alert.successfully_updated'));
@@ -66,6 +80,46 @@ class LeadRepository implements LeadInterface
             return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong'));
+        }
+    }
+
+    public function deleted()
+    {
+        return $this->model::onlyTrashed()->orderByDesc('deleted_at')->orderByDesc('id')->paginate(10);
+    }
+
+    public function restore($id)
+    {
+        try {
+            $this->model::onlyTrashed()->findOrFail($id)->restore();
+            return $this->responseWithSuccess('Lead restored successfully.');
+        } catch (\Throwable $th) {
+            return $this->responseWithError(___('alert.something_went_wrong'));
+        }
+    }
+
+    public function forceDelete($id)
+    {
+        try {
+            \Illuminate\Support\Facades\DB::transaction(function () use ($id) {
+                $lead = $this->model::onlyTrashed()->findOrFail($id);
+                $lead->crmActivities()->delete();
+                $lead->forceDelete();
+            });
+            return $this->responseWithSuccess('Lead permanently deleted.');
+        } catch (\Throwable $th) {
+            return $this->responseWithError(___('alert.something_went_wrong'));
+        }
+    }
+
+    private function assign(Lead $lead, $request, bool $creating): void
+    {
+        if (auth()->user()?->can_access('lead_assign') && $request->exists('assigned_to')) {
+            $lead->assigned_to = $request->input('assigned_to') ?: null;
+            $lead->owner = $lead->assigned_to ? \App\Models\User::findOrFail($lead->assigned_to)->name : null;
+        } elseif ($creating) {
+            $lead->assigned_to = auth()->id();
+            $lead->owner = auth()->user()?->name;
         }
     }
 
@@ -95,7 +149,7 @@ class LeadRepository implements LeadInterface
             'comments' => $request->comments,
             'value'    => $request->value ?? 0,
             'stage'    => $request->stage,
-            'owner'    => $request->owner,
+
             'notes'    => $request->notes,
         ];
     }

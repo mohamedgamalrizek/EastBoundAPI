@@ -102,7 +102,7 @@ class ManagementReports
 
     public function marketing(array $filters = []): array
     {
-        $leadQuery = DB::table('leads');
+        $leadQuery = \App\Models\Lead::query()->toBase();
         if (! empty($filters['from'])) {
             $leadQuery->whereDate('created_at', '>=', $filters['from']);
         }
@@ -180,7 +180,7 @@ class ManagementReports
     {
         $metrics = [];
         if ($user->can_access('crm_read')) {
-            $metrics['My active leads'] = DB::table('leads')->where('assigned_to', $user->id)->whereNotIn('stage', ['Won', 'Lost'])->count();
+            $metrics['My active leads'] = \App\Models\Lead::query()->toBase()->where('assigned_to', $user->id)->whereNotIn('stage', ['Won', 'Lost'])->count();
         }
         if ($user->can_access('task_read')) {
             $metrics['My open tasks'] = DB::table('tasks')->where('assigned_to', $user->id)->where('status', '!=', 'Done')->count();
@@ -203,7 +203,7 @@ class ManagementReports
             $metrics['DMC vendor bills'] = VendorBill::count();
         }
         if ($user->can_access('dmc_marketing_read')) {
-            $metrics['Website leads this month'] = DB::table('leads')->whereNotNull('dmc_website_id')->where('created_at', '>=', today()->startOfMonth())->count();
+            $metrics['Website leads this month'] = \App\Models\Lead::query()->toBase()->whereNotNull('dmc_website_id')->where('created_at', '>=', today()->startOfMonth())->count();
             $metrics['Recorded marketing spend this month'] = DB::table('dmc_campaign_spends')->whereDate('spent_on', '>=', today()->startOfMonth())->sum('amount');
         }
 

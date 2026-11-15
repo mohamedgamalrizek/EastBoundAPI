@@ -34,11 +34,11 @@
                     @if($lead->email)
                         <a href="mailto:{{ $lead->email }}" class="btn btn-sm btn-outline-primary"><i class="fa fa-envelope"></i> Email</a>
                     @endif
-                    @if(hasPermission('crm_update') && str_contains(strtolower($lead->interest ?? ''), 'hotel'))
+                    @if(hasPermission('lead_update') && str_contains(strtolower($lead->interest ?? ''), 'hotel'))
                         <a href="{{ route('crm.leads.convert.hotel', $lead->id) }}" class="btn btn-sm btn-success"><i class="fa fa-hotel"></i> Convert to Hotel Booking</a>
                     @endif
-                    @if(hasPermission('crm_update'))
-                        @if(hasPermission('crm_create'))<a href="{{ route('dmc.opportunities.create', ['lead_id' => $lead->id]) }}" class="btn btn-sm btn-outline-primary">Create Opportunity</a>@endif
+                    @if(hasPermission('lead_update'))
+                        @if(hasPermission('lead_create'))<a href="{{ route('dmc.opportunities.create', ['lead_id' => $lead->id]) }}" class="btn btn-sm btn-outline-primary">Create Opportunity</a>@endif
                         <a href="{{ route('crm.leads.edit', $lead->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-edit"></i> Edit</a>
                     @endif
                 </div>

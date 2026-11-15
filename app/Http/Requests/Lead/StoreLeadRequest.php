@@ -8,7 +8,7 @@ class StoreLeadRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return auth()->user()?->can_access('lead_create') ?? false;
     }
 
     public function rules()
@@ -38,6 +38,7 @@ class StoreLeadRequest extends FormRequest
             'comments' => ['nullable', 'string', 'max:5000'],
             'created_at' => ['nullable', 'date'],
             'stage'    => ['required', 'in:New,Contacted,Proposal,Negotiation,Won,Lost'],
+            'assigned_to' => [auth()->user()?->can_access('lead_assign') ? 'nullable' : 'prohibited', 'integer', 'exists:users,id'],
             'owner'    => ['nullable', 'string', 'max:255'],
             'notes'    => ['nullable', 'string'],
         ];

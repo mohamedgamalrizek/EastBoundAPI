@@ -34,11 +34,62 @@ class LeadController extends Controller
         $this->hotelBookingRepo = $hotelBookingRepo;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $leads = $this->repo->all();
+        $rules = [];
+        foreach (['search', 'stage', 'source', 'language', 'country', 'website', 'campaign_source', 'owner'] as $key) {
+            $rules[$key] = ['nullable', 'string', 'max:255'];
+        }
+        foreach (['created_from', 'created_to', 'travel_from', 'travel_to'] as $key) {
+            $rules[$key] = ['nullable', 'date_format:Y-m-d'];
+        }
+        if ($request->filled('created_from')) $rules['created_to'][] = 'after_or_equal:created_from';
+        if ($request->filled('travel_from')) $rules['travel_to'][] = 'after_or_equal:travel_from';
+        $rules['value_min'] = ['nullable', 'numeric', 'min:0'];
+        $rules['value_max'] = ['nullable', 'numeric', 'min:0'];
+        if ($request->filled('value_min')) $rules['value_max'][] = 'gte:value_min';
+        $rules['assigned_to'] = ['nullable', 'regex:/^(unassigned|[1-9][0-9]*)$/'];
+        $rules['sort'] = ['nullable', Rule::in(['newest', 'oldest', 'value_high', 'value_low', 'name'])];
+        $rules['per_page'] = ['nullable', Rule::in([10, 25, 50, 100])];
+        $filters = $request->validate($rules);
+        $leads = $this->repo->all($filters);
+        $filterOptions = [];
+        foreach (['stage', 'source', 'language', 'country', 'website', 'campaign_source', 'owner'] as $column) {
+            $filterOptions[$column] = \App\Models\Lead::whereNotNull($column)->where($column, '!=', '')
+                ->distinct()->orderBy($column)->pluck($column);
+        }
+        $filterUsers = User::when(! auth()->user()->can_access('lead_view_all'), fn ($query) => $query->whereKey(auth()->id()))->orderBy('name')->get(['id', 'name']);
+        return view('backend.crm.leads', compact('leads', 'filters', 'filterOptions', 'filterUsers'));
+    }
 
-        return view('backend.crm.leads', compact('leads'));
+    public function assignLead(Request $request, $id)
+    {
+        $data = $request->validate([
+            'assigned_to' => ['required', 'integer', Rule::exists('users', 'id')->where(fn ($query) => $query
+                ->where('status', \App\Enums\Status::ACTIVE->value)
+                ->whereJsonContains('permissions', 'lead_read')
+                ->whereJsonContains('permissions', 'dashboard_read'))],
+        ]);
+        $this->repo->assignTo($id, (int) $data['assigned_to']);
+        return back()->with('success', 'Lead assigned successfully.');
+    }
+
+    public function deleted()
+    {
+        $leads = $this->repo->deleted();
+        return view('backend.crm.deleted-leads', compact('leads'));
+    }
+
+    public function restore($id)
+    {
+        $result = $this->repo->restore($id);
+        return back()->with($result['status'] ? 'success' : 'danger', $result['message']);
+    }
+
+    public function forceDelete($id)
+    {
+        $result = $this->repo->forceDelete($id);
+        return response()->json($result, $result['status_code']);
     }
 
     public function show($id)
@@ -58,7 +109,7 @@ class LeadController extends Controller
 
     public function create()
     {
-        $users = User::orderBy('name')->get(['id', 'name']);
+        $users = auth()->user()->can_access('lead_assign') ? User::orderBy('name')->get(['id', 'name', 'email']) : collect();
 
         return view('backend.crm.lead-create', compact('users'));
     }
@@ -76,7 +127,8 @@ class LeadController extends Controller
     public function edit($id)
     {
         $lead = $this->repo->get($id);
-        $users = User::orderBy('name')->get(['id', 'name']);
+        abort_if(! $lead, 404);
+        $users = auth()->user()->can_access('lead_assign') ? User::orderBy('name')->get(['id', 'name', 'email']) : collect();
 
         return view('backend.crm.lead-edit', compact('lead', 'users'));
     }

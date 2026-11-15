@@ -15,7 +15,7 @@ class LeadAttributionReport
 
     public function build(array $filters = []): array
     {
-        $leadRows = $this->dimensions($this->period(DB::table('leads'), 'leads.created_at', $filters), $filters)
+        $leadRows = $this->dimensions($this->period(\App\Models\Lead::query()->toBase(), 'leads.created_at', $filters), $filters)
             ->selectRaw(self::WEBSITE.' as website, '.self::LANGUAGE.' as language')
             ->selectRaw("COUNT(*) as leads, SUM(CASE WHEN LOWER(stage) = 'won' THEN 1 ELSE 0 END) as won")
             ->selectRaw("SUM(COALESCE(value, 0)) as potential_value, SUM(CASE WHEN LOWER(stage) = 'won' THEN COALESCE(value, 0) ELSE 0 END) as won_value")
@@ -23,14 +23,14 @@ class LeadAttributionReport
 
         $sales = $this->sales($filters);
         $revenueRows = $this->dimensions(DB::query()->fromSub(clone $sales, 'sales')
-            ->join('leads', 'leads.id', '=', 'sales.lead_id'), $filters)
+            ->join('leads', 'leads.id', '=', 'sales.lead_id')->whereIn('leads.id', Lead::select('id')), $filters)
             ->selectRaw(self::WEBSITE.' as website, '.self::LANGUAGE.' as language')
             ->selectRaw('COUNT(*) as bookings, SUM(sales.amount) as revenue')
             ->groupByRaw(self::WEBSITE.', '.self::LANGUAGE)->get();
 
         $websites = collect(config('lead-reporting.websites', []))
             ->merge(\Illuminate\Support\Facades\Schema::hasTable('dmc_websites') ? \App\Models\Dmc\Website::pluck('name') : [])
-            ->merge(DB::table('leads')->selectRaw(self::WEBSITE.' as website')->distinct()->pluck('website'))
+            ->merge(\App\Models\Lead::query()->toBase()->selectRaw(self::WEBSITE.' as website')->distinct()->pluck('website'))
             ->map(fn ($website) => trim($website))->filter()->unique()->sort()->values();
 
         $languages = collect(Lead::LANGUAGES)->merge($leadRows->pluck('language'))

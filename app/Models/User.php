@@ -80,6 +80,13 @@ class User extends Authenticatable
     public function announcements()           { return $this->hasMany(Announcement::class); }
     public function assignedTasks()           { return $this->hasMany(Task::class, 'assigned_to'); }
     public function assignedTickets()         { return $this->hasMany(SupportTicket::class, 'assigned_to'); }
+    public function scopeLeadAssignees($query)
+    {
+        return $query->where('status', \App\Enums\Status::ACTIVE->value)
+            ->whereJsonContains('permissions', 'lead_read')
+            ->whereJsonContains('permissions', 'dashboard_read');
+    }
+
     public function assignedLeads()           { return $this->hasMany(Lead::class, 'assigned_to'); }
 
     /**

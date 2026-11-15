@@ -24,6 +24,9 @@ class SaveWorkflowRequest extends FormRequest
         $rules = collect($module['fields'])->mapWithKeys(fn ($field, $name) => [
             $name => isset($field['permission']) && ! $this->user()->can_access($field['permission']) ? ['missing'] : $field['rules'],
         ])->all();
+        if (isset($rules['lead_id'])) {
+            $rules['lead_id'][] = Rule::exists('leads', 'id')->where(fn ($query) => \App\Support\LeadAccess::constrain($query)->whereNull('deleted_at'));
+        }
         if ($this->route('module') === 'quotations') {
             $rules += [
                 'items' => ['required', 'array', 'min:1', 'max:200'],
@@ -53,6 +56,26 @@ class SaveWorkflowRequest extends FormRequest
             }
         }
 
+        if ($this->isMethod('POST') && in_array($this->route('module'), ['quotations', 'opportunities'])) {
+            $rules['quotation_lead_id'] = ['nullable', 'integer', function ($attribute, $value, $fail) {
+                if (! $this->user()->can_access('lead_read') || ! \App\Models\Lead::whereKey($value)->exists()) {
+                    $fail('The selected lead is not available.');
+                }
+            }];
+            if ($this->filled('quotation_lead_id')) {
+                if ($this->route('module') === 'quotations') {
+                    $rules['opportunity_id'][] = Rule::exists('dmc_opportunities', 'id')->where(fn ($query) => $query
+                        ->where('lead_id', $this->input('quotation_lead_id'))->whereNotIn('stage', ['Won', 'Lost']));
+                } else {
+                    $rules['lead_id'][] = 'required';
+                    $rules['lead_id'][] = 'same:quotation_lead_id';
+                }
+            }
+            if ($this->route('module') === 'opportunities') {
+                $rules['continue_to_quotation'] = ['nullable', 'boolean'];
+                if ($this->boolean('continue_to_quotation')) $rules['quotation_lead_id'][] = 'required';
+            }
+        }
         return $rules;
     }
 }

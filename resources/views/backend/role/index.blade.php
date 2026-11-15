@@ -11,11 +11,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('label.user')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.list') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('label.user'), ___('label.role'), ___('label.list')]" />
                     </nav>
                 </div>
             </div>

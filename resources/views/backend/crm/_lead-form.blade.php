@@ -92,25 +92,18 @@
         </select>
         @error('stage') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
+    @if(hasPermission('lead_assign'))
     <div class="form-group col-md-6">
-        <label for="owner">Assign To (Owner)</label>
-        @php
-            $selOwner = old('owner', $lead->owner ?? '');
-            // Legacy leads may hold a free-text owner that no longer matches a
-            // user account; keep it selectable so editing doesn't drop it.
-            $ownerIsKnown = $selOwner === '' || $users->contains('name', $selOwner);
-        @endphp
-        <select id="owner" name="owner" class="form-control input-style-1 select2" placeholder="Assign To (Owner)">
-            <option value=""></option>
-            @unless($ownerIsKnown)
-            <option value="{{ $selOwner }}" selected>{{ $selOwner }}</option>
-            @endunless
+        <label for="assigned_to">Assigned to</label>
+        <select id="assigned_to" name="assigned_to" class="form-control input-style-1 select2">
+            <option value="">Unassigned</option>
             @foreach($users as $user)
-            <option value="{{ $user->name }}" @selected($selOwner === $user->name)>{{ $user->name }}</option>
+                <option value="{{ $user->id }}" @selected(old('assigned_to', $lead->assigned_to ?? '') == $user->id)>{{ $user->name }} ({{ $user->email }})</option>
             @endforeach
         </select>
-        @error('owner') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+        @error('assigned_to') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
+    @endif
     <div class="form-group col-md-12">
         <h5 class="mt-3">Trip Details</h5>
     </div>

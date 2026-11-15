@@ -1,0 +1,7 @@
+{
+    "otp_subject": "Your :app verification code",
+    "otp_greeting": "Hello",
+    "otp_intro": "Use the code below to continue. Do not share it with anyone.",
+    "otp_expiry": "This code expires in :minutes minutes.",
+    "otp_ignore": "If you did not request this, you can ignore this email."
+}

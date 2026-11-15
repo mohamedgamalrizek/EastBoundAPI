@@ -11,8 +11,8 @@ Route::middleware(['XSS', 'auth'])->prefix('dmc')->group(function () {
         Route::get('commercial-documents/'.$module.'/{record}', [ManagementController::class, 'commercialDocument'])->whereNumber('record')->defaults('module', $module)
             ->name('dmc.document.'.$module)->middleware('hasPermission:'.$permission);
     }
-    Route::get('leads/lost', [ManagementController::class, 'lostLeads'])->name('dmc.leads.lost')->middleware('hasPermission:crm_read');
-    Route::get('attribution', [ManagementController::class, 'attribution'])->name('dmc.attribution')->middleware('hasPermission:crm_read');
+    Route::get('leads/lost', [ManagementController::class, 'lostLeads'])->name('dmc.leads.lost')->middleware('hasPermission:lead_read');
+    Route::get('attribution', [ManagementController::class, 'attribution'])->name('dmc.attribution')->middleware('hasPermission:lead_read');
     Route::get('trip-documents', [ManagementController::class, 'documents'])->name('dmc.documents.index')->middleware('hasPermission:dmc_operations_read');
     Route::get('trip-documents/{trip}', [ManagementController::class, 'documents'])->whereNumber('trip')->name('dmc.trip-documents')->middleware('hasPermission:dmc_operations_read');
     Route::get('alerts', [ManagementController::class, 'alerts'])->name('dmc.alerts')->middleware('hasPermission:task_read');

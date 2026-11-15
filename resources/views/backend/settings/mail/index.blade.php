@@ -11,11 +11,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('menus.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('menus.settings') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('settings.mail')}}" class="breadcrumb-link active">{{ ___('menus.mail_setting') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.dashboard'), ___('menus.settings'), ___('menus.mail_setting')]" />
                     </nav>
                 </div>
             </div>

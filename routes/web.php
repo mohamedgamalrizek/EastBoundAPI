@@ -229,19 +229,31 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
     // CRM — Leads (real CRUD)
-    Route::get('crm/leads', [LeadController::class, 'index'])->name('crm.leads')->middleware('hasPermission:crm_read');
-    Route::get('crm/leads/create', [LeadController::class, 'create'])->name('crm.leads.create')->middleware('hasPermission:crm_create');
-    Route::post('crm/leads', [LeadController::class, 'store'])->name('crm.leads.store')->middleware('hasPermission:crm_create');
-    Route::get('crm/leads/{id}', [LeadController::class, 'show'])->name('crm.leads.show')->middleware('hasPermission:crm_read');
-    Route::get('crm/leads/{id}/edit', [LeadController::class, 'edit'])->name('crm.leads.edit')->middleware('hasPermission:crm_update');
-    Route::put('crm/leads/{id}', [LeadController::class, 'update'])->name('crm.leads.update')->middleware('hasPermission:crm_update');
-    Route::delete('crm/leads/{id}', [LeadController::class, 'delete'])->name('crm.leads.delete')->middleware('hasPermission:crm_delete');
+    foreach (['destinations', 'cities'] as $locationType) {
+        Route::get('website-frontend/'.$locationType, [\App\Http\Controllers\Backend\WebsiteLocationController::class, 'index'])->defaults('type', $locationType)->name('website.'.$locationType.'.index')->middleware('hasPermission:cms_read');
+        Route::get('website-frontend/'.$locationType.'/create', [\App\Http\Controllers\Backend\WebsiteLocationController::class, 'create'])->defaults('type', $locationType)->name('website.'.$locationType.'.create')->middleware('hasPermission:cms_create');
+        Route::post('website-frontend/'.$locationType, [\App\Http\Controllers\Backend\WebsiteLocationController::class, 'store'])->defaults('type', $locationType)->name('website.'.$locationType.'.store')->middleware('hasPermission:cms_create');
+        Route::get('website-frontend/'.$locationType.'/{id}/edit', [\App\Http\Controllers\Backend\WebsiteLocationController::class, 'edit'])->defaults('type', $locationType)->name('website.'.$locationType.'.edit')->middleware('hasPermission:cms_update');
+        Route::put('website-frontend/'.$locationType.'/{id}', [\App\Http\Controllers\Backend\WebsiteLocationController::class, 'update'])->defaults('type', $locationType)->name('website.'.$locationType.'.update')->middleware('hasPermission:cms_update');
+    }
+
+    Route::get('crm/leads', [LeadController::class, 'index'])->name('crm.leads')->middleware('hasPermission:lead_read');
+    Route::get('crm/leads/create', [LeadController::class, 'create'])->name('crm.leads.create')->middleware('hasPermission:lead_create');
+    Route::post('crm/leads', [LeadController::class, 'store'])->name('crm.leads.store')->middleware('hasPermission:lead_create');
+    Route::get('crm/leads/deleted', [LeadController::class, 'deleted'])->name('crm.deleted-leads')->middleware('hasPermission:lead_read');
+    Route::post('crm/leads/{id}/restore', [LeadController::class, 'restore'])->name('crm.deleted-leads.restore')->middleware('hasPermission:lead_restore');
+    Route::delete('crm/leads/{id}/permanent', [LeadController::class, 'forceDelete'])->name('crm.deleted-leads.destroy')->middleware('hasPermission:lead_force_delete');
+    Route::patch('crm/leads/{id}/assign', [LeadController::class, 'assignLead'])->name('crm.leads.assign')->middleware('hasPermission:lead_assign');
+    Route::get('crm/leads/{id}', [LeadController::class, 'show'])->name('crm.leads.show')->middleware('hasPermission:lead_read');
+    Route::get('crm/leads/{id}/edit', [LeadController::class, 'edit'])->name('crm.leads.edit')->middleware('hasPermission:lead_update');
+    Route::put('crm/leads/{id}', [LeadController::class, 'update'])->name('crm.leads.update')->middleware('hasPermission:lead_update');
+    Route::delete('crm/leads/{id}', [LeadController::class, 'delete'])->name('crm.leads.delete')->middleware('hasPermission:lead_delete');
     // Convert a flight lead into a real FlightBooking (pre-filled from the lead).
-    Route::get('crm/leads/{id}/convert-flight', [LeadController::class, 'convertFlight'])->name('crm.leads.convert.flight')->middleware('hasPermission:crm_update');
-    Route::post('crm/leads/{id}/convert-flight', [LeadController::class, 'storeFlightBooking'])->name('crm.leads.store.flight')->middleware('hasPermission:crm_update');
+    Route::get('crm/leads/{id}/convert-flight', [LeadController::class, 'convertFlight'])->name('crm.leads.convert.flight')->middleware('hasPermission:lead_update');
+    Route::post('crm/leads/{id}/convert-flight', [LeadController::class, 'storeFlightBooking'])->name('crm.leads.store.flight')->middleware('hasPermission:lead_update');
     // Convert a hotel lead into a real HotelBooking (pre-filled from the lead).
-    Route::get('crm/leads/{id}/convert-hotel', [LeadController::class, 'convertHotel'])->name('crm.leads.convert.hotel')->middleware('hasPermission:crm_update');
-    Route::post('crm/leads/{id}/convert-hotel', [LeadController::class, 'storeHotelBooking'])->name('crm.leads.store.hotel')->middleware('hasPermission:crm_update');
+    Route::get('crm/leads/{id}/convert-hotel', [LeadController::class, 'convertHotel'])->name('crm.leads.convert.hotel')->middleware('hasPermission:lead_update');
+    Route::post('crm/leads/{id}/convert-hotel', [LeadController::class, 'storeHotelBooking'])->name('crm.leads.store.hotel')->middleware('hasPermission:lead_update');
     Route::get('crm/contact-messages', [ContactMessageController::class, 'index'])->name('crm.contact-messages.index')->middleware('hasPermission:crm_read');
     Route::get('crm/contact-messages/{id}', [ContactMessageController::class, 'show'])->name('crm.contact-messages.show')->middleware('hasPermission:crm_read');
     Route::delete('crm/contact-messages/{id}/delete', [ContactMessageController::class, 'delete'])->name('crm.contact-messages.delete')->middleware('hasPermission:crm_delete');

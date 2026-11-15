@@ -44,5 +44,10 @@
     "staff_portal": "Staff Portal",
     "saas": "SaaS",
     "sms_settings": "SMS Settings",
-    "payment_settings": "Payment Gateway Settings"
+    "payment_settings": "Payment Gateway Settings",
+    "leads": "Leads",
+    "view_all": "View all leads",
+    "assign": "Assign leads",
+    "restore": "Restore deleted leads",
+    "force_delete": "Permanently delete leads"
 }

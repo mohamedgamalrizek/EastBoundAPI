@@ -8,12 +8,7 @@
             <div class="page-header d-flex justify-content-between align-items-center flex-wrap">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                            @foreach($breadcrumb as $crumb)
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ $crumb }}</a></li>
-                            @endforeach
-                        </ol>
+                        <x-breadcrumbs :items="$breadcrumb" :title="$title" />
                     </nav>
                 </div>
                 <x-how-it-works />

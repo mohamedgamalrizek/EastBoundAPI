@@ -9,10 +9,7 @@ Customers
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">Customers</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="['Dashboard', 'Customers']" />
                     </nav>
                 </div>
             </div>

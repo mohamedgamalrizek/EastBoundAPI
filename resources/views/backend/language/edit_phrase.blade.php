@@ -9,10 +9,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('language.index')}}" class="breadcrumb-link">{{___('menus.language')}}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('language.edit_phrase') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.language'), ___('language.edit_phrase')]" />
                     </nav>
                 </div>
             </div>

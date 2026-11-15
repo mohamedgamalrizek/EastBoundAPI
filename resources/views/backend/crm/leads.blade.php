@@ -3,11 +3,20 @@
 @section('maincontent')
 <x-page :title="$leadListTitle ?? 'Leads'" :breadcrumb="['CRM', $leadListTitle ?? 'Leads']">
     <x-slot:action>
+        @if(hasPermission('lead_read'))
+            <a href="{{ route('crm.deleted-leads') }}" class="btn btn-outline-secondary">Deleted Leads</a>
+        @endif
         @if(hasPermission('report_read') || hasPermission('dmc_marketing_read'))
             <a href="{{ route(hasPermission('dmc_marketing_read') ? 'dmc.lead-performance' : 'report.leads') }}" class="btn btn-outline-primary">Languages & Websites Report</a>
         @endif
+        @if(hasPermission('lead_create'))
         <a href="{{ route('crm.leads.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-1"></i> Add Lead</a>
+        @endif
     </x-slot:action>
+
+    @isset($filterOptions)
+        @include('backend.crm._lead-filters')
+    @endisset
 
     <div class="row"><div class="col-12">
         <div class="tv-card">
@@ -47,12 +56,24 @@
                                         <div class="input-group-prepend be-addon">
                                             <div class="d-flex align-items-center flex-wrap tv-action-gap">
                                                 <a href="{{ route('crm.leads.show', $lead->id) }}" class="btn btn-sm btn-outline-secondary" title="View"><i class="fa fa-eye"></i></a>
+                                                @if(hasPermission('lead_assign'))
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#assignLeadModal"
+                                                    data-url="{{ route('crm.leads.assign', $lead->id) }}" data-name="{{ $lead->name }}" data-assigned="{{ $lead->assigned_to }}"
+                                                    title="Assign lead" aria-label="Assign {{ $lead->name }}"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+                                                @endif
+                                                @if(hasPermission('dmc_sales_create'))
+                                                <a href="{{ route('dmc.quotations.create', ['lead_id' => $lead->id]) }}" class="btn btn-sm btn-outline-primary" title="Create quotation for {{ $lead->name }}"><i class="fa fa-file-text-o mr-1" aria-hidden="true"></i>Quotation</a>
+                                                @endif
+                                                @if(hasPermission('lead_update'))
                                                 <a href="{{ route('crm.leads.edit', $lead->id) }}" class="btn btn-sm btn-outline-primary" title="Edit"><i class="fa fa-edit"></i></a>
+                                                @endif
+                                                @if(hasPermission('lead_delete'))
                                                 <a class="btn btn-sm btn-outline-danger" href="{{ route('crm.leads.delete', $lead->id) }}"
                                                     onclick="tryDelete(event)"
                                                     data-remove-id="row_{{ $lead->id }}"
-                                                    data-title="Delete" data-text="This action cannot be reversed."
+                                                    data-title="Delete" data-text="This lead will move to Deleted Leads and can be restored."
                                                     data-confirm-button-text="Delete" data-cancel-button-text="Cancel"><i class="fa fa-trash"></i></a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -71,4 +92,7 @@
         </div>
     </div></div>
 </x-page>
+@if(hasPermission('lead_assign'))
+    @include('backend.crm._lead-assign-modal')
+@endif
 @endsection

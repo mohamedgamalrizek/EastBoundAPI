@@ -10,11 +10,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('permissions.permissions') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.user_role'), ___('label.user'), ___('permissions.permissions')]" />
                     </nav>
                 </div>
             </div>
@@ -51,7 +47,10 @@
                                                 <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                                 <td>
 
-                                                    <div class="row mt-1">
+                                                    @if($permission->attribute === 'leads')
+                                                    <p class="text-muted small">Read/Create/Update/Delete control actions. Without View All, users can access only leads assigned to their account. Assign allows changing ownership. Restore and Force Delete are separate permissions.</p>
+                                                @endif
+                                                <div class="row mt-1">
                                                         @foreach ($permission->keywords as $key => $keyword)
                                                         <div class="col-12 col-md-3">
                                                             <input type="checkbox" id="{{ $keyword }}" class="read common-key" name="permissions[]" value="{{ $keyword }}" @checked(in_array($keyword, $user->permissions ?? []))>

@@ -55,6 +55,7 @@ class PermissionSeeder extends Seeder
             'packages'          => ['read' => 'package_read', 'create' => 'package_create', 'update' => 'package_update', 'delete' => 'package_delete'],
             'bookings'          => ['read' => 'booking_read', 'create' => 'booking_create', 'update' => 'booking_update', 'delete' => 'booking_delete'],
             'customers'         => ['read' => 'customer_read', 'create' => 'customer_create', 'update' => 'customer_update', 'delete' => 'customer_delete'],
+            'leads' => ['read' => 'lead_read', 'create' => 'lead_create', 'update' => 'lead_update', 'delete' => 'lead_delete', 'view_all' => 'lead_view_all', 'assign' => 'lead_assign', 'restore' => 'lead_restore', 'force_delete' => 'lead_force_delete'],
             'crm'               => ['read' => 'crm_read', 'create' => 'crm_create', 'update' => 'crm_update', 'delete' => 'crm_delete'],
             'visa'              => ['read' => 'visa_read', 'create' => 'visa_create', 'update' => 'visa_update', 'delete' => 'visa_delete'],
             'tour'              => ['read' => 'tour_read', 'create' => 'tour_create', 'update' => 'tour_update', 'delete' => 'tour_delete'],

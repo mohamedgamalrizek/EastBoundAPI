@@ -9,14 +9,7 @@
                 <div class="page-header">
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
-                                        class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('tour.guides') }}"
-                                        class="breadcrumb-link active">{{ ___('label.guides') }}</a></li>
-                                <li class="breadcrumb-item"><a href=""
-                                        class="breadcrumb-link active">{{ ___('label.guide_assignments') }}</a></li>
-                            </ol>
+                            <x-breadcrumbs :items="[___('label.dashboard'), ___('label.guides'), ___('label.guide_assignments')]" />
                         </nav>
                     </div>
                 </div>

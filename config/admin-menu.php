@@ -5,7 +5,9 @@ return [
     [
         'label' => 'CRM & Leads',
         'items' => [
-            ['label' => 'Leads', 'icon' => 'fa-solid fa-bullseye', 'route' => 'crm.leads', 'permission' => 'crm_read', 'active' => ['crm.leads*']],
+            ['label' => 'Leads', 'icon' => 'fa-solid fa-bullseye', 'route' => 'crm.leads', 'permission' => 'lead_read', 'active' => ['crm.leads*']],
+            ['label' => 'Deleted Leads', 'icon' => 'fa-solid fa-trash-can', 'route' => 'crm.deleted-leads', 'permission' => 'lead_read', 'active' => ['crm.deleted-leads*']],
+            ['label' => 'Mandatory Lead Attribution Data', 'icon' => 'fa-solid fa-fingerprint', 'permission' => 'lead_read', 'route' => 'dmc.attribution', 'active' => ['dmc.attribution']],
             ['label' => 'Opportunities / Deals', 'icon' => 'fa-solid fa-handshake', 'permission' => 'crm_read', 'route' => 'dmc.opportunities.index', 'active' => ['dmc.opportunities.*']],
             [
                 'label' => 'Activities & Follow-ups', 'icon' => 'fa-solid fa-arrows-spin',
@@ -29,18 +31,15 @@ return [
                 ],
             ],
             ['label' => 'Contacts', 'icon' => 'fa-solid fa-address-book', 'permission' => 'crm_read', 'route' => 'dmc.contacts.index', 'active' => ['dmc.contacts.*']],
-            ['label' => 'Lost Leads', 'icon' => 'fa-solid fa-user-xmark', 'permission' => 'crm_read', 'route' => 'dmc.leads.lost', 'active' => ['dmc.leads.lost']],
+            ['label' => 'Lost Leads', 'icon' => 'fa-solid fa-user-xmark', 'permission' => 'lead_read', 'route' => 'dmc.leads.lost', 'active' => ['dmc.leads.lost']],
             ['label' => 'Campaigns', 'icon' => 'fa-solid fa-bullhorn', 'route' => 'campaign.index', 'permission' => 'campaign_read', 'active' => ['campaign.*']],
         ],
     ],
     [
         'label' => 'Sales',
         'items' => [
-            ['label' => 'All Opportunities', 'icon' => 'fa-solid fa-filter-circle-dollar', 'permission' => 'crm_read', 'route' => 'dmc.opportunities.index', 'active' => ['dmc.opportunities.index'], 'query' => ['view' => 'active']],
             ['label' => 'Quotations', 'icon' => 'fa-solid fa-file-pen', 'permission' => 'dmc_sales_read', 'route' => 'dmc.quotations.index', 'active' => ['dmc.quotations.*']],
-            ['label' => 'Pending Approval', 'icon' => 'fa-solid fa-hourglass-half', 'permission' => 'dmc_sales_read', 'route' => 'dmc.quotations.index', 'active' => ['dmc.quotations.index'], 'query' => ['view' => 'pending']],
             ['label' => 'Sales Orders', 'icon' => 'fa-solid fa-file-signature', 'permission' => 'dmc_sales_read', 'route' => 'dmc.sales-orders.index', 'active' => ['dmc.sales-orders.*']],
-            ['label' => 'Confirmed Trips', 'icon' => 'fa-solid fa-circle-check', 'permission' => 'dmc_operations_read', 'route' => 'dmc.trips.index', 'active' => ['dmc.trips.index'], 'query' => ['view' => 'confirmed']],
             ['label' => 'Sales Reports', 'icon' => 'fa-solid fa-chart-line', 'route' => 'dmc.reports.sales', 'permission' => 'dmc_sales_read', 'active' => ['dmc.reports.sales']],
         ],
     ],
@@ -48,7 +47,6 @@ return [
         'label' => 'Operations & Trips',
         'items' => [
             ['label' => 'All Trips / Trip Projects', 'icon' => 'fa-solid fa-route', 'permission' => 'dmc_operations_read', 'route' => 'dmc.trips.index', 'active' => ['dmc.trips.*']],
-            ['label' => 'Upcoming Trips', 'icon' => 'fa-solid fa-calendar-days', 'permission' => 'dmc_operations_read', 'route' => 'dmc.trips.index', 'active' => ['dmc.trips.index'], 'query' => ['view' => 'upcoming']],
             ['label' => 'Today\'s Operations', 'icon' => 'fa-solid fa-sun', 'permission' => 'dmc_operations_read', 'route' => 'dmc.trip-items.index', 'active' => ['dmc.trip-items.index'], 'query' => ['view' => 'today']],
             [
                 'label' => 'Resource Management', 'icon' => 'fa-solid fa-cubes',
@@ -126,7 +124,6 @@ return [
                 'permission' => 'task_read',
                 'children' => [
                     ['label' => 'Task Projects', 'icon' => 'fa-solid fa-folder-tree', 'route' => 'task.projects'],
-                    ['label' => 'Operational Project Lifecycle', 'icon' => 'fa-solid fa-rotate', 'route' => 'dmc.trips.index', 'permission' => 'dmc_operations_read', 'active' => ['dmc.trips.*']],
                 ],
             ],
             ['label' => 'Purchase Requests', 'icon' => 'fa-solid fa-cart-plus', 'permission' => 'dmc_procurement_read', 'route' => 'dmc.purchase-requests.index', 'active' => ['dmc.purchase-requests.*']],
@@ -149,7 +146,6 @@ return [
                 'permission' => 'supplier_read',
                 'children' => [
                     ['label' => 'Vendor Ledger (Bills & Payments)', 'icon' => 'fa-solid fa-book', 'route' => 'sup.ledger'],
-                    ['label' => 'Vendor Bill Documents', 'icon' => 'fa-solid fa-file-invoice-dollar', 'route' => 'dmc.vendor-bills.index', 'permission' => 'accounting_read', 'active' => ['dmc.vendor-bills.*']],
                 ],
             ],
         ],
@@ -161,7 +157,7 @@ return [
             ['label' => 'Customer Payments', 'icon' => 'fa-solid fa-credit-card', 'route' => 'acc.receipt.index', 'permission' => 'accounting_read', 'active' => ['acc.receipt.*']],
             ['label' => 'Vendor Bills', 'icon' => 'fa-solid fa-file-circle-exclamation', 'permission' => 'accounting_read', 'route' => 'dmc.vendor-bills.index', 'active' => ['dmc.vendor-bills.*']],
             ['label' => 'Vendor Payments', 'icon' => 'fa-solid fa-money-bill-transfer', 'permission' => 'accounting_read', 'route' => 'dmc.vendor-payments.index', 'active' => ['dmc.vendor-payments.*']],
-            ['label' => 'Expenses', 'icon' => 'fa-solid fa-wallet', 'route' => 'acc.expenses', 'permission' => 'accounting_read'],
+            ['label' => 'Company Expenses', 'icon' => 'fa-solid fa-wallet', 'route' => 'acc.expenses', 'permission' => 'accounting_read'],
             ['label' => 'Trip Expenses', 'icon' => 'fa-solid fa-money-bill-wave', 'route' => 'dmc.trip-expenses.index', 'permission' => 'accounting_read', 'active' => ['dmc.trip-expenses.*']],
             ['label' => 'Receivables', 'icon' => 'fa-solid fa-hand-holding-dollar', 'permission' => 'accounting_read', 'route' => 'dmc.reports.receivables', 'active' => ['dmc.reports.receivables']],
             ['label' => 'Payables', 'icon' => 'fa-solid fa-money-check', 'route' => 'sup.reports', 'permission' => 'supplier_read'],
@@ -208,25 +204,21 @@ return [
         ],
     ],
     [
-        'label' => 'Marketing Analysis (websites)',
+        'label' => 'Website Frontend',
         'items' => [
-            [
-                'label' => 'Websites Analytics', 'icon' => 'fa-solid fa-chart-column',
-                'permission' => 'dmc_marketing_read',
-                'children' => [
-                    ['label' => 'Website & Language Performance', 'icon' => 'fa-solid fa-language', 'route' => 'dmc.lead-performance', 'active' => ['dmc.lead-performance']],
-                    ['label' => 'ROAS & CAC', 'icon' => 'fa-solid fa-arrow-trend-up', 'route' => 'dmc.reports.marketing', 'permission' => 'dmc_marketing_read', 'active' => ['dmc.reports.marketing']],
-                    ['label' => 'Actual Campaign Spend', 'icon' => 'fa-solid fa-magnifying-glass-dollar', 'route' => 'dmc.campaign-spends.index', 'permission' => 'campaign_read', 'active' => ['dmc.campaign-spends.*']],
-                ],
-            ],
-        ],
-    ],
-    [
-        'label' => 'Websites & Lead Tracking Integration',
-        'items' => [
-            ['label' => 'Company Websites Management', 'icon' => 'fa-solid fa-globe', 'permission' => 'crm_read', 'route' => 'dmc.websites.index', 'active' => ['dmc.websites.*']],
-            ['label' => 'Mandatory Lead Attribution Data', 'icon' => 'fa-solid fa-fingerprint', 'permission' => 'crm_read', 'route' => 'dmc.attribution', 'active' => ['dmc.attribution']],
-            ['label' => 'Campaigns Tracking', 'icon' => 'fa-solid fa-crosshairs', 'permission' => 'dmc_marketing_read', 'route' => 'dmc.reports.marketing', 'active' => ['dmc.reports.marketing']],
+            ['label' => 'Destinations', 'icon' => 'fa-solid fa-map-pin', 'route' => 'website.destinations.index', 'permission' => 'cms_read', 'active' => ['website.destinations.*']],
+            ['label' => 'Destination Cities', 'icon' => 'fa-solid fa-city', 'route' => 'website.cities.index', 'permission' => 'cms_read', 'active' => ['website.cities.*']],
+            ['label' => 'Pages', 'icon' => 'fa-solid fa-file', 'route' => 'cms.index', 'active' => ['cms.index', 'cms.create', 'cms.edit']],
+            ['label' => 'Magazine', 'icon' => 'fa-solid fa-blog', 'route' => 'cms.blog.index', 'active' => ['cms.blog.*']],
+            ['label' => 'Sliders', 'icon' => 'fa-solid fa-images', 'route' => 'cms.slider.index', 'active' => ['cms.slider.*']],
+            ['label' => 'Testimonials', 'icon' => 'fa-solid fa-quote-left', 'route' => 'cms.testimonial.index', 'active' => ['cms.testimonial.*']],
+            ['label' => 'Gallery', 'icon' => 'fa-solid fa-camera', 'route' => 'cms.gallery.index', 'active' => ['cms.gallery.*']],
+            ['label' => 'FAQs', 'icon' => 'fa-solid fa-circle-question', 'route' => 'cms.faq.index', 'active' => ['cms.faq.*']],
+            ['label' => 'Website Menus', 'icon' => 'fa-solid fa-bars', 'route' => 'cms.menu.index', 'active' => ['cms.menu.*']],
+            ['label' => 'Transport Services', 'icon' => 'fa-solid fa-van-shuttle', 'route' => 'cms.transport-service.index', 'active' => ['cms.transport-service.*']],
+            ['label' => 'Job Openings', 'icon' => 'fa-solid fa-briefcase', 'route' => 'cms.job-opening.index', 'active' => ['cms.job-opening.*']],
+            ['label' => 'Content Blocks', 'icon' => 'fa-solid fa-table-cells-large', 'route' => 'cms.content-block.index', 'active' => ['cms.content-block.*']],
+            ['label' => 'SEO', 'icon' => 'fa-solid fa-magnifying-glass-chart', 'route' => 'cms.seo'],
         ],
     ],
     [
@@ -250,6 +242,21 @@ return [
             [
                 'label' => 'System Settings', 'icon' => 'fa-solid fa-gears',
                 'children' => [
+                    [
+                        'label' => 'Websites & Lead Tracking Integration', 'icon' => 'fa-solid fa-link',
+                        'children' => [
+                            ['label' => 'Company Websites Management', 'icon' => 'fa-solid fa-globe', 'permission' => 'crm_read', 'route' => 'dmc.websites.index', 'active' => ['dmc.websites.*']],
+                        ],
+                    ],
+                    [
+                        'label' => 'Marketing Analysis (websites)', 'icon' => 'fa-solid fa-chart-column',
+                        'permission' => 'dmc_marketing_read',
+                        'children' => [
+                            ['label' => 'Website & Language Performance', 'icon' => 'fa-solid fa-language', 'route' => 'dmc.lead-performance', 'active' => ['dmc.lead-performance']],
+                            ['label' => 'ROAS & CAC', 'icon' => 'fa-solid fa-arrow-trend-up', 'route' => 'dmc.reports.marketing', 'permission' => 'dmc_marketing_read', 'active' => ['dmc.reports.marketing']],
+                            ['label' => 'Actual Campaign Spend', 'icon' => 'fa-solid fa-magnifying-glass-dollar', 'route' => 'dmc.campaign-spends.index', 'permission' => 'campaign_read', 'active' => ['dmc.campaign-spends.*']],
+                        ],
+                    ],
                     ['label' => 'Quotation Approval Policy', 'icon' => 'fa-solid fa-stamp', 'route' => 'dmc.approval-policies.index', 'permission' => 'general_settings_read', 'active' => ['dmc.approval-policies.*']],
                     ['label' => 'General Settings', 'icon' => 'fa-solid fa-gear', 'route' => 'settings.general.index', 'permission' => 'general_settings_read'],
                     ['label' => 'Appearance', 'icon' => 'fa-solid fa-palette', 'route' => 'settings.appearance.index', 'permission' => 'general_settings_read'],
@@ -265,23 +272,6 @@ return [
                     ['label' => 'Recaptcha', 'icon' => 'fa-solid fa-shield-virus', 'route' => 'settings.recaptcha.index', 'permission' => 'recaptcha_settings_read'],
                     ['label' => 'Interface Languages', 'icon' => 'fa-solid fa-earth-europe', 'route' => 'language.index', 'permission' => 'language_read', 'active' => ['language.*']],
                     ['label' => 'Chart of Accounts', 'icon' => 'fa-solid fa-list-ol', 'route' => 'acc.index', 'permission' => 'accounting_read', 'active' => ['acc.index', 'acc.create', 'acc.edit']],
-                    [
-                        'label' => 'Website Content', 'icon' => 'fa-solid fa-laptop-code',
-                        'permission' => 'cms_read',
-                        'children' => [
-                            ['label' => 'Pages', 'icon' => 'fa-solid fa-file', 'route' => 'cms.index', 'active' => ['cms.index', 'cms.create', 'cms.edit']],
-                            ['label' => 'Blogs', 'icon' => 'fa-solid fa-blog', 'route' => 'cms.blog.index', 'active' => ['cms.blog.*']],
-                            ['label' => 'Sliders', 'icon' => 'fa-solid fa-images', 'route' => 'cms.slider.index', 'active' => ['cms.slider.*']],
-                            ['label' => 'Testimonials', 'icon' => 'fa-solid fa-quote-left', 'route' => 'cms.testimonial.index', 'active' => ['cms.testimonial.*']],
-                            ['label' => 'Gallery', 'icon' => 'fa-solid fa-camera', 'route' => 'cms.gallery.index', 'active' => ['cms.gallery.*']],
-                            ['label' => 'FAQs', 'icon' => 'fa-solid fa-circle-question', 'route' => 'cms.faq.index', 'active' => ['cms.faq.*']],
-                            ['label' => 'Website Menus', 'icon' => 'fa-solid fa-bars', 'route' => 'cms.menu.index', 'active' => ['cms.menu.*']],
-                            ['label' => 'Transport Services', 'icon' => 'fa-solid fa-van-shuttle', 'route' => 'cms.transport-service.index', 'active' => ['cms.transport-service.*']],
-                            ['label' => 'Job Openings', 'icon' => 'fa-solid fa-briefcase', 'route' => 'cms.job-opening.index', 'active' => ['cms.job-opening.*']],
-                            ['label' => 'Content Blocks', 'icon' => 'fa-solid fa-table-cells-large', 'route' => 'cms.content-block.index', 'active' => ['cms.content-block.*']],
-                            ['label' => 'SEO', 'icon' => 'fa-solid fa-magnifying-glass-chart', 'route' => 'cms.seo'],
-                        ],
-                    ],
                     [
                         'label' => 'Internal Administration', 'icon' => 'fa-solid fa-building-shield',
                         'children' => [

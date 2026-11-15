@@ -9,12 +9,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ ___('menus.user') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.edit') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('label.dashboard'), ___('menus.user'), ___('label.role'), ___('label.edit')]" />
                     </nav>
                 </div>
             </div>
@@ -72,6 +67,9 @@
                                                 <label for="module_{{ $permission->attribute }}">{{ ___('permissions.' . $permission->attribute) }}</label>
                                             </td>
                                             <td>
+                                                @if($permission->attribute === 'leads')
+                                                    <p class="text-muted small">Read/Create/Update/Delete control actions. Without View All, users can access only leads assigned to their account. Assign allows changing ownership. Restore and Force Delete are separate permissions.</p>
+                                                @endif
                                                 <div class="row mt-1">
                                                     @foreach ($permission->keywords as $key => $keyword)
                                                     <div class="col-12 col-md-3">

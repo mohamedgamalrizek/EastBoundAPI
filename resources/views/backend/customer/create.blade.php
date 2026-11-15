@@ -9,11 +9,7 @@ Add Customer
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('customer.index') }}" class="breadcrumb-link active">Customers</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">Add</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="['Dashboard', 'Customers', 'Add']" />
                     </nav>
                 </div>
             </div>

@@ -10,10 +10,7 @@
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link  ">{{ ___('menus.stay_tuned') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('menus.add') }}</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="[___('menus.stay_tuned'), ___('menus.add')]" />
                     </nav>
                 </div>
             </div>

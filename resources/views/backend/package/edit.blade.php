@@ -9,11 +9,7 @@ Edit Package
             <div class="page-header">
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('package.index') }}" class="breadcrumb-link active">Tour Packages</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">Edit</a></li>
-                        </ol>
+                        <x-breadcrumbs :items="['Dashboard', 'Tour Packages', 'Edit']" />
                     </nav>
                 </div>
             </div>

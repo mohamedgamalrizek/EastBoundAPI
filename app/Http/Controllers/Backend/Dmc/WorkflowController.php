@@ -36,8 +36,38 @@ class WorkflowController extends Controller
         [$module, $definition] = $this->definition($request);
         abort_unless($definition['editable'] || ($definition['create_only'] ?? false), 404);
         $record = new $definition['model'];
+        $quotationLead = null;
+        $continueToQuotation = false;
+        $formData = $this->formData($definition);
+        if (in_array($module, ['quotations', 'opportunities']) && $request->filled('lead_id')) {
+            $request->validate(['lead_id' => ['required', 'integer'], 'continue_to_quotation' => ['nullable', 'boolean']]);
+            abort_unless($request->user()->can_access('lead_read'), 403);
+            $quotationLead = \App\Models\Lead::findOrFail($request->input('lead_id'));
+            if ($module === 'quotations') {
+                $opportunities = Dmc\Opportunity::where('lead_id', $quotationLead->id)
+                    ->whereNotIn('stage', ['Won', 'Lost'])->orderByDesc('id')->get();
+                if ($opportunities->isEmpty()) {
+                    abort_unless($request->user()->can_access('crm_create'), 403, 'Creating an opportunity requires CRM Create permission.');
+                    return redirect()->route('dmc.opportunities.create', ['lead_id' => $quotationLead->id, 'continue_to_quotation' => 1]);
+                }
+                $record->opportunity_id = $opportunities->first()->id;
+                $record->title = $quotationLead->subject ?: ($quotationLead->interest ?: 'Quotation for '.$quotationLead->name);
+                $record->starts_on = $quotationLead->from_date;
+                $record->ends_on = $quotationLead->to_date;
+                $record->travelers = max(1, (int) $quotationLead->adults + (int) $quotationLead->children);
+                $formData['options']['opportunity_id'] = $opportunities->mapWithKeys(fn ($opportunity) => [$opportunity->id => '#'.$opportunity->id.' '.$opportunity->title])->all();
+            } else {
+                $continueToQuotation = $request->boolean('continue_to_quotation');
+                if ($continueToQuotation) abort_unless($request->user()->can_access('dmc_sales_create'), 403);
+                $record->lead_id = $quotationLead->id;
+                $record->title = $quotationLead->interest ?: 'Opportunity for '.$quotationLead->name;
+                $record->assigned_to = $quotationLead->assigned_to ?: $request->user()->id;
+                $record->expected_value = $quotationLead->value;
+                $formData['options']['lead_id'] = [$quotationLead->id => '#'.$quotationLead->id.' '.$quotationLead->name];
+            }
+        }
 
-        return view('backend.dmc.form', compact('module', 'definition', 'record') + $this->formData($definition));
+        return view('backend.dmc.form', compact('module', 'definition', 'record', 'quotationLead', 'continueToQuotation') + $formData);
     }
 
     public function edit(Request $request)
@@ -58,7 +88,14 @@ class WorkflowController extends Controller
     {
         [$module, $definition] = $this->definition($request);
         abort_unless($definition['editable'] || ($definition['create_only'] ?? false), 404);
-        $record = $this->repo->save($module, $request->validated());
+        $data = $request->validated();
+        $continueToQuotation = $module === 'opportunities' && $request->boolean('continue_to_quotation');
+        if ($continueToQuotation) abort_unless($request->user()->can_access('dmc_sales_create'), 403);
+        unset($data['continue_to_quotation'], $data['quotation_lead_id']);
+        $record = $this->repo->save($module, $data);
+        if ($continueToQuotation) {
+            return redirect()->route('dmc.quotations.create', ['lead_id' => $record->lead_id]);
+        }
 
         return redirect()->route('dmc.'.$module.'.show', $record->id)->with('success', 'Record created successfully.');
     }

@@ -45,7 +45,7 @@ class AdminMenu
 
             $item['pending'] = ! isset($item['route']) && ! isset($item['children']);
             $item['current'] = isset($item['route']) && request()->routeIs($item['active'] ?? [$item['route']])
-                && (($item['query']['view'] ?? null) === request()->query('view'));
+                && (! isset($item['query']['view']) || $item['query']['view'] === request()->query('view'));
             $item['active'] = $item['current'] || collect($item['children'] ?? [])->contains('active', true);
             $visible[] = $item;
         }
