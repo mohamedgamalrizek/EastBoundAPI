@@ -1,7 +1,7 @@
 @extends('backend.partials.master')
-@section('title') {{ ___('label.blogs') }} @endsection
+@section('title') {{ 'Magazine' }} @endsection
 @section('maincontent')
-<x-page title="{{ ___('label.blogs') }}" :breadcrumb="[___('menus.cms'), ___('label.blogs')]">
+<x-page title="{{ 'Magazine' }}" :breadcrumb="[___('menus.cms'), 'Magazine']">
 
     @if(hasPermission('cms_create'))
     <x-slot name="action">

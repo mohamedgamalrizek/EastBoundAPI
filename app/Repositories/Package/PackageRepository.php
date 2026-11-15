@@ -36,6 +36,7 @@ class PackageRepository implements PackageInterface
         try {
             DB::transaction(function () use ($request) {
                 $package = $this->model->newQuery()->create($this->data($request));
+                $this->syncWebsite($package, $request);
                 $this->syncItineraries($package, $request->input('itinerary', []));
             });
 
@@ -51,6 +52,7 @@ class PackageRepository implements PackageInterface
             DB::transaction(function () use ($request, $id) {
                 $package = $this->model::findOrFail($id);
                 $package->update($this->data($request, $package->image));
+                $this->syncWebsite($package, $request);
                 $this->syncItineraries($package, $request->input('itinerary', []));
             });
 
@@ -72,6 +74,16 @@ class PackageRepository implements PackageInterface
     }
 
     /* ---- internal -------------------------------------------------------- */
+
+    private function syncWebsite(Package $package, $request): void
+    {
+        if (! $request->boolean('website_fields')) return;
+        $data = $request->only(['website_destination_id','website_slug','website_type','website_full_title','website_tag','website_why_choose','website_travel_tips','website_optional_excursions','website_start_point','website_duration_hours']);
+        $data['website_published'] = $request->boolean('website_published');
+        $data['website_featured'] = $request->boolean('website_featured');
+        $package->update($data);
+        $package->websiteCities()->sync($request->input('website_city_ids', []));
+    }
 
     private function data($request, ?string $currentImage = null): array
     {

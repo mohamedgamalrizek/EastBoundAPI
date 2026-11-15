@@ -157,3 +157,5 @@
 @push('scripts')
 <script src="{{ asset('backend/js/custom/pages/package-form.js') }}?v={{ filemtime(public_path('backend/js/custom/pages/package-form.js')) }}"></script>
 @endpush
+
+@include('backend.package._website-fields')

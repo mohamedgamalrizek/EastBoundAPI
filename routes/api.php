@@ -45,6 +45,21 @@ use App\Http\Controllers\Api\GrowthFeatureController;
 */
 
 Route::prefix('v1')->group(function () {
+    Route::prefix('website')->group(function () {
+        Route::get('globals', [\App\Http\Controllers\Api\WebsiteContentController::class, 'globals']);
+        Route::get('pages/{slug}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'page']);
+        Route::get('legal/{slug}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'legal']);
+        Route::get('destinations', [\App\Http\Controllers\Api\WebsiteContentController::class, 'destinations']);
+        Route::get('destinations/{slug}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'destination']);
+        Route::get('destinations/{country}/cities/{city}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'city']);
+        Route::get('tours', [\App\Http\Controllers\Api\WebsiteContentController::class, 'tours']);
+        Route::get('tours/{slug}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'tour']);
+        Route::get('magazine', [\App\Http\Controllers\Api\WebsiteContentController::class, 'magazine']);
+        Route::get('magazine/{slug}', [\App\Http\Controllers\Api\WebsiteContentController::class, 'article']);
+        Route::get('faqs', [\App\Http\Controllers\Api\WebsiteContentController::class, 'faqs']);
+        Route::get('testimonials', [\App\Http\Controllers\Api\WebsiteContentController::class, 'testimonials']);
+    });
+
 
     // ---- Public auth ----
     // Throttled: these are the only unauthenticated endpoints that accept a

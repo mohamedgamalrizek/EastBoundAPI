@@ -1,7 +1,7 @@
 @extends('backend.partials.master')
-@section('title') {{ ___('label.blog') }} {{ ___('label.edit') }} @endsection
+@section('title') {{ 'Magazine article' }} {{ ___('label.edit') }} @endsection
 @section('maincontent')
-<x-page title="{{ ___('label.edit') }}" :breadcrumb="[___('menus.cms'), ___('label.blogs'), ___('label.edit')]">
+<x-page title="{{ ___('label.edit') }}" :breadcrumb="[___('menus.cms'), 'Magazine', ___('label.edit')]">
     <div class="row">
         <div class="col-12">
             <div class="tv-card">

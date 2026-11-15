@@ -16,6 +16,7 @@ class Package extends Model
     }
 
     protected $fillable = [
+        'website_destination_id', 'website_slug', 'website_published', 'website_type', 'website_full_title', 'website_featured', 'website_tag', 'website_why_choose', 'website_travel_tips', 'website_optional_excursions', 'website_start_point', 'website_duration_hours',
         'category_id',
         'title',
         'destination',
@@ -31,6 +32,13 @@ class Package extends Model
         'image',
         'status',
     ];
+
+    public function websiteDestination() { return $this->belongsTo(WebsiteDestination::class, 'website_destination_id'); }
+    public function websiteCities() { return $this->belongsToMany(WebsiteCity::class, 'package_website_city'); }
+    public function scopeForWebsite($query) {
+        return $query->where('status', 'active')->where('website_published', true)->whereNotNull('website_slug')
+            ->whereHas('websiteDestination', fn ($country) => $country->where('active', true));
+    }
 
     /** "What's included" list — one item per line, blank lines ignored. */
     public function inclusionList(): array

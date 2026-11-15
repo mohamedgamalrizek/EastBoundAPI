@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePackageRequest extends FormRequest
 {
+    use ValidatesWebsiteTour;
+
     public function authorize()
     {
         return true;
@@ -13,7 +15,7 @@ class UpdatePackageRequest extends FormRequest
 
     public function rules()
     {
-        return [
+        return $this->websiteRules() + [
             'title'           => ['required', 'string', 'max:255'],
             'destination'     => ['required', 'string', 'max:255'],
             'category_id'     => ['required', 'integer', 'exists:package_categories,id'],
