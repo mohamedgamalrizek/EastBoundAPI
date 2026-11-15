@@ -52,7 +52,7 @@ class UploadRepository implements UploadInterface
 
         // make directory if not exist
         if (!File::exists($directory)) {
-            File::makeDirectory($directory);
+            File::makeDirectory($directory, 0755, true);
         }
 
         // for original images
