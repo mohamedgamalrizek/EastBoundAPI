@@ -35,15 +35,6 @@
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="j-header-container">
                     <div class="j-header-content">
-                        {{-- Open the public site in a new tab — admins were
-                             having to retype the URL to check their changes. --}}
-                        <div class="nav-bell">
-                            <a class="j-nav-lk text-black tv-icon-btn-36" href="{{ route('home') }}" target="_blank" rel="noopener"
-                               title="{{ ___('label.visit_website') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
-                            </a>
-                        </div>
-
                         @if(hasPermission('dashboard_read'))
                         {{-- Clear caches without dropping to a terminal. --}}
                         <div class="nav-bell">
