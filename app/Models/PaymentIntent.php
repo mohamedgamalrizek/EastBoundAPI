@@ -15,6 +15,13 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class PaymentIntent extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     public const STATUS_PENDING   = 'pending';
     public const STATUS_PAID      = 'paid';
     public const STATUS_FAILED    = 'failed';

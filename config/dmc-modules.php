@@ -42,7 +42,7 @@ return [
         'rating' => ['label' => 'Rating (1–5)', 'type' => 'number', 'rules' => ['nullable', 'integer', 'min:1', 'max:5']],
         'status' => $choice('Status', ['active', 'inactive']),
     ]),
-    'opportunities' => $module('Opportunities / Deals', Dmc\Opportunity::class, 'crm', [
+    'opportunities' => $module('Opportunities / Deals', Dmc\Opportunity::class, 'opportunity', [
         'title' => $text('Opportunity'), 'lead_id' => $relation('Originating lead', Lead::class, required: false),
         'customer_id' => $relation('Customer', Customer::class),
         'assigned_to' => $relation('Sales owner', User::class),

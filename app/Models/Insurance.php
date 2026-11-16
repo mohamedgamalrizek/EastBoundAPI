@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Insurance extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'customer_id', 'provider', 'plan_name', 'type', 'coverage', 'premium', 'status',
         'service_fee',

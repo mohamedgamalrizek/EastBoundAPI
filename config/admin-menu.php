@@ -8,7 +8,7 @@ return [
             ['label' => 'Leads', 'icon' => 'fa-solid fa-bullseye', 'route' => 'crm.leads', 'permission' => 'lead_read', 'active' => ['crm.leads*']],
             ['label' => 'Deleted Leads', 'icon' => 'fa-solid fa-trash-can', 'route' => 'crm.deleted-leads', 'permission' => 'lead_read', 'active' => ['crm.deleted-leads*']],
             ['label' => 'Mandatory Lead Attribution Data', 'icon' => 'fa-solid fa-fingerprint', 'permission' => 'lead_read', 'route' => 'dmc.attribution', 'active' => ['dmc.attribution']],
-            ['label' => 'Opportunities / Deals', 'icon' => 'fa-solid fa-handshake', 'permission' => 'crm_read', 'route' => 'dmc.opportunities.index', 'active' => ['dmc.opportunities.*']],
+            ['label' => 'Opportunities / Deals', 'icon' => 'fa-solid fa-handshake', 'permission' => 'opportunity_read', 'route' => 'dmc.opportunities.index', 'active' => ['dmc.opportunities.*']],
             [
                 'label' => 'Activities & Follow-ups', 'icon' => 'fa-solid fa-arrows-spin',
                 'permission' => 'crm_read',

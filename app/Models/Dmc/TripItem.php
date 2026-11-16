@@ -9,6 +9,13 @@ use App\Models\TourGuide;
 
 class TripItem extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['trip_id' => \App\Models\Dmc\Trip::class];
+    }
+
     protected $table = 'dmc_trip_items';
 
     protected $casts = ['service_date' => 'date'];

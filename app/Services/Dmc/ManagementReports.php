@@ -17,7 +17,7 @@ class ManagementReports
 {
     public function sales(array $filters = []): array
     {
-        $query = DB::table('dmc_sales_orders')->join('dmc_quotations', 'dmc_quotations.id', '=', 'dmc_sales_orders.quotation_id')
+        $query = \App\Models\Dmc\SalesOrder::query()->toBase()->join('dmc_quotations', 'dmc_quotations.id', '=', 'dmc_sales_orders.quotation_id')
             ->join('dmc_opportunities', 'dmc_opportunities.id', '=', 'dmc_quotations.opportunity_id')
             ->join('users', 'users.id', '=', 'dmc_opportunities.assigned_to')
             ->join('bookings', 'bookings.id', '=', 'dmc_sales_orders.booking_id')
@@ -54,10 +54,10 @@ class ManagementReports
     public function profitability(): array
     {
         $trips = Trip::with(['order.quotation', 'order.booking.invoice'])->get();
-        $costs = DB::table('dmc_vendor_bills')->join('dmc_vendor_orders', 'dmc_vendor_orders.id', '=', 'dmc_vendor_bills.vendor_order_id')
+        $costs = \App\Models\Dmc\VendorBill::query()->toBase()->join('dmc_vendor_orders', 'dmc_vendor_orders.id', '=', 'dmc_vendor_bills.vendor_order_id')
             ->groupBy('dmc_vendor_orders.trip_id')->selectRaw('dmc_vendor_orders.trip_id, SUM(dmc_vendor_bills.amount) as total')->pluck('total', 'trip_id');
-        $commitments = DB::table('dmc_vendor_orders')->groupBy('trip_id')->selectRaw('trip_id, SUM(amount) as total')->pluck('total', 'trip_id');
-        $expenses = DB::table('dmc_trip_expenses')->groupBy('trip_id')->selectRaw('trip_id, SUM(amount) as total')->pluck('total', 'trip_id');
+        $commitments = \App\Models\Dmc\VendorOrder::query()->toBase()->groupBy('trip_id')->selectRaw('trip_id, SUM(amount) as total')->pluck('total', 'trip_id');
+        $expenses = \App\Models\Dmc\TripExpense::query()->toBase()->groupBy('trip_id')->selectRaw('trip_id, SUM(amount) as total')->pluck('total', 'trip_id');
         $rows = $trips->map(function ($trip) use ($costs, $commitments, $expenses) {
             $invoice = $trip->order->booking->invoice;
             $revenue = (float) ($invoice?->amount ?? 0) - (float) ($invoice?->refunded_amount ?? 0);
@@ -110,11 +110,11 @@ class ManagementReports
             $leadQuery->whereDate('created_at', '<=', $filters['to']);
         }
         $leads = $leadQuery->get(['id', 'dmc_website_id', 'campaign_id', 'stage']);
-        $sales = DB::table('bookings')->joinSub(clone $leadQuery, 'origin', 'origin.id', '=', 'bookings.lead_id')
+        $sales = \App\Models\Booking::query()->toBase()->joinSub(clone $leadQuery, 'origin', 'origin.id', '=', 'bookings.lead_id')
             ->leftJoin('invoices', 'invoices.booking_id', '=', 'bookings.id')
             ->whereIn('bookings.status', ['confirmed', 'paid'])
             ->selectRaw('origin.dmc_website_id, origin.campaign_id, bookings.id as booking_id, bookings.customer_id, bookings.amount - COALESCE(invoices.refunded_amount, 0) as amount, COALESCE(invoices.paid_amount, 0) - COALESCE(invoices.refunded_amount, 0) as collected')->get();
-        $firstPaidBooking = DB::table('receipts')->join('invoices', 'invoices.id', '=', 'receipts.invoice_id')
+        $firstPaidBooking = \App\Models\Receipt::query()->toBase()->join('invoices', 'invoices.id', '=', 'receipts.invoice_id')
             ->where('receipts.amount', '>', 0)->whereNotNull('invoices.customer_id')
             ->orderBy('receipts.received_on')->orderBy('receipts.id')->get(['invoices.customer_id', 'invoices.booking_id'])
             ->unique('customer_id')->pluck('booking_id', 'customer_id');
@@ -173,7 +173,7 @@ class ManagementReports
         return ['Pending quotation approvals' => Quotation::where('status', 'Submitted')->count(),
             'Upcoming trips' => Trip::whereIn('status', ['Planning', 'Ready'])->whereDate('starts_on', '>=', today())->count(),
             'Trips operating today' => Trip::whereDate('starts_on', '<=', today())->whereDate('ends_on', '>=', today())->where('status', '!=', 'Cancelled')->count(),
-            'Open purchase requests' => DB::table('dmc_purchase_requests')->whereIn('status', ['Requested', 'RFQ'])->count()];
+            'Open purchase requests' => \App\Models\Dmc\PurchaseRequest::query()->toBase()->whereIn('status', ['Requested', 'RFQ'])->count()];
     }
 
     public function departmentOverview(User $user): array
@@ -196,7 +196,7 @@ class ManagementReports
         }
         if ($user->can_access('dmc_operations_update')) {
             $metrics['My active trips'] = Trip::where('manager_id', $user->id)->whereIn('status', ['Planning', 'Ready', 'In Progress'])->count();
-            $metrics['Open purchase requests'] = DB::table('dmc_purchase_requests')->whereIn('status', ['Requested', 'RFQ'])->count();
+            $metrics['Open purchase requests'] = \App\Models\Dmc\PurchaseRequest::query()->toBase()->whereIn('status', ['Requested', 'RFQ'])->count();
         }
         if ($user->can_access('accounting_read')) {
             $metrics['Outstanding customer invoices'] = Invoice::whereRaw('amount > paid_amount')->where('status', '!=', 'refunded')->count();

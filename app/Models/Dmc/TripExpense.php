@@ -6,6 +6,13 @@ use App\Models\AccountTransaction;
 
 class TripExpense extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['trip_id' => \App\Models\Dmc\Trip::class];
+    }
+
     protected $table = 'dmc_trip_expenses';
 
     protected $casts = ['amount' => 'decimal:2', 'spent_on' => 'date'];

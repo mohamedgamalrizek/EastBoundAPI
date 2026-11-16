@@ -156,6 +156,9 @@ class DatabaseSeeder extends Seeder
         // re-derive balances and agent wallets, so a freshly seeded database
         // opens with a trial balance that actually balances.
         $this->call(DmcDepartmentRoleSeeder::class);
+        $this->call(CustomerAccessPermissionSeeder::class);
+        $this->call(OpportunityAccessPermissionSeeder::class);
+        $this->call(OpportunityActionPermissionSeeder::class);
         app(\App\Services\Accounting\LedgerService::class)->rebuildAll();
     }
 }

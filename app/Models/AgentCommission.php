@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class AgentCommission extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['booking_id' => \App\Models\Booking::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     /** pending = earned, not yet released; paid = credited to the wallet. */
     public const STATUSES = ['pending', 'paid'];
 

@@ -6,6 +6,13 @@ use App\Models\User;
 
 class Quotation extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['opportunity_id' => \App\Models\Dmc\Opportunity::class];
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');

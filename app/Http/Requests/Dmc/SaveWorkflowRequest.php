@@ -76,6 +76,14 @@ class SaveWorkflowRequest extends FormRequest
                 if ($this->boolean('continue_to_quotation')) $rules['quotation_lead_id'][] = 'required';
             }
         }
+        foreach (config('dmc-modules.'.$this->route('module').'.fields', []) as $name => $field) {
+            if (($field['type'] ?? '') === 'relation' && isset($rules[$name])) {
+                $model = $field['model'];
+                $rules[$name][] = function ($attribute, $value, $fail) use ($model) {
+                    if ($value !== null && ! $model::whereKey($value)->exists()) $fail('The selected record is not available.');
+                };
+            }
+        }
         return $rules;
     }
 }

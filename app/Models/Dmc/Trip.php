@@ -7,6 +7,13 @@ use App\Models\User;
 
 class Trip extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['sales_order_id' => \App\Models\Dmc\SalesOrder::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     protected $table = 'dmc_trips';
 
     protected $casts = ['starts_on' => 'date', 'ends_on' => 'date'];

@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CorporateTravel extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $table = 'corporate_travels';
 
     protected $fillable = [

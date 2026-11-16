@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicalTour extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'customer_id', 'patient_name', 'destination', 'hospital', 'treatment', 'cost', 'status',
         'service_fee',

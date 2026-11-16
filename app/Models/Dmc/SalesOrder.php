@@ -6,6 +6,13 @@ use App\Models\Booking;
 
 class SalesOrder extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['quotation_id' => \App\Models\Dmc\Quotation::class];
+    }
+
     protected $table = 'dmc_sales_orders';
 
     public function quotation()

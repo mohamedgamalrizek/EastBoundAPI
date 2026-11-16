@@ -18,6 +18,21 @@ class Customer extends Authenticatable
 {
     use HasApiTokens, Notifiable, LogsActivity;
 
+    protected static function booted(): void
+    {
+        static::addGlobalScope('customer_access', fn ($query) => \App\Support\CustomerAccess::constrain($query));
+        static::creating(function ($customer) {
+            if (\App\Support\CustomerAccess::restricted() && ! array_key_exists('assigned_to', $customer->getAttributes())) {
+                $customer->assigned_to = auth()->id();
+            }
+        });
+    }
+
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()->useLogName('Customer')->logOnly(['name', 'email', 'status'])->setDescriptionForEvent(fn (string $event) => $event);
@@ -25,6 +40,7 @@ class Customer extends Authenticatable
 
     protected $fillable = [
         'name',
+        'assigned_to',
         'email',
         'phone',
         'password',

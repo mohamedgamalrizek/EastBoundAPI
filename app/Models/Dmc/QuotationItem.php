@@ -6,6 +6,13 @@ use App\Models\Supplier;
 
 class QuotationItem extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['quotation_id' => \App\Models\Dmc\Quotation::class];
+    }
+
     protected $table = 'dmc_quotation_items';
 
     protected $casts = ['service_date' => 'date', 'unit_cost' => 'decimal:2', 'unit_price' => 'decimal:2'];

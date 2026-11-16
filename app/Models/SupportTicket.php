@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class SupportTicket extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'customer_id', 'assigned_to', 'raised_by',
         'ticket_no', 'subject', 'customer_name',

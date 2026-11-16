@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['booking_id' => \App\Models\Booking::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     /**
      * Statuses are derived from the invoice's receipts (see
      * LedgerService::reconcileInvoice) — they are never typed by hand, so the

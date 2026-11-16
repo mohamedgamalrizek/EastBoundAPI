@@ -19,12 +19,12 @@ class CustomerRepository implements CustomerInterface
 
     public function all()
     {
-        return $this->model::orderByDesc('id')->get();
+        return $this->model::with('assignedTo')->orderByDesc('id')->get();
     }
 
     public function get($id)
     {
-        return $this->model::find($id);
+        return $this->model::findOrFail($id);
     }
 
     public function store($request)
@@ -68,7 +68,11 @@ class CustomerRepository implements CustomerInterface
 
     private function data($request): array
     {
-        return [
+        $assignment = [];
+        if (auth()->user()?->can_access('customer_assign') && $request->exists('assigned_to')) {
+            $assignment['assigned_to'] = $request->input('assigned_to') ?: null;
+        }
+        return $assignment + [
             'name'    => $request->name,
             'email'   => $request->email,
             'phone'   => $request->phone,

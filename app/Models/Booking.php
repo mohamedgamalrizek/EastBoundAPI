@@ -8,6 +8,13 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Booking extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class, 'lead_id' => \App\Models\Lead::class];
+    }
+
     use LogsActivity;
 
     public function getActivitylogOptions(): LogOptions

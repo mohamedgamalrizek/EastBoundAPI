@@ -4,6 +4,13 @@ namespace App\Models\Dmc;
 
 class PurchaseRequest extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['trip_id' => \App\Models\Dmc\Trip::class];
+    }
+
     protected $table = 'dmc_purchase_requests';
 
     protected $casts = ['required_on' => 'date', 'estimated_cost' => 'decimal:2'];

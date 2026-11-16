@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class WalletTransaction extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'customer_id', 'reference', 'type', 'amount', 'description', 'txn_date', 'balance_after',
         // The receipt or refund this line belongs to, and how the money moved.

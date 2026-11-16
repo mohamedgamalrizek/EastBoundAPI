@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EventBooking extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'event_tour_id', 'customer_id', 'booking_no', 'customer_name',
         'seats', 'amount', 'status', 'payment_method',

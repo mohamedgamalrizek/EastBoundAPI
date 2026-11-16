@@ -43,7 +43,7 @@ Customers
                                     @foreach($customers as $customer)
                                     <tr id="row_{{ $customer->id }}">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->name }}<small class="d-block text-muted">Assigned to: {{ $customer->assignedTo?->name ?? 'Unassigned' }}</small></td>
                                         <td>{{ $customer->email ?? '—' }}</td>
                                         <td>{{ $customer->phone ?? '—' }}</td>
                                         <td>{!! $customer->tierBadge() !!}</td>

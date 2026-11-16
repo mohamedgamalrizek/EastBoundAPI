@@ -67,6 +67,9 @@
                                                 <label for="module_{{ $permission->attribute }}">{{ ___('permissions.' . $permission->attribute) }}</label>
                                             </td>
                                             <td>
+                                                @if($permission->attribute === 'opportunities')
+                                                    <p class="text-muted small">View assigned only opens Opportunities for assigned leads. View All opens all opportunities and takes priority if both are selected. Neither selected hides the page. Create and Update are independent. Opportunities without a lead follow their own assignee.</p>
+                                                @endif
                                                 @if($permission->attribute === 'leads')
                                                     <p class="text-muted small">Read/Create/Update/Delete control actions. Without View All, users can access only leads assigned to their account. Assign allows changing ownership. Restore and Force Delete are separate permissions.</p>
                                                 @endif

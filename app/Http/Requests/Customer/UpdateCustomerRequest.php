@@ -14,6 +14,8 @@ class UpdateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
+            'assigned_to' => [auth()->user()?->can_access('customer_assign') ? 'nullable' : 'prohibited', 'integer',
+                \Illuminate\Validation\Rule::exists('users', 'id')->where(fn ($q) => $q->where('status', 1)->whereJsonContains('permissions', 'dashboard_read'))],
             'name'    => ['required', 'string', 'max:255'],
             'email'   => ['nullable', 'email', 'max:255'],
             'phone'   => ['nullable', 'string', 'max:50'],

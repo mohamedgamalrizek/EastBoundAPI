@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoyaltyTransaction extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = ['customer_id', 'points', 'type', 'description', 'source_type', 'source_id', 'reference'];
     public function customer() { return $this->belongsTo(Customer::class); }
     public function source() { return $this->morphTo(); }

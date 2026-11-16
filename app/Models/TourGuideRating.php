@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TourGuideRating extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'tour_guide_id', 'customer_id', 'tour_guide_assignment_id', 'rating', 'comment',
     ];

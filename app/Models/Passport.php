@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Passport extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     public const STATUS_VALID = 'Valid';
     public const STATUS_EXPIRING = 'Expiring';
     public const STATUS_EXPIRED = 'Expired';

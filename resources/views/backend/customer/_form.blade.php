@@ -62,3 +62,16 @@
         @error('notes') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
     </div>
 </div>
+
+@if(auth()->user()->can_access('customer_assign'))
+<div class="form-group">
+    <label for="assigned_to">Assigned to</label>
+    <select name="assigned_to" id="assigned_to" class="form-control">
+        <option value="">Unassigned</option>
+        @foreach(\App\Models\User::where('status', 1)->whereJsonContains('permissions', 'dashboard_read')->orderBy('name')->get(['id', 'name']) as $assignee)
+            <option value="{{ $assignee->id }}" @selected(old('assigned_to', $customer?->assigned_to) == $assignee->id)>{{ $assignee->name }}</option>
+        @endforeach
+    </select>
+    @error('assigned_to') <p class="text-danger">{{ $message }}</p> @enderror
+</div>
+@endif

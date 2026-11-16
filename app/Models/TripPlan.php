@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TripPlan extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = ['customer_id', 'destination', 'start_date', 'days', 'budget', 'interests', 'plan'];
     protected $casts = ['start_date' => 'date', 'plan' => 'array'];
     public function customer() { return $this->belongsTo(Customer::class); }

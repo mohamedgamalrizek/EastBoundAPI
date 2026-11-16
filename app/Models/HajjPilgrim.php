@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class HajjPilgrim extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class];
+    }
+
     /**
      * How the instalment being recorded right now arrived (Cash/Bank/…).
      * A plain class property, not an attribute: it rides along from the

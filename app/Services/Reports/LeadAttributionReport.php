@@ -102,7 +102,7 @@ class LeadAttributionReport
 
     private function sales(array $filters): Builder
     {
-        $packages = $this->period(DB::table('bookings'), 'created_at', $filters)
+        $packages = $this->period(\App\Models\Booking::query()->toBase(), 'created_at', $filters)
             ->select('lead_id', 'amount')->whereIn('status', ['confirmed', 'paid']);
         $flights = $this->period(DB::table('flight_bookings'), 'created_at', $filters)
             ->selectRaw('lead_id, fare as amount')->whereIn('status', ['Confirmed', 'Reissued'])

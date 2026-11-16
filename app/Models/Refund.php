@@ -14,6 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Refund extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['booking_id' => \App\Models\Booking::class, 'invoice_id' => \App\Models\Invoice::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     /** Where the money goes back to. */
     public const METHODS = ['Cash', 'Bank', 'Wallet'];
 

@@ -6,6 +6,13 @@ use App\Models\Supplier;
 
 class VendorOrder extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['trip_id' => \App\Models\Dmc\Trip::class];
+    }
+
     protected $table = 'dmc_vendor_orders';
 
     protected $casts = ['required_on' => 'date', 'amount' => 'decimal:2'];

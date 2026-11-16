@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class VisaDocument extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['visa_application_id' => \App\Models\VisaApplication::class];
+    }
+
     protected $fillable = [
         'visa_application_id',
         'document_type',

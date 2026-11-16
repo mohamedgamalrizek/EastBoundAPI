@@ -14,6 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Review extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['booking_id' => \App\Models\Booking::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     public const PENDING  = 'pending';
     public const APPROVED = 'approved';
     public const REJECTED = 'rejected';

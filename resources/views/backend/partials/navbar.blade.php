@@ -35,31 +35,6 @@
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="j-header-container">
                     <div class="j-header-content">
-                        @if(auth()->check() && auth()->user()->isAdminUser())
-                        <div class="j-search">
-                            <form class="j-search-form" action="{{ route('search') }}">
-                                <input class="j-form-control" type="text" placeholder="{{ ___('label.search') }}" name="q" id="search" list="route_list" data-url="{{ route('search.route') }}">
-                                <datalist id="route_list"> </datalist>
-                                <button type="submit" class="j-form-btn"> <i class="icon-magnifier"></i> </button>
-                            </form>
-                        </div>
-                        @endif
-
-                        <div class="nav-lang">
-                            <div class="dropdown custom-dropdown">
-                                <button type="button" class="btn-ami text-black" data-toggle="dropdown">
-                                    <span> <i class="{{ defaultLanguage()->icon_class }}"></i> {{ Str::upper(defaultLanguage()->code) }} <i class="fa fa-angle-down"></i> </span>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    @foreach ($languages as $lang)
-                                    <a class="dropdown-item" href="{{ route('setLocalization',$lang->code) }}"> <span class="flg-lfex"> <i class="{{ @$lang->icon_class }}"></i> {{ @$lang->name }} </span> </a>
-                                    @endforeach
-                                </div>
-
-                            </div>
-                        </div>
-
                         {{-- Open the public site in a new tab — admins were
                              having to retype the URL to check their changes. --}}
                         <div class="nav-bell">

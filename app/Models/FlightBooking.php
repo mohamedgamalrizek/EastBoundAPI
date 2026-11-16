@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class FlightBooking extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['booking_id' => \App\Models\Booking::class, 'customer_id' => \App\Models\Customer::class, 'lead_id' => \App\Models\Lead::class];
+    }
+
     protected $fillable = [
         'lead_id',
         'customer_id', 'booking_id',

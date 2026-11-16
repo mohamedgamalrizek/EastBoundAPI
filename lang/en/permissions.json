@@ -49,5 +49,7 @@
     "view_all": "View all leads",
     "assign": "Assign leads",
     "restore": "Restore deleted leads",
-    "force_delete": "Permanently delete leads"
+    "force_delete": "Permanently delete leads",
+    "opportunities": "Opportunities / Deals",
+    "view_assigned": "View assigned only"
 }

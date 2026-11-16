@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['invoice_id' => \App\Models\Invoice::class, 'customer_id' => \App\Models\Customer::class];
+    }
+
     protected $fillable = [
         'invoice_id', 'customer_id',
         'receipt_no', 'customer_name', 'received_on', 'amount', 'method', 'reference',

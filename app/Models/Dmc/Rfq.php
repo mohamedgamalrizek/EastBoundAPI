@@ -6,6 +6,13 @@ use App\Models\Supplier;
 
 class Rfq extends DmcModel
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['purchase_request_id' => \App\Models\Dmc\PurchaseRequest::class];
+    }
+
     protected $table = 'dmc_rfqs';
 
     protected $casts = ['valid_until' => 'date', 'quoted_amount' => 'decimal:2'];

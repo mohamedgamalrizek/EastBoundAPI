@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CrmActivity extends Model
 {
+    use \App\Models\Concerns\HasAssignedRecordAccess;
+
+    public static function accessParents(): array
+    {
+        return ['customer_id' => \App\Models\Customer::class, 'lead_id' => \App\Models\Lead::class];
+    }
+
     protected static function booted(): void
     {
         static::addGlobalScope('lead_access', function ($query) {
